@@ -1,0 +1,6 @@
+D:\CourseWork\COMPSYS301\psoc student pack\psoc student pack\psoc_code_base\CS301_Class.cydsn\CS301_Class.cyprj|bf5e1dd0-b23d-438f-8c66-193b3c942cf3
+D:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|41527d45-b59d-467f-a4fc-dbe22f5c4fbf
+C:\Users\ROSS\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|1d50f52d-779e-4ef2-adb7-84fc7a6cf71c
+D:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|1e394744-6d4b-4325-b926-ed29a45650bd
+D:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|dcc4c561-da15-45f3-938b-5a244d1eb9c8
+D:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|490cb493-26ba-4b04-821e-969164dd004b
