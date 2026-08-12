@@ -28,6 +28,8 @@
 ********************************************************************************/
 /* `#START isr_TS_intc` */
 extern uint8 ts;
+
+volatile int motorSpeed_tick;
 /* `#END` */
 
 #ifndef CYINT_IRQ_BASE

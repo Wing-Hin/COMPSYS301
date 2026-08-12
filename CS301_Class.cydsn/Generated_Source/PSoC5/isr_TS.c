@@ -19,6 +19,7 @@
 #include <cydevice_trm.h>
 #include <CyLib.h>
 #include <isr_TS.h>
+#include <project.h>
 
 
 #if !defined(isr_TS__REMOVED) /* Check for removal by optimization */
@@ -28,6 +29,8 @@
 ********************************************************************************/
 /* `#START isr_TS_intc` */
 extern uint8 ts;
+
+volatile int motorSpeed_tick;
 /* `#END` */
 
 #ifndef CYINT_IRQ_BASE
@@ -164,6 +167,9 @@ CY_ISR(isr_TS_Interrupt)
     #endif /* isr_TS_INTERRUPT_INTERRUPT_CALLBACK */ 
 
     /*  Place your Interrupt code here. */
+    Timer_TS_ReadStatusRegister();
+    motorSpeed_tick = QuadDec_M1_GetCounter();
+    QuadDec_M1_SetCounter(0);
     /* `#START isr_TS_Interrupt` */
     ts++;
     /* `#END` */

@@ -27,6 +27,7 @@ void usbPutChar(char c);
 void handle_usb();
 //* ========================================
 
+extern volatile int motorSpeed_tick;
 
 int main()
 {
@@ -38,6 +39,10 @@ int main()
     PWM_1_Start();
     PWM_1_WritePeriod(99);
     PWM_1_WriteCompare(50);
+    QuadDec_M1_Start();
+    Timer_TS_Start();
+    isr_TS_StartEx(isr_TS_Interrupt);
+
     
 // ------USB SETUP ----------------    
 #ifdef USE_USB    
@@ -56,8 +61,18 @@ int main()
             int duty;
             if(sscanf(line, "p %d", &duty) == 1){
                 PWM_1_WriteCompare(duty);
+                usbPutString("duty cycle changed");
             }
-            usbPutString(line);
+            if(strcmp(line,"getSpeed") == 0){
+                char speedString[16];
+                char tickString[16];
+                int motorSpeed =(int)(motorSpeed_tick*100/(0.5*4*57));
+                sprintf(tickString, "%d ticks\r\n", motorSpeed_tick);
+                sprintf(speedString, "%d.%d rpm\r\n",motorSpeed/100, motorSpeed%100);
+                usbPutString(tickString);
+                usbPutString(speedString);
+            }
+            
             flag_KB_string = 0;
         }        
     }   
