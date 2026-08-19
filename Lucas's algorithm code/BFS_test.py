@@ -1,8 +1,12 @@
 from collections import deque
 
 
-def bfs(grid, start, goal):
+def bfs(grid, start, goal, explored_order=None):
     """Return the shortest path from start to goal, or None if none exists."""
+    # The caller can provide a list when it wants to record exploration order.
+    if explored_order is None:
+        explored_order = []
+
     if not grid or not grid[0]:
         return None
 
@@ -41,6 +45,9 @@ def bfs(grid, start, goal):
 
     while queue:
         current = queue.popleft()
+
+        # A node is explored when it is removed from the queue.
+        explored_order.append(current)
 
         if current == goal:
             break
@@ -85,7 +92,8 @@ if __name__ == "__main__":
 
     start = (0, 0)
     goal = (4, 4)
-    path = bfs(grid, start, goal)
+    explored_order = []
+    path = bfs(grid, start, goal, explored_order)
 
     if path is None:
         print("No path found")
@@ -93,3 +101,5 @@ if __name__ == "__main__":
         print("Shortest path:")
         print(path)
         print("Number of moves:", len(path) - 1)
+
+    print("Explored order:", explored_order)
