@@ -23,3 +23,5 @@ plotmap(m);
 %To view the path determined above use 
 plotmap(m,s);
 
+
+ 
