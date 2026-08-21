@@ -6,7 +6,11 @@
 % The solution can be viewed using
 % plotmap(m,s)
 
-function [retmap,retvisited,retsteps] = bfs(mapfile,startlocation,targetlocation)
+function [retmap,retvisited,retsteps] = algo_test(mapfile,startlocation,targetlocation,algorithm)
+% The fourth argument chooses the search: 'bfs' (default) or 'astar'.
+if nargin < 4
+    algorithm = 'bfs';
+end
 
 % Locate the Python script next to this .m file so it works from any folder.
 scriptdir = fileparts(mfilename('fullpath'));
@@ -24,10 +28,10 @@ if ~isfile(pyexe)
 end
 
 % MATLAB is 1-based, Python is 0-based: subtract 1 on the way out.
-cmd = sprintf('"%s" "%s" "%s" %d %d %d %d --algorithm bfs', ...
+cmd = sprintf('"%s" "%s" "%s" %d %d %d %d --algorithm %s', ...
     pyexe, pyscript, mapfile, ...
     startlocation(1)-1, startlocation(2)-1, ...
-    targetlocation(1)-1, targetlocation(2)-1);
+    targetlocation(1)-1, targetlocation(2)-1, algorithm);
 
 [status, out] = system(cmd);
 if status ~= 0

@@ -11,7 +11,7 @@ def load_map(mapfile):
     with open(mapfile) as f:
         for line in f:
             line = line.strip()
-            if line:
+            if line:    
                 grid.append([int(ch) for ch in line])
     return grid
 

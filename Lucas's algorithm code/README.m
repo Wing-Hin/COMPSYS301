@@ -22,6 +22,8 @@ plotmap(m);
 
 %To view the path determined above use 
 plotmap(m,s);
+% To view the shortest path with explored path
+plotsearch(m,v,s);
 
 
  
