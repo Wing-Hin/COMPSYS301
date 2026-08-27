@@ -1,6 +1,7 @@
 from collections import deque 
 import heapq
 
+
 class Algorithm:
     def __init__(self, grid, start, goal, explored_order=None):
         self.grid = grid
@@ -84,8 +85,6 @@ class Algorithm:
         path.reverse()
         return path
 
-    import heapq
-
 
     def manhattan_distance(self, node, goal):
         """Estimate the remaining distance using horizontal and vertical moves."""
@@ -137,7 +136,7 @@ class Algorithm:
         ]
 
         while open_list:
-            current_f, current_g, current = self.heapq.heappop(open_list)
+            current_f, current_g, current = heapq.heappop(open_list)
 
             # Ignore an older heap entry if a cheaper route was found later.
             if current_g != g_score[current]:

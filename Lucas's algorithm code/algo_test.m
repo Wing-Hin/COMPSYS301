@@ -9,7 +9,7 @@
 function [retmap,retvisited,retsteps] = algo_test(mapfile,startlocation,targetlocation,algorithm)
 % The fourth argument chooses the search: 'bfs' (default) or 'astar'.
 if nargin < 4
-    algorithm = 'bfs';
+    algorithm = 'astar';
 end
 
 % Locate the Python script next to this .m file so it works from any folder.
