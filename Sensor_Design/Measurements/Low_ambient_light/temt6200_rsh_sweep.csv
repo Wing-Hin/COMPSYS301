@@ -1,0 +1,43 @@
+session,R_kohm,condition,V_max_V,V_min_V,V_mean_V,V_pkpk_V,I_implied_uA,scope_freq_readout_Hz,ambient_light,notes,,R_kohm,White V_pkpk (V),Black V_pkpk (V),White V_mean (V),Black V_mean (V),White/Black swing ratio,
+S2_high_ambient_pedestal,10k,white,1.025,0.373,0.699,0.650,69.9,120.43,high,freq digits partly illegible on screen,,10k,0.650,0.230,0.699,0.595,2.83x,
+S2_high_ambient_pedestal,10k,black,0.711,0.478,0.595,0.230,59.5,119.62,high,,,22k,1.250,0.410,1.627,1.270,3.05x,
+S2_high_ambient_pedestal,22k,white,2.255,1.000,1.627,1.250,74.0,120.38,high,,,33k,1.630,0.500,2.455,1.815,3.26x,
+S2_high_ambient_pedestal,22k,black,1.475,1.065,1.270,0.410,57.7,87.36,high,freq counter unreliable (noise),,47k,1.930,0.540,3.275,2.500,3.57x,
+S2_high_ambient_pedestal,33k,white,3.270,1.640,2.455,1.630,74.4,119.55,high,,,56k,1.850,0.560,3.695,2.890,3.30x,
+S2_high_ambient_pedestal,33k,black,2.070,1.560,1.815,0.500,55.0,82.89,high,freq counter unreliable (noise),,60k,1.470,0.600,4.065,3.390,2.45x,
+S2_high_ambient_pedestal,47k,white,4.240,2.310,3.275,1.930,69.7,153.60,high,freq counter outlier,,,,,,,,
+S2_high_ambient_pedestal,47k,black,2.770,2.230,2.500,0.540,53.2,121.55,high,,,,,,,,,
+S2_high_ambient_pedestal,56k,white,4.620,2.770,3.695,1.850,66.0,120.77,high,peak compression begins (V_CE low at peaks),,R_kohm,White pkpk - ambient (V),White pkpk - no ambient (V),Black pkpk - ambient (V),Black pkpk - no ambient (V),W/B ratio - ambient,W/B ratio - no ambient
+S2_high_ambient_pedestal,56k,black,3.170,2.610,2.890,0.560,51.6,120.24,high,,,10k,0.650,0.640,0.230,0.230,2.83x,2.78x
+S2_high_ambient_pedestal,60k,white,4.800,3.330,4.065,1.470,67.8,120.19,high,peaks near rail - clipping,,22k,1.250,1.270,0.410,0.330,3.05x,3.85x
+S2_high_ambient_pedestal,60k,black,3.690,3.090,3.390,0.600,56.5,65.64,high,freq counter unreliable (noise),,33k,1.630,1.670,0.500,0.460,3.26x,3.63x
+S3_low_ambient_baseline,10k,white,0.654,0.011,0.333,0.640,33.3,119.89,low,,,47k,1.930,2.190,0.540,0.560,3.57x,3.91x
+S3_low_ambient_baseline,10k,black,0.220,-0.005,0.107,0.230,10.7,215.44,low,freq counter unreliable (noise),,56k,1.850,2.530,0.560,0.120,3.30x,21.08x
+S3_low_ambient_baseline,22k,white,1.362,0.091,0.727,1.270,33.0,98.38,low,,,60k,1.470,2.570,0.600,0.140,2.45x,18.36x
+S3_low_ambient_baseline,22k,black,0.373,0.043,0.208,0.330,9.5,190.84,low,freq counter unreliable (noise),,,,,,,,
+S3_low_ambient_baseline,33k,white,1.810,0.140,0.975,1.670,29.5,120.01,low,,,,,,,,,
+S3_low_ambient_baseline,33k,black,0.520,0.060,0.290,0.460,8.8,120.34,low,,,R_kohm,White - high ambient,Black - high ambient,White - low ambient,Black - low ambient,,
+S3_low_ambient_baseline,47k,white,2.470,0.280,1.375,2.190,29.3,98.34,low,,,10,0.65,0.23,0.64,0.23,,
+S3_low_ambient_baseline,47k,black,0.680,0.120,0.400,0.560,8.5,60.00,low,,,22,1.25,0.41,1.27,0.33,,
+S3_low_ambient_baseline,56k,white,2.930,0.400,1.665,2.530,29.7,154.65,low,,,33,1.63,0.5,1.67,0.46,,
+S3_low_ambient_baseline,56k,black,0.140,0.020,0.080,0.120,1.4,low signal,low,OUTLIER - scope reported Low signal; suspect covered sensor or different spot - re-measure,,47,1.93,0.54,2.19,0.56,,
+S3_low_ambient_baseline,60k,white,2.970,0.400,1.685,2.570,28.1,98.11,low,,,56,1.85,0.56,2.53,0.12,,
+S3_low_ambient_baseline,60k,black,0.300,0.160,0.230,0.140,3.8,286.70,low,OUTLIER - well below 22-47k black trend - re-measure,,60,1.47,0.6,2.57,0.14,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,R_kohm,White - high ambient,Black - high ambient,White - low ambient,Black - low ambient,,
+,,,,,,,,,,,,10,0.699,0.595,0.333,0.107,,
+,,,,,,,,,,,,22,1.627,1.27,0.727,0.208,,
+,,,,,,,,,,,,33,2.455,1.815,0.975,0.29,,
+,,,,,,,,,,,,47,3.275,2.5,1.375,0.4,,
+,,,,,,,,,,,,56,3.695,2.89,1.665,0.08,,
+,,,,,,,,,,,,60,4.065,3.39,1.685,0.23,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,R_kohm,White - high ambient,Black - high ambient,White - low ambient,Black - low ambient,,
+,,,,,,,,,,,,10,69.9,59.5,33.3,10.7,,
+,,,,,,,,,,,,22,73.95454545,57.72727273,33.04545455,9.454545455,,
+,,,,,,,,,,,,33,74.39393939,55,29.54545455,8.787878788,,
+,,,,,,,,,,,,47,69.68085106,53.19148936,29.25531915,8.510638298,,
+,,,,,,,,,,,,56,65.98214286,51.60714286,29.73214286,1.428571429,,
+,,,,,,,,,,,,60,67.75,56.5,28.08333333,3.833333333,,
