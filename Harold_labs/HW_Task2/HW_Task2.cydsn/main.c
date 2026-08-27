@@ -20,7 +20,7 @@
 volatile int16  last_count = 0;
 volatile int16  position   = 0;
 volatile float  rpm        = 0;
-volatile uint8  new_sample = 0;
+volatile uint8  new_sample = 0; //flag
 
 
 CY_ISR(Timer_ISR_Handler)
@@ -61,18 +61,37 @@ int main(void)
     USBUART_1_CDC_Init();
     
     
-    PWM_1_WriteCompare(25);
     
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-
+    
     for(;;){
-        if (new_sample){
-            new_sample = 0;
-            int rpm10 = (int)(rpm * 10);
-            sprintf(buffer, "pos=%d  rpm=%s%d.%d\r\n", position,
-        (rpm10 < 0) ? "-" : "", abs(rpm10) / 10, abs(rpm10) % 10);
-            while (USBUART_1_CDCIsReady() == 0) {}
-            USBUART_1_PutString(buffer);
+        if(USBUART_1_DataIsReady()){
+            char c =  USBUART_1_GetChar();
+            
+            if (c == 's')
+            {
+                uint8 duty;
+                USBUART_1_PutString("duty,rpm10\r\n");
+
+                for (duty = 0; duty <= 100; duty += 5)
+                {
+                    PWM_1_WriteCompare(duty);
+
+                    new_sample = 0;
+                    while (!new_sample);  new_sample = 0;
+                    while (!new_sample);  new_sample = 0;
+
+                    sprintf(buffer, "%d,%d\r\n", duty, (int)(rpm * 10));
+                    while (!USBUART_1_CDCIsReady());
+                    USBUART_1_PutString(buffer);
+                }
+
+                PWM_1_WriteCompare(50);
+                USBUART_1_PutString("done\r\n");
+            }
+            
+            PWM_1_WriteCompare(50);
+            USBUART_1_PutString("done \r\n");
         }
     }
 }
