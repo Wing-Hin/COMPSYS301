@@ -151,6 +151,12 @@
   <file name="D:\GitHub\COMPSYS301\CS301_Class.cydsn\codegentemp\RF_BT_SELECT.h" value="HEADER;;;;;RF_BT_SELECT" />
   <file name="D:\GitHub\COMPSYS301\CS301_Class.cydsn\codegentemp\RF_BT_SELECT.c" value="SOURCE_C;CortexM3;;;;RF_BT_SELECT" />
   <file name="D:\GitHub\COMPSYS301\CS301_Class.cydsn\codegentemp\RF_BT_SELECT_PM.c" value="SOURCE_C;CortexM3;;;;RF_BT_SELECT" />
+  <file name="D:\GitHub\COMPSYS301\CS301_Class.cydsn\codegentemp\LED_1_aliases.h" value="HEADER;;;;;LED_1" />
+  <file name="D:\GitHub\COMPSYS301\CS301_Class.cydsn\codegentemp\LED_1.c" value="SOURCE_C;CortexM3;;;;LED_1" />
+  <file name="D:\GitHub\COMPSYS301\CS301_Class.cydsn\codegentemp\LED_1.h" value="HEADER;;;;;LED_1" />
+  <file name="D:\GitHub\COMPSYS301\CS301_Class.cydsn\codegentemp\LED_2_aliases.h" value="HEADER;;;;;LED_2" />
+  <file name="D:\GitHub\COMPSYS301\CS301_Class.cydsn\codegentemp\LED_2.c" value="SOURCE_C;CortexM3;;;;LED_2" />
+  <file name="D:\GitHub\COMPSYS301\CS301_Class.cydsn\codegentemp\LED_2.h" value="HEADER;;;;;LED_2" />
   <file name="D:\GitHub\COMPSYS301\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16.c" value="SOURCE_C;CortexM3;;;;QuadDec_M1_Cnt16" />
   <file name="D:\GitHub\COMPSYS301\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16.h" value="HEADER;;;;;QuadDec_M1_Cnt16" />
   <file name="D:\GitHub\COMPSYS301\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16_PM.c" value="SOURCE_C;CortexM3;;;;QuadDec_M1_Cnt16" />

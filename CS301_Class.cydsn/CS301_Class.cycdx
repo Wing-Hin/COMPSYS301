@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <blockRegMap version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cypress.com/xsd/cyblockregmap cyblockregmap.xsd" xmlns="http://cypress.com/xsd/cyblockregmap">
+  <block name="Tx_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Rx_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="UART" BASE="0x0" SIZE="0x0" desc="UART" visible="true" hidden="false">
     <block name="IntClock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -25,9 +26,7 @@
       <field name="UART_TX_STS_FIFO_NOT_FULL" from="3" to="3" access="R" resetVal="" desc="" hidden="false" />
     </register>
   </block>
-  <block name="CONTROL" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="CONTROL_CONTROL_REG" address="0x4000647F" bitWidth="8" desc="" hidden="false" />
-  </block>
+  <block name="Clock_QENC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWM_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="vmIRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -144,7 +143,7 @@
     <register name="PWM_1_PERIOD" address="0x40004F04" bitWidth="8" desc="TMRx.PER0 - Assigned Period" hidden="false" />
     <register name="PWM_1_COMPARE" address="0x40004F06" bitWidth="8" desc="TMRx.CNT_CMP0 - Assigned Compare Value" hidden="false" />
   </block>
-  <block name="Tx_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Clock2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="USBUART" BASE="0x0" SIZE="0x0" desc="USBFS" visible="true" hidden="false">
     <block name="ep_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -1059,25 +1058,27 @@
     <register name="Timer_TS_PERIOD" address="0x40004F1C" bitWidth="16" desc="TMRx.PER0 - Assigned Period" hidden="false" />
     <register name="Timer_TS_COUNTER" address="0x40004F1E" bitWidth="16" desc="TMRx.CNT_CMP0 - Current Down Counter Value" hidden="false" />
   </block>
-  <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="CONTROL" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="CONTROL_CONTROL_REG" address="0x4000647F" bitWidth="8" desc="" hidden="false" />
+  </block>
   <block name="isr_eoc" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="M1_D1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Clock2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="RX_Mux" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="isrRF_RX" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="isrRF_TX" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="LED" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="LED_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="RF_BT_SELECT" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <register name="RF_BT_SELECT_CONTROL_REG" address="0x4000647D" bitWidth="8" desc="" hidden="false" />
   </block>
-  <block name="DB0" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="LED" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Clock_QENC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Rx_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="RX_Mux" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="LED_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="DB2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="DB1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="isr_TS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="DB0" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="isrRF_RX" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="isrRF_TX" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Rx_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="not_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="M2_D1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="QuadDec_M1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
@@ -1232,15 +1233,17 @@
   <block name="M2_IN2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="M2_IN1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="M1_IN2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="M1_QB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="A5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="A4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="A3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="A2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="isr_TS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="A7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="A6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="A5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="A0" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="M2_QB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="M2_QA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="M1_QB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="A2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="A1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="ADC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="or_internal" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -1293,5 +1296,4 @@
     <block name="VirtualMux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="bSAR_SEQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   </block>
-  <block name="A0" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
 </blockRegMap>

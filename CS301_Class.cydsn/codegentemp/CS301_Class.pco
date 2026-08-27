@@ -1,5 +1,5 @@
 # CS301_Class
-# 2026-08-12 04:05:20Z
+# 2026-08-27 05:07:23Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -37,6 +37,8 @@ set_io "DB0(0)" iocell 3 0
 set_io "DB1(0)" iocell 3 1
 set_io "DB2(0)" iocell 3 6
 set_io "Rx_2(0)" iocell 2 4
+set_io "LED_1(0)" iocell 0 2
+set_io "LED_2(0)" iocell 0 3
 set_location "\QuadDec_M1:Cnt16:CounterUDB:reload\" 3 1 0 1
 set_location "\QuadDec_M1:Cnt16:CounterUDB:status_0\" 3 0 1 1
 set_location "\QuadDec_M1:Cnt16:CounterUDB:status_2\" 2 0 0 3

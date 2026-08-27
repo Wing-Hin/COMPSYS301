@@ -226,6 +226,8 @@ set_io "LED(0)" iocell 2 1
 set_io "DB0(0)" iocell 3 0
 set_io "DB1(0)" iocell 3 1
 set_io "DB2(0)" iocell 3 6
+set_io "LED_1(0)" iocell 0 2
+set_io "LED_2(0)" iocell 0 3
 set_location "\PWM_2:PWMHW\" timercell -1 -1 1
 set_location "\PWM_1:PWMHW\" timercell -1 -1 0
 set_location "isr_TS" interrupt -1 -1 6

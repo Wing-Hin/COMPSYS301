@@ -21,6 +21,8 @@
 #include <isr_TS.h>
 #include <project.h>
 
+volatile int motorSpeed_tick;
+
 
 #if !defined(isr_TS__REMOVED) /* Check for removal by optimization */
 
@@ -167,9 +169,10 @@ CY_ISR(isr_TS_Interrupt)
     #endif /* isr_TS_INTERRUPT_INTERRUPT_CALLBACK */ 
 
     /*  Place your Interrupt code here. */
-    Timer_TS_ReadStatusRegister();
     motorSpeed_tick = QuadDec_M1_GetCounter();
     QuadDec_M1_SetCounter(0);
+    Timer_TS_ReadStatusRegister();
+    
     /* `#START isr_TS_Interrupt` */
     ts++;
     /* `#END` */

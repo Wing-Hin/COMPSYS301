@@ -29,6 +29,9 @@ void handle_usb();
 
 extern volatile int motorSpeed_tick;
 
+const float Vblack_LON;
+const float Vwhite_LON;
+
 int main()
 {
     
@@ -42,6 +45,7 @@ int main()
     QuadDec_M1_Start();
     Timer_TS_Start();
     isr_TS_StartEx(isr_TS_Interrupt);
+    ADC_Start();
 
     
 // ------USB SETUP ----------------    
@@ -51,14 +55,31 @@ int main()
         
     RF_BT_SELECT_Write(0);
 
-    usbPutString(displaystring);
+    //usbPutString(displaystring);
+    
     for(;;)
-    {
+    {   
         /* Place your application code here. */
+        if(ADC_GetResult16(0) <= 600){
+            LED_1_Write(0);
+        }
+        else if(ADC_GetResult16(0) > 600){
+            LED_1_Write(1);
+        }
+        if(ADC_GetResult16(1) <= 600){
+            LED_2_Write(0);
+        }
+        else if(ADC_GetResult16(1) > 600){
+            LED_2_Write(1);
+        }
         handle_usb();
+        ADC_StartConvert();
+        ADC_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT);
+        
         if (flag_KB_string == 1)
         {
             int duty;
+            int channel;
             if(sscanf(line, "p %d", &duty) == 1){
                 PWM_1_WriteCompare(duty);
                 usbPutString("duty cycle changed");
@@ -72,11 +93,21 @@ int main()
                 usbPutString(tickString);
                 usbPutString(speedString);
             }
-            
+            if(sscanf(line, "ADC %d", &channel) == 1){
+                char ADCnum_str[16];
+                char ADCcount_str[16];
+                int ADC_value = (int)ADC_GetResult16(channel);
+                sprintf(ADCnum_str, "ADC%d reading:\r\n", channel);
+                sprintf(ADCcount_str, "Count:%d\r\n", ADC_value);
+                usbPutString(ADCnum_str);
+                usbPutString(ADCcount_str);
+                
+            }
             flag_KB_string = 0;
         }        
     }   
 }
+//* ========================================
 //* ========================================
 void usbPutString(char *s)
 {
