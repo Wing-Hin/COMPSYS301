@@ -21,29 +21,29 @@ S3_low_ambient_baseline,47k,white,2.47,0.28,1.375,2.19,29.3,98.34,low,,,,,,,,
 S3_low_ambient_baseline,47k,black,0.68,0.12,0.4,0.56,8.5,60,low,,,,,,,,
 S3_low_ambient_baseline,56k,white,2.93,0.4,1.665,2.53,29.7,154.65,low,,,,,,,,
 S3_low_ambient_baseline,56k,black,0.14,0.02,0.08,0.12,1.4,low signal,low,OUTLIER - scope reported Low signal; suspect covered sensor or different spot - re-measure,,,,,,,
-S3_low_ambient_baseline,60k,white,2.97,0.4,1.685,2.57,28.1,98.11,low,,,,,,,,
-S3_low_ambient_baseline,60k,black,0.3,0.16,0.23,0.14,3.8,286.7,low,OUTLIER - well below 22-47k black trend - re-measure,,,,,,,
+S3_low_ambient_baseline,68k,white,2.97,0.4,1.685,2.57,28.1,98.11,low,,,,,,,,
+S3_low_ambient_baseline,68k,black,0.3,0.16,0.23,0.14,3.8,286.7,low,OUTLIER - well below 22-47k black trend - re-measure,,,,,,,
 ,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,
 HIGH AMBIENT LIGHT — S2_high_ambient_pedestal,,,,,,,,,,,,,,,,,
 Ambient tag:,high,,,,,,,,,,,,,,,,
 ,V_mean (V),,Contrast,,V_pk-pk (V),,,,,,,,condition ?,white,black,white,black
 R_sh (k?),white,black,? (W?B),W/B ratio,white,black,Notes,,,,,,ambient ?,high,high,low,low
-10k,0.699,0.595,0.104,1.17x,0.650,0.230,,,,,,,R_sh (k?),White – high ambient,Black – high ambient,White – low ambient,Black – low ambient
-22k,1.627,1.270,0.357,1.28x,1.250,0.410,,,,,,,10k,0.699,0.595,0.333,0.107
-33k,2.455,1.815,0.640,1.35x,1.630,0.500,,,,,,,22k,1.627,1.27,0.727,0.208
-47k,3.275,2.500,0.775,1.31x,1.930,0.540,,,,,,,33k,2.455,1.815,0.975,0.29
-56k,3.695,2.890,0.805,1.28x,1.850,0.560,peak compression begins (V_CE low at peaks),,,,,,47k,3.275,2.5,1.375,0.4
-60k,4.065,3.390,0.675,1.20x,1.470,0.600,peaks near rail – clipping,,,,,,56k,3.695,2.89,1.665,0.08
-,,,,,,,,,,,,,60k,4.065,3.39,1.685,0.23
+10k,0.699,0.595,0.104,1.17x,0.65,0.23,,,,,,,R_sh (k?),White – high ambient,Black – high ambient,White – low ambient,Black – low ambient
+22k,1.627,1.27,0.357,1.28x,1.25,0.41,,,,,,,10k,0.699,0.595,0.333,0.107
+33k,2.455,1.815,0.64,1.35x,1.63,0.5,,,,,,,22k,1.627,1.27,0.727,0.208
+47k,3.275,2.5,0.775,1.31x,1.93,0.54,,,,,,,33k,2.455,1.815,0.975,0.29
+56k,3.695,2.89,0.805,1.28x,1.85,0.56,peak compression begins (V_CE low at peaks),,,,,,47k,3.275,2.5,1.375,0.4
+68k,4.065,3.39,0.675,1.20x,1.47,0.6,peaks near rail – clipping,,,,,,56k,3.695,2.89,1.665,0.08
+,,,,,,,,,,,,,68k,4.065,3.39,1.685,0.23
 ,,,,,,,,,,,,,,,,,
 LOW AMBIENT LIGHT — S3_low_ambient_baseline,,,,,,,,,,,,,,,,,
 Ambient tag:,low,,,,,,,,,,,,,,,,
 ,V_mean (V),,Contrast,,V_pk-pk (V),,,,,,,,,,,,
 R_sh (k?),white,black,? (W?B),W/B ratio,white,black,Notes,,,,,,,,,,
-10k,0.333,0.107,0.226,3.11x,0.640,0.230,,,,,,,,,,,
-22k,0.727,0.208,0.519,3.50x,1.270,0.330,,,,,,,,,,,
-33k,0.975,0.290,0.685,3.36x,1.670,0.460,,,,,,,,,,,
-47k,1.375,0.400,0.975,3.44x,2.190,0.560,,,,,,,,,,,
-56k,1.665,0.080,1.585,20.81x,2.530,0.120,"black OUTLIER – scope ""low signal"", re-measure",,,,,,,,,,
-60k,1.685,0.230,1.455,7.33x,2.570,0.140,"black OUTLIER – below trend, re-measure",,,,,,,,,,
+10k,0.333,0.107,0.226,3.11x,0.64,0.23,,,,,,,,,,,
+22k,0.727,0.208,0.519,3.50x,1.27,0.33,,,,,,,,,,,
+33k,0.975,0.29,0.685,3.36x,1.67,0.46,,,,,,,,,,,
+47k,1.375,0.4,0.975,3.44x,2.19,0.56,,,,,,,,,,,
+56k,1.665,0.08,1.585,20.81x,2.53,0.12,"black OUTLIER – scope ""low signal"", re-measure",,,,,,,,,,
+68k,1.685,0.23,1.455,7.33x,2.57,0.14,"black OUTLIER – below trend, re-measure",,,,,,,,,,
