@@ -1,0 +1,31 @@
+# Altium Designer generated files (PCBv2)
+
+# Auto-save / local version history
+History/
+__Previews/
+*.~(*).*.Zip
+
+# Generated outputs (Gerbers, drill, DRC, reports) - regenerate from the PcbDoc
+Project Outputs*/
+*.Cam
+*.drc
+*.DRR
+*.EXTREP
+*.LDP
+*.REP
+*.apr
+*.APR_LIB
+Status Report.Txt
+
+# Altium temp / lock / user-specific files
+*.SchDoc.tmp
+*.PcbDoc.tmp
+*.PrjPcbStructure
+*.PrjPcbVariants
+*.PrjPcb.*.user
+*.$$$
+*.lck
+*.lock
+~*.*
+Thumbs.db
+desktop.ini
