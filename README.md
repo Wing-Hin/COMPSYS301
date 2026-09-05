@@ -1,4 +1,4 @@
-COMPSYS301 - Line-Following Autonomous Robot
+# COMPSYS301 - Line-Following Autonomous Robot
 
 Embedded design project built on a Cypress PSoC 5LP (CY8CKIT-059). A two-wheeled robot follows a projected black line, decides its route at intersections, and tracks its own position. all from custom sensor hardware and C firmware.
 
