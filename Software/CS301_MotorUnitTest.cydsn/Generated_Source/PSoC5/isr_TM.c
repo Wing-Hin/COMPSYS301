@@ -19,7 +19,6 @@
 #include <cydevice_trm.h>
 #include <CyLib.h>
 #include <isr_TM.h>
-#include <motorControl.h>
 
 
 #if !defined(isr_TM__REMOVED) /* Check for removal by optimization */
@@ -28,6 +27,7 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START isr_TM_intc` */
+#include <motorControl.h>
 
 /* `#END` */
 

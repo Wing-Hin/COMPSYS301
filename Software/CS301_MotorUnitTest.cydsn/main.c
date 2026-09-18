@@ -41,6 +41,9 @@ int main()
     QuadDec_M1_Start();
     Timer_Motor_Start();
     isr_TS_StartEx(isr_TM_Interrupt);
+    
+    
+    
 
     
 // ------USB SETUP ----------------    
@@ -60,7 +63,6 @@ int main()
         if (flag_KB_string == 1)
         {
             int targetSpeed;
-            int channel;
             if(sscanf(line, "setSpeedL %d", &targetSpeed) == 1){
                 MotorLeft_setRPM(targetSpeed);
                 char setSpeedString[16];
@@ -84,11 +86,6 @@ int main()
                 usbPutString(speedString_R);
             }
             flag_KB_string = 0;
-        } 
-        if(Motor_isr_flag == 1){
-            Motor_captureRPM();
-            Motor_maintainSpeed();
-            Motor_isr_flag = 0;
         }
     }   
 }
