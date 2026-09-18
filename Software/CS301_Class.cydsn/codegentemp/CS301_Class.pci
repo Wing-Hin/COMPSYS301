@@ -1,5 +1,5 @@
 # CS301_Class
-# 2026-08-27 05:07:17Z
+# 2026-09-18 05:48:36Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -16,12 +16,12 @@ set_io "M1_QA(0)" iocell 15 1
 set_io "M1_QB(0)" iocell 15 2
 set_io "M2_QA(0)" iocell 0 0
 set_io "M2_QB(0)" iocell 0 1
-set_io "A0(0)" iocell 0 5
-set_io "A1(0)" iocell 0 6
+set_io "A0(0)" iocell 0 3
+set_io "A1(0)" iocell 3 7
 set_io "A2(0)" iocell 0 7
-set_io "A3(0)" iocell 1 2
+set_io "A3(0)" iocell 15 3
 set_io "A4(0)" iocell 1 4
-set_io "A5(0)" iocell 1 5
+set_io "A5(0)" iocell 1 2
 set_io "A6(0)" iocell 1 6
 set_io "A7(0)" iocell 1 7
 set_io "\USBUART:Dm(0)\" iocell 15 7
@@ -34,7 +34,12 @@ set_io "DB0(0)" iocell 3 0
 set_io "DB1(0)" iocell 3 1
 set_io "DB2(0)" iocell 3 6
 set_io "Rx_2(0)" iocell 2 4
-set_io "LED_1(0)" iocell 0 2
-set_io "LED_2(0)" iocell 0 3
+set_io "Q5(0)" iocell 0 4
+set_io "Q6(0)" iocell 2 5
+set_io "Q4(0)" iocell 0 6
+set_io "Q3(0)" iocell 0 5
+set_io "Q2(0)" iocell 15 5
+set_io "Q1(0)" iocell 0 2
 set_location "\ADC:SAR:ADC_SAR\" sarcell -1 -1 1
 set_location "\USBUART:USB\" usbcell -1 -1 0
+set_location "\ADC_Sensor:ADC_SAR\" sarcell -1 -1 0

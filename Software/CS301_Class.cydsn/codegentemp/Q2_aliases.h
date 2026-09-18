@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: LED_2.h  
+* File Name: Q2.h  
 * Version 2.20
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_LED_2_ALIASES_H) /* Pins LED_2_ALIASES_H */
-#define CY_PINS_LED_2_ALIASES_H
+#if !defined(CY_PINS_Q2_ALIASES_H) /* Pins Q2_ALIASES_H */
+#define CY_PINS_Q2_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -25,12 +25,12 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define LED_2_0			(LED_2__0__PC)
-#define LED_2_0_INTR	((uint16)((uint16)0x0001u << LED_2__0__SHIFT))
+#define Q2_0			(Q2__0__PC)
+#define Q2_0_INTR	((uint16)((uint16)0x0001u << Q2__0__SHIFT))
 
-#define LED_2_INTR_ALL	 ((uint16)(LED_2_0_INTR))
+#define Q2_INTR_ALL	 ((uint16)(Q2_0_INTR))
 
-#endif /* End Pins LED_2_ALIASES_H */
+#endif /* End Pins Q2_ALIASES_H */
 
 
 /* [] END OF FILE */

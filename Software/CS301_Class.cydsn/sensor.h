@@ -22,7 +22,6 @@ typedef struct {
     uint8 state;    // last decision, 0 or 1 — hysteresis needs it
 } sensor_t;
 
-sensor_t sensor[N_SENSORS];
 
 uint8 isSensorOnWhite(uint8 sensor_th);
 
