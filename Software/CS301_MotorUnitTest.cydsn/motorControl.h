@@ -16,19 +16,28 @@
 #define Forward true
 #define Backward false
 #define Max_safeSpeed 3.0f
-#define Kp 1f
-#define Ki 0.2f
-#define Kd 0f
-#define Ts 0.1f
+#define WheelRadius 0.0325
+#define Kp 1.0
+#define Ki 0.2
+#define Kd 0.0
+#define Ts 0.1
+
+volatile bool Motor_isr_flag;
 
 void MotorEnable();
 void MotorDisable();
 
-void MotorLeft_setSpeed();
+void MotorLeft_setRPM();
+float MotorLeft_getRPM();
 void MotorLeft_setDirection(bool direction);
 
-void MotorRight_setSpeed();
+void MotorRight_setRPM();
+float MotorRight_getRPM();
 void MotorRight_setDirection(bool direction);
 
 void Motor_maintainSpeed();
+
+float Motor_getDistanceTravelled();
+
+void Motor_captureRPM();
 /* [] END OF FILE */

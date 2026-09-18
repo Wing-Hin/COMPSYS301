@@ -1,5 +1,5 @@
 -- Project:   CS301_MotorUnitTest
--- Generated: 09/17/2026 17:45:10
+-- Generated: 09/18/2026 17:32:42
 -- PSoC Creator  4.4
 
 ENTITY CS301_MotorUnitTest IS
@@ -106,6 +106,10 @@ ARCHITECTURE __DEFAULT__ OF CS301_MotorUnitTest IS
     SIGNAL Net_362 : bit;
     SIGNAL Net_368 : bit;
     SIGNAL Net_4334 : bit;
+    SIGNAL Net_4395 : bit;
+    ATTRIBUTE global_signal OF Net_4395 : SIGNAL IS true;
+    SIGNAL Net_4395_local : bit;
+    SIGNAL Net_4402 : bit;
     SIGNAL Net_724 : bit;
     SIGNAL Net_724_SYNCOUT : bit;
     SIGNAL Net_725 : bit;
@@ -332,6 +336,8 @@ ARCHITECTURE __DEFAULT__ OF CS301_MotorUnitTest IS
     SIGNAL \RF_BT_SELECT:control_5\ : bit;
     SIGNAL \RF_BT_SELECT:control_6\ : bit;
     SIGNAL \RF_BT_SELECT:control_7\ : bit;
+    SIGNAL \Timer_Motor:Net_261\ : bit;
+    SIGNAL \Timer_Motor:Net_57\ : bit;
     SIGNAL \Timer_TS:Net_261\ : bit;
     SIGNAL \Timer_TS:Net_57\ : bit;
     SIGNAL \UART:BUART:counter_load_not\ : bit;
@@ -409,6 +415,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_MotorUnitTest IS
     ATTRIBUTE POWER OF tmpOE__M1_IN1_net_0 : SIGNAL IS true;
     SIGNAL \ClockBlock.dclk_glb_ff_2__sig\ : bit;
     SIGNAL \ClockBlock.dclk_glb_ff_4__sig\ : bit;
+    SIGNAL \ClockBlock.dclk_glb_ff_5__sig\ : bit;
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:sC16:counterdp:u0.ce0__sig\ : bit;
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:sC16:counterdp:u0.cl0__sig\ : bit;
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:sC16:counterdp:u0.z0__sig\ : bit;
@@ -1151,8 +1158,11 @@ BEGIN
             dclk_3 => \UART:Net_9_local\,
             dclk_glb_4 => Net_10,
             dclk_4 => Net_10_local,
+            dclk_glb_5 => Net_4395,
+            dclk_5 => Net_4395_local,
             dclk_glb_ff_2 => \ClockBlock.dclk_glb_ff_2__sig\,
-            dclk_glb_ff_4 => \ClockBlock.dclk_glb_ff_4__sig\);
+            dclk_glb_ff_4 => \ClockBlock.dclk_glb_ff_4__sig\,
+            dclk_glb_ff_5 => \ClockBlock.dclk_glb_ff_5__sig\);
 
     M1_IN1:logicalport
         GENERIC MAP(
@@ -5397,6 +5407,27 @@ BEGIN
             control_1 => \RF_BT_SELECT:control_1\,
             control_0 => Net_3437,
             busclk => ClockBlock_BUS_CLK);
+
+    \Timer_Motor:TimerHW\:timercell
+        GENERIC MAP(
+            cy_registers => "")
+        PORT MAP(
+            clock => \ClockBlock.dclk_glb_ff_5__sig\,
+            kill => open,
+            enable => __ONE__,
+            capture => open,
+            timer_reset => open,
+            tc => Net_4402,
+            cmp => \Timer_Motor:Net_261\,
+            irq => \Timer_Motor:Net_57\);
+
+    isr_TM:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_4402,
+            clock => ClockBlock_BUS_CLK);
 
     \QuadDec_M1:Net_1251\:macrocell
         GENERIC MAP(

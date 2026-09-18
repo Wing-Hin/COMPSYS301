@@ -28,11 +28,6 @@ void usbPutChar(char c);
 void handle_usb();
 //* ========================================
 
-extern volatile int motorSpeed_tick;
-
-const float Vblack_LON;
-const float Vwhite_LON;
-
 int main()
 {
     
@@ -44,8 +39,8 @@ int main()
     PWM_1_WritePeriod(99);
     PWM_1_WriteCompare(50);
     QuadDec_M1_Start();
-    Timer_TS_Start();
-    isr_TS_StartEx(isr_TS_Interrupt);
+    Timer_Motor_Start();
+    isr_TS_StartEx(isr_TM_Interrupt);
 
     
 // ------USB SETUP ----------------    
@@ -64,33 +59,37 @@ int main()
         
         if (flag_KB_string == 1)
         {
-            int duty;
+            int targetSpeed;
             int channel;
-            if(sscanf(line, "p %d", &duty) == 1){
-                PWM_1_WriteCompare(duty);
-                usbPutString("duty cycle changed");
+            if(sscanf(line, "setSpeedL %d", &targetSpeed) == 1){
+                MotorLeft_setRPM(targetSpeed);
+                char setSpeedString[16];
+                sprintf(setSpeedString, "setSpeedL to %d%%", targetSpeed);
+                usbPutString("Speed");
+            }
+            if(sscanf(line, "setSpeedR %d", &targetSpeed) == 1){
+                MotorRight_setRPM(targetSpeed);
+                char setSpeedString[16];
+                sprintf(setSpeedString, "setSpeedR to %d%%", targetSpeed);
+                usbPutString("Speed");
             }
             if(strcmp(line,"getSpeed") == 0){
-                char speedString[16];
-                char tickString[16];
-                int motorSpeed =(int)(motorSpeed_tick*100/(0.5*4*57));
-                sprintf(tickString, "%d ticks\r\n", motorSpeed_tick);
-                sprintf(speedString, "%d.%d rpm\r\n",motorSpeed/100, motorSpeed%100);
-                usbPutString(tickString);
-                usbPutString(speedString);
-            }
-            if(sscanf(line, "ADC %d", &channel) == 1){
-                char ADCnum_str[16];
-                char ADCcount_str[16];
-                int ADC_value = (int)ADC_GetResult16(channel);
-                sprintf(ADCnum_str, "ADC%d reading:\r\n", channel);
-                sprintf(ADCcount_str, "Count:%d\r\n", ADC_value);
-                usbPutString(ADCnum_str);
-                usbPutString(ADCcount_str);
-                
+                char speedString_L[16];
+                char speedString_R[16];
+                int motorSpeed_L =(int) MotorLeft_getRPM() *100;
+                int motorSpeed_R =(int) MotorRight_getRPM() *100;
+                sprintf(speedString_L, "Left: %d.%d rpm\r\n",motorSpeed_L/100, motorSpeed_L%100);
+                sprintf(speedString_R, "Right: %d.%d rpm\r\n",motorSpeed_R/100, motorSpeed_R%100);
+                usbPutString(speedString_L);
+                usbPutString(speedString_R);
             }
             flag_KB_string = 0;
-        }        
+        } 
+        if(Motor_isr_flag == 1){
+            Motor_captureRPM();
+            Motor_maintainSpeed();
+            Motor_isr_flag = 0;
+        }
     }   
 }
 //* ========================================
