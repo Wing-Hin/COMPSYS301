@@ -21,5 +21,6 @@
 #define Q6 5
 
 uint8 isSensorOnWhite(uint8 sensor_th);
+void sensor_init(void);
 
 /* [] END OF FILE */
