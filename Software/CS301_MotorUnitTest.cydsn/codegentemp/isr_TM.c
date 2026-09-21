@@ -166,6 +166,7 @@ CY_ISR(isr_TM_Interrupt)
     /*  Place your Interrupt code here. */
     /* `#START isr_TM_Interrupt` */
     Motor_isr_flag = 1;
+    LED_1_Write(!LED_1_Read());
     /* `#END` */
 }
 

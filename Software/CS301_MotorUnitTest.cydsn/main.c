@@ -37,11 +37,22 @@ int main()
     CYGlobalIntEnable;
     PWM_1_Start();
     PWM_1_WritePeriod(99);
-    PWM_1_WriteCompare(50);
+    PWM_1_WriteCompare(49);
+    MotorLeft_setRPM(70);
+    PWM_2_Start();
+    PWM_2_WritePeriod(99);
+    PWM_2_WriteCompare(49);
+    MotorRight_setRPM(70);
+    
     QuadDec_M1_Start();
+    QuadDec_M2_Start();
+    
     Timer_Motor_Start();
-    isr_TS_StartEx(isr_TM_Interrupt);
-
+    isr_TM_StartEx(isr_TM_Interrupt);
+    MotorEnable();
+    LED_1_Write(1);
+    
+    bool getSpeed_Uart;
     
 // ------USB SETUP ----------------    
 #ifdef USE_USB    
@@ -60,35 +71,62 @@ int main()
         if (flag_KB_string == 1)
         {
             int targetSpeed;
-            int channel;
+            int duty;
             if(sscanf(line, "setSpeedL %d", &targetSpeed) == 1){
                 MotorLeft_setRPM(targetSpeed);
-                char setSpeedString[16];
+                char setSpeedString[132];
                 sprintf(setSpeedString, "setSpeedL to %d%%", targetSpeed);
-                usbPutString("Speed");
+                usbPutString("Speed Set to L");
             }
             if(sscanf(line, "setSpeedR %d", &targetSpeed) == 1){
                 MotorRight_setRPM(targetSpeed);
-                char setSpeedString[16];
+                char setSpeedString[32];
                 sprintf(setSpeedString, "setSpeedR to %d%%", targetSpeed);
-                usbPutString("Speed");
+                usbPutString("Speed set to R");
             }
             if(strcmp(line,"getSpeed") == 0){
-                char speedString_L[16];
-                char speedString_R[16];
-                int motorSpeed_L =(int) MotorLeft_getRPM() *100;
-                int motorSpeed_R =(int) MotorRight_getRPM() *100;
-                sprintf(speedString_L, "Left: %d.%d rpm\r\n",motorSpeed_L/100, motorSpeed_L%100);
-                sprintf(speedString_R, "Right: %d.%d rpm\r\n",motorSpeed_R/100, motorSpeed_R%100);
-                usbPutString(speedString_L);
-                usbPutString(speedString_R);
+                getSpeed_Uart = 1;
+                usbPutString("getSpeed\r\n");
+            }
+            if(strcmp(line,"stopGetSpeed") == 0){
+                getSpeed_Uart = 0;
+                usbPutString("stopgetSpeed\r\n");
+            }
+            if(strcmp(line,"Forward") == 0){
+                MotorLeft_setDirection(Forward);
+                MotorRight_setDirection(Forward);
+                usbPutString("fowarding");
+            }
+            if(strcmp(line,"Backward") == 0){
+                MotorLeft_setDirection(Backward);
+                MotorRight_setDirection(Backward);
+                usbPutString("backwarding");
+            }
+            if(sscanf(line, "pl %d", &duty) == 1){
+                PWM_1_WriteCompare(duty);
+                usbPutString("duty cycle changed");
+            }
+            if(sscanf(line, "pr %d", &duty) == 1){
+                PWM_2_WriteCompare(duty);
+                usbPutString("duty cycle changed");
             }
             flag_KB_string = 0;
         } 
         if(Motor_isr_flag == 1){
+            Motor_isr_flag = 0;
             Motor_captureRPM();
             Motor_maintainSpeed();
-            Motor_isr_flag = 0;
+            if(getSpeed_Uart){
+                char speedString_L[32];
+                char speedString_R[32];
+                int motorSpeed_L =(int) -(MotorLeft_getRPM() *100);
+                int motorSpeed_R =(int) (MotorRight_getRPM() *100);
+                sprintf(speedString_L, "Left: %d.%d rpm\r\n",motorSpeed_L/100, abs(motorSpeed_L%100));
+                sprintf(speedString_R, "Right: %d.%d rpm\r\n",motorSpeed_R/100, abs(motorSpeed_R%100));
+
+                usbPutString(speedString_L);
+                usbPutString(speedString_R);
+            }
         }
     }   
 }

@@ -12,6 +12,7 @@
 #include <motorControl.h>
 
 volatile bool Motor_isr_flag = 0;
+volatile bool Motor_enabled = 0;
 //Variables initialise
 static volatile float motorLeft_RPM;
 static volatile float motorRight_RPM;
@@ -36,18 +37,20 @@ void MotorEnable(){
     RWE_Write(1);
     LWV_Write(1);
     RWV_Write(1);
+    Motor_enabled = 1;
 }
 //Disable Motor
 void MotorDisable(){
     LWE_Write(0);
     RWE_Write(0);
+    Motor_enabled = 0;
 }
 
 
 //Left Motor control
 //speed control, input 0-99 indicating percentage
 void MotorLeft_setRPM(int speed){
-    motorLeft_targetRPM = speed /100 * Max_safeSpeed;
+    motorLeft_targetRPM = ((float)speed /100) * Max_safeSpeed;
 }
 //getRPM
 float MotorLeft_getRPM(){
@@ -56,10 +59,10 @@ float MotorLeft_getRPM(){
 //Set direction
 void MotorLeft_setDirection(bool direction){
     if(direction){
-        LWV_Write(1);
+        LWV_Write(0);
     }
     else{
-        LWV_Write(0);
+        LWV_Write(1);
     }
 }
 //Left Motor control
@@ -68,7 +71,7 @@ void MotorLeft_setDirection(bool direction){
 //Right Motor control
 // control, input 0-99 indicating percentage
 void MotorRight_setRPM(int speed){
-    motorRight_targetRPM = speed /100 * Max_safeSpeed;
+    motorRight_targetRPM = ((float)speed /100) * Max_safeSpeed;
 }
 //getRPM
 float MotorRight_getRPM(){
@@ -98,25 +101,50 @@ float previousErrorR;
 float integralR;
 float derivatvieR;
 void Motor_maintainSpeed(){
-    //Left
-    previousError_L = errorL;
-    errorL = motorLeft_targetRPM - motorLeft_RPM;
-    integralL += errorL * Ts;
-    derivatvieL = (errorL - previousError_L)/Ts;
-    float correctionL = Kp * errorL + 
-                        Ki * integralL +
-                        Kd * derivatvieL;
-    motorLeft_PWM = motorLeft_PWM + correctionL/0.04;
-    //Right
-    previousError_R = errorR;
-    errorR = motorRight_targetRPM - motorRight_RPM;
-    integralR += errorR * Ts;
-    derivatvieR = (errorR - previousError_R)/Ts;
-    float correctionR = Kp * errorR + 
-                        Ki * integralR +
-                        Kd * derivatvieR;
-    motorRight_PWM = motorRight_PWM + correctionR/0.04;
-
+    if(Motor_enabled){
+        //Left
+        previousError_L = errorL;
+        if(motorLeft_RPM < 0){
+            errorL = motorLeft_targetRPM + motorLeft_RPM;
+        }
+        else{
+            errorL = motorLeft_targetRPM - motorLeft_RPM;
+        }
+        integralL += errorL * Ts;
+        derivatvieL = (errorL - previousError_L)/Ts;
+        float correctionL = Kp * errorL + 
+                            Ki * integralL +
+                            Kd * derivatvieL;
+        motorLeft_PWM = motorLeft_PWM + correctionL/0.04;
+        if(motorLeft_PWM <0){
+            motorLeft_PWM = 20;
+        }
+        else if(motorLeft_PWM > 99){
+            motorLeft_PWM = 99;
+        }
+        PWM_1_WriteCompare(motorLeft_PWM);
+        //Right
+        previousError_R = errorR;
+        if(motorRight_RPM < 0){
+            errorR = motorRight_targetRPM + motorRight_RPM;
+        }
+        else{
+            errorR = motorRight_targetRPM - motorRight_RPM;
+        }
+        integralR += errorR * Ts;
+        derivatvieR = (errorR - previousError_R)/Ts;
+        float correctionR = Kp * errorR + 
+                            Ki * integralR +
+                            Kd * derivatvieR;
+        motorRight_PWM = motorRight_PWM + correctionR/0.04;
+        if(motorRight_PWM <0){
+            motorRight_PWM = 20;
+        }
+        else if(motorRight_PWM > 99){
+            motorRight_PWM = 99;
+        }
+        PWM_2_WriteCompare(motorRight_PWM);
+    }
 }
 //PID control
 

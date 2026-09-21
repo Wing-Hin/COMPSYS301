@@ -43,7 +43,7 @@ extern uint8 Timer_Motor_initVar;
 #define Timer_Motor_SoftwareTriggerMode        0u
 #define Timer_Motor_UsingHWEnable              0u
 #define Timer_Motor_EnableTriggerMode          0u
-#define Timer_Motor_InterruptOnCaptureCount    0u
+#define Timer_Motor_InterruptOnCaptureCount    1u
 #define Timer_Motor_RunModeUsed                0u
 #define Timer_Motor_ControlRegRemoved          0u
 
@@ -173,10 +173,10 @@ void Timer_Motor_Wakeup(void)        ;
 #define Timer_Motor_INIT_TRIGGER_MODE       ((uint8)((uint8)0u << Timer_Motor_CTRL_TRIG_MODE_SHIFT))
 #if (Timer_Motor_UsingFixedFunction)
     #define Timer_Motor_INIT_INTERRUPT_MODE (((uint8)((uint8)0u << Timer_Motor_STATUS_TC_INT_MASK_SHIFT)) | \
-                                                  ((uint8)((uint8)0 << Timer_Motor_STATUS_CAPTURE_INT_MASK_SHIFT)))
+                                                  ((uint8)((uint8)1 << Timer_Motor_STATUS_CAPTURE_INT_MASK_SHIFT)))
 #else
     #define Timer_Motor_INIT_INTERRUPT_MODE (((uint8)((uint8)0u << Timer_Motor_STATUS_TC_INT_MASK_SHIFT)) | \
-                                                 ((uint8)((uint8)0 << Timer_Motor_STATUS_CAPTURE_INT_MASK_SHIFT)) | \
+                                                 ((uint8)((uint8)1 << Timer_Motor_STATUS_CAPTURE_INT_MASK_SHIFT)) | \
                                                  ((uint8)((uint8)0 << Timer_Motor_STATUS_FIFOFULL_INT_MASK_SHIFT)))
 #endif /* (Timer_Motor_UsingFixedFunction) */
 #define Timer_Motor_INIT_CAPTURE_COUNT      (2u)
