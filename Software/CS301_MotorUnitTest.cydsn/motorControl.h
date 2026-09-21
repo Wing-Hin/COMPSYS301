@@ -22,7 +22,7 @@
 #define Kd 0.0
 #define Ts 0.1
 
-volatile bool Motor_isr_flag;
+extern volatile bool Motor_isr_flag;
 
 void MotorEnable();
 void MotorDisable();

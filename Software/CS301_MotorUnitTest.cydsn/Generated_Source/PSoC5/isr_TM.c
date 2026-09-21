@@ -29,6 +29,7 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START isr_TM_intc` */
+#include <motorControl.h>
 
 /* `#END` */
 

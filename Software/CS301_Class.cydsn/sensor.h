@@ -13,17 +13,14 @@
 #include <project.h>
 
 #define N_SENSORS 6
-
-typedef struct {
-    int16 black;    // calibrated dark level  B_i
-    int16 white;    // calibrated bright level W_i
-    int16 t_low;    // T_i - H_i
-    int16 t_high;   // T_i + H_i
-    uint8 state;    // last decision, 0 or 1 — hysteresis needs it
-} sensor_t;
-
-sensor_t sensor[N_SENSORS];
+#define Q1 0
+#define Q2 1
+#define Q3 2
+#define Q4 3
+#define Q5 4
+#define Q6 5
 
 uint8 isSensorOnWhite(uint8 sensor_th);
+void sensor_init(void);
 
 /* [] END OF FILE */
