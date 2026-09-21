@@ -32,7 +32,7 @@ static volatile uint8 windowDone;
 
 CY_ISR_PROTO(eocHandler);
 CY_ISR(eocHandler){
-    Timer_sensor_ReadStatusRegister();
+    Timer_TS_ReadStatusRegister();
     
     int16 v = ADC_Sensor_GetResult16();
     if (v < 0) v = 0;
@@ -40,7 +40,7 @@ CY_ISR(eocHandler){
     if (v > Vmax) Vmax = v;
     if( v < Vmin) Vmin = v;
     if(++sampleCount >= N_SAMPLES){
-        Timer_sensor_Stop();
+        Timer_TS_Stop();
         windowDone = 1;
     }
     
@@ -50,7 +50,7 @@ CY_ISR(eocHandler){
 void sensor_init(void) {
     sensorSelector_mux_Start();
     ADC_Sensor_Start();
-    isr_1_StartEx(eocHandler);
+    isr_eoc_StartEx(eocHandler);
 }
 
 
@@ -67,7 +67,7 @@ uint8 isSensorOnWhite(uint8 sensor_th){
     
     // ----------------------------------------
 
-    Timer_sensor_Start(); // trigger the chain
+    Timer_TS_Start(); // trigger the chain
     
     while(!windowDone){} // Wait for sampling finishs
     

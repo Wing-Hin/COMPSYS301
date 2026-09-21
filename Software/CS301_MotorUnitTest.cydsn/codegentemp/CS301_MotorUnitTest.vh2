@@ -2,7 +2,7 @@
 --	Conversion of CS301_MotorUnitTest.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Mon Sep 21 13:58:14 2026
+--	Mon Sep 21 22:17:10 2026
 --
 
 USE cypress.cypress.all;
