@@ -38,8 +38,12 @@
         <Files Root="D:\GitHub\COMPSYS301\Software\CS301_Class.cydsn">
           <File BuildType="BUILD" Toolchain="">main.c</File>
           <File BuildType="BUILD" Toolchain="">tacho.c</File>
+          <File BuildType="BUILD" Toolchain="">sensor.c</File>
+          <File BuildType="BUILD" Toolchain="">sensor.h</File>
+          <File BuildType="BUILD" Toolchain="">motorControl.c</File>
           <File BuildType="BUILD" Toolchain="">defines.h</File>
           <File BuildType="BUILD" Toolchain="">vars.h</File>
+          <File BuildType="BUILD" Toolchain="">motorControl.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="D:\GitHub\COMPSYS301\Software\CS301_Class.cydsn\Generated_Source\PSoC5">
@@ -257,6 +261,55 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_2_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_2.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q5_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q5.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q5.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Sensor.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Sensor.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Sensor_INT.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Sensor_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_1.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_1.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q6_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q6.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q6.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q4_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q4.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q4.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q3_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q3.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q3.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q2_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q1_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q1.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Q1.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Sensor_IRQ.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Sensor_IRQ.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Sensor_theACLK.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Sensor_theACLK.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\sensorSelector_mux.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\sensorSelector_mux.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_Motor.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_Motor.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_Motor.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_Motor.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_Motor_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_TM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_TM.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LWE_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LWE.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LWE.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LWV_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LWV.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LWV.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RWE_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RWE.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RWE.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RWV_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RWV.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RWV.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="D:\GitHub\COMPSYS301\Software\CS301_Class.cydsn\Export\ARM_GCC_Generic">

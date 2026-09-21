@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: AMux_1.c
+* File Name: sensorSelector_mux.c
 * Version 1.80
 *
 *  Description:
@@ -15,13 +15,13 @@
 * the software package with which this file was provided.
 ********************************************************************************/
 
-#include "AMux_1.h"
+#include "sensorSelector_mux.h"
 
-static uint8 AMux_1_lastChannel = AMux_1_NULL_CHANNEL;
+static uint8 sensorSelector_mux_lastChannel = sensorSelector_mux_NULL_CHANNEL;
 
 
 /*******************************************************************************
-* Function Name: AMux_1_Start
+* Function Name: sensorSelector_mux_Start
 ********************************************************************************
 * Summary:
 *  Disconnect all channels.
@@ -33,27 +33,27 @@ static uint8 AMux_1_lastChannel = AMux_1_NULL_CHANNEL;
 *  void
 *
 *******************************************************************************/
-void AMux_1_Start(void) 
+void sensorSelector_mux_Start(void) 
 {
     uint8 chan;
 
-    for(chan = 0u; chan < AMux_1_CHANNELS ; chan++)
+    for(chan = 0u; chan < sensorSelector_mux_CHANNELS ; chan++)
     {
-#if (AMux_1_MUXTYPE == AMux_1_MUX_SINGLE)
-        AMux_1_Unset(chan);
+#if (sensorSelector_mux_MUXTYPE == sensorSelector_mux_MUX_SINGLE)
+        sensorSelector_mux_Unset(chan);
 #else
-        AMux_1_CYAMUXSIDE_A_Unset(chan);
-        AMux_1_CYAMUXSIDE_B_Unset(chan);
+        sensorSelector_mux_CYAMUXSIDE_A_Unset(chan);
+        sensorSelector_mux_CYAMUXSIDE_B_Unset(chan);
 #endif
     }
 
-    AMux_1_lastChannel = AMux_1_NULL_CHANNEL;
+    sensorSelector_mux_lastChannel = sensorSelector_mux_NULL_CHANNEL;
 }
 
 
-#if (!AMux_1_ATMOSTONE)
+#if (!sensorSelector_mux_ATMOSTONE)
 /*******************************************************************************
-* Function Name: AMux_1_Select
+* Function Name: sensorSelector_mux_Select
 ********************************************************************************
 * Summary:
 *  This functions first disconnects all channels then connects the given
@@ -66,17 +66,17 @@ void AMux_1_Start(void)
 *  void
 *
 *******************************************************************************/
-void AMux_1_Select(uint8 channel) 
+void sensorSelector_mux_Select(uint8 channel) 
 {
-    AMux_1_DisconnectAll();        /* Disconnect all previous connections */
-    AMux_1_Connect(channel);       /* Make the given selection */
-    AMux_1_lastChannel = channel;  /* Update last channel */
+    sensorSelector_mux_DisconnectAll();        /* Disconnect all previous connections */
+    sensorSelector_mux_Connect(channel);       /* Make the given selection */
+    sensorSelector_mux_lastChannel = channel;  /* Update last channel */
 }
 #endif
 
 
 /*******************************************************************************
-* Function Name: AMux_1_FastSelect
+* Function Name: sensorSelector_mux_FastSelect
 ********************************************************************************
 * Summary:
 *  This function first disconnects the last connection made with FastSelect or
@@ -91,31 +91,31 @@ void AMux_1_Select(uint8 channel)
 *  void
 *
 *******************************************************************************/
-void AMux_1_FastSelect(uint8 channel) 
+void sensorSelector_mux_FastSelect(uint8 channel) 
 {
     /* Disconnect the last valid channel */
-    if( AMux_1_lastChannel != AMux_1_NULL_CHANNEL)
+    if( sensorSelector_mux_lastChannel != sensorSelector_mux_NULL_CHANNEL)
     {
-        AMux_1_Disconnect(AMux_1_lastChannel);
+        sensorSelector_mux_Disconnect(sensorSelector_mux_lastChannel);
     }
 
     /* Make the new channel connection */
-#if (AMux_1_MUXTYPE == AMux_1_MUX_SINGLE)
-    AMux_1_Set(channel);
+#if (sensorSelector_mux_MUXTYPE == sensorSelector_mux_MUX_SINGLE)
+    sensorSelector_mux_Set(channel);
 #else
-    AMux_1_CYAMUXSIDE_A_Set(channel);
-    AMux_1_CYAMUXSIDE_B_Set(channel);
+    sensorSelector_mux_CYAMUXSIDE_A_Set(channel);
+    sensorSelector_mux_CYAMUXSIDE_B_Set(channel);
 #endif
 
 
-    AMux_1_lastChannel = channel;   /* Update last channel */
+    sensorSelector_mux_lastChannel = channel;   /* Update last channel */
 }
 
 
-#if (AMux_1_MUXTYPE == AMux_1_MUX_DIFF)
-#if (!AMux_1_ATMOSTONE)
+#if (sensorSelector_mux_MUXTYPE == sensorSelector_mux_MUX_DIFF)
+#if (!sensorSelector_mux_ATMOSTONE)
 /*******************************************************************************
-* Function Name: AMux_1_Connect
+* Function Name: sensorSelector_mux_Connect
 ********************************************************************************
 * Summary:
 *  This function connects the given channel without affecting other connections.
@@ -127,15 +127,15 @@ void AMux_1_FastSelect(uint8 channel)
 *  void
 *
 *******************************************************************************/
-void AMux_1_Connect(uint8 channel) 
+void sensorSelector_mux_Connect(uint8 channel) 
 {
-    AMux_1_CYAMUXSIDE_A_Set(channel);
-    AMux_1_CYAMUXSIDE_B_Set(channel);
+    sensorSelector_mux_CYAMUXSIDE_A_Set(channel);
+    sensorSelector_mux_CYAMUXSIDE_B_Set(channel);
 }
 #endif
 
 /*******************************************************************************
-* Function Name: AMux_1_Disconnect
+* Function Name: sensorSelector_mux_Disconnect
 ********************************************************************************
 * Summary:
 *  This function disconnects the given channel from the common or output
@@ -148,16 +148,16 @@ void AMux_1_Connect(uint8 channel)
 *  void
 *
 *******************************************************************************/
-void AMux_1_Disconnect(uint8 channel) 
+void sensorSelector_mux_Disconnect(uint8 channel) 
 {
-    AMux_1_CYAMUXSIDE_A_Unset(channel);
-    AMux_1_CYAMUXSIDE_B_Unset(channel);
+    sensorSelector_mux_CYAMUXSIDE_A_Unset(channel);
+    sensorSelector_mux_CYAMUXSIDE_B_Unset(channel);
 }
 #endif
 
-#if (AMux_1_ATMOSTONE)
+#if (sensorSelector_mux_ATMOSTONE)
 /*******************************************************************************
-* Function Name: AMux_1_DisconnectAll
+* Function Name: sensorSelector_mux_DisconnectAll
 ********************************************************************************
 * Summary:
 *  This function disconnects all channels.
@@ -169,12 +169,12 @@ void AMux_1_Disconnect(uint8 channel)
 *  void
 *
 *******************************************************************************/
-void AMux_1_DisconnectAll(void) 
+void sensorSelector_mux_DisconnectAll(void) 
 {
-    if(AMux_1_lastChannel != AMux_1_NULL_CHANNEL) 
+    if(sensorSelector_mux_lastChannel != sensorSelector_mux_NULL_CHANNEL) 
     {
-        AMux_1_Disconnect(AMux_1_lastChannel);
-        AMux_1_lastChannel = AMux_1_NULL_CHANNEL;
+        sensorSelector_mux_Disconnect(sensorSelector_mux_lastChannel);
+        sensorSelector_mux_lastChannel = sensorSelector_mux_NULL_CHANNEL;
     }
 }
 #endif

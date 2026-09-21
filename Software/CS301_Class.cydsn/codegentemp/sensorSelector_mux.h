@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: AMux_1.h
+* File Name: sensorSelector_mux.h
 * Version 1.80
 *
 *  Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 ********************************************************************************/
 
-#if !defined(CY_AMUX_AMux_1_H)
-#define CY_AMUX_AMux_1_H
+#if !defined(CY_AMUX_sensorSelector_mux_H)
+#define CY_AMUX_sensorSelector_mux_H
 
 #include "cyfitter.h"
 #include "cyfitter_cfg.h"
@@ -34,61 +34,61 @@
 *        Function Prototypes
 ***************************************/
 
-void AMux_1_Start(void) ;
-#define AMux_1_Init() AMux_1_Start()
-void AMux_1_FastSelect(uint8 channel) ;
+void sensorSelector_mux_Start(void) ;
+#define sensorSelector_mux_Init() sensorSelector_mux_Start()
+void sensorSelector_mux_FastSelect(uint8 channel) ;
 /* The Stop, Select, Connect, Disconnect and DisconnectAll functions are declared elsewhere */
-/* void AMux_1_Stop(void); */
-/* void AMux_1_Select(uint8 channel); */
-/* void AMux_1_Connect(uint8 channel); */
-/* void AMux_1_Disconnect(uint8 channel); */
-/* void AMux_1_DisconnectAll(void) */
+/* void sensorSelector_mux_Stop(void); */
+/* void sensorSelector_mux_Select(uint8 channel); */
+/* void sensorSelector_mux_Connect(uint8 channel); */
+/* void sensorSelector_mux_Disconnect(uint8 channel); */
+/* void sensorSelector_mux_DisconnectAll(void) */
 
 
 /***************************************
 *         Parameter Constants
 ***************************************/
 
-#define AMux_1_CHANNELS  6u
-#define AMux_1_MUXTYPE   1
-#define AMux_1_ATMOSTONE 0
+#define sensorSelector_mux_CHANNELS  6u
+#define sensorSelector_mux_MUXTYPE   1
+#define sensorSelector_mux_ATMOSTONE 1
 
 /***************************************
 *             API Constants
 ***************************************/
 
-#define AMux_1_NULL_CHANNEL 0xFFu
-#define AMux_1_MUX_SINGLE   1
-#define AMux_1_MUX_DIFF     2
+#define sensorSelector_mux_NULL_CHANNEL 0xFFu
+#define sensorSelector_mux_MUX_SINGLE   1
+#define sensorSelector_mux_MUX_DIFF     2
 
 
 /***************************************
 *        Conditional Functions
 ***************************************/
 
-#if AMux_1_MUXTYPE == AMux_1_MUX_SINGLE
-# if !AMux_1_ATMOSTONE
-#  define AMux_1_Connect(channel) AMux_1_Set(channel)
+#if sensorSelector_mux_MUXTYPE == sensorSelector_mux_MUX_SINGLE
+# if !sensorSelector_mux_ATMOSTONE
+#  define sensorSelector_mux_Connect(channel) sensorSelector_mux_Set(channel)
 # endif
-# define AMux_1_Disconnect(channel) AMux_1_Unset(channel)
+# define sensorSelector_mux_Disconnect(channel) sensorSelector_mux_Unset(channel)
 #else
-# if !AMux_1_ATMOSTONE
-void AMux_1_Connect(uint8 channel) ;
+# if !sensorSelector_mux_ATMOSTONE
+void sensorSelector_mux_Connect(uint8 channel) ;
 # endif
-void AMux_1_Disconnect(uint8 channel) ;
+void sensorSelector_mux_Disconnect(uint8 channel) ;
 #endif
 
-#if AMux_1_ATMOSTONE
-# define AMux_1_Stop() AMux_1_DisconnectAll()
-# define AMux_1_Select(channel) AMux_1_FastSelect(channel)
-void AMux_1_DisconnectAll(void) ;
+#if sensorSelector_mux_ATMOSTONE
+# define sensorSelector_mux_Stop() sensorSelector_mux_DisconnectAll()
+# define sensorSelector_mux_Select(channel) sensorSelector_mux_FastSelect(channel)
+void sensorSelector_mux_DisconnectAll(void) ;
 #else
-# define AMux_1_Stop() AMux_1_Start()
-void AMux_1_Select(uint8 channel) ;
-# define AMux_1_DisconnectAll() AMux_1_Start()
+# define sensorSelector_mux_Stop() sensorSelector_mux_Start()
+void sensorSelector_mux_Select(uint8 channel) ;
+# define sensorSelector_mux_DisconnectAll() sensorSelector_mux_Start()
 #endif
 
-#endif /* CY_AMUX_AMux_1_H */
+#endif /* CY_AMUX_sensorSelector_mux_H */
 
 
 /* [] END OF FILE */
