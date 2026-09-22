@@ -37,26 +37,14 @@ const float Vwhite_LON;
 
 int main()
 {
-    PWM_1_Start();
-    PWM_1_WritePeriod(99);
-    MotorLeft_setRPM(70);
-    PWM_2_Start();
-    PWM_2_WritePeriod(99);
-    MotorRight_setRPM(70);
-    
-    QuadDec_M1_Start();
-    QuadDec_M2_Start();
-    
-    Timer_Motor_Start();
-    isr_TM_StartEx(isr_TM_Interrupt);
-    MotorEnable();
-    LED_1_Write(1);
-    
-    bool getSpeed_Uart;
+    MotorInit();
+    PWM_1_WriteCompare(99);
+    PWM_2_WriteCompare(99);
     MotorLeft_setDirection(Forward);
     MotorLeft_setRPM(30);
     MotorRight_setDirection(Forward);
     MotorRight_setRPM(30);
+
 // --------------------------------    
 // ----- INITIALIZATIONS ----------
     CYGlobalIntEnable;
@@ -72,11 +60,17 @@ int main()
     
     for(;;)
     {   
+        straight(30);
         handle_usb();
         
-            flag_KB_string = 0;
-        }        
-    }   
+        flag_KB_string = 0;
+        if(Motor_isr_flag == 1){
+            Motor_isr_flag = 0;
+            Motor_captureRPM();
+            Motor_maintainSpeed();
+        }
+    } 
+}   
 //* ========================================
 //* ========================================
 void usbPutString(char *s)

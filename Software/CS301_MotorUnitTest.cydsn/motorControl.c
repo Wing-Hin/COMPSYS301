@@ -117,7 +117,7 @@ void Motor_maintainSpeed(){
                             Kd * derivatvieL;
         motorLeft_PWM = motorLeft_PWM - correctionL/0.04;
         if(motorLeft_PWM <0){
-            motorLeft_PWM = 20;
+            motorLeft_PWM = 00;
         }
         else if(motorLeft_PWM > 99){
             motorLeft_PWM = 99;

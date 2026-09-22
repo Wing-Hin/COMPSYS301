@@ -31,7 +31,19 @@ volatile int previousCount_R = 0;
 volatile int count_travelled = 0;
 //
 
-
+void MotorInit(){
+    PWM_1_Start();
+    PWM_1_WritePeriod(99);
+    PWM_2_Start();
+    PWM_2_WritePeriod(99);
+    
+    QuadDec_M1_Start();
+    QuadDec_M2_Start();
+    
+    Timer_Motor_Start();
+    isr_TM_StartEx(isr_TM_Interrupt);
+    MotorEnable();
+}
 
 //Enable Motor
 void MotorEnable(){
@@ -119,7 +131,7 @@ void Motor_maintainSpeed(){
                             Kd * derivatvieL;
         motorLeft_PWM = motorLeft_PWM - correctionL/0.04;
         if(motorLeft_PWM <0){
-            motorLeft_PWM = 20;
+            motorLeft_PWM = 0;
         }
         else if(motorLeft_PWM > 99){
             motorLeft_PWM = 99;

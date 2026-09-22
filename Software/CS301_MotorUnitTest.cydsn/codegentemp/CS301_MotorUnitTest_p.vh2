@@ -1,6 +1,6 @@
 -- Project:   CS301_MotorUnitTest
--- Generated: 09/22/2026 08:48:49
--- PSoC Creator  4.2
+-- Generated: 09/22/2026 19:26:25
+-- PSoC Creator  4.4
 
 ENTITY CS301_MotorUnitTest IS
     PORT(

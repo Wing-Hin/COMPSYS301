@@ -24,6 +24,7 @@
 
 extern volatile bool Motor_isr_flag;
 
+void MotorInit();
 
 void MotorEnable();
 void MotorDisable();

@@ -1,6 +1,6 @@
 -- Project:   CS301_Class
--- Generated: 09/22/2026 18:11:26
--- PSoC Creator  4.2
+-- Generated: 09/22/2026 19:03:45
+-- PSoC Creator  4.4
 
 ENTITY CS301_Class IS
     PORT(

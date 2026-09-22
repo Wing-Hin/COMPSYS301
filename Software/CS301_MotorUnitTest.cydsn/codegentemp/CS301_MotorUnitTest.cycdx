@@ -214,8 +214,8 @@
     <register name="Timer_Motor_PERIOD" address="0x40004F1C" bitWidth="16" desc="TMRx.PER0 - Assigned Period" hidden="false" />
     <register name="Timer_Motor_COUNTER" address="0x40004F1E" bitWidth="16" desc="TMRx.CNT_CMP0 - Current Down Counter Value" hidden="false" />
   </block>
-  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="isr_TM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="LED_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="RF_BT_SELECT" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
