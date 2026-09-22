@@ -39,14 +39,6 @@ int main()
 // --------------------------------    
 // ----- INITIALIZATIONS ----------
     CYGlobalIntEnable;
-    PWM_1_Start();
-    PWM_1_WritePeriod(99);
-    PWM_1_WriteCompare(50);
-    QuadDec_M1_Start();
-    Timer_TS_Start();
-    isr_TS_StartEx(isr_TS_Interrupt);
-    ADC_Start();
-
     
 // ------USB SETUP ----------------    
 #ifdef USE_USB    
@@ -59,54 +51,12 @@ int main()
     
     for(;;)
     {   
-        /* Place your application code here. */
-        if(ADC_GetResult16(0) <= 600){
-            LED_1_Write(0);
-        }
-        else if(ADC_GetResult16(0) > 600){
-            LED_1_Write(1);
-        }
-        if(ADC_GetResult16(1) <= 600){
-            LED_2_Write(0);
-        }
-        else if(ADC_GetResult16(1) > 600){
-            LED_2_Write(1);
-        }
-        handle_usb();
-        ADC_StartConvert();
-        ADC_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT);
         
-        if (flag_KB_string == 1)
-        {
-            int duty;
-            int channel;
-            if(sscanf(line, "p %d", &duty) == 1){
-                PWM_1_WriteCompare(duty);
-                usbPutString("duty cycle changed");
-            }
-            if(strcmp(line,"getSpeed") == 0){
-                char speedString[16];
-                char tickString[16];
-                int motorSpeed =(int)(motorSpeed_tick*100/(0.5*4*57));
-                sprintf(tickString, "%d ticks\r\n", motorSpeed_tick);
-                sprintf(speedString, "%d.%d rpm\r\n",motorSpeed/100, motorSpeed%100);
-                usbPutString(tickString);
-                usbPutString(speedString);
-            }
-            if(sscanf(line, "ADC %d", &channel) == 1){
-                char ADCnum_str[16];
-                char ADCcount_str[16];
-                int ADC_value = (int)ADC_GetResult16(channel);
-                sprintf(ADCnum_str, "ADC%d reading:\r\n", channel);
-                sprintf(ADCcount_str, "Count:%d\r\n", ADC_value);
-                usbPutString(ADCnum_str);
-                usbPutString(ADCcount_str);
-                
-            }
+        handle_usb();
+        
             flag_KB_string = 0;
         }        
     }   
-}
 //* ========================================
 //* ========================================
 void usbPutString(char *s)
