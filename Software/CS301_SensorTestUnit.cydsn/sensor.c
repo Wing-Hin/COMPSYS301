@@ -15,8 +15,9 @@
 #include <project.h>
 #include "sensor.h"
 
-static const uint16 T_MID[N_SENSORS] = {550, 482, 636, 790, 502, 510};
-static const uint16 T_HYS[N_SENSORS] = { 79,  60,  93, 132,  72,  70};
+//static const uint16 T_MID[N_SENSORS] = {550, 482, 636, 790, 502, 510};
+static const uint16 T_MID[N_SENSORS] = {550-400, 482-350, 636-400, 790-400, 502-400, 510-400};
+static const uint16 T_HYS[N_SENSORS] = { 79/2,  60/2,  93/2, 132/2,  72/2,  70/2};
 #define N_SAMPLES  20
 #define ADC_FULL   4095
 
