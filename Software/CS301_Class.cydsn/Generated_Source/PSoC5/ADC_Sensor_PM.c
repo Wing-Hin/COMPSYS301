@@ -1,70 +1,25 @@
 /*******************************************************************************
 * File Name: ADC_Sensor_PM.c
-* Version 3.10
+* Version 2.10
 *
 * Description:
-*  This file provides Sleep/WakeUp APIs functionality.
+*  This file contains the setup, control and status commands to support
+*  component operations in low power mode.
 *
 * Note:
 *
 ********************************************************************************
-* Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+* Copyright 2012-2015, Cypress Semiconductor Corporation.  All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
 *******************************************************************************/
 
 #include "ADC_Sensor.h"
-
-
-/***************************************
-* Local data allocation
-***************************************/
-
-static ADC_Sensor_BACKUP_STRUCT  ADC_Sensor_backup =
-{
-    ADC_Sensor_DISABLED
-};
-
-
-/*******************************************************************************
-* Function Name: ADC_Sensor_SaveConfig
-********************************************************************************
-*
-* Summary:
-*  Saves the current user configuration.
-*
-* Parameters:
-*  None.
-*
-* Return:
-*  None.
-*
-*******************************************************************************/
-void ADC_Sensor_SaveConfig(void)
-{
-    /* All configuration registers are marked as [reset_all_retention] */
-}
-
-
-/*******************************************************************************
-* Function Name: ADC_Sensor_RestoreConfig
-********************************************************************************
-*
-* Summary:
-*  Restores the current user configuration.
-*
-* Parameters:
-*  None.
-*
-* Return:
-*  None.
-*
-*******************************************************************************/
-void ADC_Sensor_RestoreConfig(void)
-{
-    /* All congiguration registers are marked as [reset_all_retention] */
-}
+#include "ADC_Sensor_SAR.h"
+#if(ADC_Sensor_CLOCK_SOURCE == ADC_Sensor_CLOCK_INTERNAL)
+    #include "ADC_Sensor_IntClock.h"
+#endif   /* ADC_Sensor_CLOCK_SOURCE == ADC_Sensor_CLOCK_INTERNAL */
 
 
 /*******************************************************************************
@@ -72,9 +27,8 @@ void ADC_Sensor_RestoreConfig(void)
 ********************************************************************************
 *
 * Summary:
-*  This is the preferred routine to prepare the component for sleep.
-*  The ADC_Sensor_Sleep() routine saves the current component state,
-*  then it calls the ADC_Stop() function.
+*  Stops the ADC operation and saves the configuration registers and component
+*  enable state. Should be called just prior to entering sleep
 *
 * Parameters:
 *  None.
@@ -82,29 +36,22 @@ void ADC_Sensor_RestoreConfig(void)
 * Return:
 *  None.
 *
-* Global Variables:
-*  ADC_Sensor_backup - The structure field 'enableState' is modified
-*  depending on the enable state of the block before entering to sleep mode.
+* Side Effects:
+*  None.
+*
+* Reentrant:
+*  No.
 *
 *******************************************************************************/
 void ADC_Sensor_Sleep(void)
 {
-    if((ADC_Sensor_PWRMGR_SAR_REG  & ADC_Sensor_ACT_PWR_SAR_EN) != 0u)
-    {
-        if((ADC_Sensor_SAR_CSR0_REG & ADC_Sensor_SAR_SOF_START_CONV) != 0u)
-        {
-            ADC_Sensor_backup.enableState = ADC_Sensor_ENABLED | ADC_Sensor_STARTED;
-        }
-        else
-        {
-            ADC_Sensor_backup.enableState = ADC_Sensor_ENABLED;
-        }
-        ADC_Sensor_Stop();
-    }
-    else
-    {
-        ADC_Sensor_backup.enableState = ADC_Sensor_DISABLED;
-    }
+    ADC_Sensor_SAR_Stop();
+    ADC_Sensor_SAR_Sleep();
+    ADC_Sensor_Disable();
+
+    #if(ADC_Sensor_CLOCK_SOURCE == ADC_Sensor_CLOCK_INTERNAL)
+        ADC_Sensor_IntClock_Stop();
+    #endif   /* ADC_Sensor_CLOCK_SOURCE == ADC_Sensor_CLOCK_INTERNAL */
 }
 
 
@@ -113,10 +60,8 @@ void ADC_Sensor_Sleep(void)
 ********************************************************************************
 *
 * Summary:
-*  This is the preferred routine to restore the component to the state when
-*  ADC_Sensor_Sleep() was called. If the component was enabled before the
-*  ADC_Sensor_Sleep() function was called, the
-*  ADC_Sensor_Wakeup() function also re-enables the component.
+*  Restores the component enable state and configuration registers. This should
+*  be called just after awaking from sleep mode
 *
 * Parameters:
 *  None.
@@ -124,23 +69,84 @@ void ADC_Sensor_Sleep(void)
 * Return:
 *  None.
 *
-* Global Variables:
-*  ADC_Sensor_backup - The structure field 'enableState' is used to
-*  restore the enable state of block after wakeup from sleep mode.
+* Side Effects:
+*  None.
+*
+* Reentrant:
+*  No.
 *
 *******************************************************************************/
 void ADC_Sensor_Wakeup(void)
 {
-    if(ADC_Sensor_backup.enableState != ADC_Sensor_DISABLED)
-    {
-        ADC_Sensor_Enable();
-        #if(ADC_Sensor_DEFAULT_CONV_MODE != ADC_Sensor__HARDWARE_TRIGGER)
-            if((ADC_Sensor_backup.enableState & ADC_Sensor_STARTED) != 0u)
-            {
-                ADC_Sensor_StartConvert();
-            }
-        #endif /* End ADC_Sensor_DEFAULT_CONV_MODE != ADC_Sensor__HARDWARE_TRIGGER */
-    }
+    ADC_Sensor_SAR_Wakeup();
+    ADC_Sensor_SAR_Enable();
+
+    #if(ADC_Sensor_CLOCK_SOURCE == ADC_Sensor_CLOCK_INTERNAL)
+        ADC_Sensor_IntClock_Start();
+    #endif   /* ADC_Sensor_CLOCK_SOURCE == ADC_Sensor_CLOCK_INTERNAL */
+
+    /* The block is ready to use 10 us after the SAR enable signal is set high. */
+    CyDelayUs(10u);
+    
+    ADC_Sensor_Enable();
+
+    #if(ADC_Sensor_SAMPLE_MODE == ADC_Sensor_SAMPLE_MODE_FREE_RUNNING)
+        ADC_Sensor_SAR_StartConvert();
+    #endif /* (ADC_Sensor_SAMPLE_MODE == ADC_Sensor_SAMPLE_MODE_FREE_RUNNING) */
+
+    (void) CY_GET_REG8(ADC_Sensor_STATUS_PTR);
+}
+
+
+/*******************************************************************************
+* Function Name: ADC_Sensor_SaveConfig
+********************************************************************************
+*
+* Summary:
+*  Save the current configuration of ADC non-retention registers
+*
+* Parameters:
+*  None.
+*
+* Return:
+*  None.
+*
+* Side Effects:
+*  None.
+*
+* Reentrant:
+*  No.
+*
+*******************************************************************************/
+void ADC_Sensor_SaveConfig(void)
+{
+
+}
+
+
+/*******************************************************************************
+* Function Name: ADC_Sensor_RestoreConfig
+********************************************************************************
+*
+* Summary:
+*  Restores the configuration of ADC non-retention registers
+*
+* Parameters:
+*  None.
+*
+* Return:
+*  None.
+*
+* Side Effects:
+*  None.
+*
+* Reentrant:
+*  No.
+*
+*******************************************************************************/
+void ADC_Sensor_RestoreConfig(void)
+{
+
 }
 
 

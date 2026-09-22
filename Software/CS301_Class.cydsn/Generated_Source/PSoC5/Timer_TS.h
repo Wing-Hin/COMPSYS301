@@ -168,7 +168,7 @@ void Timer_TS_Wakeup(void)        ;
 *    Initialial Parameter Constants
 ***************************************/
 
-#define Timer_TS_INIT_PERIOD             49999u
+#define Timer_TS_INIT_PERIOD             39u
 #define Timer_TS_INIT_CAPTURE_MODE       ((uint8)((uint8)0u << Timer_TS_CTRL_CAP_MODE_SHIFT))
 #define Timer_TS_INIT_TRIGGER_MODE       ((uint8)((uint8)0u << Timer_TS_CTRL_TRIG_MODE_SHIFT))
 #if (Timer_TS_UsingFixedFunction)
