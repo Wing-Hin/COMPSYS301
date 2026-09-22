@@ -1,6 +1,6 @@
--- Project:   G:\code\COMPSYS301\Software\CS301_MotorUnitTest.cydsn\CS301_MotorUnitTest.cyprj
--- Generated: 09/21/2026 22:17:18
--- PSoC Creator  4.4
+-- Project:   C:\TEMP\COMPSYS301\Software\CS301_MotorUnitTest.cydsn\CS301_MotorUnitTest.cyprj
+-- Generated: 09/22/2026 08:48:56
+-- PSoC Creator  4.2
 
 ENTITY CS301_MotorUnitTest IS
     PORT(

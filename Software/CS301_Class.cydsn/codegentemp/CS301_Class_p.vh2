@@ -1,6 +1,6 @@
 -- Project:   CS301_Class
--- Generated: 09/21/2026 17:36:47
--- PSoC Creator  4.4
+-- Generated: 09/22/2026 11:32:46
+-- PSoC Creator  4.2
 
 ENTITY CS301_Class IS
     PORT(
@@ -38,14 +38,6 @@ ENTITY CS301_Class IS
 END CS301_Class;
 
 ARCHITECTURE __DEFAULT__ OF CS301_Class IS
-    SIGNAL A0(0)__PA : bit;
-    SIGNAL A1(0)__PA : bit;
-    SIGNAL A2(0)__PA : bit;
-    SIGNAL A3(0)__PA : bit;
-    SIGNAL A4(0)__PA : bit;
-    SIGNAL A5(0)__PA : bit;
-    SIGNAL A6(0)__PA : bit;
-    SIGNAL A7(0)__PA : bit;
     SIGNAL CLK24M : bit;
     ATTRIBUTE global_signal OF CLK24M : SIGNAL IS true;
     SIGNAL CLK24M_local : bit;
@@ -84,7 +76,6 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     SIGNAL Net_10_local : bit;
     SIGNAL Net_1496 : bit;
     SIGNAL Net_1497 : bit;
-    SIGNAL Net_1619 : bit;
     SIGNAL Net_1832 : bit;
     SIGNAL Net_1850 : bit;
     ATTRIBUTE udbclken_assigned OF Net_1850 : SIGNAL IS "True";
@@ -106,8 +97,6 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     SIGNAL Net_362 : bit;
     SIGNAL Net_368 : bit;
     SIGNAL Net_4334 : bit;
-    SIGNAL Net_4350 : bit;
-    SIGNAL Net_4351 : bit;
     SIGNAL Net_4402 : bit;
     ATTRIBUTE global_signal OF Net_4402 : SIGNAL IS true;
     SIGNAL Net_4402_local : bit;
@@ -131,137 +120,119 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     SIGNAL Rx_1(0)__PA : bit;
     SIGNAL Rx_2(0)__PA : bit;
     SIGNAL Tx_1(0)__PA : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_is_active\ : bit;
-    ATTRIBUTE soft OF \ADC:AMuxHw_2_Decoder_is_active\ : SIGNAL IS 1;
-    SIGNAL \ADC:AMuxHw_2_Decoder_is_active_split\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_old_id_0\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_old_id_1\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_old_id_2\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_old_id_3\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_old_id_4\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_old_id_5\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_0\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_10\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_11\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_12\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_13\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_14\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_15\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_16\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_17\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_18\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_19\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_1\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_20\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_21\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_22\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_23\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_24\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_25\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_26\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_27\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_28\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_29\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_2\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_30\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_31\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_32\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_33\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_34\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_35\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_36\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_37\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_38\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_39\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_3\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_40\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_41\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_42\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_43\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_44\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_45\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_46\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_47\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_48\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_49\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_4\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_50\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_51\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_52\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_53\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_54\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_55\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_56\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_57\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_58\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_59\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_5\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_60\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_61\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_62\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_63\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_6\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_7\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_8\ : bit;
-    SIGNAL \ADC:AMuxHw_2_Decoder_one_hot_9\ : bit;
-    SIGNAL \ADC:Net_3698\ : bit;
-    SIGNAL \ADC:Net_3830\ : bit;
-    SIGNAL \ADC:Net_3935\ : bit;
-    SIGNAL \ADC:SAR:Net_207_0\ : bit;
-    SIGNAL \ADC:SAR:Net_207_10\ : bit;
-    SIGNAL \ADC:SAR:Net_207_11\ : bit;
-    SIGNAL \ADC:SAR:Net_207_1\ : bit;
-    SIGNAL \ADC:SAR:Net_207_2\ : bit;
-    SIGNAL \ADC:SAR:Net_207_3\ : bit;
-    SIGNAL \ADC:SAR:Net_207_4\ : bit;
-    SIGNAL \ADC:SAR:Net_207_5\ : bit;
-    SIGNAL \ADC:SAR:Net_207_6\ : bit;
-    SIGNAL \ADC:SAR:Net_207_7\ : bit;
-    SIGNAL \ADC:SAR:Net_207_8\ : bit;
-    SIGNAL \ADC:SAR:Net_207_9\ : bit;
-    SIGNAL \ADC:SAR:Net_252\ : bit;
-    SIGNAL \ADC:bSAR_SEQ:bus_clk_nrq_reg\ : bit;
-    SIGNAL \ADC:bSAR_SEQ:cnt_enable\ : bit;
-    SIGNAL \ADC:bSAR_SEQ:cnt_tc\ : bit;
-    SIGNAL \ADC:bSAR_SEQ:control_2\ : bit;
-    SIGNAL \ADC:bSAR_SEQ:control_3\ : bit;
-    SIGNAL \ADC:bSAR_SEQ:control_4\ : bit;
-    SIGNAL \ADC:bSAR_SEQ:control_5\ : bit;
-    SIGNAL \ADC:bSAR_SEQ:control_6\ : bit;
-    SIGNAL \ADC:bSAR_SEQ:control_7\ : bit;
-    SIGNAL \ADC:bSAR_SEQ:count_6\ : bit;
-    SIGNAL \ADC:bSAR_SEQ:enable\ : bit;
-    SIGNAL \ADC:bSAR_SEQ:load_period\ : bit;
-    SIGNAL \ADC:bSAR_SEQ:nrq_reg\ : bit;
-    SIGNAL \ADC:ch_addr_0\ : bit;
-    SIGNAL \ADC:ch_addr_1\ : bit;
-    SIGNAL \ADC:ch_addr_2\ : bit;
-    SIGNAL \ADC:ch_addr_3\ : bit;
-    SIGNAL \ADC:ch_addr_4\ : bit;
-    SIGNAL \ADC:ch_addr_5\ : bit;
-    SIGNAL \ADC:clock\ : bit;
-    ATTRIBUTE udbclken_assigned OF \ADC:clock\ : SIGNAL IS "True";
-    ATTRIBUTE global_signal OF \ADC:clock\ : SIGNAL IS true;
-    SIGNAL \ADC:clock_local\ : bit;
-    SIGNAL \ADC:nrq\ : bit;
-    SIGNAL \ADC_Sensor:Net_207_0\ : bit;
-    SIGNAL \ADC_Sensor:Net_207_10\ : bit;
-    SIGNAL \ADC_Sensor:Net_207_11\ : bit;
-    SIGNAL \ADC_Sensor:Net_207_1\ : bit;
-    SIGNAL \ADC_Sensor:Net_207_2\ : bit;
-    SIGNAL \ADC_Sensor:Net_207_3\ : bit;
-    SIGNAL \ADC_Sensor:Net_207_4\ : bit;
-    SIGNAL \ADC_Sensor:Net_207_5\ : bit;
-    SIGNAL \ADC_Sensor:Net_207_6\ : bit;
-    SIGNAL \ADC_Sensor:Net_207_7\ : bit;
-    SIGNAL \ADC_Sensor:Net_207_8\ : bit;
-    SIGNAL \ADC_Sensor:Net_207_9\ : bit;
-    SIGNAL \ADC_Sensor:Net_252\ : bit;
-    SIGNAL \ADC_Sensor:Net_381\ : bit;
-    SIGNAL \ADC_Sensor:Net_381_local\ : bit;
-    SIGNAL \ADC_Sensor:Net_385\ : bit;
-    ATTRIBUTE global_signal OF \ADC_Sensor:Net_385\ : SIGNAL IS true;
-    SIGNAL \ADC_Sensor:Net_385_local\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_is_active\ : bit;
+    ATTRIBUTE soft OF \ADC_Sensor:AMuxHw_2_Decoder_is_active\ : SIGNAL IS 1;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_is_active_split\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_0\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_10\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_11\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_12\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_13\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_14\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_15\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_16\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_17\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_18\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_19\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_1\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_20\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_21\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_22\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_23\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_24\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_25\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_26\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_27\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_28\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_29\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_2\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_30\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_31\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_32\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_33\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_34\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_35\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_36\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_37\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_38\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_39\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_3\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_40\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_41\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_42\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_43\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_44\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_45\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_46\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_47\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_48\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_49\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_4\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_50\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_51\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_52\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_53\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_54\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_55\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_56\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_57\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_58\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_59\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_5\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_60\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_61\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_62\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_63\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_6\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_7\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_8\ : bit;
+    SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_9\ : bit;
+    SIGNAL \ADC_Sensor:Net_3698\ : bit;
+    SIGNAL \ADC_Sensor:Net_3830\ : bit;
+    SIGNAL \ADC_Sensor:Net_3935\ : bit;
+    SIGNAL \ADC_Sensor:SAR:Net_207_0\ : bit;
+    SIGNAL \ADC_Sensor:SAR:Net_207_10\ : bit;
+    SIGNAL \ADC_Sensor:SAR:Net_207_11\ : bit;
+    SIGNAL \ADC_Sensor:SAR:Net_207_1\ : bit;
+    SIGNAL \ADC_Sensor:SAR:Net_207_2\ : bit;
+    SIGNAL \ADC_Sensor:SAR:Net_207_3\ : bit;
+    SIGNAL \ADC_Sensor:SAR:Net_207_4\ : bit;
+    SIGNAL \ADC_Sensor:SAR:Net_207_5\ : bit;
+    SIGNAL \ADC_Sensor:SAR:Net_207_6\ : bit;
+    SIGNAL \ADC_Sensor:SAR:Net_207_7\ : bit;
+    SIGNAL \ADC_Sensor:SAR:Net_207_8\ : bit;
+    SIGNAL \ADC_Sensor:SAR:Net_207_9\ : bit;
+    SIGNAL \ADC_Sensor:SAR:Net_252\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:cnt_enable\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:cnt_tc\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:control_2\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:control_3\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:control_4\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:control_5\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:control_6\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:control_7\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:count_6\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:enable\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:load_period\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:nrq_reg\ : bit;
+    SIGNAL \ADC_Sensor:ch_addr_0\ : bit;
+    SIGNAL \ADC_Sensor:ch_addr_1\ : bit;
+    SIGNAL \ADC_Sensor:ch_addr_2\ : bit;
+    SIGNAL \ADC_Sensor:ch_addr_3\ : bit;
+    SIGNAL \ADC_Sensor:ch_addr_4\ : bit;
+    SIGNAL \ADC_Sensor:ch_addr_5\ : bit;
+    SIGNAL \ADC_Sensor:clock\ : bit;
+    ATTRIBUTE udbclken_assigned OF \ADC_Sensor:clock\ : SIGNAL IS "True";
+    ATTRIBUTE global_signal OF \ADC_Sensor:clock\ : SIGNAL IS true;
+    SIGNAL \ADC_Sensor:clock_local\ : bit;
+    SIGNAL \ADC_Sensor:nrq\ : bit;
     SIGNAL \CONTROL:control_2\ : bit;
     SIGNAL \CONTROL:control_3\ : bit;
     SIGNAL \CONTROL:control_4\ : bit;
@@ -365,6 +336,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     SIGNAL \Timer_Motor:Net_261\ : bit;
     SIGNAL \Timer_Motor:Net_57\ : bit;
     SIGNAL \Timer_TS:Net_261\ : bit;
+    SIGNAL \Timer_TS:Net_51\ : bit;
     SIGNAL \Timer_TS:Net_57\ : bit;
     SIGNAL \UART:BUART:counter_load_not\ : bit;
     SIGNAL \UART:BUART:pollcount_0\ : bit;
@@ -439,7 +411,6 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
     SIGNAL tmpOE__M1_IN1_net_0 : bit;
     ATTRIBUTE POWER OF tmpOE__M1_IN1_net_0 : SIGNAL IS true;
-    SIGNAL \ClockBlock.aclk_glb_ff_0__sig\ : bit;
     SIGNAL \ClockBlock.dclk_glb_ff_2__sig\ : bit;
     SIGNAL \ClockBlock.dclk_glb_ff_4__sig\ : bit;
     SIGNAL \ClockBlock.dclk_glb_ff_5__sig\ : bit;
@@ -487,65 +458,49 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE Location OF M2_QA(0) : LABEL IS "P0[0]";
     ATTRIBUTE lib_model OF M2_QB(0) : LABEL IS "iocell9";
     ATTRIBUTE Location OF M2_QB(0) : LABEL IS "P0[1]";
-    ATTRIBUTE lib_model OF A0(0) : LABEL IS "iocell10";
-    ATTRIBUTE Location OF A0(0) : LABEL IS "P3[7]";
-    ATTRIBUTE lib_model OF A1(0) : LABEL IS "iocell11";
-    ATTRIBUTE Location OF A1(0) : LABEL IS "P15[3]";
-    ATTRIBUTE lib_model OF A2(0) : LABEL IS "iocell12";
-    ATTRIBUTE Location OF A2(0) : LABEL IS "P3[2]";
-    ATTRIBUTE lib_model OF A3(0) : LABEL IS "iocell13";
-    ATTRIBUTE Location OF A3(0) : LABEL IS "P1[5]";
-    ATTRIBUTE lib_model OF A4(0) : LABEL IS "iocell14";
-    ATTRIBUTE Location OF A4(0) : LABEL IS "P1[2]";
-    ATTRIBUTE lib_model OF A5(0) : LABEL IS "iocell15";
-    ATTRIBUTE Location OF A5(0) : LABEL IS "P1[4]";
-    ATTRIBUTE lib_model OF A6(0) : LABEL IS "iocell16";
-    ATTRIBUTE Location OF A6(0) : LABEL IS "P1[6]";
-    ATTRIBUTE lib_model OF A7(0) : LABEL IS "iocell17";
-    ATTRIBUTE Location OF A7(0) : LABEL IS "P1[7]";
-    ATTRIBUTE lib_model OF \USBUART:Dm(0)\ : LABEL IS "iocell18";
-    ATTRIBUTE Location OF \USBUART:Dm(0)\ : LABEL IS "P15[7]";
-    ATTRIBUTE lib_model OF \USBUART:Dp(0)\ : LABEL IS "iocell19";
-    ATTRIBUTE Location OF \USBUART:Dp(0)\ : LABEL IS "P15[6]";
-    ATTRIBUTE lib_model OF M1_D1(0) : LABEL IS "iocell20";
-    ATTRIBUTE Location OF M1_D1(0) : LABEL IS "P3[3]";
-    ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell21";
-    ATTRIBUTE Location OF Rx_1(0) : LABEL IS "P2[2]";
-    ATTRIBUTE lib_model OF Tx_1(0) : LABEL IS "iocell22";
-    ATTRIBUTE Location OF Tx_1(0) : LABEL IS "P2[3]";
-    ATTRIBUTE lib_model OF LED(0) : LABEL IS "iocell23";
-    ATTRIBUTE Location OF LED(0) : LABEL IS "P2[1]";
-    ATTRIBUTE lib_model OF DB0(0) : LABEL IS "iocell24";
-    ATTRIBUTE Location OF DB0(0) : LABEL IS "P3[0]";
-    ATTRIBUTE lib_model OF DB1(0) : LABEL IS "iocell25";
-    ATTRIBUTE Location OF DB1(0) : LABEL IS "P3[1]";
-    ATTRIBUTE lib_model OF DB2(0) : LABEL IS "iocell26";
-    ATTRIBUTE Location OF DB2(0) : LABEL IS "P3[6]";
-    ATTRIBUTE lib_model OF Rx_2(0) : LABEL IS "iocell27";
-    ATTRIBUTE Location OF Rx_2(0) : LABEL IS "P2[4]";
-    ATTRIBUTE lib_model OF Q5(0) : LABEL IS "iocell28";
-    ATTRIBUTE Location OF Q5(0) : LABEL IS "P0[4]";
-    ATTRIBUTE lib_model OF Q6(0) : LABEL IS "iocell29";
-    ATTRIBUTE Location OF Q6(0) : LABEL IS "P2[0]";
-    ATTRIBUTE lib_model OF Q4(0) : LABEL IS "iocell30";
-    ATTRIBUTE Location OF Q4(0) : LABEL IS "P15[0]";
-    ATTRIBUTE lib_model OF Q3(0) : LABEL IS "iocell31";
+    ATTRIBUTE lib_model OF Q1(0) : LABEL IS "iocell10";
+    ATTRIBUTE Location OF Q1(0) : LABEL IS "P0[5]";
+    ATTRIBUTE lib_model OF Q2(0) : LABEL IS "iocell11";
+    ATTRIBUTE Location OF Q2(0) : LABEL IS "P0[6]";
+    ATTRIBUTE lib_model OF Q3(0) : LABEL IS "iocell12";
     ATTRIBUTE Location OF Q3(0) : LABEL IS "P0[7]";
-    ATTRIBUTE lib_model OF Q2(0) : LABEL IS "iocell32";
-    ATTRIBUTE Location OF Q2(0) : LABEL IS "P0[5]";
-    ATTRIBUTE lib_model OF Q1(0) : LABEL IS "iocell33";
-    ATTRIBUTE Location OF Q1(0) : LABEL IS "P15[4]";
-    ATTRIBUTE lib_model OF LED_1(0) : LABEL IS "iocell34";
+    ATTRIBUTE lib_model OF Q4(0) : LABEL IS "iocell13";
+    ATTRIBUTE Location OF Q4(0) : LABEL IS "P1[2]";
+    ATTRIBUTE lib_model OF Q5(0) : LABEL IS "iocell14";
+    ATTRIBUTE Location OF Q5(0) : LABEL IS "P1[4]";
+    ATTRIBUTE lib_model OF Q6(0) : LABEL IS "iocell15";
+    ATTRIBUTE Location OF Q6(0) : LABEL IS "P1[5]";
+    ATTRIBUTE lib_model OF \USBUART:Dm(0)\ : LABEL IS "iocell16";
+    ATTRIBUTE Location OF \USBUART:Dm(0)\ : LABEL IS "P15[7]";
+    ATTRIBUTE lib_model OF \USBUART:Dp(0)\ : LABEL IS "iocell17";
+    ATTRIBUTE Location OF \USBUART:Dp(0)\ : LABEL IS "P15[6]";
+    ATTRIBUTE lib_model OF M1_D1(0) : LABEL IS "iocell18";
+    ATTRIBUTE Location OF M1_D1(0) : LABEL IS "P3[3]";
+    ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell19";
+    ATTRIBUTE Location OF Rx_1(0) : LABEL IS "P2[2]";
+    ATTRIBUTE lib_model OF Tx_1(0) : LABEL IS "iocell20";
+    ATTRIBUTE Location OF Tx_1(0) : LABEL IS "P2[3]";
+    ATTRIBUTE lib_model OF LED(0) : LABEL IS "iocell21";
+    ATTRIBUTE Location OF LED(0) : LABEL IS "P2[1]";
+    ATTRIBUTE lib_model OF DB0(0) : LABEL IS "iocell22";
+    ATTRIBUTE Location OF DB0(0) : LABEL IS "P3[0]";
+    ATTRIBUTE lib_model OF DB1(0) : LABEL IS "iocell23";
+    ATTRIBUTE Location OF DB1(0) : LABEL IS "P3[1]";
+    ATTRIBUTE lib_model OF DB2(0) : LABEL IS "iocell24";
+    ATTRIBUTE Location OF DB2(0) : LABEL IS "P3[6]";
+    ATTRIBUTE lib_model OF Rx_2(0) : LABEL IS "iocell25";
+    ATTRIBUTE Location OF Rx_2(0) : LABEL IS "P2[4]";
+    ATTRIBUTE lib_model OF LED_1(0) : LABEL IS "iocell26";
     ATTRIBUTE Location OF LED_1(0) : LABEL IS "P0[2]";
-    ATTRIBUTE lib_model OF LED_2(0) : LABEL IS "iocell35";
+    ATTRIBUTE lib_model OF LED_2(0) : LABEL IS "iocell27";
     ATTRIBUTE Location OF LED_2(0) : LABEL IS "P0[3]";
-    ATTRIBUTE lib_model OF LWE(0) : LABEL IS "iocell36";
+    ATTRIBUTE lib_model OF LWE(0) : LABEL IS "iocell28";
     ATTRIBUTE Location OF LWE(0) : LABEL IS "P12[7]";
-    ATTRIBUTE lib_model OF LWV(0) : LABEL IS "iocell37";
+    ATTRIBUTE lib_model OF LWV(0) : LABEL IS "iocell29";
     ATTRIBUTE Location OF LWV(0) : LABEL IS "P12[6]";
-    ATTRIBUTE lib_model OF RWE(0) : LABEL IS "iocell38";
+    ATTRIBUTE lib_model OF RWE(0) : LABEL IS "iocell30";
     ATTRIBUTE Location OF RWE(0) : LABEL IS "P12[1]";
-    ATTRIBUTE lib_model OF RWV(0) : LABEL IS "iocell39";
+    ATTRIBUTE lib_model OF RWV(0) : LABEL IS "iocell31";
     ATTRIBUTE Location OF RWV(0) : LABEL IS "P12[0]";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:reload\ : LABEL IS "macrocell2";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:status_0\ : LABEL IS "macrocell3";
@@ -563,8 +518,8 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF \QuadDec_M2:Cnt16:CounterUDB:count_enable\ : LABEL IS "macrocell15";
     ATTRIBUTE lib_model OF \QuadDec_M2:Net_530\ : LABEL IS "macrocell16";
     ATTRIBUTE lib_model OF \QuadDec_M2:Net_611\ : LABEL IS "macrocell17";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_is_active\ : LABEL IS "macrocell18";
-    ATTRIBUTE lib_model OF \ADC:bSAR_SEQ:cnt_enable\ : LABEL IS "macrocell19";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_is_active\ : LABEL IS "macrocell18";
+    ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:cnt_enable\ : LABEL IS "macrocell19";
     ATTRIBUTE lib_model OF Net_1880 : LABEL IS "macrocell20";
     ATTRIBUTE lib_model OF \UART:BUART:counter_load_not\ : LABEL IS "macrocell21";
     ATTRIBUTE lib_model OF \UART:BUART:tx_status_0\ : LABEL IS "macrocell22";
@@ -596,11 +551,11 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:quad_B_delayed_1\ : LABEL IS "macrocell39";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:quad_B_delayed_2\ : LABEL IS "macrocell40";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:Stsreg\ : LABEL IS "statusicell4";
-    ATTRIBUTE Location OF \ADC:SAR:ADC_SAR\ : LABEL IS "F(SAR,1)";
-    ATTRIBUTE lib_model OF \ADC:bSAR_SEQ:CtrlReg\ : LABEL IS "controlcell3";
-    ATTRIBUTE lib_model OF \ADC:bSAR_SEQ:EOCSts\ : LABEL IS "statuscell1";
-    ATTRIBUTE lib_model OF \ADC:TempBuf\ : LABEL IS "drqcell1";
-    ATTRIBUTE lib_model OF \ADC:FinalBuf\ : LABEL IS "drqcell2";
+    ATTRIBUTE Location OF \ADC_Sensor:SAR:ADC_SAR\ : LABEL IS "F(SAR,1)";
+    ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:CtrlReg\ : LABEL IS "controlcell3";
+    ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:EOCSts\ : LABEL IS "statuscell1";
+    ATTRIBUTE lib_model OF \ADC_Sensor:TempBuf\ : LABEL IS "drqcell1";
+    ATTRIBUTE lib_model OF \ADC_Sensor:FinalBuf\ : LABEL IS "drqcell2";
     ATTRIBUTE Location OF \USBUART:USB\ : LABEL IS "F(USB,0)";
     ATTRIBUTE lib_model OF \CONTROL:Sync:ctrl_reg\ : LABEL IS "controlcell4";
     ATTRIBUTE lib_model OF \UART:BUART:sTX:TxShifter:u0\ : LABEL IS "datapathcell5";
@@ -609,13 +564,12 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF \UART:BUART:sRX:RxShifter:u0\ : LABEL IS "datapathcell7";
     ATTRIBUTE lib_model OF \UART:BUART:sRX:RxSts\ : LABEL IS "statusicell6";
     ATTRIBUTE lib_model OF \RF_BT_SELECT:Sync:ctrl_reg\ : LABEL IS "controlcell5";
-    ATTRIBUTE Location OF \ADC_Sensor:ADC_SAR\ : LABEL IS "F(SAR,0)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Net_1251\ : LABEL IS "macrocell41";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell42";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:underflow_reg_i\ : LABEL IS "macrocell43";
     ATTRIBUTE lib_model OF \QuadDec_M1:Net_1275\ : LABEL IS "macrocell44";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:prevCompare\ : LABEL IS "macrocell45";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_is_active_split\ : LABEL IS "macrocell46";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_is_active_split\ : LABEL IS "macrocell46";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:count_stored_i\ : LABEL IS "macrocell47";
     ATTRIBUTE lib_model OF \QuadDec_M1:Net_1203\ : LABEL IS "macrocell48";
     ATTRIBUTE lib_model OF \QuadDec_M1:bQuadDec:quad_A_filt\ : LABEL IS "macrocell49";
@@ -638,79 +592,79 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:error\ : LABEL IS "macrocell66";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:state_1\ : LABEL IS "macrocell67";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:state_0\ : LABEL IS "macrocell68";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_old_id_5\ : LABEL IS "macrocell69";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_old_id_4\ : LABEL IS "macrocell70";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_old_id_3\ : LABEL IS "macrocell71";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_old_id_2\ : LABEL IS "macrocell72";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_old_id_1\ : LABEL IS "macrocell73";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_old_id_0\ : LABEL IS "macrocell74";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_0\ : LABEL IS "macrocell75";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_1\ : LABEL IS "macrocell76";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_2\ : LABEL IS "macrocell77";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_3\ : LABEL IS "macrocell78";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_4\ : LABEL IS "macrocell79";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_5\ : LABEL IS "macrocell80";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_6\ : LABEL IS "macrocell81";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_7\ : LABEL IS "macrocell82";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_8\ : LABEL IS "macrocell83";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_9\ : LABEL IS "macrocell84";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_10\ : LABEL IS "macrocell85";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_11\ : LABEL IS "macrocell86";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_12\ : LABEL IS "macrocell87";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_13\ : LABEL IS "macrocell88";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_14\ : LABEL IS "macrocell89";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_15\ : LABEL IS "macrocell90";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_16\ : LABEL IS "macrocell91";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_17\ : LABEL IS "macrocell92";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_18\ : LABEL IS "macrocell93";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_19\ : LABEL IS "macrocell94";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_20\ : LABEL IS "macrocell95";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_21\ : LABEL IS "macrocell96";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_22\ : LABEL IS "macrocell97";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_23\ : LABEL IS "macrocell98";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_24\ : LABEL IS "macrocell99";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_25\ : LABEL IS "macrocell100";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_26\ : LABEL IS "macrocell101";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_27\ : LABEL IS "macrocell102";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_28\ : LABEL IS "macrocell103";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_29\ : LABEL IS "macrocell104";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_30\ : LABEL IS "macrocell105";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_31\ : LABEL IS "macrocell106";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_32\ : LABEL IS "macrocell107";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_33\ : LABEL IS "macrocell108";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_34\ : LABEL IS "macrocell109";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_35\ : LABEL IS "macrocell110";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_36\ : LABEL IS "macrocell111";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_37\ : LABEL IS "macrocell112";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_38\ : LABEL IS "macrocell113";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_39\ : LABEL IS "macrocell114";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_40\ : LABEL IS "macrocell115";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_41\ : LABEL IS "macrocell116";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_42\ : LABEL IS "macrocell117";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_43\ : LABEL IS "macrocell118";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_44\ : LABEL IS "macrocell119";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_45\ : LABEL IS "macrocell120";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_46\ : LABEL IS "macrocell121";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_47\ : LABEL IS "macrocell122";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_48\ : LABEL IS "macrocell123";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_49\ : LABEL IS "macrocell124";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_50\ : LABEL IS "macrocell125";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_51\ : LABEL IS "macrocell126";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_52\ : LABEL IS "macrocell127";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_53\ : LABEL IS "macrocell128";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_54\ : LABEL IS "macrocell129";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_55\ : LABEL IS "macrocell130";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_56\ : LABEL IS "macrocell131";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_57\ : LABEL IS "macrocell132";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_58\ : LABEL IS "macrocell133";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_59\ : LABEL IS "macrocell134";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_60\ : LABEL IS "macrocell135";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_61\ : LABEL IS "macrocell136";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_62\ : LABEL IS "macrocell137";
-    ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_63\ : LABEL IS "macrocell138";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\ : LABEL IS "macrocell69";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\ : LABEL IS "macrocell70";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\ : LABEL IS "macrocell71";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\ : LABEL IS "macrocell72";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\ : LABEL IS "macrocell73";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\ : LABEL IS "macrocell74";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_0\ : LABEL IS "macrocell75";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_1\ : LABEL IS "macrocell76";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_2\ : LABEL IS "macrocell77";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_3\ : LABEL IS "macrocell78";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_4\ : LABEL IS "macrocell79";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_5\ : LABEL IS "macrocell80";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_6\ : LABEL IS "macrocell81";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_7\ : LABEL IS "macrocell82";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_8\ : LABEL IS "macrocell83";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_9\ : LABEL IS "macrocell84";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_10\ : LABEL IS "macrocell85";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_11\ : LABEL IS "macrocell86";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_12\ : LABEL IS "macrocell87";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_13\ : LABEL IS "macrocell88";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_14\ : LABEL IS "macrocell89";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_15\ : LABEL IS "macrocell90";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_16\ : LABEL IS "macrocell91";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_17\ : LABEL IS "macrocell92";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_18\ : LABEL IS "macrocell93";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_19\ : LABEL IS "macrocell94";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_20\ : LABEL IS "macrocell95";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_21\ : LABEL IS "macrocell96";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_22\ : LABEL IS "macrocell97";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_23\ : LABEL IS "macrocell98";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_24\ : LABEL IS "macrocell99";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_25\ : LABEL IS "macrocell100";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_26\ : LABEL IS "macrocell101";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_27\ : LABEL IS "macrocell102";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_28\ : LABEL IS "macrocell103";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_29\ : LABEL IS "macrocell104";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_30\ : LABEL IS "macrocell105";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_31\ : LABEL IS "macrocell106";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_32\ : LABEL IS "macrocell107";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_33\ : LABEL IS "macrocell108";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_34\ : LABEL IS "macrocell109";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_35\ : LABEL IS "macrocell110";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_36\ : LABEL IS "macrocell111";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_37\ : LABEL IS "macrocell112";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_38\ : LABEL IS "macrocell113";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_39\ : LABEL IS "macrocell114";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_40\ : LABEL IS "macrocell115";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_41\ : LABEL IS "macrocell116";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_42\ : LABEL IS "macrocell117";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_43\ : LABEL IS "macrocell118";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_44\ : LABEL IS "macrocell119";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_45\ : LABEL IS "macrocell120";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_46\ : LABEL IS "macrocell121";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_47\ : LABEL IS "macrocell122";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_48\ : LABEL IS "macrocell123";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_49\ : LABEL IS "macrocell124";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_50\ : LABEL IS "macrocell125";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_51\ : LABEL IS "macrocell126";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_52\ : LABEL IS "macrocell127";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_53\ : LABEL IS "macrocell128";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_54\ : LABEL IS "macrocell129";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_55\ : LABEL IS "macrocell130";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_56\ : LABEL IS "macrocell131";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_57\ : LABEL IS "macrocell132";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_58\ : LABEL IS "macrocell133";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_59\ : LABEL IS "macrocell134";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_60\ : LABEL IS "macrocell135";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_61\ : LABEL IS "macrocell136";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_62\ : LABEL IS "macrocell137";
+    ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_63\ : LABEL IS "macrocell138";
     ATTRIBUTE lib_model OF Net_1497 : LABEL IS "macrocell139";
-    ATTRIBUTE lib_model OF \ADC:bSAR_SEQ:bus_clk_nrq_reg\ : LABEL IS "macrocell140";
-    ATTRIBUTE lib_model OF \ADC:bSAR_SEQ:nrq_reg\ : LABEL IS "macrocell141";
+    ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\ : LABEL IS "macrocell140";
+    ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:nrq_reg\ : LABEL IS "macrocell141";
     ATTRIBUTE lib_model OF \QuadDec_M2:Net_1203_split\ : LABEL IS "macrocell142";
     ATTRIBUTE lib_model OF \UART:BUART:txn\ : LABEL IS "macrocell143";
     ATTRIBUTE lib_model OF \UART:BUART:tx_state_1\ : LABEL IS "macrocell144";
@@ -1190,12 +1144,8 @@ BEGIN
             dsi_glb_div => open,
             dclk_glb_0 => Net_1850,
             dclk_0 => Net_1850_local,
-            aclk_glb_0 => \ADC_Sensor:Net_385\,
-            aclk_0 => \ADC_Sensor:Net_385_local\,
-            clk_a_dig_glb_0 => \ADC_Sensor:Net_381\,
-            clk_a_dig_0 => \ADC_Sensor:Net_381_local\,
-            dclk_glb_1 => \ADC:clock\,
-            dclk_1 => \ADC:clock_local\,
+            dclk_glb_1 => \ADC_Sensor:clock\,
+            dclk_1 => \ADC_Sensor:clock_local\,
             dclk_glb_2 => CLK24M,
             dclk_2 => CLK24M_local,
             dclk_glb_3 => \UART:Net_9\,
@@ -1204,7 +1154,6 @@ BEGIN
             dclk_4 => Net_10_local,
             dclk_glb_5 => Net_4402,
             dclk_5 => Net_4402_local,
-            aclk_glb_ff_0 => \ClockBlock.aclk_glb_ff_0__sig\,
             dclk_glb_ff_2 => \ClockBlock.dclk_glb_ff_2__sig\,
             dclk_glb_ff_4 => \ClockBlock.dclk_glb_ff_4__sig\,
             dclk_glb_ff_5 => \ClockBlock.dclk_glb_ff_5__sig\);
@@ -2037,7 +1986,7 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    A0:logicalport
+    Q1:logicalport
         GENERIC MAP(
             drive_mode => "000",
             ibuf_enabled => "0",
@@ -2108,26 +2057,26 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    A0(0):iocell
+    Q1(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "A0",
+            logicalport => "Q1",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
         PORT MAP(
-            pa_out => A0(0)__PA,
+            pa_out => Q1(0)__PA,
             oe => open,
             in_clock => open,
-            pin_input => \ADC:AMuxHw_2_Decoder_one_hot_0\,
+            pin_input => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_0\,
             in_clock_en => '1',
             in_reset => '0',
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
 
-    A1:logicalport
+    Q2:logicalport
         GENERIC MAP(
             drive_mode => "000",
             ibuf_enabled => "0",
@@ -2198,26 +2147,26 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    A1(0):iocell
+    Q2(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "A1",
+            logicalport => "Q2",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
         PORT MAP(
-            pa_out => A1(0)__PA,
+            pa_out => Q2(0)__PA,
             oe => open,
             in_clock => open,
-            pin_input => \ADC:AMuxHw_2_Decoder_one_hot_1\,
+            pin_input => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_1\,
             in_clock_en => '1',
             in_reset => '0',
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
 
-    A2:logicalport
+    Q3:logicalport
         GENERIC MAP(
             drive_mode => "000",
             ibuf_enabled => "0",
@@ -2288,26 +2237,26 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    A2(0):iocell
+    Q3(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "A2",
+            logicalport => "Q3",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
         PORT MAP(
-            pa_out => A2(0)__PA,
+            pa_out => Q3(0)__PA,
             oe => open,
             in_clock => open,
-            pin_input => \ADC:AMuxHw_2_Decoder_one_hot_2\,
+            pin_input => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_2\,
             in_clock_en => '1',
             in_reset => '0',
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
 
-    A3:logicalport
+    Q4:logicalport
         GENERIC MAP(
             drive_mode => "000",
             ibuf_enabled => "0",
@@ -2378,26 +2327,26 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    A3(0):iocell
+    Q4(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "A3",
+            logicalport => "Q4",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
         PORT MAP(
-            pa_out => A3(0)__PA,
+            pa_out => Q4(0)__PA,
             oe => open,
             in_clock => open,
-            pin_input => \ADC:AMuxHw_2_Decoder_one_hot_3\,
+            pin_input => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_3\,
             in_clock_en => '1',
             in_reset => '0',
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
 
-    A4:logicalport
+    Q5:logicalport
         GENERIC MAP(
             drive_mode => "000",
             ibuf_enabled => "0",
@@ -2468,26 +2417,26 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    A4(0):iocell
+    Q5(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "A4",
+            logicalport => "Q5",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
         PORT MAP(
-            pa_out => A4(0)__PA,
+            pa_out => Q5(0)__PA,
             oe => open,
             in_clock => open,
-            pin_input => \ADC:AMuxHw_2_Decoder_one_hot_4\,
+            pin_input => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_4\,
             in_clock_en => '1',
             in_reset => '0',
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
 
-    A5:logicalport
+    Q6:logicalport
         GENERIC MAP(
             drive_mode => "000",
             ibuf_enabled => "0",
@@ -2558,199 +2507,19 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    A5(0):iocell
+    Q6(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "A5",
+            logicalport => "Q6",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
         PORT MAP(
-            pa_out => A5(0)__PA,
+            pa_out => Q6(0)__PA,
             oe => open,
             in_clock => open,
-            pin_input => \ADC:AMuxHw_2_Decoder_one_hot_5\,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    A6:logicalport
-        GENERIC MAP(
-            drive_mode => "000",
-            ibuf_enabled => "0",
-            id => "e61018a9-3bf7-4d47-a028-2de4b96349e9",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "A",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    A6(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "A6",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
-        PORT MAP(
-            pa_out => A6(0)__PA,
-            oe => open,
-            in_clock => open,
-            pin_input => \ADC:AMuxHw_2_Decoder_one_hot_6\,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    A7:logicalport
-        GENERIC MAP(
-            drive_mode => "000",
-            ibuf_enabled => "0",
-            id => "7696e31e-504b-4f89-bbba-87b07ae5279f",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "A",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    A7(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "A7",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
-        PORT MAP(
-            pa_out => A7(0)__PA,
-            oe => open,
-            in_clock => open,
-            pin_input => \ADC:AMuxHw_2_Decoder_one_hot_7\,
+            pin_input => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_5\,
             in_clock_en => '1',
             in_reset => '0',
             out_clock => open,
@@ -3665,540 +3434,6 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    Q5:logicalport
-        GENERIC MAP(
-            drive_mode => "000",
-            ibuf_enabled => "0",
-            id => "2b9a57a2-df5a-4cfb-8793-e83678acd9b0",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "A",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    Q5(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "Q5",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
-        PORT MAP(
-            pa_out => Q5(0)__PA,
-            oe => open,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    Q6:logicalport
-        GENERIC MAP(
-            drive_mode => "000",
-            ibuf_enabled => "0",
-            id => "2bdc93e2-5bcd-409a-aaf9-3979c782b23a",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "A",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    Q6(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "Q6",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
-        PORT MAP(
-            pa_out => Q6(0)__PA,
-            oe => open,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    Q4:logicalport
-        GENERIC MAP(
-            drive_mode => "000",
-            ibuf_enabled => "0",
-            id => "7e3c2475-719a-467d-8242-02210efad35d",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "A",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    Q4(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "Q4",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
-        PORT MAP(
-            pa_out => Q4(0)__PA,
-            oe => open,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    Q3:logicalport
-        GENERIC MAP(
-            drive_mode => "000",
-            ibuf_enabled => "0",
-            id => "6b69c35f-a5a2-4a36-8e94-7a7bcc977f6e",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "A",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    Q3(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "Q3",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
-        PORT MAP(
-            pa_out => Q3(0)__PA,
-            oe => open,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    Q2:logicalport
-        GENERIC MAP(
-            drive_mode => "000",
-            ibuf_enabled => "0",
-            id => "f039acd4-85c7-4cb9-b4f6-fe4a4bdf6448",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "A",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    Q2(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "Q2",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
-        PORT MAP(
-            pa_out => Q2(0)__PA,
-            oe => open,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    Q1:logicalport
-        GENERIC MAP(
-            drive_mode => "000",
-            ibuf_enabled => "0",
-            id => "0c6412a0-b2ea-4b9d-8feb-24c851a1767d",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "A",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    Q1(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "Q1",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
-        PORT MAP(
-            pa_out => Q1(0)__PA,
-            oe => open,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
     LED_1:logicalport
         GENERIC MAP(
             drive_mode => "110",
@@ -4905,33 +4140,33 @@ BEGIN
             main_1 => \QuadDec_M2:Net_1251\,
             main_2 => \QuadDec_M2:Cnt16:CounterUDB:prevCompare\);
 
-    \ADC:AMuxHw_2_Decoder_is_active\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_is_active\:macrocell
         GENERIC MAP(
             soft => 1,
             eqn_main => "(!main_0 * main_1) + (!main_2 * main_3) + (!main_4 * main_5) + (!main_6 * main_7) + (main_8)",
             regmode => 0,
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_0 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_1 => \ADC:ch_addr_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:ch_addr_4\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_5 => \ADC:ch_addr_3\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_7 => \ADC:ch_addr_2\,
-            main_8 => \ADC:AMuxHw_2_Decoder_is_active_split\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_1 => \ADC_Sensor:ch_addr_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:ch_addr_4\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_5 => \ADC_Sensor:ch_addr_3\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_7 => \ADC_Sensor:ch_addr_2\,
+            main_8 => \ADC_Sensor:AMuxHw_2_Decoder_is_active_split\);
 
-    \ADC:bSAR_SEQ:cnt_enable\:macrocell
+    \ADC_Sensor:bSAR_SEQ:cnt_enable\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1)",
             regmode => 0,
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:bSAR_SEQ:cnt_enable\,
+            q => \ADC_Sensor:bSAR_SEQ:cnt_enable\,
             main_0 => Net_1496,
-            main_1 => \ADC:bSAR_SEQ:load_period\);
+            main_1 => \ADC_Sensor:bSAR_SEQ:load_period\);
 
     Net_1880:macrocell
         GENERIC MAP(
@@ -5483,11 +4718,11 @@ BEGIN
             status_1 => \QuadDec_M2:Net_611\,
             status_0 => \QuadDec_M2:Net_530\);
 
-    \ADC:SAR:ADC_SAR\:sarcell
+    \ADC_Sensor:SAR:ADC_SAR\:sarcell
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
-            clk_udb => \ADC:clock_local\,
+            clk_udb => \ADC_Sensor:clock_local\,
             sof_udb => open,
             vp_ctl_udb_3 => open,
             vp_ctl_udb_2 => open,
@@ -5497,23 +4732,23 @@ BEGIN
             vn_ctl_udb_2 => open,
             vn_ctl_udb_1 => open,
             vn_ctl_udb_0 => open,
-            irq => \ADC:SAR:Net_252\,
+            irq => \ADC_Sensor:SAR:Net_252\,
             next => Net_1496,
-            data_out_udb_11 => \ADC:SAR:Net_207_11\,
-            data_out_udb_10 => \ADC:SAR:Net_207_10\,
-            data_out_udb_9 => \ADC:SAR:Net_207_9\,
-            data_out_udb_8 => \ADC:SAR:Net_207_8\,
-            data_out_udb_7 => \ADC:SAR:Net_207_7\,
-            data_out_udb_6 => \ADC:SAR:Net_207_6\,
-            data_out_udb_5 => \ADC:SAR:Net_207_5\,
-            data_out_udb_4 => \ADC:SAR:Net_207_4\,
-            data_out_udb_3 => \ADC:SAR:Net_207_3\,
-            data_out_udb_2 => \ADC:SAR:Net_207_2\,
-            data_out_udb_1 => \ADC:SAR:Net_207_1\,
-            data_out_udb_0 => \ADC:SAR:Net_207_0\,
-            eof_udb => \ADC:Net_3830\);
+            data_out_udb_11 => \ADC_Sensor:SAR:Net_207_11\,
+            data_out_udb_10 => \ADC_Sensor:SAR:Net_207_10\,
+            data_out_udb_9 => \ADC_Sensor:SAR:Net_207_9\,
+            data_out_udb_8 => \ADC_Sensor:SAR:Net_207_8\,
+            data_out_udb_7 => \ADC_Sensor:SAR:Net_207_7\,
+            data_out_udb_6 => \ADC_Sensor:SAR:Net_207_6\,
+            data_out_udb_5 => \ADC_Sensor:SAR:Net_207_5\,
+            data_out_udb_4 => \ADC_Sensor:SAR:Net_207_4\,
+            data_out_udb_3 => \ADC_Sensor:SAR:Net_207_3\,
+            data_out_udb_2 => \ADC_Sensor:SAR:Net_207_2\,
+            data_out_udb_1 => \ADC_Sensor:SAR:Net_207_1\,
+            data_out_udb_0 => \ADC_Sensor:SAR:Net_207_0\,
+            eof_udb => \ADC_Sensor:Net_3830\);
 
-    \ADC:bSAR_SEQ:CtrlReg\:controlcell
+    \ADC_Sensor:bSAR_SEQ:CtrlReg\:controlcell
         GENERIC MAP(
             cy_ctrl_mode_0 => "00000111",
             cy_ctrl_mode_1 => "00000110",
@@ -5523,42 +4758,42 @@ BEGIN
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            clock => \ADC:clock\,
-            control_7 => \ADC:bSAR_SEQ:control_7\,
-            control_6 => \ADC:bSAR_SEQ:control_6\,
-            control_5 => \ADC:bSAR_SEQ:control_5\,
-            control_4 => \ADC:bSAR_SEQ:control_4\,
-            control_3 => \ADC:bSAR_SEQ:control_3\,
-            control_2 => \ADC:bSAR_SEQ:control_2\,
-            control_1 => \ADC:bSAR_SEQ:load_period\,
-            control_0 => \ADC:bSAR_SEQ:enable\,
+            clock => \ADC_Sensor:clock\,
+            control_7 => \ADC_Sensor:bSAR_SEQ:control_7\,
+            control_6 => \ADC_Sensor:bSAR_SEQ:control_6\,
+            control_5 => \ADC_Sensor:bSAR_SEQ:control_5\,
+            control_4 => \ADC_Sensor:bSAR_SEQ:control_4\,
+            control_3 => \ADC_Sensor:bSAR_SEQ:control_3\,
+            control_2 => \ADC_Sensor:bSAR_SEQ:control_2\,
+            control_1 => \ADC_Sensor:bSAR_SEQ:load_period\,
+            control_0 => \ADC_Sensor:bSAR_SEQ:enable\,
             busclk => ClockBlock_BUS_CLK);
 
-    \ADC:bSAR_SEQ:ChannelCounter\:count7cell
+    \ADC_Sensor:bSAR_SEQ:ChannelCounter\:count7cell
         GENERIC MAP(
             cy_alt_mode => 0,
             cy_init_value => "0000000",
-            cy_period => "0000111",
+            cy_period => "0000101",
             cy_route_en => 1,
             cy_route_ld => 1,
             clk_inv => '0',
             clken_inv => '0',
             clken_mode => 3)
         PORT MAP(
-            clock => \ADC:clock\,
-            load => \ADC:bSAR_SEQ:load_period\,
-            enable => \ADC:bSAR_SEQ:cnt_enable\,
-            count_6 => \ADC:bSAR_SEQ:count_6\,
-            count_5 => \ADC:ch_addr_5\,
-            count_4 => \ADC:ch_addr_4\,
-            count_3 => \ADC:ch_addr_3\,
-            count_2 => \ADC:ch_addr_2\,
-            count_1 => \ADC:ch_addr_1\,
-            count_0 => \ADC:ch_addr_0\,
-            tc => \ADC:bSAR_SEQ:cnt_tc\,
-            clk_en => \ADC:bSAR_SEQ:enable\);
+            clock => \ADC_Sensor:clock\,
+            load => \ADC_Sensor:bSAR_SEQ:load_period\,
+            enable => \ADC_Sensor:bSAR_SEQ:cnt_enable\,
+            count_6 => \ADC_Sensor:bSAR_SEQ:count_6\,
+            count_5 => \ADC_Sensor:ch_addr_5\,
+            count_4 => \ADC_Sensor:ch_addr_4\,
+            count_3 => \ADC_Sensor:ch_addr_3\,
+            count_2 => \ADC_Sensor:ch_addr_2\,
+            count_1 => \ADC_Sensor:ch_addr_1\,
+            count_0 => \ADC_Sensor:ch_addr_0\,
+            tc => \ADC_Sensor:bSAR_SEQ:cnt_tc\,
+            clk_en => \ADC_Sensor:bSAR_SEQ:enable\);
 
-    \ADC:bSAR_SEQ:EOCSts\:statuscell
+    \ADC_Sensor:bSAR_SEQ:EOCSts\:statuscell
         GENERIC MAP(
             cy_force_order => 1,
             cy_md_select => "00000001",
@@ -5566,7 +4801,7 @@ BEGIN
             clken_inv => '0',
             clken_mode => 3)
         PORT MAP(
-            clock => \ADC:clock\,
+            clock => \ADC_Sensor:clock\,
             status_7 => open,
             status_6 => open,
             status_5 => open,
@@ -5575,29 +4810,29 @@ BEGIN
             status_2 => open,
             status_1 => open,
             status_0 => Net_1497,
-            clk_en => \ADC:bSAR_SEQ:enable\);
+            clk_en => \ADC_Sensor:bSAR_SEQ:enable\);
 
-    \ADC:TempBuf\:drqcell
+    \ADC_Sensor:TempBuf\:drqcell
         GENERIC MAP(
             drq_type => "00",
             num_tds => 0)
         PORT MAP(
-            dmareq => \ADC:Net_3830\,
+            dmareq => \ADC_Sensor:Net_3830\,
             termin => '0',
-            termout => \ADC:Net_3698\,
+            termout => \ADC_Sensor:Net_3698\,
             clock => ClockBlock_BUS_CLK);
 
-    \ADC:FinalBuf\:drqcell
+    \ADC_Sensor:FinalBuf\:drqcell
         GENERIC MAP(
             drq_type => "00",
             num_tds => 0)
         PORT MAP(
-            dmareq => \ADC:Net_3698\,
+            dmareq => \ADC_Sensor:Net_3698\,
             termin => '0',
-            termout => \ADC:nrq\,
+            termout => \ADC_Sensor:nrq\,
             clock => ClockBlock_BUS_CLK);
 
-    \ADC:IRQ\:interrupt
+    \ADC_Sensor:IRQ\:interrupt
         GENERIC MAP(
             int_type => "10",
             is_nmi => 0)
@@ -5605,22 +4840,14 @@ BEGIN
             interrupt => Net_1497,
             clock => ClockBlock_BUS_CLK);
 
-    \ADC:Sync:genblk1[0]:INST\:synccell
+    \ADC_Sensor:Sync:genblk1[0]:INST\:synccell
         GENERIC MAP(
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
             clock => ClockBlock_BUS_CLK,
-            in => \ADC:nrq\,
-            out => \ADC:Net_3935\);
-
-    isr_TS:interrupt
-        GENERIC MAP(
-            int_type => "00",
-            is_nmi => 0)
-        PORT MAP(
-            interrupt => Net_1619,
-            clock => ClockBlock_BUS_CLK);
+            in => \ADC_Sensor:nrq\,
+            out => \ADC_Sensor:Net_3935\);
 
     \Timer_TS:TimerHW\:timercell
         GENERIC MAP(
@@ -5631,7 +4858,7 @@ BEGIN
             enable => __ONE__,
             capture => open,
             timer_reset => open,
-            tc => Net_1619,
+            tc => \Timer_TS:Net_51\,
             cmp => \Timer_TS:Net_261\,
             irq => \Timer_TS:Net_57\);
 
@@ -5987,53 +5214,6 @@ BEGIN
             control_0 => Net_3437,
             busclk => ClockBlock_BUS_CLK);
 
-    \ADC_Sensor:IRQ\:interrupt
-        GENERIC MAP(
-            int_type => "10",
-            is_nmi => 0)
-        PORT MAP(
-            interrupt => Net_4351,
-            clock => ClockBlock_BUS_CLK);
-
-    \ADC_Sensor:ADC_SAR\:sarcell
-        GENERIC MAP(
-            cy_registers => "")
-        PORT MAP(
-            clock => \ClockBlock.aclk_glb_ff_0__sig\,
-            pump_clock => \ClockBlock.aclk_glb_ff_0__sig\,
-            sof_udb => open,
-            vp_ctl_udb_3 => open,
-            vp_ctl_udb_2 => open,
-            vp_ctl_udb_1 => open,
-            vp_ctl_udb_0 => open,
-            vn_ctl_udb_3 => open,
-            vn_ctl_udb_2 => open,
-            vn_ctl_udb_1 => open,
-            vn_ctl_udb_0 => open,
-            irq => \ADC_Sensor:Net_252\,
-            next => Net_4350,
-            data_out_udb_11 => \ADC_Sensor:Net_207_11\,
-            data_out_udb_10 => \ADC_Sensor:Net_207_10\,
-            data_out_udb_9 => \ADC_Sensor:Net_207_9\,
-            data_out_udb_8 => \ADC_Sensor:Net_207_8\,
-            data_out_udb_7 => \ADC_Sensor:Net_207_7\,
-            data_out_udb_6 => \ADC_Sensor:Net_207_6\,
-            data_out_udb_5 => \ADC_Sensor:Net_207_5\,
-            data_out_udb_4 => \ADC_Sensor:Net_207_4\,
-            data_out_udb_3 => \ADC_Sensor:Net_207_3\,
-            data_out_udb_2 => \ADC_Sensor:Net_207_2\,
-            data_out_udb_1 => \ADC_Sensor:Net_207_1\,
-            data_out_udb_0 => \ADC_Sensor:Net_207_0\,
-            eof_udb => Net_4351);
-
-    isr_1:interrupt
-        GENERIC MAP(
-            int_type => "10",
-            is_nmi => 0)
-        PORT MAP(
-            interrupt => Net_4351,
-            clock => ClockBlock_BUS_CLK);
-
     \Timer_Motor:TimerHW\:timercell
         GENERIC MAP(
             cy_registers => "")
@@ -6118,25 +5298,25 @@ BEGIN
             clock_0 => Net_1850,
             main_0 => \QuadDec_M1:Cnt16:CounterUDB:cmp_out_i\);
 
-    \ADC:AMuxHw_2_Decoder_is_active_split\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_is_active_split\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1) + (main_2 * !main_3) + (main_4 * !main_5) + (main_6 * !main_7) + (!main_8 * main_9) + (main_8 * !main_9) + (!main_10 * main_11) + (main_10 * !main_11)",
             regmode => 0,
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_is_active_split\,
-            main_0 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_1 => \ADC:ch_addr_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:ch_addr_4\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_5 => \ADC:ch_addr_3\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_7 => \ADC:ch_addr_2\,
-            main_8 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_9 => \ADC:ch_addr_1\,
-            main_10 => \ADC:AMuxHw_2_Decoder_old_id_0\,
-            main_11 => \ADC:ch_addr_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_is_active_split\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_1 => \ADC_Sensor:ch_addr_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:ch_addr_4\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_5 => \ADC_Sensor:ch_addr_3\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_7 => \ADC_Sensor:ch_addr_2\,
+            main_8 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_9 => \ADC_Sensor:ch_addr_1\,
+            main_10 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\,
+            main_11 => \ADC_Sensor:ch_addr_0\);
 
     \QuadDec_M1:Cnt16:CounterUDB:count_stored_i\:macrocell
         GENERIC MAP(
@@ -6459,1159 +5639,1159 @@ BEGIN
             main_4 => \QuadDec_M2:bQuadDec:state_1\,
             main_5 => \QuadDec_M2:bQuadDec:state_0\);
 
-    \ADC:AMuxHw_2_Decoder_old_id_5\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:ch_addr_5\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:ch_addr_5\);
 
-    \ADC:AMuxHw_2_Decoder_old_id_4\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:ch_addr_4\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:ch_addr_4\);
 
-    \ADC:AMuxHw_2_Decoder_old_id_3\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:ch_addr_3\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:ch_addr_3\);
 
-    \ADC:AMuxHw_2_Decoder_old_id_2\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:ch_addr_2\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:ch_addr_2\);
 
-    \ADC:AMuxHw_2_Decoder_old_id_1\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:ch_addr_1\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:ch_addr_1\);
 
-    \ADC:AMuxHw_2_Decoder_old_id_0\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_old_id_0\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:ch_addr_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:ch_addr_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_0\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_0\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2 * !main_3 * !main_4 * !main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_0\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_0\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_1\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_1\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2 * !main_3 * !main_4 * !main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_1\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_1\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_2\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_2\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2 * !main_3 * !main_4 * main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_2\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_2\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_3\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_3\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2 * !main_3 * !main_4 * main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_3\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_3\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_4\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_4\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2 * !main_3 * main_4 * !main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_4\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_4\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_5\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_5\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2 * !main_3 * main_4 * !main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_5\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_5\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_6\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_6\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2 * !main_3 * main_4 * main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_6\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_6\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_7\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_7\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2 * !main_3 * main_4 * main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_7\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_7\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_8\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_8\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2 * main_3 * !main_4 * !main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_8\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_8\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_9\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_9\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2 * main_3 * !main_4 * !main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_9\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_9\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_10\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_10\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2 * main_3 * !main_4 * main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_10\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_10\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_11\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_11\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2 * main_3 * !main_4 * main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_11\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_11\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_12\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_12\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2 * main_3 * main_4 * !main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_12\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_12\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_13\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_13\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2 * main_3 * main_4 * !main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_13\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_13\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_14\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_14\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2 * main_3 * main_4 * main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_14\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_14\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_15\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_15\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2 * main_3 * main_4 * main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_15\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_15\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_16\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_16\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * !main_3 * !main_4 * !main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_16\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_16\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_17\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_17\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * !main_3 * !main_4 * !main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_17\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_17\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_18\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_18\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * !main_3 * !main_4 * main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_18\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_18\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_19\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_19\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * !main_3 * !main_4 * main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_19\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_19\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_20\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_20\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * !main_3 * main_4 * !main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_20\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_20\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_21\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_21\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * !main_3 * main_4 * !main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_21\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_21\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_22\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_22\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * !main_3 * main_4 * main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_22\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_22\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_23\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_23\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * !main_3 * main_4 * main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_23\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_23\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_24\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_24\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * main_3 * !main_4 * !main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_24\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_24\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_25\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_25\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * main_3 * !main_4 * !main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_25\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_25\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_26\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_26\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * main_3 * !main_4 * main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_26\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_26\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_27\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_27\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * main_3 * !main_4 * main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_27\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_27\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_28\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_28\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * main_3 * main_4 * !main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_28\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_28\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_29\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_29\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * main_3 * main_4 * !main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_29\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_29\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_30\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_30\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * main_3 * main_4 * main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_30\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_30\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_31\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_31\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * main_3 * main_4 * main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_31\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_31\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_32\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_32\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2 * !main_3 * !main_4 * !main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_32\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_32\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_33\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_33\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2 * !main_3 * !main_4 * !main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_33\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_33\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_34\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_34\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2 * !main_3 * !main_4 * main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_34\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_34\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_35\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_35\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2 * !main_3 * !main_4 * main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_35\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_35\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_36\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_36\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2 * !main_3 * main_4 * !main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_36\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_36\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_37\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_37\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2 * !main_3 * main_4 * !main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_37\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_37\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_38\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_38\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2 * !main_3 * main_4 * main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_38\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_38\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_39\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_39\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2 * !main_3 * main_4 * main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_39\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_39\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_40\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_40\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2 * main_3 * !main_4 * !main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_40\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_40\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_41\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_41\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2 * main_3 * !main_4 * !main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_41\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_41\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_42\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_42\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2 * main_3 * !main_4 * main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_42\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_42\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_43\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_43\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2 * main_3 * !main_4 * main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_43\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_43\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_44\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_44\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2 * main_3 * main_4 * !main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_44\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_44\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_45\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_45\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2 * main_3 * main_4 * !main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_45\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_45\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_46\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_46\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2 * main_3 * main_4 * main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_46\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_46\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_47\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_47\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2 * main_3 * main_4 * main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_47\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_47\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_48\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_48\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * !main_3 * !main_4 * !main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_48\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_48\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_49\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_49\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * !main_3 * !main_4 * !main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_49\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_49\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_50\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_50\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * !main_3 * !main_4 * main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_50\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_50\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_51\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_51\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * !main_3 * !main_4 * main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_51\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_51\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_52\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_52\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * !main_3 * main_4 * !main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_52\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_52\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_53\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_53\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * !main_3 * main_4 * !main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_53\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_53\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_54\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_54\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * !main_3 * main_4 * main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_54\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_54\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_55\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_55\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * !main_3 * main_4 * main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_55\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_55\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_56\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_56\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * main_3 * !main_4 * !main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_56\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_56\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_57\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_57\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * main_3 * !main_4 * !main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_57\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_57\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_58\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_58\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * main_3 * !main_4 * main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_58\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_58\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_59\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_59\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * main_3 * !main_4 * main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_59\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_59\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_60\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_60\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * main_3 * main_4 * !main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_60\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_60\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_61\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_61\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * main_3 * main_4 * !main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_61\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_61\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_62\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_62\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * main_3 * main_4 * main_5 * !main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_62\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_62\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    \ADC:AMuxHw_2_Decoder_one_hot_63\:macrocell
+    \ADC_Sensor:AMuxHw_2_Decoder_one_hot_63\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * main_3 * main_4 * main_5 * main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:AMuxHw_2_Decoder_one_hot_63\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:AMuxHw_2_Decoder_is_active\,
-            main_1 => \ADC:AMuxHw_2_Decoder_old_id_5\,
-            main_2 => \ADC:AMuxHw_2_Decoder_old_id_4\,
-            main_3 => \ADC:AMuxHw_2_Decoder_old_id_3\,
-            main_4 => \ADC:AMuxHw_2_Decoder_old_id_2\,
-            main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
-            main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
+            q => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_63\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:AMuxHw_2_Decoder_is_active\,
+            main_1 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\,
+            main_2 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\,
+            main_3 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\,
+            main_4 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\,
+            main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
+            main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
     Net_1497:macrocell
         GENERIC MAP(
@@ -7622,25 +6802,25 @@ BEGIN
             clken_mode => 3)
         PORT MAP(
             q => Net_1497,
-            clk_en => \ADC:bSAR_SEQ:enable\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:bSAR_SEQ:bus_clk_nrq_reg\,
-            main_1 => \ADC:bSAR_SEQ:nrq_reg\);
+            clk_en => \ADC_Sensor:bSAR_SEQ:enable\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\,
+            main_1 => \ADC_Sensor:bSAR_SEQ:nrq_reg\);
 
-    \ADC:bSAR_SEQ:bus_clk_nrq_reg\:macrocell
+    \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_2) + (main_1)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \ADC:bSAR_SEQ:bus_clk_nrq_reg\,
+            q => \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\,
             clock_0 => ClockBlock_BUS_CLK,
-            main_0 => \ADC:bSAR_SEQ:bus_clk_nrq_reg\,
-            main_1 => \ADC:Net_3935\,
+            main_0 => \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\,
+            main_1 => \ADC_Sensor:Net_3935\,
             main_2 => Net_1497);
 
-    \ADC:bSAR_SEQ:nrq_reg\:macrocell
+    \ADC_Sensor:bSAR_SEQ:nrq_reg\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
             regmode => 1,
@@ -7648,10 +6828,10 @@ BEGIN
             clken_inv => '0',
             clken_mode => 3)
         PORT MAP(
-            q => \ADC:bSAR_SEQ:nrq_reg\,
-            clk_en => \ADC:bSAR_SEQ:enable\,
-            clock_0 => \ADC:clock\,
-            main_0 => \ADC:bSAR_SEQ:bus_clk_nrq_reg\);
+            q => \ADC_Sensor:bSAR_SEQ:nrq_reg\,
+            clk_en => \ADC_Sensor:bSAR_SEQ:enable\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\);
 
     \QuadDec_M2:Net_1203_split\:macrocell
         GENERIC MAP(

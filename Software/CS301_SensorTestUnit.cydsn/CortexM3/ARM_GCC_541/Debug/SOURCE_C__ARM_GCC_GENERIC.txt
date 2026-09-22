@@ -1,0 +1,1 @@
+'C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\sensor.c' -o .o -T SOURCE_C__ARM_GCC_GENERIC -I 'C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn' -I 'C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\Generated_Source\PSoC5' -f 'C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\CortexM3\ARM_GCC_541\Debug\.deps\SOURCE_C__ARM_GCC_GENERIC.d'
