@@ -316,7 +316,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1439, 703" SelectedTabbedMdiWindow="cb909d92-3bbb-4c10-9764-d6e0643d0969"><DocumentWindow Key="C:\TEMP\COMPSYS301\Software\CS301_MotorUnitTest.cydsn\motorControl.c" Guid="0ea0f25c-8b74-462a-9119-b31c0d35ffc8" /><DocumentWindow Key="C:\TEMP\COMPSYS301\Software\CS301_MotorUnitTest.cydsn\tacho.c" Guid="1bad61b7-912f-499d-94ec-bcf494d3c753" /><DocumentWindow Key="C:\TEMP\COMPSYS301\Software\CS301_MotorUnitTest.cydsn\main.c" Guid="cb909d92-3bbb-4c10-9764-d6e0643d0969" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1439, 712" SelectedTabbedMdiWindow="cb909d92-3bbb-4c10-9764-d6e0643d0969"><DocumentWindow Key="C:\TEMP\COMPSYS301\Software\CS301_MotorUnitTest.cydsn\motorControl.c" Guid="0ea0f25c-8b74-462a-9119-b31c0d35ffc8" /><DocumentWindow Key="C:\TEMP\COMPSYS301\Software\CS301_MotorUnitTest.cydsn\tacho.c" Guid="1bad61b7-912f-499d-94ec-bcf494d3c753" /><DocumentWindow Key="C:\TEMP\COMPSYS301\Software\CS301_MotorUnitTest.cydsn\main.c" Guid="cb909d92-3bbb-4c10-9764-d6e0643d0969" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

@@ -9,6 +9,7 @@
  *
  * ========================================
 */
+#include <project.h>
 #include <motorControl.h>
 
 volatile bool Motor_isr_flag = 0;
@@ -29,6 +30,7 @@ volatile int previousCount_L = 0;
 volatile int previousCount_R = 0;
 volatile int count_travelled = 0;
 //
+
 
 
 //Enable Motor
@@ -115,7 +117,7 @@ void Motor_maintainSpeed(){
         float correctionL = Kp * errorL + 
                             Ki * integralL +
                             Kd * derivatvieL;
-        motorLeft_PWM = motorLeft_PWM + correctionL/0.04;
+        motorLeft_PWM = motorLeft_PWM - correctionL/0.04;
         if(motorLeft_PWM <0){
             motorLeft_PWM = 20;
         }
@@ -136,9 +138,9 @@ void Motor_maintainSpeed(){
         float correctionR = Kp * errorR + 
                             Ki * integralR +
                             Kd * derivatvieR;
-        motorRight_PWM = motorRight_PWM + correctionR/0.04;
+        motorRight_PWM = motorRight_PWM - correctionR/0.04;
         if(motorRight_PWM <0){
-            motorRight_PWM = 20;
+            motorRight_PWM = 0;
         }
         else if(motorRight_PWM > 99){
             motorRight_PWM = 99;

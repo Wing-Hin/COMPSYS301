@@ -29,7 +29,6 @@ static volatile SensorFrame latest;
 
 
 
-uint8 win = 0;
 CY_ISR_PROTO(eocHandler);
 CY_ISR(eocHandler){
     uint16 i;
@@ -50,10 +49,6 @@ CY_ISR(eocHandler){
         } 
         latest.fresh = 1;
         resetWindow();
-        if(++win >= 125){
-            LED_1_Write(!LED_1_Read());
-            win = 0;
-        }
         
     }
 

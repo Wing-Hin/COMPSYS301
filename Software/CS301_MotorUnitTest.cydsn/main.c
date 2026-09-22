@@ -37,11 +37,9 @@ int main()
     CYGlobalIntEnable;
     PWM_1_Start();
     PWM_1_WritePeriod(99);
-    PWM_1_WriteCompare(49);
     MotorLeft_setRPM(70);
     PWM_2_Start();
     PWM_2_WritePeriod(99);
-    PWM_2_WriteCompare(49);
     MotorRight_setRPM(70);
     
     QuadDec_M1_Start();
@@ -53,6 +51,10 @@ int main()
     LED_1_Write(1);
     
     bool getSpeed_Uart;
+    MotorLeft_setDirection(Forward);
+    MotorLeft_setRPM(30);
+    MotorRight_setDirection(Forward);
+    MotorRight_setRPM(30);
     
 // ------USB SETUP ----------------    
 #ifdef USE_USB    

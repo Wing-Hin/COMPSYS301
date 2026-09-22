@@ -13,8 +13,8 @@
 #include <stdbool.h>
 
 #define BatteryVoltage 7.7
-#define Forward true
-#define Backward false
+#define Forward false
+#define Backward true
 #define Max_safeSpeed 3.0f
 #define WheelRadius 0.0325
 #define Kp 0.5
@@ -23,6 +23,7 @@
 #define Ts 0.1
 
 extern volatile bool Motor_isr_flag;
+
 
 void MotorEnable();
 void MotorDisable();

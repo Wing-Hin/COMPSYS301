@@ -18,9 +18,12 @@
 #include <string.h>
 #include <stdlib.h>
 #include <project.h>
+#include <motorControl.h>
+#include <line_follow.h>
 //* ========================================
 #include "defines.h"
 #include "vars.h"
+
 //* ========================================
 void usbPutString(char *s);
 void usbPutChar(char c);
@@ -34,8 +37,26 @@ const float Vwhite_LON;
 
 int main()
 {
+    PWM_1_Start();
+    PWM_1_WritePeriod(99);
+    MotorLeft_setRPM(70);
+    PWM_2_Start();
+    PWM_2_WritePeriod(99);
+    MotorRight_setRPM(70);
     
-
+    QuadDec_M1_Start();
+    QuadDec_M2_Start();
+    
+    Timer_Motor_Start();
+    isr_TM_StartEx(isr_TM_Interrupt);
+    MotorEnable();
+    LED_1_Write(1);
+    
+    bool getSpeed_Uart;
+    MotorLeft_setDirection(Forward);
+    MotorLeft_setRPM(30);
+    MotorRight_setDirection(Forward);
+    MotorRight_setRPM(30);
 // --------------------------------    
 // ----- INITIALIZATIONS ----------
     CYGlobalIntEnable;
@@ -51,7 +72,6 @@ int main()
     
     for(;;)
     {   
-        
         handle_usb();
         
             flag_KB_string = 0;

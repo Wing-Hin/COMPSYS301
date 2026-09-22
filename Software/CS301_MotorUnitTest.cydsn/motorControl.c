@@ -115,7 +115,7 @@ void Motor_maintainSpeed(){
         float correctionL = Kp * errorL + 
                             Ki * integralL +
                             Kd * derivatvieL;
-        motorLeft_PWM = motorLeft_PWM + correctionL/0.04;
+        motorLeft_PWM = motorLeft_PWM - correctionL/0.04;
         if(motorLeft_PWM <0){
             motorLeft_PWM = 20;
         }
@@ -136,9 +136,9 @@ void Motor_maintainSpeed(){
         float correctionR = Kp * errorR + 
                             Ki * integralR +
                             Kd * derivatvieR;
-        motorRight_PWM = motorRight_PWM + correctionR/0.04;
+        motorRight_PWM = motorRight_PWM - correctionR/0.04;
         if(motorRight_PWM <0){
-            motorRight_PWM = 20;
+            motorRight_PWM = 0;
         }
         else if(motorRight_PWM > 99){
             motorRight_PWM = 99;
