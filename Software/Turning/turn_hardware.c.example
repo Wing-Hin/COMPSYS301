@@ -1,0 +1,92 @@
+/* HARDWARE PLACEHOLDERS -- do not add this .example file to the build.
+ * Adapt to your wiring, then save as turn_hardware.c. The state machine uses
+ * the sensor/motor functions plus one encoder-read function selected for this
+ * six-sensor design. No new pin or component names are assumed.
+ */
+#include "turn.h"
+#include "sensor.h"       /* Existing CS301_Class.cydsn driver. */
+#include "motorControl.h" /* Existing direction/enable functions. */
+
+/* Six sensors, as shown in doc/psoc-breakout-interconnect-sheet.png and the
+ * companion top-view array drawing: front Q3 Q6 Q5 Q4; back Q1 Q2.
+ * No additional ADC channels or rear outer sensors are required.
+ */
+#if N_SENSORS != 6
+#error "This adapter maps the existing six-sensor board"
+#endif
+
+uint8_t ReadSensor(SensorId sensor)
+{
+    /* PLACEHOLDER ADAPTER for existing ADC code:
+     * 1. Initialize sensor_init() once during startup; let its ADC ISR run.
+     * 2. Verify the existing Q1..Q6 channel order against your ADC setup.
+     *    SensorId is a logical position, NOT a channel number.
+     * 3. The conversion below is valid ONLY after excluding SENSOR_UNKNOWN.
+     *    Unknown/stale input is not background; arrange sensor-health handling
+     *    before using this binary interface. Do not wait for ADC in this call.
+     * 4. With this adapter, call TurnUpdate inside a SHORT PSoC critical
+     *    section so the ADC ISR cannot publish between the two middle reads.
+     *    Alternatively snapshot once per tick and read that cached frame here.
+     *
+     * Avoid getSingleSensorState(): its existing bounds check rejects channel
+     * zero and permits N_SENSORS, which is beyond the end of the array.
+     */
+    static const int channelForSensor[SENSOR_COUNT] = {
+        Q3, Q6, Q5, Q4, Q1, Q2
+    };
+    SensorFrame frame = sensors_GetFrame();
+    return frame.state[channelForSensor[sensor]] == SENSOR_BLACK ? 1U : 0U;
+}
+
+void SetMotorSpeed(int16_t left, int16_t right)
+{
+    /* PLACEHOLDER ADAPTER using names already in motorControl.c.
+     * Confirm PWM mode, zero-duty stop behavior and motor polarity on hardware.
+     * Both PWMs must already be started. Disable other motor writers whenever
+     * TurnGetState() != TURN_IDLE, including Motor_maintainSpeed() and USB PWM
+     * commands. A low-level ISR must obey the same ownership rule.
+     */
+    uint16_t leftMagnitude;
+    uint16_t rightMagnitude;
+
+    if (left > 100) left = 100;
+    if (left < -100) left = -100;
+    if (right > 100) right = 100;
+    if (right < -100) right = -100;
+
+    leftMagnitude = (uint16_t)(left < 0 ? -left : left);
+    rightMagnitude = (uint16_t)(right < 0 ? -right : right);
+
+    /* Remove drive before changing direction. Driver-specific reversal timing
+     * and braking must be handled by your hardware implementation if needed.
+     */
+    PWM_1_WriteCompare(0);
+    PWM_2_WriteCompare(0);
+    if (left == 0 && right == 0) {
+        MotorDisable();
+        return;
+    }
+
+    /* MotorEnable writes direction pins too, so set directions AFTER enabling. */
+    MotorEnable();
+    MotorLeft_setDirection(left >= 0 ? Forward : Backward);
+    MotorRight_setDirection(right >= 0 ? Forward : Backward);
+
+    /* Scale nonnegative magnitudes to the existing PWM periods. NEVER feed
+     * a negative command to WriteCompare. These are existing component APIs.
+     */
+    PWM_1_WriteCompare((uint8)((uint32_t)leftMagnitude *
+                             PWM_1_ReadPeriod() / 100U));
+    PWM_2_WriteCompare((uint8)((uint32_t)rightMagnitude *
+                             PWM_2_ReadPeriod() / 100U));
+}
+
+void ReadWheelEncoderCounts(int16_t *left, int16_t *right)
+{
+    /* Existing 16-bit, x4 quadrature components used by motorControl.c/tacho.c.
+     * Start QuadDec_M1 and QuadDec_M2 once in your hardware initialization.
+     * TurnStart saves a baseline; no hardware counter is reset here.
+     */
+    *left = QuadDec_M1_GetCounter();
+    *right = QuadDec_M2_GetCounter();
+}

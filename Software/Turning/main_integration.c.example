@@ -1,0 +1,122 @@
+/* MAIN CONTROLLER EXAMPLE -- adapt into your main.c; not a second firmware main.
+ *
+ * Add turn.c, turn.h and turn_config.h to your PSoC Creator project. Complete
+ * turn_hardware.c.example and save it as turn_hardware.c in that project.
+ *
+ * Hardware startup, using EXISTING project APIs:
+ *     PWM_1_Start();
+ *     PWM_2_Start();
+ *     SetMotorSpeed(0, 0);
+ *     QuadDec_M1_Start();
+ *     QuadDec_M2_Start();
+ *     sensor_init();
+ * Enable global interrupts for ADC acquisition. Set up a real 5 ms schedule.
+ * Only begin control after all required sensor channels have valid readings.
+ *
+ * In your main loop, once per scheduled 5 ms event:
+ *     uint8 savedInterruptState = CyEnterCriticalSection();
+ *     MainControlUpdate5ms();
+ *     CyExitCriticalSection(savedInterruptState);
+ *
+ * The SHORT critical section keeps paired ReadSensor calls coherent with the
+ * supplied adapter. ALL called functions must be non-blocking and quick.
+ * An alternative is to snapshot one SensorFrame per tick in the adapter, then
+ * run control outside the critical section. Do not put USB logging in it.
+ *
+ * A timer ISR may notify main, but call TurnStart/Update/Reset from main only.
+ * Do not use CyDelay(5) after variable-length work: that gives a period >5 ms.
+ * Do not replay missed ticks in a tight loop: those are not fresh observations.
+ * Your current ADC wait and blocking USB output must not delay control service.
+ * Sensor validity/staleness and scheduler health need application handling.
+ */
+#include "turn.h"
+
+/* APPLICATION PLACEHOLDERS: implement using your route and normal controller.
+ * These are not existing functions or extra hardware connections in turn.c.
+ *
+ * GetPlannedTurn is called ONCE per confirmed junction. Return true and assign
+ * *direction for left/right. Return false for straight-through travel.
+ * Invalid route data must be handled by the application, not returned as false.
+ * FollowLineUpdate must be a single non-blocking update. The existing
+ * Software/Abdur Code/line_follow.c draft needs finishing before it can be used.
+ */
+extern bool GetPlannedTurn(TurnDirection *direction);
+extern void FollowLineUpdate(void);
+extern void HandleTurnComplete(void); /* Update route progress; no motor writes. */
+
+/* Only rearm after a stable clear reading while driving normally. Checking
+ * during rotation would mistake the sweep away from the junction for leaving
+ * the junction and could cause another turn immediately after completion.
+ */
+static bool junctionArmed = true;
+static uint16_t junctionPresentCount = 0;
+static uint16_t junctionClearCount = 0;
+
+void MainControlUpdate5ms(void)
+{
+    uint8_t frontLeftOuter;
+    uint8_t frontRightOuter;
+    TurnDirection plannedDirection;
+    TurnState turnState = TurnUpdate();
+
+    if (turnState == TURN_FAULT) {
+        /* TurnUpdate already holds motors stopped. Leave the fault latched.
+         * After diagnosing the failure, your explicit recovery action can
+         * call TurnReset(). Do not auto-reset and drive away from a fault.
+         */
+        return;
+    }
+    if (turnState == TURN_DONE) {
+        HandleTurnComplete();
+        TurnReset();
+        return; /* Normal following resumes on the NEXT 5 ms update. */
+    }
+    if (turnState != TURN_IDLE) {
+        return; /* Turning owns the motors: no normal-driving commands. */
+    }
+
+    frontLeftOuter = ReadSensor(SENSOR_FL);
+    frontRightOuter = ReadSensor(SENSOR_FR);
+
+    if (!junctionArmed) {
+        junctionPresentCount = 0;
+        if (frontLeftOuter == 0U && frontRightOuter == 0U) {
+            if (++junctionClearCount >= TURN_CONFIRM_READINGS) {
+                junctionArmed = true;
+                junctionClearCount = 0;
+            }
+        } else {
+            junctionClearCount = 0;
+        }
+    } else if (frontLeftOuter == 1U || frontRightOuter == 1U) {
+        /* Either outer sensor can indicate a branch; direction comes from route. */
+        if (++junctionPresentCount >= TURN_CONFIRM_READINGS) {
+            junctionPresentCount = 0;
+            junctionClearCount = 0;
+            junctionArmed = false;
+            if (GetPlannedTurn(&plannedDirection)) {
+                /* A valid left/right request succeeds here because state is IDLE.
+                 * Return even if rejected: do not issue a conflicting command
+                 * in the same tick. The route provider must supply valid values.
+                 */
+                (void)TurnStart(plannedDirection);
+                return;
+            }
+        }
+    } else {
+        junctionPresentCount = 0;
+    }
+
+    FollowLineUpdate(); /* Only reachable while the turning module is IDLE. */
+}
+
+/* Also guard ALL other motor writers in the application, for example:
+ *
+ *     if (TurnGetState() == TURN_IDLE) {
+ *         Motor_maintainSpeed();
+ *     }
+ *
+ * Run that regulator only if your normal-driving implementation uses it.
+ * The existing manual USB PWM command must obey the same ownership rule.
+ * Configure mutual exclusion between manual commands and autonomous driving.
+ */
