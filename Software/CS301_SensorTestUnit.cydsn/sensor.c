@@ -15,11 +15,8 @@
 #include <project.h>
 #include "sensor.h"
 
-// These number is based on Ross's experiement.
-#define T_PKPK    737      // 0.9 V 
-#define T_HYST     98      // 0.12 V, gap/4
-#define T_HIGH   (T_PKPK + T_HYST)
-#define T_LOW    (T_PKPK - T_HYST)
+static const uint16 T_MID[N_SENSORS] = {550, 482, 636, 790, 502, 510};
+static const uint16 T_HYS[N_SENSORS] = { 79,  60,  93, 132,  72,  70};
 #define N_SAMPLES  20
 #define ADC_FULL   4095
 
@@ -48,8 +45,8 @@ CY_ISR(eocHandler){
         for( i = 0 ; i < N_SENSORS ; i++){
             uint16 pkpk = Vmax[i] - Vmin[i];
             Vpp[i] = pkpk; // becase Vpp is volatile, to avoid loading value from RAM many times, here use a variable f.
-            if(pkpk > T_HIGH) {latest.state[i] = SENSOR_WHITE;}
-            else if(pkpk < T_LOW) {latest.state[i] = SENSOR_BLACK;}
+            if(pkpk > T_MID[i] + T_HYS[i] ) {latest.state[i] = SENSOR_WHITE;}
+            else if(pkpk < T_MID[i] - T_HYS[i] ) {latest.state[i] = SENSOR_BLACK;}
         } 
         latest.fresh = 1;
         resetWindow();
