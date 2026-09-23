@@ -4,7 +4,7 @@
  * Front:  FL   FM_L   FM_R   FR
  * Back:       BM_L   BM_R
  *
- * Main detects the intersection with FL/FR and calls TurnStart once.
+ * The application chooses a direction and calls TurnStart once per corner.
  * Encoders position the robot for rotation; FM_L/FM_R detect line departure
  * and reacquisition. The rear middle sensors are not used by this module.
  *
@@ -86,8 +86,8 @@ static bool Confirm(bool condition)
 }
 
 /* SetMotorSpeed(left, right) accepts signed percentages: +forward, -reverse.
- * The hardware adapter must use magnitude for PWM and sign for direction.
- * The normal controller must not write motors while this module is non-IDLE.
+ * The hardware adapter gives the magnitude and direction to motorControl.c.
+ * The normal controller must not replace its targets while this is non-IDLE.
  */
 static void ApplyMotorCommand(void)
 {
@@ -95,7 +95,7 @@ static void ApplyMotorCommand(void)
     case TURN_IDLE:
         break; /* Normal controller owns the motors. */
     case TURN_APPROACH:
-        /* Equal low duties drive forward toward the calibrated pivot position. */
+        /* Equal low speed targets drive toward the calibrated pivot position. */
         SetMotorSpeed(TURN_APPROACH_SPEED, TURN_APPROACH_SPEED);
         break;
     case TURN_LEAVE_LINE:
@@ -116,7 +116,7 @@ static void ApplyMotorCommand(void)
     }
 }
 
-/* Called once per junction by main. True means this module now owns motors. */
+/* Called once per corner by main. True means this module now owns motors. */
 bool TurnStart(TurnDirection direction)
 {
     /* Reject a busy turn, an unhandled result, or an invalid direction. */

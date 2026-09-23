@@ -64,7 +64,8 @@ bool TurnStart(TurnDirection direction);
 
 /* Call exactly once every 5 ms, from the same execution context as Start/Reset.
  * IDLE never reads sensors or writes motors. Every other state owns motors.
- * Main must suppress ALL other motor writers until Reset returns to IDLE.
+ * Main must suppress other target-command writers until Reset returns to IDLE.
+ * The existing motor driver's periodic capture/regulator service must continue.
  */
 TurnState TurnUpdate(void);
 TurnState TurnGetState(void);
@@ -83,8 +84,9 @@ void TurnReset(void);
 uint8_t ReadSensor(SensorId sensor);
 
 /* Signed percentages -100..+100: positive=forward, negative=reverse, 0=stop.
- * Use abs(speed) for PWM duty and sign for H-bridge direction. NEVER pass a
- * negative speed directly to a PWM compare register. Must be non-blocking.
+ * The PSoC adapter passes abs(speed) to MotorLeft/Right_setRPM() and uses the
+ * sign for direction. It must never pass a negative target to motorControl.c.
+ * This function only updates targets/enables and must remain non-blocking.
  */
 void SetMotorSpeed(int16_t left, int16_t right);
 

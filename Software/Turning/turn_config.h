@@ -2,12 +2,13 @@
 #define TURN_CONFIG_H
 
 /* EDIT THE VALUES IN THIS FILE TO TUNE THE ROBOT.
- * Speeds are duty percentages, not RPM. Keep the #ifndef guards so tests and
- * build settings can override a value. Defaults are not hardware calibration.
+ * Speeds are 0..100 percent commands passed to the existing motor driver's
+ * setRPM functions; they are not raw PWM values or literal RPM. Keep the
+ * #ifndef guards so tests can override them. Defaults are not calibration.
  *
  * Common settings:
- *   TURN_APPROACH_SPEED   forward duty, 1..100 percent
- *   TURN_ROTATE_SPEED     rotating duty, 1..100 percent
+ *   TURN_APPROACH_SPEED   forward driver command, 1..100 percent
+ *   TURN_ROTATE_SPEED     rotating driver command, 1..100 percent
  *   TURN_APPROACH_COUNTS  forward distance in counts for EACH wheel
  *   TURN_CONFIRM_READINGS consecutive checks before a transition, at least 2
  *   TURN_TIMEOUT_MS       total approach + rotation limit in milliseconds
@@ -41,28 +42,6 @@
 #endif
 #ifndef TURN_CONFIRM_READINGS
 #define TURN_CONFIRM_READINGS 3U
-#endif
-/* Task 1: normal line following and automatic corner detection. */
-#ifndef FOLLOW_SPEED
-#define FOLLOW_SPEED 25
-#endif
-#ifndef FOLLOW_INNER_SPEED
-#define FOLLOW_INNER_SPEED 12
-#endif
-#ifndef CORNER_CONFIRM_READINGS
-#define CORNER_CONFIRM_READINGS 3U
-#endif
-#ifndef LINE_LOST_CONFIRM_READINGS
-#define LINE_LOST_CONFIRM_READINGS 6U
-#endif
-/* Main starts automatically after this stationary delay and valid ADC data.
- * Reset the board to begin another run. Values must be multiples of 5 ms.
- */
-#ifndef CONTROL_START_DELAY_MS
-#define CONTROL_START_DELAY_MS 2000UL
-#endif
-#ifndef CONTROL_SENSOR_TIMEOUT_MS
-#define CONTROL_SENSOR_TIMEOUT_MS 30UL
 #endif
 /* Scheduling contract: call the controller every 5 ms; do not tune this. */
 #define TURN_UPDATE_MS 5UL

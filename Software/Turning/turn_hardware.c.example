@@ -1,6 +1,6 @@
 /* Superseded by turn_hardware.c and turn_hardware.h in this folder.
  * The real adapter reuses existing sensor and motor APIs and reads the single
  * sensor frame cached by main.c each tick. Compile the .c, not this .example.
- * Verify wiring, PWM behaviour and encoder signs before physical operation.
+ * Verify wiring, motor-control behaviour and encoder signs before operation.
  */
 #include "turn_hardware.h"

@@ -22,45 +22,72 @@ uint8_t ReadSensor(SensorId sensor)
 
 void SetMotorSpeed(int16_t left, int16_t right)
 {
-    /* Adapter using names already in motorControl.c.
-     * Confirm PWM mode, zero-duty stop behavior and motor polarity on hardware.
-     * Both PWMs must already be started. The integrated main controller owns
-     * motor duty during following AND turning: do not also run
-     * Motor_maintainSpeed(), USB PWM commands, or motor-writing ISRs.
+    /* motorControl.c accepts a nonnegative 0..100 speed percentage for each
+     * wheel. Direction and each wheel's enable are controlled separately.
+     * The Timer_Motor service in main must continue to call Motor_captureRPM()
+     * and Motor_maintainSpeed(); that service applies these targets to PWM.
      */
-    uint16_t leftMagnitude;
-    uint16_t rightMagnitude;
+    static int8_t previousLeftSign;
+    static int8_t previousRightSign;
+    int8_t leftSign;
+    int8_t rightSign;
+    int leftMagnitude;
+    int rightMagnitude;
 
     if (left > 100) left = 100;
     if (left < -100) left = -100;
     if (right > 100) right = 100;
     if (right < -100) right = -100;
 
-    leftMagnitude = (uint16_t)(left < 0 ? -left : left);
-    rightMagnitude = (uint16_t)(right < 0 ? -right : right);
+    leftSign = left > 0 ? 1 : (left < 0 ? -1 : 0);
+    rightSign = right > 0 ? 1 : (right < 0 ? -1 : 0);
+    leftMagnitude = left < 0 ? -(int)left : (int)left;
+    rightMagnitude = right < 0 ? -(int)right : (int)right;
 
-    /* Remove drive before changing direction. Driver-specific reversal timing
-     * and braking must be handled by your hardware implementation if needed.
+    /* Disable a wheel before reversing its direction pin. There is no blocking
+     * delay here; add one inside the hardware driver if the H-bridge requires a
+     * dead time. Repeated commands in the same direction do not pulse the
+     * enable pins off on every 5 ms controller update.
      */
-    PWM_1_WriteCompare(0);
-    PWM_2_WriteCompare(0);
+    if (leftSign != 0 && previousLeftSign != 0 &&
+        leftSign != previousLeftSign) {
+        MotorLeft_stop();
+    }
+    if (rightSign != 0 && previousRightSign != 0 &&
+        rightSign != previousRightSign) {
+        MotorRight_stop();
+    }
+
+    /* Never pass signed values to the target-speed functions. A zero target is
+     * installed before disabling so a later enable cannot intentionally resume
+     * an old requested speed.
+     */
+    MotorLeft_setRPM(leftMagnitude);
+    MotorRight_setRPM(rightMagnitude);
+
     if (left == 0 && right == 0) {
         MotorDisable();
+        previousLeftSign = 0;
+        previousRightSign = 0;
         return;
     }
 
-    /* MotorEnable writes direction pins too, so set directions AFTER enabling. */
-    MotorEnable();
-    MotorLeft_setDirection(left >= 0 ? Forward : Backward);
-    MotorRight_setDirection(right >= 0 ? Forward : Backward);
+    if (leftSign != 0 && leftSign != previousLeftSign) {
+        MotorLeft_setDirection(leftSign > 0 ? Forward : Backward);
+    }
+    if (rightSign != 0 && rightSign != previousRightSign) {
+        MotorRight_setDirection(rightSign > 0 ? Forward : Backward);
+    }
 
-    /* Scale nonnegative magnitudes to the existing PWM periods. NEVER feed
-     * a negative command to WriteCompare. These are existing component APIs.
-     */
-    PWM_1_WriteCompare((uint8)((uint32_t)leftMagnitude *
-                             PWM_1_ReadPeriod() / 100U));
-    PWM_2_WriteCompare((uint8)((uint32_t)rightMagnitude *
-                             PWM_2_ReadPeriod() / 100U));
+    if (!Motor_enabled) MotorEnable();
+
+    if (leftSign == 0) MotorLeft_stop();
+    else MotorLeft_start();
+    if (rightSign == 0) MotorRight_stop();
+    else MotorRight_start();
+
+    previousLeftSign = leftSign;
+    previousRightSign = rightSign;
 }
 
 void ReadWheelEncoderCounts(int16_t *left, int16_t *right)

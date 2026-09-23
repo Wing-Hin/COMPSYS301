@@ -9,4 +9,10 @@
  */
 extern SensorFrame controlSensorFrame;
 
+/* SetMotorSpeed updates the existing motorControl.c targets. Main must service
+ * Motor_isr_flag by calling Motor_captureRPM() and Motor_maintainSpeed(), using
+ * the cadence configured by Timer_Motor. Do not run another motion controller
+ * (such as straight()) at the same time because it would replace the targets.
+ */
+
 #endif

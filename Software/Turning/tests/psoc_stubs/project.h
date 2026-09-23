@@ -7,12 +7,6 @@
 typedef uint8_t uint8;
 typedef uint32_t uint32;
 #define CYGlobalIntEnable ((void)0)
-void PWM_1_Start(void);
-void PWM_2_Start(void);
-void PWM_1_WriteCompare(uint8 value);
-void PWM_2_WriteCompare(uint8 value);
-uint8 PWM_1_ReadPeriod(void);
-uint8 PWM_2_ReadPeriod(void);
 void QuadDec_M1_Start(void);
 void QuadDec_M2_Start(void);
 int16_t QuadDec_M1_GetCounter(void);

@@ -9,6 +9,9 @@
  *
  * ========================================
 */
+#ifndef MOTOR_CONTROL_H
+#define MOTOR_CONTROL_H
+
 #include <project.h>
 #include <stdbool.h>
 
@@ -22,29 +25,31 @@
 #define Kd 0.0
 #define Ts 0.1
 
-volatile bool Motor_isr_flag;
-volatile bool Motor_enabled;
+extern volatile bool Motor_isr_flag;
+extern volatile bool Motor_enabled;
 
-void MotorInit();
+void MotorInit(void);
 
-void MotorEnable();
-void MotorDisable();
+void MotorEnable(void);
+void MotorDisable(void);
 
-void MotorLeft_setRPM();
-void MotorLeft_stop();
-void MotorLeft_start();
-float MotorLeft_getRPM();
+void MotorLeft_setRPM(int speed);
+void MotorLeft_stop(void);
+void MotorLeft_start(void);
+float MotorLeft_getRPM(void);
 void MotorLeft_setDirection(bool direction);
 
-void MotorRight_setRPM();
-void MotorRight_stop();
-void MotorRight_start();
-float MotorRight_getRPM();
+void MotorRight_setRPM(int speed);
+void MotorRight_stop(void);
+void MotorRight_start(void);
+float MotorRight_getRPM(void);
 void MotorRight_setDirection(bool direction);
 
-void Motor_maintainSpeed();
+void Motor_maintainSpeed(void);
 
-float Motor_getDistanceTravelled();
+float Motor_getDistanceTravelled(void);
 
-void Motor_captureRPM();
+void Motor_captureRPM(void);
+
+#endif
 /* [] END OF FILE */
