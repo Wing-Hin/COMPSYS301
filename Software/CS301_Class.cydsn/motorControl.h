@@ -22,16 +22,23 @@
 #define Kd 0.0
 #define Ts 0.1
 
-extern volatile bool Motor_isr_flag;
+volatile bool Motor_isr_flag;
+volatile bool Motor_enabled;
+
+void MotorInit();
 
 void MotorEnable();
 void MotorDisable();
 
 void MotorLeft_setRPM();
+void MotorLeft_stop();
+void MotorLeft_start();
 float MotorLeft_getRPM();
 void MotorLeft_setDirection(bool direction);
 
 void MotorRight_setRPM();
+void MotorRight_stop();
+void MotorRight_start();
 float MotorRight_getRPM();
 void MotorRight_setDirection(bool direction);
 

@@ -157,8 +157,8 @@
   <block name="LWE" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="LED_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="RWE" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="RWV" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Clock_Motor" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="RF_BT_SELECT" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">

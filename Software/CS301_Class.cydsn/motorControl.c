@@ -30,13 +30,28 @@ volatile int previousCount_R = 0;
 volatile int count_travelled = 0;
 //
 
+void MotorInit(){
+    PWM_1_Start();
+    PWM_1_WritePeriod(99);
+    PWM_1_WriteCompare(99);
+    PWM_2_Start();
+    PWM_2_WritePeriod(99);
+    PWM_2_WriteCompare(99);
+    
+    QuadDec_M1_Start();
+    QuadDec_M2_Start();
+    
+    Timer_Motor_Start();
+    isr_TM_StartEx(isr_TM_Interrupt);
+    MotorEnable();
+    MotorLeft_setDirection(Forward);
+    MotorRight_setDirection(Forward);
+}
 
 //Enable Motor
 void MotorEnable(){
     LWE_Write(1);
     RWE_Write(1);
-    LWV_Write(1);
-    RWV_Write(1);
     Motor_enabled = 1;
 }
 //Disable Motor
@@ -53,16 +68,22 @@ void MotorLeft_setRPM(int speed){
     motorLeft_targetRPM = ((float)speed /100) * Max_safeSpeed;
 }
 //getRPM
+void MotorLeft_stop(){
+    LWE_Write(0);
+}
+void MotorLeft_start(){
+    LWE_Write(1);
+}
 float MotorLeft_getRPM(){
     return motorLeft_RPM;
 }
 //Set direction
 void MotorLeft_setDirection(bool direction){
     if(direction){
-        LWV_Write(0);
+        LWV_Write(1);
     }
     else{
-        LWV_Write(1);
+        LWV_Write(0);
     }
 }
 //Left Motor control
@@ -74,16 +95,23 @@ void MotorRight_setRPM(int speed){
     motorRight_targetRPM = ((float)speed /100) * Max_safeSpeed;
 }
 //getRPM
+void MotorRight_stop(){
+    RWE_Write(0);
+}
+void MotorRight_start(){
+    RWE_Write(1);
+}
+
 float MotorRight_getRPM(){
     return motorRight_RPM;
 }
 //set Direction
 void MotorRight_setDirection(bool direction){
     if(direction){
-        RWV_Write(1);
+        RWV_Write(0);
     }
     else{
-        RWV_Write(0);
+        RWV_Write(1);
     }
 }
 //Right motor control
@@ -115,9 +143,9 @@ void Motor_maintainSpeed(){
         float correctionL = Kp * errorL + 
                             Ki * integralL +
                             Kd * derivatvieL;
-        motorLeft_PWM = motorLeft_PWM + correctionL/0.04;
+        motorLeft_PWM = motorLeft_PWM - correctionL/0.04;
         if(motorLeft_PWM <0){
-            motorLeft_PWM = 20;
+            motorLeft_PWM = 0;
         }
         else if(motorLeft_PWM > 99){
             motorLeft_PWM = 99;
@@ -136,9 +164,9 @@ void Motor_maintainSpeed(){
         float correctionR = Kp * errorR + 
                             Ki * integralR +
                             Kd * derivatvieR;
-        motorRight_PWM = motorRight_PWM + correctionR/0.04;
+        motorRight_PWM = motorRight_PWM - correctionR/0.04;
         if(motorRight_PWM <0){
-            motorRight_PWM = 20;
+            motorRight_PWM = 0;
         }
         else if(motorRight_PWM > 99){
             motorRight_PWM = 99;

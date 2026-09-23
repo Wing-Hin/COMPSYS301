@@ -18,6 +18,10 @@
 #include <string.h>
 #include <stdlib.h>
 #include <project.h>
+#include "line_follow.h"
+#include "sensor.h"
+#include "motorControl.h"
+
 //* ========================================
 #include "defines.h"
 #include "vars.h"
@@ -38,6 +42,11 @@ int main()
 
 // --------------------------------    
 // ----- INITIALIZATIONS ----------
+    sensor_init();
+    MotorInit();
+    //MotorLeft_setRPM(30);
+    //MotorRight_setRPM(30);
+    
     CYGlobalIntEnable;
     
 // ------USB SETUP ----------------    
@@ -51,12 +60,18 @@ int main()
     
     for(;;)
     {   
-        
+        straight(30);
         handle_usb();
         
             flag_KB_string = 0;
-        }        
-    }   
+        if(Motor_isr_flag ==1){
+            Motor_isr_flag = 0;
+            Motor_captureRPM();
+            Motor_maintainSpeed();
+        }
+        
+    }        
+}   
 //* ========================================
 //* ========================================
 void usbPutString(char *s)
