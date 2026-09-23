@@ -75,7 +75,7 @@ TurnState TurnGetState(void);
 void TurnReset(void);
 
 /* Sensor and motor connections -- implement in your hardware adapter.
- * See turn_hardware.c.example for placeholders using existing project APIs.
+ * See turn_hardware.c for the adapter using existing project APIs.
  * Reads must be non-blocking, valid, and normalized: black=1, background=0.
  * Read both front middle sensors from a coherent sample. Do polarity
  * conversion here, never in the state machine.

@@ -1,15 +1,53 @@
-# Left/right turning module: six sensors and encoder approach
+# Task 1 controller: line following and automatic right-angle corners
 
-`turn.c` and `turn.h` implement only the requested non-blocking turn sequence:
-`IDLE -> APPROACH -> LEAVE_LINE -> FIND_LINE -> DONE`, with a total timeout to
-`FAULT`. Add these files and `turn_config.h` to `Software/CS301_Class.cydsn` in PSoC Creator, plus a
-completed copy of `turn_hardware.c.example`. The example is intentionally excluded
-from builds until the hardware placeholders are completed. No generated project
-files or existing ADC/normal-driving code have been changed.
+This folder now contains a real `main.c`, `main_control.c/.h`, and
+`turn_hardware.c/.h`, in addition to the existing turning state machine.
+It is intended for the benchmark path with left/right corners and **no
+intersections**. It includes basic line following; there are no route-planning
+or line-following placeholder callbacks. Task 2 distance-D stopping is not included.
 
-This version uses the corrected layout: four sensors at the front and two middle
-sensors at the back. APPROACH ends after measured forward encoder travel, as
-selected for this layout. It does not wait for nonexistent rear outer sensors.
+## Add to PSoC Creator
+
+1. In `Software/CS301_Class.cydsn`, exclude the old ADC/USB test `main.c` from
+   the build and add this folder's `main.c` instead. Compile exactly one main.
+2. Add `main_control.c`, `turn.c`, and `turn_hardware.c`, plus their headers and
+   `turn_config.h`. Keep the existing `sensor.c/.h`, `motorControl.c/.h`, and
+   generated component sources in the project. Include both source directories.
+3. Do not compile either `.example` file or the host `tests` folder into firmware.
+   The old examples now point to the real implementation.
+4. Build in PSoC Creator, program the robot, and verify mapping, motor polarity,
+   encoder scaling and line geometry at low speed. No generated project files
+   or existing driver/draft files were edited by this change.
+
+**Startup behaviour:** the standalone main stops the motors, starts both encoders
+and the existing sensor driver, and configures the existing CyLib SysTick API
+for a 1 ms callback. Every fifth callback schedules one control update in main.
+After the default **two-second delay**, it automatically starts when both outer
+sensors are clear and all four middle sensors see black. Place the robot centred
+on a straight segment before resetting the board. Reset for the next run.
+
+Main takes one `sensors_GetFrame()` snapshot per tick. All ReadSensor calls use
+that copy, so a controller-wide interrupt mask is unnecessary. Unknown/stale
+sensor data after the startup delay stops and latches a fault. The main detects
+missed control ticks rather than replaying them. No blocking ADC waits, USB
+output, extra motor regulator, or manual PWM commands are in this main loop.
+An entirely stalled main still needs a hardware watchdog for guaranteed stopping.
+
+The public controller API is:
+
+| Function | Purpose |
+| --- | --- |
+| `MainControlStart()` | Start once after initialization and valid sensor input |
+| `MainControlUpdate5ms()` | Sole scheduled motion update; calls TurnUpdate internally |
+| `MainControlGetState()` | STOPPED, FOLLOWING, TURNING, or FAULT |
+| `MainControlGetFault()` | Reason for a stopped fault; inspect in debugger |
+| `MainControlGetCompletedTurns()` | Count confirmed completed turns for this run |
+| `MainControlHalt(reason)` | Stop and latch a sensor/scheduler/application fault |
+
+The supplied main already makes these calls. Do not separately call TurnUpdate.
+It never automatically recovers a fault. Reset the board after correcting one.
+The API permits explicit restart after idle/terminal faults, but a hardware halt
+while the turn state machine is moving requires board reset.
 
 ## Existing hardware mapping
 
@@ -35,16 +73,17 @@ or ADC channels are needed for this version.
 
 The hardware connections are:
 
-- `ReadSensor`: the template reuses `sensors_GetFrame()` from `sensor.c` and
+- `ReadSensor`: main reuses `sensors_GetFrame()` from `sensor.c`; the adapter reads
+  the cached frame and
   converts its `SENSOR_BLACK == 0` convention to the turning module's black=1.
   Run `sensor_init()` once. The binary interface requires valid input: exclude
   `SENSOR_UNKNOWN` and stale frames before using it; neither means background.
   The existing `getSingleSensorState()` has an off-by-one bounds check, so the
-  template uses the frame API. The driver comments describe an 8 ms frame window;
+  adapter uses the cached frame. The driver comments describe an 8 ms frame window;
   5 ms reads can repeat a frame. Tune filtering against the actual frame rate,
   or update acquisition to provide a fresh frame each tick. Repeated observations
   are not independent ADC samples.
-- `SetMotorSpeed`: the template reuses `MotorEnable`, `MotorDisable`,
+- `SetMotorSpeed`: the adapter reuses `MotorEnable`, `MotorDisable`,
   `MotorLeft_setDirection`, `MotorRight_setDirection`, and the existing
   `PWM_1`/`PWM_2` APIs. Sign selects direction; magnitude scales PWM duty. Zero
   clears PWM and disables motors. Verify stop/brake behavior and reversal timing.
@@ -69,50 +108,54 @@ cannot compensate for the other being stationary. Approach still commands equal
 duties, so matched forward motion is an assumption, not an implemented steering
 controller. Confirmation adds a small amount of forward travel before rotation.
 
-## Controller handoff
+## Automatic corner detection and motor handoff
 
-`main_integration.c.example` contains a commented `MainControlUpdate5ms()` example
-to adapt into main.c. It confirms a front intersection, requests the planned
-left/right turn once, gates normal motor control, acknowledges DONE, and leaves
-FAULT stopped for explicit recovery. It rearms junction detection only after
-both outer sensors remain clear while driving normally. Its route, line-follow,
-and completion hooks are application placeholders, not existing functions.
-The current ADC/USB test main is not replaced automatically. Follow the startup
-and timing notes in the example; the existing blocking loop is not a 5 ms scheduler.
+The controller reads all six sensors while following:
 
-1. Run the existing sensor acquisition continuously. At a newly detected front
-   intersection, call `TurnStart(TURN_LEFT)` or `TurnStart(TURN_RIGHT)` once.
-   A successful call records encoder baselines and commands forward approach.
-   Invalid direction,
-   busy state, and unhandled DONE/FAULT all reject a new request without effects.
-2. Call `TurnUpdate()` once every **5 ms**. With the supplied adapter, wrap it in
-   a short `CyEnterCriticalSection()` / `CyExitCriticalSection()` pair to keep both
-   front middle reads in the same ADC frame. Do not wait for ADC conversions.
-   Call Start/Update/Reset from one execution context; these functions are not
-   reentrant.
-3. Run normal driving **only when `TurnGetState() == TURN_IDLE`**, checking again
-   after a successful TurnStart. This applies to every motor writer, including
-   `Motor_maintainSpeed`, manual USB commands, and any motor-writing ISR. Merely
-   calling TurnUpdate last is insufficient. The straight-line source in
-   `Software/Abdur Code/line_follow.c` is a syntactically incomplete draft, so
-   it cannot currently be called as a working function.
-4. DONE and FAULT command `(0, 0)` on every update and remain latched. Handle the
-   result, then call `TurnReset()` to release control. Reset is ignored while
-   busy and does nothing in IDLE. Acknowledge FAULT only when ready to recover.
-   The main controller must latch each junction to avoid requesting another
-   turn while the same front intersection indication remains asserted.
+| Confirmed pattern | Action |
+| --- | --- |
+| FL=1, FR=0, BM_L=1, BM_R=1 | Request left turn |
+| FL=0, FR=1, BM_L=1, BM_R=1 | Request right turn |
+| FL=1 and FR=1 | Stop; sustained detection faults as ambiguous |
+| No reliable front guidance and rear pair not both black | Stop; sustained loss faults |
 
-The module cannot prevent an unrelated function from writing motor registers;
-the controller's ownership guard is required. Its only hardware dependencies are
-the sensor, motor and encoder functions, so timeout is measured by 5 ms calls rather than an
-independent clock. A stalled scheduler also stalls timeout detection.
+A left/right candidate must persist for `CORNER_CONFIRM_READINGS` updates.
+A change in direction or loss of the pattern resets its counter. While confirming,
+the robot creeps forward. This motion precedes the TurnStart encoder baseline,
+so calibrate `TURN_APPROACH_COUNTS` from the **confirmed** detection position.
+Rear-pair agreement reduces false turns caused by lateral drift but cannot prove
+that the observed shape is a right-angle corner. Check patterns on the lab track.
+The front pair need not be black for corner detection: they can already have
+passed the edge of the bend while the rear pair remains on the incoming line.
+
+The basic follower drives equally when both front middle sensors are black.
+With only the left black it slows the left wheel; with only the right black it
+slows the right wheel. With both front sensors on background and both rear middle
+sensors black it creeps straight; otherwise it stops and confirms line loss.
+This is deliberately simple steering, not a tuned PID or speed regulator. It
+adapts the slower-inner-wheel idea from the unfinished `Abdur Code/line_follow.c`
+without modifying or compiling that draft.
+
+After a confirmed corner, TurnStart drives the encoder-based approach. During
+APPROACH/LEAVE_LINE/FIND_LINE the main controller returns after TurnUpdate, so
+normal following cannot overwrite its motor commands. On DONE it counts the turn,
+acknowledges it with TurnReset and resumes following on the next tick. A turn
+FAULT latches a stopped controller fault. Outer detections are ignored after a
+turn until both outers are clear AND all four middle sensors are black for several
+normal-following updates. This prevents a second request at the same corner.
+There must be enough centred straight travel between bends to rearm detection.
+
+The controller owns motor duty even while TurnGetState() is IDLE: normal following
+also uses SetMotorSpeed. Do not run Motor_maintainSpeed or manual motor writers
+alongside this standalone controller. The turn module still follows
+`IDLE -> APPROACH -> LEAVE_LINE -> FIND_LINE -> DONE`, with total timeout to FAULT.
 
 ## Geometry assumptions and limits
 
 The intended branch is approximately perpendicular to the approach line. At
 rotation start, the wheel midpoint must be close enough to the intersection
 centre and the robot centred on the incoming line. Calibrate forward travel from
-the actual front-intersection trigger to that pivot position. Front-sensor
+the actual front-corner trigger to that pivot position. Front-sensor
 debounce, line width, request latency and approach confirmation affect the
 required distance. Wheel slip and unequal wheel speeds also move the pivot,
 even on a symmetric chassis. Encoders measure wheel rotation, not floor travel.
@@ -147,8 +190,12 @@ controller should take over only after the main controller acknowledges DONE.
 ## Configuration and simulated verification
 
 All commonly changed settings are grouped in **`turn_config.h`**. Change the
-numbers there; `turn.h` includes it and validates the values at compile time.
+numbers there; the modules include it and validate their settings at compile time.
 Keep `TURN_UPDATE_MS` at 5 to match the scheduler contract.
+
+Controller defaults: follow duty 25%, slower inner-wheel duty 12%, corner
+confirmation 3 readings, line-loss confirmation 6 readings, startup delay 2000 ms,
+and stale-sensor timeout 30 ms. These settings are in the same config file.
 
 Defaults: approach 20%, rotation 25%, forward travel 34 encoder counts
 per wheel, three consecutive confirmations per transition, and 4000 ms for the
@@ -161,7 +208,7 @@ approach_counts = distance_mm * counts_per_wheel_revolution / (pi * wheel_diamet
 
 Confirm the actual wheel counts per revolution, wheel diameter and front-sensor
 to axle distance. The drawing's 29.97 mm row spacing is not proof of axle position.
-Tune the threshold for the actual junction trigger and confirmation travel.
+Tune the threshold for the actual corner trigger and confirmation travel.
 Set `TURN_LEFT_ENCODER_FORWARD_SIGN` and `TURN_RIGHT_ENCODER_FORWARD_SIGN` to +1
 or -1 independently so forward movement accumulates positive counts. Both default
 to +1 as placeholders; motor polarity does not establish encoder polarity.
@@ -177,24 +224,18 @@ On Windows with Visual Studio C tools installed, run from the repository root:
 Software\Turning\tests\run_tests.cmd
 ```
 
-The runner compile-checks the main integration example, builds native C with
-`/std:c11 /W4 /WX`, and runs the turning mocks twice:
-defaults, then five readings / 17% approach / 31% rotation / 19 encoder counts /
-reversed left encoder polarity / 1500 ms timeout.
-For GCC, from this directory:
+The runner builds with MSVC `/std:c11 /W4 /WX`. It compile-checks the PSoC
+entry point and adapter against small host API declaration stubs, then runs the
+turn-state tests and integrated controller tests with default and alternate
+configurations. All four executable test runs passed.
 
-```sh
-gcc -std=c11 -Wall -Wextra -Werror -pedantic -I. turn.c tests/test_turn.c -o test_turn
-./test_turn
-```
+The turn tests cover directions, encoder wrap/reverse/stall, debounce, original-line
+rejection, ownership, result locking and timeout. The integrated tests cover
+steering, brief/alternating corner signals, rejecting an uncentred rear pattern,
+11 alternating simulated turns, same-corner suppression, rearming, return to
+following, motor ownership and stopped ambiguous/line-loss/turn/hardware faults.
 
-Both MSVC builds passed. Tests cover the six-sensor layout; left/right motor
-signs; ignoring unrelated sensor readings during approach; encoder baselines,
-distance thresholds, wraparound in both directions, reverse travel, and a stalled
-wheel; requiring both front sensors to leave the original line; rejecting brief
-background/black glitches and brief distance-threshold crossings; requiring both
-sensors to reacquire; start/reset locking; IDLE hardware ownership; latched stopped
-results; and exact total timeout in all three moving states, including a transition
-on the deadline. **These are simulated sensor/motor/encoder tests, not physical robot tests
-or a full PSoC firmware build.** The incomplete hardware adapter is not included
-in those tests.
+**This is simulated verification, not physical robot testing or a full generated
+PSoC firmware build.** Startup scheduling and peripherals are compile-checked,
+not dynamically emulated. Actual sensor patterns, axle offset, approach count,
+encoder polarity, PWM behaviour and stopping drift still require lab calibration.
