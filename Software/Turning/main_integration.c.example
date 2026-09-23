@@ -1,9 +1,9 @@
-/* Superseded by the real Task 1 integration in this folder:
- *   main.c          PSoC startup and 5 ms scheduler
+/* Integration outline for the project-level CS301_Class.cydsn/main.c:
  *   main_control.c  line following + automatic corner detection + turn handoff
  *   main_control.h  MainControlStart/Update5ms and status APIs
  *
- * Use these files instead of copying the old route-based example.
+ * Keep only the project-level main. It must initialize the hardware, cache and
+ * validate one sensor frame, then call MainControlUpdate5ms every 5 ms.
  * No GetPlannedTurn/FollowLineUpdate/HandleTurnComplete placeholders remain.
  * See README.md for PSoC Creator build instructions.
  */

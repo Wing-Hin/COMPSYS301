@@ -1,4 +1,4 @@
-/* PSoC adapter for the standalone Task 1 main. Existing component names only.
+/* PSoC adapter for the project Task 1 controller. Existing component names only.
  * Verify sensor channel order, motor polarity and encoder signs on hardware.
  */
 #include "turn.h"
@@ -24,7 +24,7 @@ void SetMotorSpeed(int16_t left, int16_t right)
 {
     /* Adapter using names already in motorControl.c.
      * Confirm PWM mode, zero-duty stop behavior and motor polarity on hardware.
-     * Both PWMs must already be started. The standalone main controller owns
+     * Both PWMs must already be started. The integrated main controller owns
      * motor duty during following AND turning: do not also run
      * Motor_maintainSpeed(), USB PWM commands, or motor-writing ISRs.
      */

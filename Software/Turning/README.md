@@ -1,36 +1,45 @@
 # Task 1 controller: line following and automatic right-angle corners
 
-This folder now contains a real `main.c`, `main_control.c/.h`, and
-`turn_hardware.c/.h`, in addition to the existing turning state machine.
+This folder contains `main_control.c/.h` and `turn_hardware.c/.h`, in addition
+to the turning state machine. The application entry point is the project-level
+`Software/CS301_Class.cydsn/main.c`; there must be only one `main.c` in the
+firmware build.
 It is intended for the benchmark path with left/right corners and **no
 intersections**. It includes basic line following; there are no route-planning
 or line-following placeholder callbacks. Task 2 distance-D stopping is not included.
 
-## Add to PSoC Creator
+## Integrate with the project main
 
-1. In `Software/CS301_Class.cydsn`, exclude the old ADC/USB test `main.c` from
-   the build and add this folder's `main.c` instead. Compile exactly one main.
+1. Keep `Software/CS301_Class.cydsn/main.c` as the only application entry point.
 2. Add `main_control.c`, `turn.c`, and `turn_hardware.c`, plus their headers and
    `turn_config.h`. Keep the existing `sensor.c/.h`, `motorControl.c/.h`, and
    generated component sources in the project. Include both source directories.
-3. Do not compile either `.example` file or the host `tests` folder into firmware.
-   The old examples now point to the real implementation.
-4. Build in PSoC Creator, program the robot, and verify mapping, motor polarity,
+3. Merge the initialization, 5 ms scheduling, coherent sensor snapshot, sensor
+   validation, `MainControlStart`, and `MainControlUpdate5ms` sequence described
+   below into the project main. `handle_usb()` may continue to run outside the
+   scheduled motion update.
+4. Remove the unconditional `straight(30)` and do not call
+   `Motor_maintainSpeed()` while this controller owns the motors. The integrated
+   controller performs line following and turning through `SetMotorSpeed()`;
+   two motor controllers must not write the PWM outputs concurrently.
+5. Do not compile either `.example` file or the host `tests` folder into firmware.
+6. Build in PSoC Creator, program the robot, and verify mapping, motor polarity,
    encoder scaling and line geometry at low speed. No generated project files
    or existing driver/draft files were edited by this change.
 
-**Startup behaviour:** the standalone main stops the motors, starts both encoders
-and the existing sensor driver, and configures the existing CyLib SysTick API
-for a 1 ms callback. Every fifth callback schedules one control update in main.
+**Required startup behaviour:** the project main must stop the motors, start both
+encoders and the existing sensor driver, and configure the existing CyLib SysTick
+API for a 1 ms callback. Every fifth callback schedules one control update in main.
 After the default **two-second delay**, it automatically starts when both outer
 sensors are clear and all four middle sensors see black. Place the robot centred
 on a straight segment before resetting the board. Reset for the next run.
 
-Main takes one `sensors_GetFrame()` snapshot per tick. All ReadSensor calls use
+Main must take one `sensors_GetFrame()` snapshot per tick. All ReadSensor calls use
 that copy, so a controller-wide interrupt mask is unnecessary. Unknown/stale
 sensor data after the startup delay stops and latches a fault. The main detects
-missed control ticks rather than replaying them. No blocking ADC waits, USB
-output, extra motor regulator, or manual PWM commands are in this main loop.
+missed control ticks rather than replaying them. Keep blocking ADC waits, USB
+output, extra motor regulation, and manual PWM commands out of the scheduled
+motion update. USB handling outside it must remain non-blocking.
 An entirely stalled main still needs a hardware watchdog for guaranteed stopping.
 
 The public controller API is:
@@ -44,7 +53,7 @@ The public controller API is:
 | `MainControlGetCompletedTurns()` | Count confirmed completed turns for this run |
 | `MainControlHalt(reason)` | Stop and latch a sensor/scheduler/application fault |
 
-The supplied main already makes these calls. Do not separately call TurnUpdate.
+The project main should make these calls. Do not separately call TurnUpdate.
 It never automatically recovers a fault. Reset the board after correcting one.
 The API permits explicit restart after idle/terminal faults, but a hardware halt
 while the turn state machine is moving requires board reset.
@@ -147,7 +156,7 @@ There must be enough centred straight travel between bends to rearm detection.
 
 The controller owns motor duty even while TurnGetState() is IDLE: normal following
 also uses SetMotorSpeed. Do not run Motor_maintainSpeed or manual motor writers
-alongside this standalone controller. The turn module still follows
+alongside this integrated controller. The turn module still follows
 `IDLE -> APPROACH -> LEAVE_LINE -> FIND_LINE -> DONE`, with total timeout to FAULT.
 
 ## Geometry assumptions and limits
@@ -225,7 +234,7 @@ Software\Turning\tests\run_tests.cmd
 ```
 
 The runner builds with MSVC `/std:c11 /W4 /WX`. It compile-checks the PSoC
-entry point and adapter against small host API declaration stubs, then runs the
+adapter against small host API declaration stubs, then runs the
 turn-state tests and integrated controller tests with default and alternate
 configurations. All four executable test runs passed.
 
@@ -236,6 +245,6 @@ steering, brief/alternating corner signals, rejecting an uncentred rear pattern,
 following, motor ownership and stopped ambiguous/line-loss/turn/hardware faults.
 
 **This is simulated verification, not physical robot testing or a full generated
-PSoC firmware build.** Startup scheduling and peripherals are compile-checked,
-not dynamically emulated. Actual sensor patterns, axle offset, approach count,
+PSoC firmware build.** The project-main scheduling and peripherals are not
+dynamically emulated. Actual sensor patterns, axle offset, approach count,
 encoder polarity, PWM behaviour and stopping drift still require lab calibration.

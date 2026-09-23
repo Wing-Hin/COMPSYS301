@@ -8,9 +8,9 @@ if errorlevel 1 (
 where cl >nul 2>nul
 if errorlevel 1 goto fail
 if not exist .build mkdir .build
-rem Check PSoC entry point and adapter syntax against host API declarations.
+rem Check the PSoC adapter syntax against host API declarations.
 rem This does not link the actual generated firmware or emulate hardware.
-cl /nologo /std:c11 /W4 /WX /TC /I. /Itests\psoc_stubs /c /Fo.build\ main.c turn_hardware.c
+cl /nologo /std:c11 /W4 /WX /TC /I. /Itests\psoc_stubs /c /Fo.build\ turn_hardware.c
 if errorlevel 1 goto fail
 cl /nologo /std:c11 /W4 /WX /TC /I. /Fo.build\ /Fe.build\test_turn.exe turn.c tests\test_turn.c
 if errorlevel 1 goto fail
