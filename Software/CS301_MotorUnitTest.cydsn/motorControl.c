@@ -13,6 +13,10 @@
 
 volatile bool Motor_isr_flag = 0;
 volatile bool Motor_enabled = 0;
+
+volatile bool overflowL_flag = 0;
+volatile bool overflowR_flag = 0;
+
 //Variables initialise
 static volatile float motorLeft_RPM;
 static volatile float motorRight_RPM;
@@ -30,6 +34,29 @@ volatile int previousCount_R = 0;
 volatile int count_travelled = 0;
 //
 
+void MotorInit(){
+    PWM_1_Start();
+    PWM_1_WritePeriod(99);
+    PWM_2_Start();
+    PWM_2_WritePeriod(99);
+    
+    QuadDec_M1_Start();
+    QuadDec_M1_SetInterruptMask(
+    QuadDec_M1_COUNTER_OVERFLOW |
+    QuadDec_M1_COUNTER_UNDERFLOW);
+    isr_DEC1_StartEx(isr_DEC1_Interrupt);
+    QuadDec_M2_Start();
+    QuadDec_M2_SetInterruptMask(
+    QuadDec_M2_COUNTER_OVERFLOW |
+    QuadDec_M2_COUNTER_UNDERFLOW);
+    isr_DEC2_StartEx(isr_DEC2_Interrupt);
+    
+    Timer_Motor_Start();
+    isr_TM_StartEx(isr_TM_Interrupt);
+    MotorEnable();
+    MotorLeft_setDirection(Forward);
+    MotorRight_setDirection(Forward);
+}
 
 //Enable Motor
 void MotorEnable(){
@@ -59,10 +86,10 @@ float MotorLeft_getRPM(){
 //Set direction
 void MotorLeft_setDirection(bool direction){
     if(direction){
-        LWV_Write(0);
+        LWV_Write(1);
     }
     else{
-        LWV_Write(1);
+        LWV_Write(0);
     }
 }
 //Left Motor control
@@ -80,10 +107,10 @@ float MotorRight_getRPM(){
 //set Direction
 void MotorRight_setDirection(bool direction){
     if(direction){
-        RWV_Write(1);
+        RWV_Write(0);
     }
     else{
-        RWV_Write(0);
+        RWV_Write(1);
     }
 }
 //Right motor control
@@ -115,7 +142,7 @@ void Motor_maintainSpeed(){
         float correctionL = Kp * errorL + 
                             Ki * integralL +
                             Kd * derivatvieL;
-        motorLeft_PWM = motorLeft_PWM + correctionL/0.04;
+        motorLeft_PWM = motorLeft_PWM - correctionL/0.04;
         if(motorLeft_PWM <0){
             motorLeft_PWM = 20;
         }
@@ -136,7 +163,7 @@ void Motor_maintainSpeed(){
         float correctionR = Kp * errorR + 
                             Ki * integralR +
                             Kd * derivatvieR;
-        motorRight_PWM = motorRight_PWM + correctionR/0.04;
+        motorRight_PWM = motorRight_PWM - correctionR/0.04;
         if(motorRight_PWM <0){
             motorRight_PWM = 20;
         }
@@ -155,16 +182,36 @@ float Motor_getDistanceTravelled(){
 }
 //
 
+void Motor_resetDistanceCount(){
+    count_travelled = 0;
+}
 
-
-//Speed(RPM) captures and calculations
+//Speed(RPM) captures and 
+//left forward negative
+//right backward negative
 void Motor_captureRPM(){
-    motorLeft_RPM = (QuadDec_M1_GetCounter()-previousCount_L)/(57*4*0.1);
-    motorRight_RPM = (QuadDec_M2_GetCounter()-previousCount_R)/(57*4*0.1);
-    previousCount_L = QuadDec_M1_GetCounter();
-    previousCount_R = QuadDec_M2_GetCounter();
+    int currentCount_L = abs(QuadDec_M1_GetCounter());
+    int currentCount_R = abs(QuadDec_M2_GetCounter());
+    if(overflowL_flag){
+        motorLeft_RPM = (currentCount_L-previousCount_L-32767)/(57*4*0.1);
+    }else{
+        motorLeft_RPM = (currentCount_L-previousCount_L)/(57*4*0.1);
+    }
+    if(overflowR_flag){
+        motorRight_RPM = (currentCount_R-previousCount_R-32767)/(57*4*0.1);
+    }else{
+        motorRight_RPM = (currentCount_R-previousCount_R)/(57*4*0.1);
+    }
+    previousCount_L = currentCount_L;
+    previousCount_R = currentCount_R;
     
-    count_travelled += (QuadDec_M1_GetCounter()+QuadDec_M2_GetCounter())/2;
+    count_travelled += ((currentCount_L - previousCount_L)+
+                       (currentCount_R - previousCount_R))/2;
+    if(overflowL_flag || overflowR_flag){
+        count_travelled += 32767/2;
+        overflowL_flag = 0;
+        overflowR_flag = 0;
+    }
     
 }
 //

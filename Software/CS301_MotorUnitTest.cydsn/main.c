@@ -35,22 +35,11 @@ int main()
 // --------------------------------    
 // ----- INITIALIZATIONS ----------
     CYGlobalIntEnable;
-    PWM_1_Start();
-    PWM_1_WritePeriod(99);
-    PWM_1_WriteCompare(49);
-    MotorLeft_setRPM(70);
-    PWM_2_Start();
-    PWM_2_WritePeriod(99);
-    PWM_2_WriteCompare(49);
-    MotorRight_setRPM(70);
-    
-    QuadDec_M1_Start();
-    QuadDec_M2_Start();
-    
-    Timer_Motor_Start();
-    isr_TM_StartEx(isr_TM_Interrupt);
-    MotorEnable();
-    LED_1_Write(1);
+    MotorInit();
+    MotorLeft_setDirection(Forward);
+    MotorRight_setDirection(Forward);
+    MotorLeft_setRPM(30);
+    MotorRight_setRPM(30);
     
     bool getSpeed_Uart;
     
@@ -127,6 +116,7 @@ int main()
                 usbPutString(speedString_L);
                 usbPutString(speedString_R);
             }
+            
         }
     }   
 }

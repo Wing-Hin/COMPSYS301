@@ -1,6 +1,6 @@
 -- Project:   CS301_MotorUnitTest
--- Generated: 09/22/2026 08:48:49
--- PSoC Creator  4.2
+-- Generated: 09/23/2026 18:19:38
+-- PSoC Creator  4.4
 
 ENTITY CS301_MotorUnitTest IS
     PORT(
@@ -97,6 +97,8 @@ ARCHITECTURE __DEFAULT__ OF CS301_MotorUnitTest IS
     SIGNAL Net_2404 : bit;
     SIGNAL Net_2460 : bit;
     SIGNAL Net_3236 : bit;
+    SIGNAL Net_3247 : bit;
+    SIGNAL Net_3249 : bit;
     SIGNAL Net_3405 : bit;
     SIGNAL Net_3405_SYNCOUT : bit;
     SIGNAL Net_3406 : bit;
@@ -4680,7 +4682,8 @@ BEGIN
             status_3 => \QuadDec_M1:bQuadDec:error\,
             status_2 => \QuadDec_M1:Net_1260\,
             status_1 => \QuadDec_M1:Net_611\,
-            status_0 => \QuadDec_M1:Net_530\);
+            status_0 => \QuadDec_M1:Net_530\,
+            interrupt => Net_3247);
 
     \QuadDec_M2:Cnt16:CounterUDB:sCTRLReg:ctrlreg\:controlcell
         GENERIC MAP(
@@ -4902,7 +4905,8 @@ BEGIN
             status_3 => \QuadDec_M2:bQuadDec:error\,
             status_2 => \QuadDec_M2:Net_1260\,
             status_1 => \QuadDec_M2:Net_611\,
-            status_0 => \QuadDec_M2:Net_530\);
+            status_0 => \QuadDec_M2:Net_530\,
+            interrupt => Net_3249);
 
     \ADC:SAR:ADC_SAR\:sarcell
         GENERIC MAP(
@@ -5427,6 +5431,22 @@ BEGIN
             is_nmi => 0)
         PORT MAP(
             interrupt => Net_4402,
+            clock => ClockBlock_BUS_CLK);
+
+    isr_DEC1:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_3247,
+            clock => ClockBlock_BUS_CLK);
+
+    isr_DEC2:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_3249,
             clock => ClockBlock_BUS_CLK);
 
     \QuadDec_M1:Net_1251\:macrocell
