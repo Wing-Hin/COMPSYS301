@@ -14,7 +14,7 @@
 
 #include <project.h>
 #include "sensor.h"
-
+#define THOLD_SHIFT 4
 static const uint16 T_MID[N_SENSORS] = {550, 482, 636, 790, 502, 510};
 static const uint16 T_HYS[N_SENSORS] = { 79,  60,  93, 132,  72,  70};
 #define N_SAMPLES  20

@@ -3,7 +3,7 @@
 #include "motorControl.h"
 #include "sensor.h"
 
-#define TURN_DIVISOR 4
+#define TURN_DIVISOR 2
 
 void straight(uint8 speed){
     
@@ -24,7 +24,7 @@ void straight(uint8 speed){
     if ((Q1_Right == SENSOR_BLACK) && (Q2_Left == SENSOR_BLACK)) {
         // Both on line
         MotorLeft_start();
-    MotorRight_start();
+        MotorRight_start();
         MotorLeft_setRPM(speed);
         MotorRight_setRPM(speed);
 

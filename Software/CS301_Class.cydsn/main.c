@@ -60,7 +60,16 @@ int main()
     
     for(;;)
     {   
-        straight(30);
+        SensorFrame f =  sensors_GetFrame();
+        if(f.fresh){
+            LED_1_Write(f.state[Q1] == SENSOR_WHITE);
+            LED_2_Write(f.state[Q2] == SENSOR_WHITE);
+            LED_3_Write(f.state[Q3] == SENSOR_WHITE);
+            LED_4_Write(f.state[Q4] == SENSOR_WHITE);
+            LED_5_Write(f.state[Q5] == SENSOR_WHITE);
+            LED_6_Write(f.state[Q6] == SENSOR_WHITE);
+        }
+        straight(10);
         handle_usb();
         
             flag_KB_string = 0;

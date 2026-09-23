@@ -336,8 +336,6 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
-<name v="..\CS301_Class.cydsn\line_follow.c" />
-<name v="..\CS301_Class.cydsn\line_follow.h" />
 <name v=".\main.c" />
 <name v=".\TopDesign\TopDesign.cysch" />
 <name v=".\sensor.c" />
@@ -348,7 +346,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1355, 703" SelectedTabbedMdiWindow="cf5e87ac-956c-4c0f-9d91-7de178b7b6c6"><DocumentWindow Key="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_Class.cydsn\line_follow.c" Guid="cf5e87ac-956c-4c0f-9d91-7de178b7b6c6" /><DocumentWindow Key="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_Class.cydsn\line_follow.h" Guid="1bf984ae-6182-46cf-b48d-c2962728ff70" /><DocumentWindow Key="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\main.c" Guid="daf2b2f9-31c3-4a05-9608-444b478155c7" /><DocumentWindow Key="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\TopDesign\TopDesign.cysch" Guid="19befc1c-b3f2-4fb2-bfec-0b5bc51f27e7" /><DocumentWindow Key="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\sensor.c" Guid="c5c1cfab-2db9-4464-a64d-3101891ff959" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1355, 703" SelectedTabbedMdiWindow="daf2b2f9-31c3-4a05-9608-444b478155c7"><DocumentWindow Key="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\main.c" Guid="daf2b2f9-31c3-4a05-9608-444b478155c7" /><DocumentWindow Key="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\TopDesign\TopDesign.cysch" Guid="19befc1c-b3f2-4fb2-bfec-0b5bc51f27e7" /><DocumentWindow Key="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\sensor.c" Guid="c5c1cfab-2db9-4464-a64d-3101891ff959" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

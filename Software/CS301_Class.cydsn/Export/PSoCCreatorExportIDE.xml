@@ -274,6 +274,18 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Sensor_TempBuf_dma.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Sensor_FinalBuf_dma.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Sensor_FinalBuf_dma.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_3_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_3.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_3.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_4_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_4.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_4.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_5_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_5.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_5.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_6_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_6.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_6.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_Class.cydsn\Export\ARM_GCC_Generic">
