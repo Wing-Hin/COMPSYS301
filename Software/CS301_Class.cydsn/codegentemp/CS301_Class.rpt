@@ -1,4 +1,4 @@
-Loading plugins phase: Elapsed time ==> 0s.175ms
+Loading plugins phase: Elapsed time ==> 1s.212ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\CS301_Class.cyprj -d CY8C5888LTI-LP097 -s C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
 </CYPRESSTAG>
@@ -9,10 +9,10 @@ ADD: sdb.M0065: information: Analog terminal "vdac_ref" on ADC_SAR_SEQ_v2_10 is 
  * C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v2_10\PSoC5\ADC_SAR_SEQ_v2_10.cysch (Shape_885)
 
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 1s.574ms
+Elaboration phase: Elapsed time ==> 10s.758ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.068ms
+HDL generation phase: Elapsed time ==> 0s.071ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -46,7 +46,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\TEMP\COMPSY
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Thu Sep 24 16:50:08 2026
+Thu Sep 24 19:58:33 2026
 
 
 ======================================================================
@@ -56,7 +56,7 @@ Options  :    -yv2 -q10 CS301_Class.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Thu Sep 24 16:50:08 2026
+Thu Sep 24 19:58:33 2026
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_constant_v1_0\cy_constant_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
@@ -121,7 +121,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\TEMP\COMPSY
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Thu Sep 24 16:50:08 2026
+Thu Sep 24 19:58:34 2026
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -168,7 +168,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\TEMP\COMPSY
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Thu Sep 24 16:50:08 2026
+Thu Sep 24 19:58:35 2026
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -1372,14 +1372,14 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\bin\warp.exe
 Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\CS301_Class.cyprj -dcpsoc3 CS301_Class.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 1s.174ms
+Warp synthesis phase: Elapsed time ==> 2s.283ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V4.2.0.641, Family: PSoC3, Started at: Thursday, 24 September 2026 16:50:09
+cyp3fit: V4.2.0.641, Family: PSoC3, Started at: Thursday, 24 September 2026 19:58:35
 Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\CS301_Class.cyprj -d CY8C5888LTI-LP097 CS301_Class.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.115ms
+Design parsing phase: Elapsed time ==> 0s.071ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech Mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -6470,8 +6470,8 @@ Analog (SC/CT) Blocks         :    0 :    4 :    4 :  0.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    0 :    4 :    4 :  0.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.758ms
-Tech Mapping phase: Elapsed time ==> 0s.957ms
+Technology Mapping: Elapsed time ==> 0s.384ms
+Tech Mapping phase: Elapsed time ==> 0s.491ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Info: apr.M0002: Analog signal "Net_4415" is connected to one terminal only. (App=cydsfit)
@@ -6613,10 +6613,10 @@ SAR[1]@[FFB(SAR,1)] : \ADC_Sensor:SAR:ADC_SAR\
 Vref[13]@[FFB(Vref,13)] : \ADC_Sensor:SAR:vRef_Vdda_1\
 USB[0]@[FFB(USB,0)] : \USBUART:USB\
 
-Analog Placement phase: Elapsed time ==> 4s.950ms
+Analog Placement phase: Elapsed time ==> 3s.024ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
-Analog Routing phase: Elapsed time ==> 0s.011ms
+Analog Routing phase: Elapsed time ==> 0s.006ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Code Generation">
 ============ Analog Final Answer Routes ============
@@ -7345,11 +7345,11 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = True
-Analog Code Generation phase: Elapsed time ==> 0s.214ms
+Analog Code Generation phase: Elapsed time ==> 0s.160ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
-I2076: Total run-time: 2.3 sec.
+I2076: Total run-time: 2.5 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
@@ -7373,14 +7373,14 @@ PLD Packing Summary
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.022ms
+PLD Packing: Elapsed time ==> 0s.018ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.207ms
+Partitioning: Elapsed time ==> 0s.208ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -13372,34 +13372,34 @@ Port | Pin | Fixed |      Type |       Drive Mode |            Name | Connection
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.122ms
-Digital Placement phase: Elapsed time ==> 2s.978ms
+Digital component placer commit/Report: Elapsed time ==> 0s.128ms
+Digital Placement phase: Elapsed time ==> 3s.284ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\bin/sjrouter.exe" --xml-path "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\dev\psoc5/psoc5lp/route_arch-rrg.cydata" --vh2-path "CS301_Class_r.vh2" --pcf-path "CS301_Class.pco" --des-name "CS301_Class" --dsf-path "CS301_Class.dsf" --sdc-path "CS301_Class.sdc" --lib-path "CS301_Class_r.lib"
 Routing successful.
-Digital Routing phase: Elapsed time ==> 1s.942ms
+Digital Routing phase: Elapsed time ==> 2s.015ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Generation">
-Bitstream Generation phase: Elapsed time ==> 0s.198ms
+Bitstream Generation phase: Elapsed time ==> 0s.215ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Verification">
-Bitstream Verification phase: Elapsed time ==> 0s.047ms
+Bitstream Verification phase: Elapsed time ==> 0s.049ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Warning: sta.M0021: CS301_Class_timing.html: Warning-1350: Asynchronous path(s) exist from "ClockBlock/dclk_glb_ff_4" to "ADC_Sensor_IntClock". See the timing report for details. (File=C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\CS301_Class_timing.html)
 Timing report is in CS301_Class_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.410ms
+Static timing analysis phase: Elapsed time ==> 0s.488ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.003ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.169ms
+Design database save phase: Elapsed time ==> 0s.177ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 12s.082ms
+cydsfit: Elapsed time ==> 10s.060ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 12s.100ms
-API generation phase: Elapsed time ==> 1s.547ms
-Dependency generation phase: Elapsed time ==> 0s.012ms
-Cleanup phase: Elapsed time ==> 0s.000ms
+Fitter phase: Elapsed time ==> 10s.065ms
+API generation phase: Elapsed time ==> 3s.426ms
+Dependency generation phase: Elapsed time ==> 0s.014ms
+Cleanup phase: Elapsed time ==> 0s.002ms

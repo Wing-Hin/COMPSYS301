@@ -36,6 +36,25 @@ extern volatile int motorSpeed_tick;
 const float Vblack_LON;
 const float Vwhite_LON;
 
+/* SysTick callback slot 0 provides a real 1 ms clock for ADC-stall detection. */
+static volatile uint32 lineFollowMs;
+static uint32 lastLineFrameMs;
+static void LineFollowClock(void)
+{
+    ++lineFollowMs;
+}
+
+static void UpdateLineFollowing(const SensorFrame *frame, uint32 now)
+{
+    if (frame->fresh) {
+        lastLineFrameMs = now;
+        straightFromFrame(60, frame); /* Keep the current base speed. */
+    } else if ((uint32)(now - lastLineFrameMs) >=
+               LINE_FOLLOW_SENSOR_TIMEOUT_MS) {
+        straightFromFrame(0, NULL); /* Sensor stream has stopped updating. */
+    }
+}
+
 int main()
 {
     
@@ -44,6 +63,7 @@ int main()
 // ----- INITIALIZATIONS ----------
     sensor_init();
     MotorInit();
+    MotorDisable(); /* Wait for a valid frame before enabling movement. */
     //MotorLeft_setRPM(30);
     //MotorRight_setRPM(30);
     
@@ -55,6 +75,10 @@ int main()
 #endif        
         
     RF_BT_SELECT_Write(0);
+
+    CySysTickInit(); /* Existing CyLib uses a nominal 1 ms tick. */
+    CySysTickSetCallback(0U, LineFollowClock);
+    CySysTickEnable();
 
     //usbPutString(displaystring);
     
@@ -69,7 +93,11 @@ int main()
             LED_5_Write(f.state[Q5] == SENSOR_WHITE);
             LED_6_Write(f.state[Q6] == SENSOR_WHITE);
         }
-        straight(10);
+        /* Reuse the LED snapshot: reading sensors_GetFrame again would clear
+         * or consume freshness independently. Do not call this during a turn
+         * when turn integration is added; that controller must own the motors.
+         */
+        UpdateLineFollowing(&f, lineFollowMs);
         handle_usb();
         
             flag_KB_string = 0;
@@ -90,7 +118,8 @@ void usbPutString(char *s)
 //  length to 62 char (63rd char is a '!')
 
 #ifdef USE_USB     
-    while (USBUART_CDCIsReady() == 0);
+    /* Do not let a disconnected USB host block the sensor timeout. */
+    if (USBUART_CDCIsReady() == 0) return;
     s[63]='\0';
     s[62]='!';
     USBUART_PutData((uint8*)s,strlen(s));
@@ -100,7 +129,7 @@ void usbPutString(char *s)
 void usbPutChar(char c)
 {
 #ifdef USE_USB     
-    while (USBUART_CDCIsReady() == 0);
+    if (USBUART_CDCIsReady() == 0) return;
     USBUART_PutChar(c);
 #endif    
 }
@@ -148,7 +177,7 @@ void handle_usb()
                 {
                     if (usbBufCount > (BUF_SIZE-2) ) // one less else strtok triggers a crash
                     {
-                       USBUART_PutChar('!');        
+                       usbPutChar('!');
                     }
                     else
                         entry[usbBufCount++] = c;  

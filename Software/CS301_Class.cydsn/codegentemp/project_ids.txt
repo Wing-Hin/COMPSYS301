@@ -1,7 +1,6 @@
-C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\CS301_SensorTestUnit.cyprj|f8be9235-8c0a-46c8-9f30-5130c2a56bea
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|3475fce1-08c1-4dff-bdc0-e0186197c21f
-C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|2b5eabc9-a8d3-4c52-9885-4c2650924d70
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|2700cab1-f6ef-4009-b9f6-82a19976f609
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|390df277-ed5f-4ac1-9836-c98782795f5c
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|d3cd7347-9fe8-488e-9da6-c700dc3c7e0f
-C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\CS301_Class.cyprj|bf694fcd-10ad-4219-9214-306f6e0bad19
+C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\CS301_Class.cyprj|31d77b99-e26f-4335-b9ef-b97a4dc79e97
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|07c4ca8c-8afc-4f18-9862-998dbf20c4a0
+C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|f8741218-1c53-4aab-ac69-6b04b96a6f43
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|f234bd37-3200-4338-8e7c-cfd8a57982b9
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|37fd0372-22b3-4d7e-94b9-a68e315c762f
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|ea58973c-1b81-492e-9db5-725f907fc0c2
