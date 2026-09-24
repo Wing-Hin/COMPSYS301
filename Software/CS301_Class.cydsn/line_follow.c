@@ -11,7 +11,15 @@
                             125 x 8 ms = 1 s, then stop                   */
 
 /* ---- Lookup-table steering (LF_USE_TABLE 1) ---- */
-#define LF_STEP      1   /* speed points per level: level 3 -> +3 on outer wheel */
+#define LF_STEP      1   /* speed points per level AT LF_REF_SPEED            */
+#define LF_REF_SPEED 10  /* boost scales with base speed so the path shape is
+                            the same at every speed: level 3 -> +3 at base 10,
+                            +6 at base 20, +12 at base 40                     */
+#define LF_SLOW_PCT  0   /* % of base speed removed per level while correcting
+                            (both wheels). 0 = off. Try 10-15 if fast runs
+                            still overshoot; base never drops below LF_MIN_BASE */
+#define LF_MIN_BASE  8   /* floor for the slowed base so the inner wheel never
+                            enters the motor stall region                     */
 
 #define LF_MEM_F   100   /* front pair lost: steer 3 toward last front side     */
 #define LF_MEM_R   101   /* rear pair lost: counter-steer 1 from last rear side */
@@ -86,7 +94,7 @@ void straightFromFrame(uint8 speed, const SensorFrame *frame)
     static int lastFront, lastRear;   /* last side each pair saw the line: +1 right, -1 left */
     static unsigned int lostFrames;   /* frames in a row with all four white */
     unsigned int i;
-    int fl, fr, rl, rr, boost, left, right;
+    int fl, fr, rl, rr, base, boost, left, right;
 
     if (frame == NULL || speed == 0) { StopFollowing(); return; }
     for (i = 0; i < 4; ++i) {
@@ -111,6 +119,7 @@ void straightFromFrame(uint8 speed, const SensorFrame *frame)
     } else {
         lostFrames = 0;
     }
+    base = (int)speed;
 
 #if LF_USE_TABLE
     {
@@ -128,7 +137,20 @@ void straightFromFrame(uint8 speed, const SensorFrame *frame)
         } else if (level == LF_LOST) {
             level = 3 * (lastFront != 0 ? lastFront : lastRear);
         }
-        boost = LF_STEP * level;
+        /* Scale with speed: multiply before dividing so small values do not
+         * truncate to zero, and always steer at least one point per level.
+         */
+        boost = LF_STEP * level * base / LF_REF_SPEED;
+        if (level > 0 && boost < level) boost = level;
+        if (level < 0 && boost > level) boost = level;
+
+#if LF_SLOW_PCT > 0
+        {
+            int mag = level < 0 ? -level : level;
+            base -= base * LF_SLOW_PCT * mag / 100;
+            if (base < LF_MIN_BASE) base = LF_MIN_BASE;
+        }
+#endif
     }
 #else
     {
@@ -153,11 +175,11 @@ void straightFromFrame(uint8 speed, const SensorFrame *frame)
      * base speed so it never drops into the motor's stall region.
      */
     if (boost > 0) {                  /* turn right: left wheel faster */
-        left  = ClampSpeed((int)speed + boost);
-        right = ClampSpeed((int)speed);
+        left  = ClampSpeed(base + boost);
+        right = ClampSpeed(base);
     } else {                          /* turn left: right wheel faster */
-        left  = ClampSpeed((int)speed);
-        right = ClampSpeed((int)speed - boost);
+        left  = ClampSpeed(base);
+        right = ClampSpeed(base - boost);
     }
 
     MotorLeft_setRPM(left);

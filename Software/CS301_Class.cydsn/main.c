@@ -48,7 +48,7 @@ static void UpdateLineFollowing(const SensorFrame *frame, uint32 now)
 {
     if (frame->fresh) {
         lastLineFrameMs = now;
-        straightFromFrame(35, frame); /* Keep the current base speed. */
+        straightFromFrame(60, frame); /* Keep the current base speed. */
     } else if ((uint32)(now - lastLineFrameMs) >=
                LINE_FOLLOW_SENSOR_TIMEOUT_MS) {
         straightFromFrame(0, NULL); /* Sensor stream has stopped updating. */
