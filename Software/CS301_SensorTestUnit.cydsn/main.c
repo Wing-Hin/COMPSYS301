@@ -36,8 +36,7 @@ int main()
 // ----- INITIALIZATIONS ----------
     CYGlobalIntEnable;
     sensor_init();
-    //LED_1_Write(0);
-
+    //LED_1_Write(0)
 
 // ------USB SETUP ----------------    
 #ifdef USE_USB    
@@ -54,7 +53,6 @@ int main()
             LED_5_Write(f.state[Q5] == SENSOR_WHITE);
             LED_6_Write(f.state[Q6] == SENSOR_WHITE);
         }
-      
     }   
 }
 //* ========================================

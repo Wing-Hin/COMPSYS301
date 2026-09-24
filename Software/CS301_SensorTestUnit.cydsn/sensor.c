@@ -34,7 +34,7 @@ uint8 win = 0;
 CY_ISR_PROTO(eocHandler);
 CY_ISR(eocHandler){
     uint16 i;
-    
+    Timer_TS_ReadStatusRegister();
     for (i = 0; i < N_SENSORS; i++) {
         int16 v = ADC_Sensor_GetResult16(i);   
         if (v < 0) v = 0;
@@ -77,10 +77,9 @@ void sensor_init(void) {
         Vpp[i] = 0;
     }
     resetWindow();
- 
+    Timer_TS_Start();
     ADC_Sensor_Start();
     ADC_Sensor_IRQ_StartEx(eocHandler);   // internal IRQ of the sequencer
-    ADC_Sensor_StartConvert();            //free running starts from here 
 }
 
 SensorFrame sensors_GetFrame(void){
@@ -89,7 +88,6 @@ SensorFrame sensors_GetFrame(void){
     sensor_frame_copy = *(SensorFrame *)&latest;
     latest.fresh = 0;
     CyExitCriticalSection(s);
-    
     return sensor_frame_copy;
 }
 

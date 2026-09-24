@@ -27,7 +27,7 @@
 #include "ADC_Sensor_SAR.h"
 
 #define ADC_Sensor_NUMBER_OF_CHANNELS    (6u)
-#define ADC_Sensor_SAMPLE_MODE           (0u)
+#define ADC_Sensor_SAMPLE_MODE           (2u)
 #define ADC_Sensor_CLOCK_SOURCE          (0u)
 
 extern int16  ADC_Sensor_finalArray[ADC_Sensor_NUMBER_OF_CHANNELS];

@@ -25,7 +25,7 @@
       <Tool Name="postbuild" Command="" Options="" />
     </Toolchain>
   </Toolchains>
-  <Project Name="CS301_SensorTestUnit" Path="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" Version="5.82" Type="Normal">
+  <Project Name="CS301_SensorTestUnit" Path="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" Version="5.82" Type="Normal">
     <CMSIS_SVD_File>CS301_SensorTestUnit.svd</CMSIS_SVD_File>
     <Datasheet />
     <LinkerFiles>
@@ -34,8 +34,8 @@
       <LinkerFile Toolchain="ARM IAR Generic">.\Generated_Source\PSoC5\Cm3Iar.icf</LinkerFile>
     </LinkerFiles>
     <Folders>
-      <Folder BuildType="STRICT" Path="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn">
-        <Files Root="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn">
+      <Folder BuildType="STRICT" Path="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn">
+        <Files Root="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn">
           <File BuildType="BUILD" Toolchain="">main.c</File>
           <File BuildType="BUILD" Toolchain="">tacho.c</File>
           <File BuildType="BUILD" Toolchain="">sensor.c</File>
@@ -44,8 +44,8 @@
           <File BuildType="BUILD" Toolchain="">sensor.h</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\Generated_Source\PSoC5">
-        <Files Root="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn">
+      <Folder BuildType="STRICT" Path="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\Generated_Source\PSoC5">
+        <Files Root="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn">
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitter_cfg.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitter_cfg.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cymetadata.c</File>
@@ -101,8 +101,6 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Sensor.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Sensor_PM.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Sensor_INT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_TS.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_TS.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_TS.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_TS.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_TS_PM.c</File>
@@ -263,52 +261,55 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_6_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_6.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\LED_6.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_TEST_PIN_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_TEST_PIN.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_TEST_PIN.h</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\Export\ARM_GCC_Generic">
-        <Files Root="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn">
+      <Folder BuildType="STRICT" Path="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\Export\ARM_GCC_Generic">
+        <Files Root="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn">
           <File BuildType="BUILD" Toolchain="ARM GCC Generic">.\Export\ARM_GCC_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\Export\ARM_MDK_Generic">
-        <Files Root="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn">
+      <Folder BuildType="STRICT" Path="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\Export\ARM_MDK_Generic">
+        <Files Root="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn">
           <File BuildType="BUILD" Toolchain="ARM MDK Generic">.\Export\ARM_MDK_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\Export\ARM_IAR_Generic">
-        <Files Root="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn">
+      <Folder BuildType="STRICT" Path="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\Export\ARM_IAR_Generic">
+        <Files Root="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn">
           <File BuildType="BUILD" Toolchain="ARM IAR Generic">.\Export\ARM_IAR_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\codegentemp">
-        <Files Root="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
+        <Files Root="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_441">
-        <Files Root="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
+        <Files Root="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_473">
-        <Files Root="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
+        <Files Root="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051_Keil_952">
-        <Files Root="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
+        <Files Root="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051">
-        <Files Root="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
+        <Files Root="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0">
-        <Files Root="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
+        <Files Root="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0p">
-        <Files Root="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
+        <Files Root="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM3">
-        <Files Root="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
+        <Files Root="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM4">
-        <Files Root="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
+        <Files Root="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM7">
-        <Files Root="C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
+        <Files Root="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn" />
       </Folder>
     </Folders>
   </Project>
