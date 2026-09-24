@@ -178,8 +178,10 @@ void Motor_maintainSpeed(){
 
 
 //Get distance travelled in meters
-float Motor_getDistanceTravelled(){
-    return count_travelled/(57*4)*2*3.1415926*WheelRadius;
+void Motor_getCount(int16_t *left, int16_t *right){
+    *left = QuadDec_M1_GetCounter();
+    *right = QuadDec_M2_GetCounter();
+    return;
 }
 //
 

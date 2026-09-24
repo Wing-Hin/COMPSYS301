@@ -1,5 +1,5 @@
 -- Project:   CS301_Class
--- Generated: 09/24/2026 13:40:57
+-- Generated: 09/24/2026 16:36:25
 -- PSoC Creator  4.4
 
 ENTITY CS301_Class IS
@@ -5617,6 +5617,14 @@ BEGIN
             is_nmi => 0)
         PORT MAP(
             interrupt => Net_4409,
+            clock => ClockBlock_BUS_CLK);
+
+    isr_TS:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_4417,
             clock => ClockBlock_BUS_CLK);
 
     \QuadDec_M1:Net_1251\:macrocell

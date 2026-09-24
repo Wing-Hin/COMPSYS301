@@ -73,6 +73,8 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitteriar.inc</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitter.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cydisabledsheets.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_TS.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_TS.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_TS.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_TS.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Timer_TS_PM.c</File>

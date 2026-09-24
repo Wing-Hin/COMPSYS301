@@ -49,6 +49,7 @@ int main()
 // ----- INITIALIZATIONS ----------
     sensor_init();
     MotorInit();
+    isr_TS_StartEx(isr_TS_Interrupt);
     //MotorLeft_setRPM(30);
     //MotorRight_setRPM(30);
     
@@ -74,20 +75,19 @@ int main()
             LED_5_Write(f.state[Q5] == SENSOR_WHITE);
             LED_6_Write(f.state[Q6] == SENSOR_WHITE);
         }
-        /*
+        
         previousState = currentState;
         currentState = RobotDecideState(f.state);
         if(previousState != currentState && currentState == ROBOT_STATE_LEFT_BRANCH){
-        
+            TurnStart(TURN_LEFT);
         }
         else if(previousState != currentState && currentState == ROBOT_STATE_LEFT_BRANCH){
             
         }
         else if (currentState == ROBOT_STATE_FOLLOW_LINE && TurnGetState() == TURN_IDLE){
-            straight(10);
+            straight(20);
         }
-        */
-        straight(20);
+
         handle_usb();
         
             flag_KB_string = 0;
@@ -95,6 +95,58 @@ int main()
             Motor_isr_flag = 0;
             Motor_captureRPM();
             Motor_maintainSpeed();
+        }
+        if( TS_isr_count >=12){
+            TS_isr_count=0;
+            TurnUpdate();
+            char string[32];
+            //sprintf(string, "leftcount:%d \r\n right count:%d",leftTravelCounts, rightTravelCounts);
+            //sprintf(string, "leftcount:%d \r\n right count:%d",left, right);
+            //usbPutString(string);
+            
+            switch(TurnGetState()){
+                case TURN_IDLE:
+                    usbPutString("idle");
+                    break;
+                case TURN_APPROACH:
+                    usbPutString("approach");
+                    break;
+                case TURN_LEAVE_LINE:
+                    usbPutString("leave line");
+                    break;
+                case TURN_FIND_LINE:
+                    usbPutString("find line");
+                    break;
+                case TURN_DONE:
+                    usbPutString("done");
+                    break;
+                case TURN_FAULT:
+                    usbPutString("fault");
+                    break;
+            }
+            
+            /*
+            switch(currentState){
+            case ROBOT_STATE_SENSOR_FAULT:
+                usbPutString("fault");
+                break;
+            case ROBOT_STATE_LINE_LOST:
+                usbPutString("line lost");
+                break;
+            case ROBOT_STATE_FOLLOW_LINE:
+                usbPutString("follow");
+                break;
+            case ROBOT_STATE_LEFT_BRANCH:
+                usbPutString("left");
+                break;
+            case ROBOT_STATE_RIGHT_BRANCH:
+                usbPutString("right");
+                break;
+            case ROBOT_STATE_JUNCTION:
+                usbPutString("junction");
+                break;
+            }
+            */
         }
         
     }        

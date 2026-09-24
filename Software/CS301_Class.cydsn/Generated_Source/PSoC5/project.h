@@ -105,6 +105,7 @@
 #include "LED_5.h"
 #include "LED_6_aliases.h"
 #include "LED_6.h"
+#include "isr_TS.h"
 #include "QuadDec_M1_Cnt16.h"
 #include "QuadDec_M2_Cnt16.h"
 #include "ADC_Sensor_SAR.h"

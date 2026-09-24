@@ -7,6 +7,11 @@
 /* All commonly changed values are grouped in this file. */
 #include "turn_config.h"
 
+int64_t leftTravelCounts;
+int64_t rightTravelCounts;
+    int16_t left;
+    int16_t right;
+volatile int TS_isr_count;
 /* Configuration checks: invalid settings stop compilation. */
 #if TURN_APPROACH_SPEED < 1 || TURN_APPROACH_SPEED > 100
 #error "TURN_APPROACH_SPEED must be 1..100"
