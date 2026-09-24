@@ -10,6 +10,8 @@
  * ========================================
 */
 
+#ifndef SENSOR_H
+#define SENSOR_H
 #include <project.h>
 
 #define N_SENSORS 6
@@ -33,5 +35,7 @@ void resetWindow(void);
 void sensor_init(void);
 SensorFrame sensors_GetFrame(void);
 uint8 getSingleSensorState(int8 sensor_th);
+
+#endif
 
 /* [] END OF FILE */
