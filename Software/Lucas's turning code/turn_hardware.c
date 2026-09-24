@@ -12,7 +12,8 @@
 SensorFrame controlSensorFrame;
 
 uint8_t ReadSensor(SensorId sensor)
-{
+{   
+    controlSensorFrame = sensors_GetFrame();
     static const uint8 channelForSensor[SENSOR_COUNT] = {Q3, Q6, Q5, Q4, Q1, Q2};
     /* main validates all channels and freshness before calling the controller.
      * Reading this cached frame avoids pair skew and repeated freshness reads.
@@ -96,6 +97,5 @@ void ReadWheelEncoderCounts(int16_t *left, int16_t *right)
      * Start QuadDec_M1 and QuadDec_M2 once in your hardware initialization.
      * TurnStart saves a baseline; no hardware counter is reset here.
      */
-    *left = QuadDec_M1_GetCounter();
-    *right = QuadDec_M2_GetCounter();
+    Motor_get_totalCount(left,right);
 }

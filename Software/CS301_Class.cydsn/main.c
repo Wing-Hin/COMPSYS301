@@ -22,6 +22,10 @@
 #include "sensor.h"
 #include "motorControl.h"
 
+#include "robot_state.h"
+#include "turn.h"
+#include "turn_hardware.h"
+
 //* ========================================
 #include "defines.h"
 #include "vars.h"
@@ -32,9 +36,13 @@ void handle_usb();
 //* ========================================
 
 extern volatile int motorSpeed_tick;
+volatile int count_beforeRestart;
+volatile bool sideSensorDisable = 0;
+int sideSensorDisablecount;
 
-const float Vblack_LON;
-const float Vwhite_LON;
+SensorFrame f;
+RobotState currentState;
+RobotState previousState;
 
 /* SysTick callback slot 0 provides a real 1 ms clock for ADC-stall detection. */
 static volatile uint32 lineFollowMs;
@@ -84,15 +92,31 @@ int main()
     
     for(;;)
     {   
-        SensorFrame f =  sensors_GetFrame();
+        f =  sensors_GetFrame();
+        
         if(f.fresh){
-            LED_1_Write(f.state[Q1] == SENSOR_WHITE);
-            LED_2_Write(f.state[Q2] == SENSOR_WHITE);
+            LED_1_Write(getSingleSensorState(Q1) == SENSOR_WHITE);
+            LED_2_Write(getSingleSensorState(Q2) == SENSOR_WHITE);
             LED_3_Write(f.state[Q3] == SENSOR_WHITE);
             LED_4_Write(f.state[Q4] == SENSOR_WHITE);
             LED_5_Write(f.state[Q5] == SENSOR_WHITE);
             LED_6_Write(f.state[Q6] == SENSOR_WHITE);
         }
+        
+        previousState = currentState;
+        currentState = RobotDecideState(f.state);
+        if(!sideSensorDisable && previousState != currentState && currentState == ROBOT_STATE_LEFT_BRANCH){
+            TurnStart(TURN_LEFT);
+            sideSensorDisable =1;
+        }
+        else if(!sideSensorDisable && previousState != currentState && currentState == ROBOT_STATE_RIGHT_BRANCH){
+            TurnStart(TURN_RIGHT);
+            sideSensorDisable=1;
+        }
+        else if (currentState == ROBOT_STATE_FOLLOW_LINE && TurnGetState() == TURN_IDLE){
+            straight(20);
+        }
+
         /* Reuse the LED snapshot: reading sensors_GetFrame again would clear
          * or consume freshness independently. Do not call this during a turn
          * when turn integration is added; that controller must own the motors.
@@ -105,6 +129,73 @@ int main()
             Motor_isr_flag = 0;
             Motor_captureRPM();
             Motor_maintainSpeed();
+        
+        }
+        
+        if(Turn_isr_count >=100){
+            Turn_isr_count=0;
+            TurnUpdate();
+            if(TurnGetState() == TURN_DONE){
+                count_beforeRestart++;
+                if(count_beforeRestart >=10){
+                    count_beforeRestart = 0;
+                    
+                }
+            }
+            if(sideSensorDisablecount >= 500){
+                        sideSensorDisable=0;
+                        sideSensorDisablecount = 0;
+                    }
+                    sideSensorDisablecount++;
+            /*
+            char string[32];
+            sprintf(string, "leftcount:%d \r\n right count:%d",leftTravelCounts, rightTravelCounts);
+            usbPutString(string);
+            */
+            /*
+            switch(TurnGetState()){
+                case TURN_IDLE:
+                    usbPutString("idle");
+                    break;
+                case TURN_APPROACH:
+                    usbPutString("approach");
+                    break;
+                case TURN_LEAVE_LINE:
+                    usbPutString("leave line");
+                    break;
+                case TURN_FIND_LINE:
+                    usbPutString("find line");
+                    break;
+                case TURN_DONE:
+                    usbPutString("done");
+                    break;
+                case TURN_FAULT:
+                    usbPutString("fault");
+                    break;
+            }
+            */
+            /*
+            switch(currentState){
+            case ROBOT_STATE_SENSOR_FAULT:
+                usbPutString("fault");
+                break;
+            case ROBOT_STATE_LINE_LOST:
+                usbPutString("line lost");
+                break;
+            case ROBOT_STATE_FOLLOW_LINE:
+                usbPutString("follow");
+                break;
+            case ROBOT_STATE_LEFT_BRANCH:
+                usbPutString("left");
+                break;
+            case ROBOT_STATE_RIGHT_BRANCH:
+                usbPutString("right");
+                break;
+            case ROBOT_STATE_JUNCTION:
+                usbPutString("junction");
+                break;
+            }
+            */
         }
         
     }        

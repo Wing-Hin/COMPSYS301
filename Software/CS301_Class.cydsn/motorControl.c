@@ -29,7 +29,8 @@ static volatile float previousError_R;
 
 volatile int previousCount_L = 0;
 volatile int previousCount_R = 0;
-volatile int count_travelled = 0;
+volatile int count_travelledL = 0;
+volatile int count_travelledR = 0;
 //
 
 void MotorInit(){
@@ -180,9 +181,16 @@ void Motor_maintainSpeed(){
 
 
 //Get distance travelled in meters
-float Motor_getDistanceTravelled(){
-    return count_travelled/(57*4)*2*3.1415926*WheelRadius;
+void Motor_get_totalCount(int16_t *left, int16_t *right){
+    *left = count_travelledL;
+    *right = count_travelledR;
+    return;
 }
+void Motor_reset_totalCount(){
+    count_travelledL =0;
+    count_travelledR =0;
+}
+
 //
 
 
@@ -191,10 +199,10 @@ float Motor_getDistanceTravelled(){
 void Motor_captureRPM(){
     motorLeft_RPM = (QuadDec_M1_GetCounter()-previousCount_L)/(57*4*0.1);
     motorRight_RPM = (QuadDec_M2_GetCounter()-previousCount_R)/(57*4*0.1);
+    count_travelledL += abs((int)(QuadDec_M1_GetCounter()-previousCount_L));
+    count_travelledR += abs((int)(QuadDec_M1_GetCounter()-previousCount_R));
     previousCount_L = QuadDec_M1_GetCounter();
     previousCount_R = QuadDec_M2_GetCounter();
-    
-    count_travelled += (QuadDec_M1_GetCounter()+QuadDec_M2_GetCounter())/2;
     
 }
 //

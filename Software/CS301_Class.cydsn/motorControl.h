@@ -20,8 +20,8 @@
 #define Backward false
 #define Max_safeSpeed 3.0f
 #define WheelRadius 0.0325
-#define Kp 0.5
-#define Ki 0.0
+#define Kp 0.8
+#define Ki 0.1
 #define Kd 0.0
 #define Ts 0.1
 
@@ -47,7 +47,8 @@ void MotorRight_setDirection(bool direction);
 
 void Motor_maintainSpeed(void);
 
-float Motor_getDistanceTravelled(void);
+void Motor_get_totalCount(int16_t *left, int16_t *right);
+void Motor_reset_totalCount();
 
 void Motor_captureRPM(void);
 

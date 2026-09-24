@@ -19,7 +19,9 @@
 #include <cydevice_trm.h>
 #include <CyLib.h>
 #include <isr_TS.h>
+#include <project.h>
 
+volatile int count;
 
 #if !defined(isr_TS__REMOVED) /* Check for removal by optimization */
 
@@ -165,7 +167,8 @@ CY_ISR(isr_TS_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START isr_TS_Interrupt` */
-
+    count++;
+    Timer_TS_ReadStatusRegister();
     /* `#END` */
 }
 

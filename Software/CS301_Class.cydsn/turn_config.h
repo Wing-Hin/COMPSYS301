@@ -41,7 +41,7 @@
 #define TURN_TIMEOUT_MS 4000UL
 #endif
 #ifndef TURN_CONFIRM_READINGS
-#define TURN_CONFIRM_READINGS 2U
+#define TURN_CONFIRM_READINGS 1U
 #endif
 /* Scheduling contract: call the controller every 5 ms; do not tune this. */
 #define TURN_UPDATE_MS 5UL
