@@ -15,11 +15,11 @@
 /* File-scope static variables are private to this file and retain their values
  * between calls, allowing each update to continue where the last one stopped.
  */
-static TurnState state = TURN_IDLE;              /* Current turning stage. */
+TurnState state = TURN_IDLE;              /* Current turning stage. */
 static TurnDirection turnDirection = TURN_LEFT;  /* Direction saved at start. */
 static uint16_t consecutive = 0;                 /* Successful checks in a row. */
 static uint32_t elapsedTicks = 0;                /* 5 ms updates since start. */
-volatile int TS_isr_count = 0;
+volatile int Turn_isr_count = 0;
 
 /* Previous raw encoder readings and accumulated travel since TurnStart.
  * The travel totals use wider integers so hardware counter wraps do not limit
@@ -27,10 +27,8 @@ volatile int TS_isr_count = 0;
  */
 static int16_t previousLeftCount;
 static int16_t previousRightCount;
- int64_t leftTravelCounts;
- int64_t rightTravelCounts;
-int16_t left;
-int16_t right;
+static int64_t leftTravelCounts;
+static int64_t rightTravelCounts;
 
 /* Handle the existing 16-bit hardware counters wrapping in either direction.
  * Subtract after widening to avoid signed overflow or narrowing conversions.
@@ -47,6 +45,8 @@ static int32_t EncoderDelta(int16_t current, int16_t previous)
 
 static bool ApproachDistanceReached(void)
 {
+    int16_t left;
+    int16_t right;
     ReadWheelEncoderCounts(&left, &right);
     /* Add only movement since the previous update. Each sign setting converts
      * that wheel's raw encoder direction into positive forward travel.

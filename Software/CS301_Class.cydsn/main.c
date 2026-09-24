@@ -67,6 +67,7 @@ int main()
     for(;;)
     {   
         f =  sensors_GetFrame();
+        
         if(f.fresh){
             LED_1_Write(getSingleSensorState(Q1) == SENSOR_WHITE);
             LED_2_Write(getSingleSensorState(Q2) == SENSOR_WHITE);
@@ -82,7 +83,7 @@ int main()
             TurnStart(TURN_LEFT);
         }
         else if(previousState != currentState && currentState == ROBOT_STATE_LEFT_BRANCH){
-            
+            TurnStart(TURN_RIGHT);
         }
         else if (currentState == ROBOT_STATE_FOLLOW_LINE && TurnGetState() == TURN_IDLE){
             straight(20);
@@ -95,13 +96,13 @@ int main()
             Motor_isr_flag = 0;
             Motor_captureRPM();
             Motor_maintainSpeed();
-        }
-        if( TS_isr_count >=12){
-            TS_isr_count=0;
             TurnUpdate();
+        }
+        
+        if(Turn_isr_count >=7){
+            Turn_isr_count=0;
             char string[32];
             //sprintf(string, "leftcount:%d \r\n right count:%d",leftTravelCounts, rightTravelCounts);
-            //sprintf(string, "leftcount:%d \r\n right count:%d",left, right);
             //usbPutString(string);
             
             switch(TurnGetState()){

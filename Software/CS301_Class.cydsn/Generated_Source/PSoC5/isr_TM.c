@@ -20,6 +20,8 @@
 #include <CyLib.h>
 #include <isr_TM.h>
 #include <motorControl.h>
+#include <turn.h>
+
 
 
 #if !defined(isr_TM__REMOVED) /* Check for removal by optimization */
@@ -167,6 +169,7 @@ CY_ISR(isr_TM_Interrupt)
     /*  Place your Interrupt code here. */
     /* `#START isr_TM_Interrupt` */
     Motor_isr_flag = 1;
+
     Timer_Motor_ReadStatusRegister();
     /* `#END` */
 }

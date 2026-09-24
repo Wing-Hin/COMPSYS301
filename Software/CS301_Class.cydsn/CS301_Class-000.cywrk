@@ -7,9 +7,9 @@
 <wrkspc_folders />
 <files />
 <projects>
-<v>..\CS301_SensorTestUnit.cydsn\CS301_SensorTestUnit.cyprj</v>
 <v>.\CS301_Class.cyprj</v>
 <v>..\CS301_MotorUnitTest.cydsn\CS301_MotorUnitTest.cyprj</v>
+<v>..\CS301_SensorTestUnit.cydsn\CS301_SensorTestUnit.cyprj</v>
 </projects>
 <workspace_id v="324477da-3e91-45c1-b7eb-1a151f617e51" />
 <WriteAppVersionLastSavedWith v="4.4.0.80" />
