@@ -1,6 +1,6 @@
 -- Project:   CS301_Class
--- Generated: 09/24/2026 19:06:15
--- PSoC Creator  4.4
+-- Generated: 09/25/2026 08:39:24
+-- PSoC Creator  4.2
 
 ENTITY CS301_Class IS
     PORT(
@@ -5337,14 +5337,6 @@ BEGIN
             interrupt => Net_4334,
             clock => ClockBlock_BUS_CLK);
 
-    isr_eoc:interrupt
-        GENERIC MAP(
-            int_type => "00",
-            is_nmi => 0)
-        PORT MAP(
-            interrupt => Net_1497,
-            clock => ClockBlock_BUS_CLK);
-
     \CONTROL:Sync:ctrl_reg\:controlcell
         GENERIC MAP(
             cy_ctrl_mode_0 => "00000000",
@@ -5617,14 +5609,6 @@ BEGIN
             is_nmi => 0)
         PORT MAP(
             interrupt => Net_4409,
-            clock => ClockBlock_BUS_CLK);
-
-    isr_TS:interrupt
-        GENERIC MAP(
-            int_type => "10",
-            is_nmi => 0)
-        PORT MAP(
-            interrupt => Net_4417,
             clock => ClockBlock_BUS_CLK);
 
     \QuadDec_M1:Net_1251\:macrocell

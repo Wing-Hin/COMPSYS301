@@ -1,11 +1,6 @@
 -- Project:   CS301_SensorTestUnit
-<<<<<<< Updated upstream
--- Generated: 09/23/2026 15:33:09
+-- Generated: 09/24/2026 16:13:04
 -- PSoC Creator  4.2
-=======
--- Generated: 09/24/2026 12:57:10
--- PSoC Creator  4.4
->>>>>>> Stashed changes
 
 ENTITY CS301_SensorTestUnit IS
     PORT(
@@ -82,8 +77,6 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     ATTRIBUTE global_signal OF Net_10 : SIGNAL IS true;
     SIGNAL Net_10_local : bit;
     SIGNAL Net_1496 : bit;
-    SIGNAL Net_1497 : bit;
-    SIGNAL Net_1619 : bit;
     SIGNAL Net_1832 : bit;
     SIGNAL Net_1850 : bit;
     ATTRIBUTE udbclken_assigned OF Net_1850 : SIGNAL IS "True";
@@ -102,9 +95,11 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     SIGNAL Net_3437 : bit;
     SIGNAL Net_3438 : bit;
     SIGNAL Net_3438_SYNCOUT : bit;
+    SIGNAL Net_3444 : bit;
     SIGNAL Net_362 : bit;
     SIGNAL Net_368 : bit;
     SIGNAL Net_4334 : bit;
+    SIGNAL Net_4367 : bit;
     SIGNAL Net_724 : bit;
     SIGNAL Net_724_SYNCOUT : bit;
     SIGNAL Net_725 : bit;
@@ -224,6 +219,9 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     SIGNAL \ADC_Sensor:bSAR_SEQ:enable\ : bit;
     SIGNAL \ADC_Sensor:bSAR_SEQ:load_period\ : bit;
     SIGNAL \ADC_Sensor:bSAR_SEQ:nrq_reg\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:soc_in\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:soc_reg\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:state_1\ : bit;
     SIGNAL \ADC_Sensor:ch_addr_0\ : bit;
     SIGNAL \ADC_Sensor:ch_addr_1\ : bit;
     SIGNAL \ADC_Sensor:ch_addr_2\ : bit;
@@ -235,6 +233,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     ATTRIBUTE global_signal OF \ADC_Sensor:clock\ : SIGNAL IS true;
     SIGNAL \ADC_Sensor:clock_local\ : bit;
     SIGNAL \ADC_Sensor:nrq\ : bit;
+    SIGNAL \ADC_Sensor:soc_out\ : bit;
     SIGNAL \CONTROL:control_2\ : bit;
     SIGNAL \CONTROL:control_3\ : bit;
     SIGNAL \CONTROL:control_4\ : bit;
@@ -660,27 +659,31 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_61\ : LABEL IS "macrocell136";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_62\ : LABEL IS "macrocell137";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_63\ : LABEL IS "macrocell138";
-    ATTRIBUTE lib_model OF Net_1497 : LABEL IS "macrocell139";
+    ATTRIBUTE lib_model OF Net_4367 : LABEL IS "macrocell139";
     ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\ : LABEL IS "macrocell140";
     ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:nrq_reg\ : LABEL IS "macrocell141";
-    ATTRIBUTE lib_model OF \QuadDec_M2:Net_1203_split\ : LABEL IS "macrocell142";
-    ATTRIBUTE lib_model OF \UART:BUART:txn\ : LABEL IS "macrocell143";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_state_1\ : LABEL IS "macrocell144";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_state_0\ : LABEL IS "macrocell145";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_state_2\ : LABEL IS "macrocell146";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_bitclk\ : LABEL IS "macrocell147";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_ctrl_mark_last\ : LABEL IS "macrocell148";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_0\ : LABEL IS "macrocell149";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_load_fifo\ : LABEL IS "macrocell150";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_3\ : LABEL IS "macrocell151";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_2\ : LABEL IS "macrocell152";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_bitclk_enable\ : LABEL IS "macrocell153";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_stop1_reg\ : LABEL IS "macrocell154";
-    ATTRIBUTE lib_model OF \UART:BUART:pollcount_1\ : LABEL IS "macrocell155";
-    ATTRIBUTE lib_model OF \UART:BUART:pollcount_0\ : LABEL IS "macrocell156";
-    ATTRIBUTE lib_model OF \QuadDec_M2:Net_1251_split\ : LABEL IS "macrocell157";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_status_3\ : LABEL IS "macrocell158";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_last\ : LABEL IS "macrocell159";
+    ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:soc_in\ : LABEL IS "macrocell142";
+    ATTRIBUTE lib_model OF \ADC_Sensor:soc_out\ : LABEL IS "macrocell143";
+    ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:soc_reg\ : LABEL IS "macrocell144";
+    ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:state_1\ : LABEL IS "macrocell145";
+    ATTRIBUTE lib_model OF \QuadDec_M2:Net_1203_split\ : LABEL IS "macrocell146";
+    ATTRIBUTE lib_model OF \UART:BUART:txn\ : LABEL IS "macrocell147";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_state_1\ : LABEL IS "macrocell148";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_state_0\ : LABEL IS "macrocell149";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_state_2\ : LABEL IS "macrocell150";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_bitclk\ : LABEL IS "macrocell151";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_ctrl_mark_last\ : LABEL IS "macrocell152";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_state_0\ : LABEL IS "macrocell153";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_load_fifo\ : LABEL IS "macrocell154";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_state_3\ : LABEL IS "macrocell155";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_state_2\ : LABEL IS "macrocell156";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_bitclk_enable\ : LABEL IS "macrocell157";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_state_stop1_reg\ : LABEL IS "macrocell158";
+    ATTRIBUTE lib_model OF \UART:BUART:pollcount_1\ : LABEL IS "macrocell159";
+    ATTRIBUTE lib_model OF \UART:BUART:pollcount_0\ : LABEL IS "macrocell160";
+    ATTRIBUTE lib_model OF \QuadDec_M2:Net_1251_split\ : LABEL IS "macrocell161";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_status_3\ : LABEL IS "macrocell162";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_last\ : LABEL IS "macrocell163";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -4718,7 +4721,7 @@ BEGIN
             cy_registers => "")
         PORT MAP(
             clk_udb => \ADC_Sensor:clock_local\,
-            sof_udb => open,
+            sof_udb => \ADC_Sensor:soc_out\,
             vp_ctl_udb_3 => open,
             vp_ctl_udb_2 => open,
             vp_ctl_udb_1 => open,
@@ -4804,7 +4807,7 @@ BEGIN
             status_3 => open,
             status_2 => open,
             status_1 => open,
-            status_0 => Net_1497,
+            status_0 => Net_4367,
             clk_en => \ADC_Sensor:bSAR_SEQ:enable\);
 
     \ADC_Sensor:TempBuf\:drqcell
@@ -4832,7 +4835,7 @@ BEGIN
             int_type => "10",
             is_nmi => 0)
         PORT MAP(
-            interrupt => Net_1497,
+            interrupt => Net_4367,
             clock => ClockBlock_BUS_CLK);
 
     \ADC_Sensor:Sync:genblk1[0]:INST\:synccell
@@ -4844,21 +4847,12 @@ BEGIN
             in => \ADC_Sensor:nrq\,
             out => \ADC_Sensor:Net_3935\);
 
-<<<<<<< Updated upstream
-    isr_TS:interrupt
-        GENERIC MAP(
-            int_type => "00",
-            is_nmi => 0)
-        PORT MAP(
-            interrupt => Net_1619,
-=======
     ADC_isr:interrupt
         GENERIC MAP(
             int_type => "10",
             is_nmi => 0)
         PORT MAP(
             interrupt => Net_4367,
->>>>>>> Stashed changes
             clock => ClockBlock_BUS_CLK);
 
     \Timer_TS:TimerHW\:timercell
@@ -4870,7 +4864,7 @@ BEGIN
             enable => __ONE__,
             capture => open,
             timer_reset => open,
-            tc => Net_1619,
+            tc => Net_3444,
             cmp => \Timer_TS:Net_261\,
             irq => \Timer_TS:Net_57\);
 
@@ -5217,14 +5211,6 @@ BEGIN
             control_1 => \RF_BT_SELECT:control_1\,
             control_0 => Net_3437,
             busclk => ClockBlock_BUS_CLK);
-
-    isr_TS:interrupt
-        GENERIC MAP(
-            int_type => "10",
-            is_nmi => 0)
-        PORT MAP(
-            interrupt => Net_3444,
-            clock => ClockBlock_BUS_CLK);
 
     \QuadDec_M1:Net_1251\:macrocell
         GENERIC MAP(
@@ -6784,7 +6770,7 @@ BEGIN
             main_5 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\,
             main_6 => \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\);
 
-    Net_1497:macrocell
+    Net_4367:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1)",
             regmode => 1,
@@ -6792,7 +6778,7 @@ BEGIN
             clken_inv => '0',
             clken_mode => 3)
         PORT MAP(
-            q => Net_1497,
+            q => Net_4367,
             clk_en => \ADC_Sensor:bSAR_SEQ:enable\,
             clock_0 => \ADC_Sensor:clock\,
             main_0 => \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\,
@@ -6809,7 +6795,7 @@ BEGIN
             clock_0 => ClockBlock_BUS_CLK,
             main_0 => \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\,
             main_1 => \ADC_Sensor:Net_3935\,
-            main_2 => Net_1497);
+            main_2 => Net_4367);
 
     \ADC_Sensor:bSAR_SEQ:nrq_reg\:macrocell
         GENERIC MAP(
@@ -6823,6 +6809,67 @@ BEGIN
             clk_en => \ADC_Sensor:bSAR_SEQ:enable\,
             clock_0 => \ADC_Sensor:clock\,
             main_0 => \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\);
+
+    \ADC_Sensor:bSAR_SEQ:soc_in\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 3)
+        PORT MAP(
+            q => \ADC_Sensor:bSAR_SEQ:soc_in\,
+            clk_en => \ADC_Sensor:bSAR_SEQ:enable\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:bSAR_SEQ:soc_reg\,
+            main_1 => Net_3444);
+
+    \ADC_Sensor:soc_out\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1 * !main_2 * main_4 * !main_5) + (!main_0 * !main_2 * main_3 * !main_4)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 3)
+        PORT MAP(
+            q => \ADC_Sensor:soc_out\,
+            clk_en => \ADC_Sensor:bSAR_SEQ:enable\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:soc_out\,
+            main_1 => \ADC_Sensor:Net_3830\,
+            main_2 => \ADC_Sensor:bSAR_SEQ:load_period\,
+            main_3 => \ADC_Sensor:bSAR_SEQ:soc_in\,
+            main_4 => \ADC_Sensor:bSAR_SEQ:state_1\,
+            main_5 => \ADC_Sensor:bSAR_SEQ:cnt_tc\);
+
+    \ADC_Sensor:bSAR_SEQ:soc_reg\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 3)
+        PORT MAP(
+            q => \ADC_Sensor:bSAR_SEQ:soc_reg\,
+            clk_en => \ADC_Sensor:bSAR_SEQ:enable\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => Net_3444);
+
+    \ADC_Sensor:bSAR_SEQ:state_1\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1 * !main_2 * main_3) + (main_0 * !main_2 * !main_3)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 3)
+        PORT MAP(
+            q => \ADC_Sensor:bSAR_SEQ:state_1\,
+            clk_en => \ADC_Sensor:bSAR_SEQ:enable\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:soc_out\,
+            main_1 => \ADC_Sensor:Net_3830\,
+            main_2 => \ADC_Sensor:bSAR_SEQ:load_period\,
+            main_3 => \ADC_Sensor:bSAR_SEQ:state_1\);
 
     \QuadDec_M2:Net_1203_split\:macrocell
         GENERIC MAP(

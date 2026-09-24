@@ -165,7 +165,7 @@ extern volatile int16 ADC_Sensor_SAR_shift;
 
 /* Default config values from user parameters */
 #define ADC_Sensor_SAR_DEFAULT_RESOLUTION     (12u)   /* ADC resolution selected with parameters.*/
-#define ADC_Sensor_SAR_DEFAULT_CONV_MODE      (0u)        /* Default conversion method */
+#define ADC_Sensor_SAR_DEFAULT_CONV_MODE      (2u)        /* Default conversion method */
 #define ADC_Sensor_SAR_DEFAULT_INTERNAL_CLK   (0u)             /* Default clock selection */
 #define ADC_Sensor_SAR_DEFAULT_REFERENCE      (0u)         /* Default reference */
 #define ADC_Sensor_SAR_DEFAULT_RANGE          (1u)       /* ADC Input Range selection */
