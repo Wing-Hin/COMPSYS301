@@ -167,20 +167,20 @@
 <dep name=".\Generated_Source\PSoC5\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC5\ADC_Sensor_TempBuf_dma.c" />
-<file name=".\CortexM3\ARM_GCC_541\Debug\ADC_TEST_PIN.o">
-<dep name=".\Generated_Source\PSoC5\ADC_TEST_PIN.c" />
-<dep name=".\Generated_Source\PSoC5\ADC_TEST_PIN.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_TEST_PIN_aliases.h" />
+<file name=".\CortexM3\ARM_GCC_541\Debug\ADC_isr.o">
+<dep name=".\Generated_Source\PSoC5\ADC_isr.c" />
+<dep name=".\Generated_Source\PSoC5\ADC_isr.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
 <dep name=".\Generated_Source\PSoC5\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC5\cypins.h" />
 <dep name=".\Generated_Source\PSoC5\cytypes.h" />
 </file>
-<file name=".\Generated_Source\PSoC5\ADC_TEST_PIN.c" />
-<file name=".\Generated_Source\PSoC5\ADC_TEST_PIN.h" />
-<file name=".\Generated_Source\PSoC5\ADC_TEST_PIN_aliases.h" />
-<file name=".\Generated_Source\PSoC5\cypins.h" />
+<file name=".\Generated_Source\PSoC5\ADC_isr.c" />
+<file name=".\Generated_Source\PSoC5\ADC_isr.h" />
 <file name=".\CortexM3\ARM_GCC_541\Debug\CONTROL.o">
 <dep name=".\Generated_Source\PSoC5\CONTROL.c" />
 <dep name=".\Generated_Source\PSoC5\CONTROL.h" />
@@ -307,6 +307,7 @@
 <file name=".\Generated_Source\PSoC5\DB0.c" />
 <file name=".\Generated_Source\PSoC5\DB0.h" />
 <file name=".\Generated_Source\PSoC5\DB0_aliases.h" />
+<file name=".\Generated_Source\PSoC5\cypins.h" />
 <file name=".\CortexM3\ARM_GCC_541\Debug\DB1.o">
 <dep name=".\Generated_Source\PSoC5\DB1.c" />
 <dep name=".\Generated_Source\PSoC5\DB1.h" />
@@ -1311,8 +1312,7 @@
 <dep name=".\Generated_Source\PSoC5\ADC_Sensor_IntClock.h" />
 <dep name=".\Generated_Source\PSoC5\ADC_Sensor_SAR.h" />
 <dep name=".\Generated_Source\PSoC5\ADC_Sensor_TempBuf_dma.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_TEST_PIN.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_TEST_PIN_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_isr.h" />
 <dep name=".\Generated_Source\PSoC5\CONTROL.h" />
 <dep name=".\Generated_Source\PSoC5\CYDMAC.H" />
 <dep name=".\Generated_Source\PSoC5\CYFITTER.H" />
@@ -1437,8 +1437,7 @@
 <dep name=".\Generated_Source\PSoC5\ADC_Sensor_IntClock.h" />
 <dep name=".\Generated_Source\PSoC5\ADC_Sensor_SAR.h" />
 <dep name=".\Generated_Source\PSoC5\ADC_Sensor_TempBuf_dma.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_TEST_PIN.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_TEST_PIN_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_isr.h" />
 <dep name=".\Generated_Source\PSoC5\CONTROL.h" />
 <dep name=".\Generated_Source\PSoC5\CYDMAC.H" />
 <dep name=".\Generated_Source\PSoC5\CYFITTER.H" />
@@ -1551,8 +1550,7 @@
 <dep name=".\Generated_Source\PSoC5\ADC_Sensor_IntClock.h" />
 <dep name=".\Generated_Source\PSoC5\ADC_Sensor_SAR.h" />
 <dep name=".\Generated_Source\PSoC5\ADC_Sensor_TempBuf_dma.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_TEST_PIN.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_TEST_PIN_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_isr.h" />
 <dep name=".\Generated_Source\PSoC5\CONTROL.h" />
 <dep name=".\Generated_Source\PSoC5\CYDMAC.H" />
 <dep name=".\Generated_Source\PSoC5\CYFITTER.H" />
@@ -1661,6 +1659,19 @@
 <file name=".\Generated_Source\PSoC5\cydevicegnu.inc" />
 <file name=".\Generated_Source\PSoC5\cydevicegnu_trm.inc" />
 <file name=".\Generated_Source\PSoC5\cyfittergnu.inc" />
+<file name=".\CortexM3\ARM_GCC_541\Debug\ADC_TEST_PIN.o">
+<dep name=".\Generated_Source\PSoC5\ADC_TEST_PIN.c" />
+<dep name=".\Generated_Source\PSoC5\ADC_TEST_PIN.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_TEST_PIN_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\ADC_TEST_PIN.c" />
+<file name=".\Generated_Source\PSoC5\ADC_TEST_PIN.h" />
+<file name=".\Generated_Source\PSoC5\ADC_TEST_PIN_aliases.h" />
 <file name=".\Generated_Source\PSoC5\isr_TS.h" />
 <file name=".\CortexM3\ARM_GCC_541\Debug\isr_TS.o">
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
@@ -1870,7 +1881,7 @@
 <dep name=".\CortexM3\ARM_GCC_541\Debug\LED_4.o" />
 <dep name=".\CortexM3\ARM_GCC_541\Debug\LED_5.o" />
 <dep name=".\CortexM3\ARM_GCC_541\Debug\LED_6.o" />
-<dep name=".\CortexM3\ARM_GCC_541\Debug\ADC_TEST_PIN.o" />
+<dep name=".\CortexM3\ARM_GCC_541\Debug\ADC_isr.o" />
 <dep name=".\CortexM3\ARM_GCC_541\Debug\CS301_SensorTestUnit.a" />
 <dep name="${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" />
 </file>
@@ -1988,6 +1999,7 @@
 <name_val_pair name="Generated_Source\PSoC5\LED_5.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0" />
 <name_val_pair name="Generated_Source\PSoC5\LED_6.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0" />
 <name_val_pair name="Generated_Source\PSoC5\ADC_TEST_PIN.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0" />
+<name_val_pair name="Generated_Source\PSoC5\ADC_isr.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0" />
 </name>
 </genericCmdLineData>
 <codeGenCmdLineTag v="-.appdatapath &quot;C:\Users\thar970\AppData\Local\Cypress Semiconductor\PSoC Creator\4.2&quot; -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\CS301_SensorTestUnit.cyprj -d CY8C5888LTI-LP097 -s C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE" />
@@ -2218,6 +2230,14 @@
 <v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_sync_v1_0\cy_sync_v1_0.v</v>
 <v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_sync_v1_0\version.cypatch</v>
 <v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\cy_sync_v1_0\Custom\custom.cs</v>
+<v>C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\cy_isr_v1_71\cy_isr_v1_71.cysym</v>
+<v>C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\cy_isr_v1_71\cy_isr_v1_71.pdf</v>
+<v>C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\cy_isr_v1_71\cy_isr_v1_71.primitive</v>
+<v>C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\cy_isr_v1_71\cy_isr_v1_71.cystate</v>
+<v>C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\cy_isr_v1_71\version.cypatch</v>
+<v>C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\cy_isr_v1_71\Custom\custom.cs</v>
+<v>C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\cy_isr_v1_71\PSoC5\API\intc.c</v>
+<v>C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\cy_isr_v1_71\PSoC5\API\intc.h</v>
 <v>${CyRoot}\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Timer_v2_80\Timer_v2_80.cycdx</v>
 <v>${CyRoot}\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Timer_v2_80\Timer_v2_80.cysym</v>
 <v>${CyRoot}\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Timer_v2_80\Timer_v2_80.pdf</v>
@@ -2434,14 +2454,6 @@
 <v>${CyRoot}\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\PWM_v3_30\Custom\Resources.resx</v>
 <v>${CyRoot}\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\PWM_v3_30\Custom\tabwrapper.resx</v>
 <v>${CyRoot}\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\PWM_v3_30\PSoC5\PWM_v3_30.cysch</v>
-<v>C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\cy_isr_v1_71\cy_isr_v1_71.cysym</v>
-<v>C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\cy_isr_v1_71\cy_isr_v1_71.pdf</v>
-<v>C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\cy_isr_v1_71\cy_isr_v1_71.primitive</v>
-<v>C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\cy_isr_v1_71\cy_isr_v1_71.cystate</v>
-<v>C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\cy_isr_v1_71\version.cypatch</v>
-<v>C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\cy_isr_v1_71\Custom\custom.cs</v>
-<v>C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\cy_isr_v1_71\PSoC5\API\intc.c</v>
-<v>C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\cy_isr_v1_71\PSoC5\API\intc.h</v>
 <v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\mux_v1_10\mux_v1_10.cysym</v>
 <v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\mux_v1_10\mux_v1_10.v</v>
 <v>${CyRoot}\psoc\content\CyPrimitives\cyprimitives.cylib\mux_v1_10\mux_v1_10.cystate</v>
@@ -2722,6 +2734,8 @@
 <v>Generated_Source\PSoC5\ADC_TEST_PIN_aliases.h</v>
 <v>Generated_Source\PSoC5\ADC_TEST_PIN.c</v>
 <v>Generated_Source\PSoC5\ADC_TEST_PIN.h</v>
+<v>Generated_Source\PSoC5\ADC_isr.c</v>
+<v>Generated_Source\PSoC5\ADC_isr.h</v>
 </gen_list>
 <warp_dep>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\ieee\work\stdlogic.vif</v>
@@ -2731,7 +2745,7 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif</v>
 </warp_dep>
-<deps_time v="134346844656556779" />
+<deps_time v="134346967950656673" />
 <top_block v="TopDesign" />
 <last_generation v="11" />
 <pdl_path v="" />
@@ -2741,7 +2755,7 @@
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
 <link_deps_times>
-<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM3" v="134346844804006399" />
+<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM3" v="134346968109903129" />
 </link_deps_times>
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>

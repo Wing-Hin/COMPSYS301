@@ -75,9 +75,8 @@
   <file name="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\codegentemp\Q6_aliases.h" value="HEADER;;;;;Q6" />
   <file name="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\codegentemp\Q6.c" value="SOURCE_C;CortexM3;;;;Q6" />
   <file name="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\codegentemp\Q6.h" value="HEADER;;;;;Q6" />
-  <file name="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\codegentemp\ADC_TEST_PIN_aliases.h" value="HEADER;;;;;ADC_TEST_PIN" />
-  <file name="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\codegentemp\ADC_TEST_PIN.c" value="SOURCE_C;CortexM3;;;;ADC_TEST_PIN" />
-  <file name="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\codegentemp\ADC_TEST_PIN.h" value="HEADER;;;;;ADC_TEST_PIN" />
+  <file name="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\codegentemp\ADC_isr.c" value="SOURCE_C;CortexM3;;;;ADC_isr" />
+  <file name="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\codegentemp\ADC_isr.h" value="HEADER;;;;;ADC_isr" />
   <file name="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\codegentemp\Timer_TS.c" value="SOURCE_C;CortexM3;;;;Timer_TS" />
   <file name="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\codegentemp\Timer_TS.h" value="HEADER;;;;;Timer_TS" />
   <file name="C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\codegentemp\Timer_TS_PM.c" value="SOURCE_C;CortexM3;;;;Timer_TS" />

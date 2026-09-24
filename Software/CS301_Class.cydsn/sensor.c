@@ -11,12 +11,11 @@
 */
 
 
-
 #include <project.h>
 #include "sensor.h"
-#define THOLD_SHIFT 4
-static const uint16 T_MID[N_SENSORS] = {550, 482, 636, 790, 502, 510};
-static const uint16 T_HYS[N_SENSORS] = { 79,  60,  93, 132,  72,  70};
+
+static const uint16 T_MID[N_SENSORS] = { 166, 156, 204, 249, 143, 147 };
+static const uint16 T_HYS[N_SENSORS] = {  27,  28,  35,  47,  21,  22 };
 #define N_SAMPLES  20
 #define ADC_FULL   4095
 
@@ -28,10 +27,12 @@ static volatile uint8 sampleCount;
 static volatile SensorFrame latest;
 
 
+
+uint8 win = 0;
 CY_ISR_PROTO(eocHandler);
 CY_ISR(eocHandler){
     uint16 i;
-    
+    Timer_TS_ReadStatusRegister();
     for (i = 0; i < N_SENSORS; i++) {
         int16 v = ADC_Sensor_GetResult16(i);   
         if (v < 0) v = 0;
@@ -48,6 +49,11 @@ CY_ISR(eocHandler){
         } 
         latest.fresh = 1;
         resetWindow();
+        if(++win >= 125){
+            LED_1_Write(!LED_1_Read());
+            win = 0;
+        }
+        
     }
 
 }
@@ -69,10 +75,9 @@ void sensor_init(void) {
         Vpp[i] = 0;
     }
     resetWindow();
- 
+    Timer_TS_Start();
     ADC_Sensor_Start();
     ADC_Sensor_IRQ_StartEx(eocHandler);   // internal IRQ of the sequencer
-    ADC_Sensor_StartConvert();            //free running starts from here 
 }
 
 SensorFrame sensors_GetFrame(void){
@@ -81,12 +86,11 @@ SensorFrame sensors_GetFrame(void){
     sensor_frame_copy = *(SensorFrame *)&latest;
     latest.fresh = 0;
     CyExitCriticalSection(s);
-    
     return sensor_frame_copy;
 }
 
 uint8 getSingleSensorState(int8 sensor_th){
-    if(sensor_th > N_SENSORS || sensor_th ==0 ) return SENSOR_UNKNOWN;
+    if(sensor_th > N_SENSORS) return SENSOR_UNKNOWN;
     return latest.state[sensor_th];
 }
 

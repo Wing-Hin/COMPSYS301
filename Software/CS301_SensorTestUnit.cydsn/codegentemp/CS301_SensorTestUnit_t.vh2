@@ -1,5 +1,5 @@
 -- Project:   C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\CS301_SensorTestUnit.cyprj
--- Generated: 09/24/2026 12:47:41
+-- Generated: 09/24/2026 16:13:10
 -- PSoC Creator  4.2
 
 ENTITY CS301_SensorTestUnit IS
@@ -13,7 +13,6 @@ ENTITY CS301_SensorTestUnit IS
         M1_QB(0)_PAD : IN std_ulogic;
         M2_QA(0)_PAD : IN std_ulogic;
         M2_QB(0)_PAD : IN std_ulogic;
-        ADC_TEST_PIN(0)_PAD : OUT std_ulogic;
         M1_D1(0)_PAD : OUT std_ulogic;
         Rx_1(0)_PAD : IN std_ulogic;
         Tx_1(0)_PAD : OUT std_ulogic;
@@ -39,7 +38,6 @@ ENTITY CS301_SensorTestUnit IS
 END CS301_SensorTestUnit;
 
 ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
-    SIGNAL ADC_TEST_PIN(0)__PA : bit;
     SIGNAL CLK24M : bit;
     ATTRIBUTE global_signal OF CLK24M : SIGNAL IS true;
     SIGNAL CLK24M_local : bit;
@@ -85,7 +83,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     ATTRIBUTE global_signal OF Net_1850 : SIGNAL IS true;
     SIGNAL Net_1850_local : bit;
     SIGNAL Net_1880 : bit;
-    ATTRIBUTE placement_force OF Net_1880 : SIGNAL IS "U(2,3,B)3";
+    ATTRIBUTE placement_force OF Net_1880 : SIGNAL IS "U(0,3,A)3";
     SIGNAL Net_1898 : bit;
     SIGNAL Net_2183 : bit;
     ATTRIBUTE GROUND OF Net_2183 : SIGNAL IS true;
@@ -100,12 +98,12 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     SIGNAL Net_3438_SYNCOUT : bit;
     SIGNAL Net_3444 : bit;
     SIGNAL Net_362 : bit;
-    ATTRIBUTE placement_force OF Net_362 : SIGNAL IS "U(1,4,A)3";
+    ATTRIBUTE placement_force OF Net_362 : SIGNAL IS "U(0,1,A)3";
     SIGNAL Net_368 : bit;
-    ATTRIBUTE placement_force OF Net_368 : SIGNAL IS "U(2,2,A)2";
+    ATTRIBUTE placement_force OF Net_368 : SIGNAL IS "U(1,4,A)0";
     SIGNAL Net_4334 : bit;
     SIGNAL Net_4367 : bit;
-    ATTRIBUTE placement_force OF Net_4367 : SIGNAL IS "U(2,3,B)2";
+    ATTRIBUTE placement_force OF Net_4367 : SIGNAL IS "U(0,1,A)2";
     SIGNAL Net_724 : bit;
     SIGNAL Net_724_SYNCOUT : bit;
     SIGNAL Net_725 : bit;
@@ -124,150 +122,150 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     SIGNAL Rx_2(0)__PA : bit;
     SIGNAL Tx_1(0)__PA : bit;
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_is_active\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_is_active\ : SIGNAL IS "U(1,4,A)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_is_active\ : SIGNAL IS "U(1,0,B)2";
     ATTRIBUTE soft OF \ADC_Sensor:AMuxHw_2_Decoder_is_active\ : SIGNAL IS 1;
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_is_active_split\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_is_active_split\ : SIGNAL IS "U(1,5,A)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_is_active_split\ : SIGNAL IS "U(1,2,B)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\ : SIGNAL IS "U(1,5,B)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\ : SIGNAL IS "U(1,5,A)2";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\ : SIGNAL IS "U(1,5,B)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\ : SIGNAL IS "U(1,5,A)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\ : SIGNAL IS "U(1,4,B)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\ : SIGNAL IS "U(1,0,B)1";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\ : SIGNAL IS "U(1,1,B)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\ : SIGNAL IS "U(1,5,B)2";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\ : SIGNAL IS "U(1,3,A)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\ : SIGNAL IS "U(1,5,A)1";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\ : SIGNAL IS "U(2,5,A)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\ : SIGNAL IS "U(1,5,B)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_0\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_0\ : SIGNAL IS "U(0,0,A)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_0\ : SIGNAL IS "U(3,1,B)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_10\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_10\ : SIGNAL IS "U(2,4,A)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_10\ : SIGNAL IS "U(0,4,B)1";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_11\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_11\ : SIGNAL IS "U(0,3,A)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_11\ : SIGNAL IS "U(0,2,B)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_12\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_12\ : SIGNAL IS "U(0,1,A)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_12\ : SIGNAL IS "U(3,0,B)2";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_13\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_13\ : SIGNAL IS "U(0,5,B)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_13\ : SIGNAL IS "U(0,5,B)2";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_14\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_14\ : SIGNAL IS "U(0,4,B)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_14\ : SIGNAL IS "U(3,2,A)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_15\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_15\ : SIGNAL IS "U(0,2,B)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_15\ : SIGNAL IS "U(0,2,A)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_16\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_16\ : SIGNAL IS "U(0,1,B)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_16\ : SIGNAL IS "U(3,2,B)2";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_17\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_17\ : SIGNAL IS "U(0,3,A)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_17\ : SIGNAL IS "U(0,3,B)1";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_18\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_18\ : SIGNAL IS "U(0,5,A)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_18\ : SIGNAL IS "U(3,2,A)1";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_19\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_19\ : SIGNAL IS "U(2,4,A)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_19\ : SIGNAL IS "U(0,0,B)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_1\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_1\ : SIGNAL IS "U(0,4,A)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_1\ : SIGNAL IS "U(0,5,A)2";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_20\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_20\ : SIGNAL IS "U(0,5,B)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_20\ : SIGNAL IS "U(3,0,A)1";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_21\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_21\ : SIGNAL IS "U(1,3,A)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_21\ : SIGNAL IS "U(0,0,B)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_22\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_22\ : SIGNAL IS "U(0,1,B)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_22\ : SIGNAL IS "U(1,0,B)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_23\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_23\ : SIGNAL IS "U(0,0,A)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_23\ : SIGNAL IS "U(1,1,A)2";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_24\ : bit;
     ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_24\ : SIGNAL IS "U(0,0,B)1";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_25\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_25\ : SIGNAL IS "U(1,3,A)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_25\ : SIGNAL IS "U(0,4,A)1";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_26\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_26\ : SIGNAL IS "U(0,2,B)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_26\ : SIGNAL IS "U(3,2,B)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_27\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_27\ : SIGNAL IS "U(0,1,A)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_27\ : SIGNAL IS "U(3,2,B)1";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_28\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_28\ : SIGNAL IS "U(1,4,B)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_28\ : SIGNAL IS "U(3,0,B)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_29\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_29\ : SIGNAL IS "U(0,5,A)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_29\ : SIGNAL IS "U(3,2,A)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_2\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_2\ : SIGNAL IS "U(0,5,A)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_2\ : SIGNAL IS "U(1,1,A)1";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_30\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_30\ : SIGNAL IS "U(0,3,B)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_30\ : SIGNAL IS "U(3,1,B)1";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_31\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_31\ : SIGNAL IS "U(0,4,B)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_31\ : SIGNAL IS "U(1,0,B)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_32\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_32\ : SIGNAL IS "U(0,5,B)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_32\ : SIGNAL IS "U(0,2,B)2";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_33\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_33\ : SIGNAL IS "U(2,4,A)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_33\ : SIGNAL IS "U(3,2,B)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_34\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_34\ : SIGNAL IS "U(0,5,B)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_34\ : SIGNAL IS "U(3,2,A)2";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_35\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_35\ : SIGNAL IS "U(0,2,B)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_35\ : SIGNAL IS "U(0,3,B)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_36\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_36\ : SIGNAL IS "U(0,3,A)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_36\ : SIGNAL IS "U(0,0,A)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_37\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_37\ : SIGNAL IS "U(0,4,B)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_37\ : SIGNAL IS "U(3,0,A)2";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_38\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_38\ : SIGNAL IS "U(2,4,A)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_38\ : SIGNAL IS "U(3,1,B)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_39\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_39\ : SIGNAL IS "U(0,4,A)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_39\ : SIGNAL IS "U(0,2,A)2";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_3\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_3\ : SIGNAL IS "U(0,3,B)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_3\ : SIGNAL IS "U(0,5,B)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_40\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_40\ : SIGNAL IS "U(0,1,A)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_40\ : SIGNAL IS "U(0,5,A)1";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_41\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_41\ : SIGNAL IS "U(0,4,A)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_41\ : SIGNAL IS "U(0,4,A)2";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_42\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_42\ : SIGNAL IS "U(0,2,A)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_42\ : SIGNAL IS "U(0,4,B)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_43\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_43\ : SIGNAL IS "U(0,1,B)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_43\ : SIGNAL IS "U(3,0,A)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_44\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_44\ : SIGNAL IS "U(0,0,B)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_44\ : SIGNAL IS "U(0,3,B)2";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_45\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_45\ : SIGNAL IS "U(0,2,A)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_45\ : SIGNAL IS "U(1,5,B)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_46\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_46\ : SIGNAL IS "U(2,5,A)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_46\ : SIGNAL IS "U(0,3,B)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_47\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_47\ : SIGNAL IS "U(0,4,B)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_47\ : SIGNAL IS "U(0,4,B)2";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_48\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_48\ : SIGNAL IS "U(0,2,A)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_48\ : SIGNAL IS "U(0,2,A)1";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_49\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_49\ : SIGNAL IS "U(1,5,B)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_49\ : SIGNAL IS "U(3,1,B)2";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_4\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_4\ : SIGNAL IS "U(1,1,B)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_4\ : SIGNAL IS "U(3,0,B)1";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_50\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_50\ : SIGNAL IS "U(1,3,A)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_50\ : SIGNAL IS "U(0,4,A)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_51\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_51\ : SIGNAL IS "U(0,3,B)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_51\ : SIGNAL IS "U(1,5,A)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_52\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_52\ : SIGNAL IS "U(1,4,B)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_52\ : SIGNAL IS "U(0,2,B)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_53\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_53\ : SIGNAL IS "U(0,5,A)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_53\ : SIGNAL IS "U(0,0,A)2";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_54\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_54\ : SIGNAL IS "U(1,4,B)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_54\ : SIGNAL IS "U(0,2,B)1";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_55\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_55\ : SIGNAL IS "U(1,5,B)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_55\ : SIGNAL IS "U(3,0,A)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_56\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_56\ : SIGNAL IS "U(0,3,B)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_56\ : SIGNAL IS "U(0,4,A)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_57\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_57\ : SIGNAL IS "U(0,3,A)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_57\ : SIGNAL IS "U(0,0,A)1";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_58\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_58\ : SIGNAL IS "U(0,0,B)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_58\ : SIGNAL IS "U(0,0,A)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_59\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_59\ : SIGNAL IS "U(2,5,A)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_59\ : SIGNAL IS "U(0,2,A)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_5\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_5\ : SIGNAL IS "U(1,1,B)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_5\ : SIGNAL IS "U(0,5,B)1";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_60\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_60\ : SIGNAL IS "U(0,0,B)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_60\ : SIGNAL IS "U(3,0,B)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_61\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_61\ : SIGNAL IS "U(0,1,B)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_61\ : SIGNAL IS "U(0,5,A)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_62\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_62\ : SIGNAL IS "U(0,4,A)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_62\ : SIGNAL IS "U(0,0,B)2";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_63\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_63\ : SIGNAL IS "U(0,2,B)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_63\ : SIGNAL IS "U(1,1,A)0";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_6\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_6\ : SIGNAL IS "U(0,2,A)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_6\ : SIGNAL IS "U(0,4,B)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_7\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_7\ : SIGNAL IS "U(0,0,A)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_7\ : SIGNAL IS "U(0,5,A)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_8\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_8\ : SIGNAL IS "U(2,5,A)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_8\ : SIGNAL IS "U(1,1,A)3";
     SIGNAL \ADC_Sensor:AMuxHw_2_Decoder_one_hot_9\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_9\ : SIGNAL IS "U(0,0,A)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_9\ : SIGNAL IS "U(0,5,B)0";
     SIGNAL \ADC_Sensor:Net_3698\ : bit;
     SIGNAL \ADC_Sensor:Net_3830\ : bit;
     SIGNAL \ADC_Sensor:Net_3935\ : bit;
@@ -285,9 +283,9 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     SIGNAL \ADC_Sensor:SAR:Net_207_9\ : bit;
     SIGNAL \ADC_Sensor:SAR:Net_252\ : bit;
     SIGNAL \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\ : SIGNAL IS "U(2,2,A)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\ : SIGNAL IS "U(0,1,B)0";
     SIGNAL \ADC_Sensor:bSAR_SEQ:cnt_enable\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:bSAR_SEQ:cnt_enable\ : SIGNAL IS "U(2,3,B)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:bSAR_SEQ:cnt_enable\ : SIGNAL IS "U(1,4,B)1";
     SIGNAL \ADC_Sensor:bSAR_SEQ:cnt_tc\ : bit;
     SIGNAL \ADC_Sensor:bSAR_SEQ:control_2\ : bit;
     SIGNAL \ADC_Sensor:bSAR_SEQ:control_3\ : bit;
@@ -299,13 +297,13 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     SIGNAL \ADC_Sensor:bSAR_SEQ:enable\ : bit;
     SIGNAL \ADC_Sensor:bSAR_SEQ:load_period\ : bit;
     SIGNAL \ADC_Sensor:bSAR_SEQ:nrq_reg\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:bSAR_SEQ:nrq_reg\ : SIGNAL IS "U(2,3,B)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:bSAR_SEQ:nrq_reg\ : SIGNAL IS "U(0,1,A)1";
     SIGNAL \ADC_Sensor:bSAR_SEQ:soc_in\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:bSAR_SEQ:soc_in\ : SIGNAL IS "U(2,5,B)2";
+    ATTRIBUTE placement_force OF \ADC_Sensor:bSAR_SEQ:soc_in\ : SIGNAL IS "U(1,2,A)2";
     SIGNAL \ADC_Sensor:bSAR_SEQ:soc_reg\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:bSAR_SEQ:soc_reg\ : SIGNAL IS "U(2,5,B)3";
+    ATTRIBUTE placement_force OF \ADC_Sensor:bSAR_SEQ:soc_reg\ : SIGNAL IS "U(1,2,A)3";
     SIGNAL \ADC_Sensor:bSAR_SEQ:state_1\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:bSAR_SEQ:state_1\ : SIGNAL IS "U(2,5,B)1";
+    ATTRIBUTE placement_force OF \ADC_Sensor:bSAR_SEQ:state_1\ : SIGNAL IS "U(1,2,A)1";
     SIGNAL \ADC_Sensor:ch_addr_0\ : bit;
     SIGNAL \ADC_Sensor:ch_addr_1\ : bit;
     SIGNAL \ADC_Sensor:ch_addr_2\ : bit;
@@ -318,7 +316,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     SIGNAL \ADC_Sensor:clock_local\ : bit;
     SIGNAL \ADC_Sensor:nrq\ : bit;
     SIGNAL \ADC_Sensor:soc_out\ : bit;
-    ATTRIBUTE placement_force OF \ADC_Sensor:soc_out\ : SIGNAL IS "U(2,5,B)0";
+    ATTRIBUTE placement_force OF \ADC_Sensor:soc_out\ : SIGNAL IS "U(1,2,A)0";
     SIGNAL \CONTROL:control_2\ : bit;
     SIGNAL \CONTROL:control_3\ : bit;
     SIGNAL \CONTROL:control_4\ : bit;
@@ -339,66 +337,66 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:control_6\ : bit;
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:control_7\ : bit;
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:count_enable\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:count_enable\ : SIGNAL IS "U(2,0,A)2";
+    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:count_enable\ : SIGNAL IS "U(1,4,A)3";
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:count_stored_i\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:count_stored_i\ : SIGNAL IS "U(2,0,A)3";
+    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:count_stored_i\ : SIGNAL IS "U(1,4,B)2";
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:overflow\ : bit;
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:overflow_reg_i\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(2,0,B)3";
+    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(1,3,B)1";
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:prevCompare\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:prevCompare\ : SIGNAL IS "U(3,0,B)0";
+    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:prevCompare\ : SIGNAL IS "U(1,3,A)0";
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:reload\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:reload\ : SIGNAL IS "U(2,0,B)0";
+    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:reload\ : SIGNAL IS "U(1,3,A)1";
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:sC16:counterdp:u0.ce0__sig\ : bit;
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:status_0\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:status_0\ : SIGNAL IS "U(2,0,A)0";
+    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:status_0\ : SIGNAL IS "U(1,4,B)3";
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:status_1\ : bit;
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:status_2\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:status_2\ : SIGNAL IS "U(2,0,B)1";
+    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:status_2\ : SIGNAL IS "U(1,3,A)3";
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:status_3\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:status_3\ : SIGNAL IS "U(2,0,A)1";
+    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:status_3\ : SIGNAL IS "U(1,4,B)0";
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:status_5\ : bit;
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:status_6\ : bit;
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:underflow_reg_i\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:underflow_reg_i\ : SIGNAL IS "U(2,0,B)2";
+    ATTRIBUTE placement_force OF \QuadDec_M1:Cnt16:CounterUDB:underflow_reg_i\ : SIGNAL IS "U(1,3,B)2";
     SIGNAL \QuadDec_M1:Net_1203\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:Net_1203\ : SIGNAL IS "U(3,1,B)0";
+    ATTRIBUTE placement_force OF \QuadDec_M1:Net_1203\ : SIGNAL IS "U(2,4,B)0";
     SIGNAL \QuadDec_M1:Net_1203_split\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:Net_1203_split\ : SIGNAL IS "U(3,0,A)0";
+    ATTRIBUTE placement_force OF \QuadDec_M1:Net_1203_split\ : SIGNAL IS "U(2,5,B)0";
     SIGNAL \QuadDec_M1:Net_1251\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:Net_1251\ : SIGNAL IS "U(3,3,B)0";
+    ATTRIBUTE placement_force OF \QuadDec_M1:Net_1251\ : SIGNAL IS "U(2,4,A)1";
     SIGNAL \QuadDec_M1:Net_1251_split\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:Net_1251_split\ : SIGNAL IS "U(3,2,B)0";
+    ATTRIBUTE placement_force OF \QuadDec_M1:Net_1251_split\ : SIGNAL IS "U(2,5,A)0";
     SIGNAL \QuadDec_M1:Net_1260\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:Net_1260\ : SIGNAL IS "U(3,5,B)2";
+    ATTRIBUTE placement_force OF \QuadDec_M1:Net_1260\ : SIGNAL IS "U(2,3,A)1";
     SIGNAL \QuadDec_M1:Net_1275\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:Net_1275\ : SIGNAL IS "U(3,0,B)1";
+    ATTRIBUTE placement_force OF \QuadDec_M1:Net_1275\ : SIGNAL IS "U(1,3,A)2";
     SIGNAL \QuadDec_M1:Net_530\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:Net_530\ : SIGNAL IS "U(3,0,B)2";
+    ATTRIBUTE placement_force OF \QuadDec_M1:Net_530\ : SIGNAL IS "U(1,4,A)2";
     SIGNAL \QuadDec_M1:Net_611\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:Net_611\ : SIGNAL IS "U(3,0,B)3";
+    ATTRIBUTE placement_force OF \QuadDec_M1:Net_611\ : SIGNAL IS "U(1,5,B)1";
     SIGNAL \QuadDec_M1:bQuadDec:error\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:error\ : SIGNAL IS "U(3,1,B)1";
+    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:error\ : SIGNAL IS "U(3,5,B)3";
     SIGNAL \QuadDec_M1:bQuadDec:quad_A_delayed_0\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:quad_A_delayed_0\ : SIGNAL IS "U(3,5,B)0";
+    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:quad_A_delayed_0\ : SIGNAL IS "U(2,0,B)0";
     SIGNAL \QuadDec_M1:bQuadDec:quad_A_delayed_1\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:quad_A_delayed_1\ : SIGNAL IS "U(3,5,A)3";
+    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:quad_A_delayed_1\ : SIGNAL IS "U(2,3,B)1";
     SIGNAL \QuadDec_M1:bQuadDec:quad_A_delayed_2\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:quad_A_delayed_2\ : SIGNAL IS "U(3,5,A)2";
+    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:quad_A_delayed_2\ : SIGNAL IS "U(2,3,A)0";
     SIGNAL \QuadDec_M1:bQuadDec:quad_A_filt\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:quad_A_filt\ : SIGNAL IS "U(3,5,A)1";
+    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:quad_A_filt\ : SIGNAL IS "U(2,3,B)0";
     SIGNAL \QuadDec_M1:bQuadDec:quad_B_delayed_0\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:quad_B_delayed_0\ : SIGNAL IS "U(1,4,A)1";
+    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:quad_B_delayed_0\ : SIGNAL IS "U(1,3,B)3";
     SIGNAL \QuadDec_M1:bQuadDec:quad_B_delayed_1\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:quad_B_delayed_1\ : SIGNAL IS "U(2,4,B)0";
+    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:quad_B_delayed_1\ : SIGNAL IS "U(3,5,A)0";
     SIGNAL \QuadDec_M1:bQuadDec:quad_B_delayed_2\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:quad_B_delayed_2\ : SIGNAL IS "U(2,4,B)1";
+    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:quad_B_delayed_2\ : SIGNAL IS "U(3,5,B)2";
     SIGNAL \QuadDec_M1:bQuadDec:quad_B_filt\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:quad_B_filt\ : SIGNAL IS "U(2,4,B)2";
+    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:quad_B_filt\ : SIGNAL IS "U(3,5,B)1";
     SIGNAL \QuadDec_M1:bQuadDec:state_0\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:state_0\ : SIGNAL IS "U(3,3,B)1";
+    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:state_0\ : SIGNAL IS "U(2,4,B)1";
     SIGNAL \QuadDec_M1:bQuadDec:state_1\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:state_1\ : SIGNAL IS "U(3,5,A)0";
+    ATTRIBUTE placement_force OF \QuadDec_M1:bQuadDec:state_1\ : SIGNAL IS "U(2,4,A)0";
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:cmp_out_i\ : bit;
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:control_0\ : bit;
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:control_1\ : bit;
@@ -409,65 +407,65 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:control_6\ : bit;
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:control_7\ : bit;
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:count_enable\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:count_enable\ : SIGNAL IS "U(3,5,B)1";
+    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:count_enable\ : SIGNAL IS "U(3,5,A)1";
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:count_stored_i\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:count_stored_i\ : SIGNAL IS "U(3,5,B)3";
+    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:count_stored_i\ : SIGNAL IS "U(3,5,B)0";
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:overflow\ : bit;
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:overflow_reg_i\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(3,3,A)2";
+    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(0,3,A)2";
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:prevCompare\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:prevCompare\ : SIGNAL IS "U(3,4,A)1";
+    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:prevCompare\ : SIGNAL IS "U(2,2,B)2";
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:reload\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:reload\ : SIGNAL IS "U(2,2,A)3";
+    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:reload\ : SIGNAL IS "U(2,2,B)3";
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:status_0\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:status_0\ : SIGNAL IS "U(3,4,A)2";
+    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:status_0\ : SIGNAL IS "U(2,2,B)0";
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:status_1\ : bit;
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:status_2\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:status_2\ : SIGNAL IS "U(3,3,A)3";
+    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:status_2\ : SIGNAL IS "U(0,3,A)1";
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:status_3\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:status_3\ : SIGNAL IS "U(3,3,A)0";
+    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:status_3\ : SIGNAL IS "U(2,4,B)3";
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:status_5\ : bit;
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:status_6\ : bit;
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:underflow_reg_i\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:underflow_reg_i\ : SIGNAL IS "U(3,3,A)1";
+    ATTRIBUTE placement_force OF \QuadDec_M2:Cnt16:CounterUDB:underflow_reg_i\ : SIGNAL IS "U(2,3,A)3";
     SIGNAL \QuadDec_M2:Net_1203\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:Net_1203\ : SIGNAL IS "U(3,4,B)1";
+    ATTRIBUTE placement_force OF \QuadDec_M2:Net_1203\ : SIGNAL IS "U(3,5,A)2";
     SIGNAL \QuadDec_M2:Net_1203_split\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:Net_1203_split\ : SIGNAL IS "U(3,2,A)0";
+    ATTRIBUTE placement_force OF \QuadDec_M2:Net_1203_split\ : SIGNAL IS "U(3,4,B)0";
     SIGNAL \QuadDec_M2:Net_1251\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:Net_1251\ : SIGNAL IS "U(2,1,B)2";
+    ATTRIBUTE placement_force OF \QuadDec_M2:Net_1251\ : SIGNAL IS "U(3,3,A)0";
     SIGNAL \QuadDec_M2:Net_1251_split\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:Net_1251_split\ : SIGNAL IS "U(3,1,A)0";
+    ATTRIBUTE placement_force OF \QuadDec_M2:Net_1251_split\ : SIGNAL IS "U(3,3,B)0";
     SIGNAL \QuadDec_M2:Net_1260\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:Net_1260\ : SIGNAL IS "U(2,3,A)0";
+    ATTRIBUTE placement_force OF \QuadDec_M2:Net_1260\ : SIGNAL IS "U(3,4,A)2";
     SIGNAL \QuadDec_M2:Net_1275\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:Net_1275\ : SIGNAL IS "U(3,4,A)3";
+    ATTRIBUTE placement_force OF \QuadDec_M2:Net_1275\ : SIGNAL IS "U(2,0,B)1";
     SIGNAL \QuadDec_M2:Net_530\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:Net_530\ : SIGNAL IS "U(3,4,B)2";
+    ATTRIBUTE placement_force OF \QuadDec_M2:Net_530\ : SIGNAL IS "U(3,1,A)3";
     SIGNAL \QuadDec_M2:Net_611\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:Net_611\ : SIGNAL IS "U(3,4,B)3";
+    ATTRIBUTE placement_force OF \QuadDec_M2:Net_611\ : SIGNAL IS "U(2,2,A)2";
     SIGNAL \QuadDec_M2:bQuadDec:error\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:error\ : SIGNAL IS "U(3,4,A)0";
+    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:error\ : SIGNAL IS "U(3,4,A)1";
     SIGNAL \QuadDec_M2:bQuadDec:quad_A_delayed_0\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:quad_A_delayed_0\ : SIGNAL IS "U(2,1,B)0";
+    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:quad_A_delayed_0\ : SIGNAL IS "U(3,4,A)0";
     SIGNAL \QuadDec_M2:bQuadDec:quad_A_delayed_1\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:quad_A_delayed_1\ : SIGNAL IS "U(2,3,A)3";
+    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:quad_A_delayed_1\ : SIGNAL IS "U(2,0,B)3";
     SIGNAL \QuadDec_M2:bQuadDec:quad_A_delayed_2\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:quad_A_delayed_2\ : SIGNAL IS "U(2,3,A)2";
+    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:quad_A_delayed_2\ : SIGNAL IS "U(3,1,A)1";
     SIGNAL \QuadDec_M2:bQuadDec:quad_A_filt\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:quad_A_filt\ : SIGNAL IS "U(2,3,A)1";
+    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:quad_A_filt\ : SIGNAL IS "U(3,1,A)0";
     SIGNAL \QuadDec_M2:bQuadDec:quad_B_delayed_0\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:quad_B_delayed_0\ : SIGNAL IS "U(1,4,A)0";
+    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:quad_B_delayed_0\ : SIGNAL IS "U(1,3,B)0";
     SIGNAL \QuadDec_M2:bQuadDec:quad_B_delayed_1\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:quad_B_delayed_1\ : SIGNAL IS "U(2,1,B)3";
+    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:quad_B_delayed_1\ : SIGNAL IS "U(2,3,B)2";
     SIGNAL \QuadDec_M2:bQuadDec:quad_B_delayed_2\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:quad_B_delayed_2\ : SIGNAL IS "U(2,1,A)0";
+    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:quad_B_delayed_2\ : SIGNAL IS "U(2,3,A)2";
     SIGNAL \QuadDec_M2:bQuadDec:quad_B_filt\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:quad_B_filt\ : SIGNAL IS "U(2,1,B)1";
+    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:quad_B_filt\ : SIGNAL IS "U(2,3,B)3";
     SIGNAL \QuadDec_M2:bQuadDec:state_0\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:state_0\ : SIGNAL IS "U(3,4,B)0";
+    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:state_0\ : SIGNAL IS "U(3,5,A)3";
     SIGNAL \QuadDec_M2:bQuadDec:state_1\ : bit;
-    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:state_1\ : SIGNAL IS "U(2,1,A)1";
+    ATTRIBUTE placement_force OF \QuadDec_M2:bQuadDec:state_1\ : SIGNAL IS "U(3,3,A)1";
     SIGNAL \RF_BT_SELECT:control_1\ : bit;
     SIGNAL \RF_BT_SELECT:control_2\ : bit;
     SIGNAL \RF_BT_SELECT:control_3\ : bit;
@@ -478,13 +476,13 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     SIGNAL \Timer_TS:Net_261\ : bit;
     SIGNAL \Timer_TS:Net_57\ : bit;
     SIGNAL \UART:BUART:counter_load_not\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:counter_load_not\ : SIGNAL IS "U(1,0,B)1";
+    ATTRIBUTE placement_force OF \UART:BUART:counter_load_not\ : SIGNAL IS "U(1,0,A)2";
     SIGNAL \UART:BUART:pollcount_0\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:pollcount_0\ : SIGNAL IS "U(1,1,A)1";
+    ATTRIBUTE placement_force OF \UART:BUART:pollcount_0\ : SIGNAL IS "U(2,0,A)1";
     SIGNAL \UART:BUART:pollcount_1\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:pollcount_1\ : SIGNAL IS "U(1,1,A)0";
+    ATTRIBUTE placement_force OF \UART:BUART:pollcount_1\ : SIGNAL IS "U(2,2,A)0";
     SIGNAL \UART:BUART:rx_bitclk_enable\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_bitclk_enable\ : SIGNAL IS "U(1,0,B)2";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_bitclk_enable\ : SIGNAL IS "U(1,4,A)1";
     SIGNAL \UART:BUART:rx_count7_tc\ : bit;
     SIGNAL \UART:BUART:rx_count_0\ : bit;
     SIGNAL \UART:BUART:rx_count_1\ : bit;
@@ -494,41 +492,41 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     SIGNAL \UART:BUART:rx_count_5\ : bit;
     SIGNAL \UART:BUART:rx_count_6\ : bit;
     SIGNAL \UART:BUART:rx_counter_load\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_counter_load\ : SIGNAL IS "U(2,2,A)0";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_counter_load\ : SIGNAL IS "U(2,2,B)1";
     SIGNAL \UART:BUART:rx_fifofull\ : bit;
     SIGNAL \UART:BUART:rx_fifonotempty\ : bit;
     SIGNAL \UART:BUART:rx_last\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_last\ : SIGNAL IS "U(1,2,B)1";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_last\ : SIGNAL IS "U(2,1,B)1";
     SIGNAL \UART:BUART:rx_load_fifo\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_load_fifo\ : SIGNAL IS "U(1,2,A)1";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_load_fifo\ : SIGNAL IS "U(2,1,A)1";
     SIGNAL \UART:BUART:rx_postpoll\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_postpoll\ : SIGNAL IS "U(1,3,B)1";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_postpoll\ : SIGNAL IS "U(2,2,A)1";
     ATTRIBUTE soft OF \UART:BUART:rx_postpoll\ : SIGNAL IS 1;
     SIGNAL \UART:BUART:rx_state_0\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_state_0\ : SIGNAL IS "U(1,2,B)0";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_state_0\ : SIGNAL IS "U(2,1,B)0";
     SIGNAL \UART:BUART:rx_state_2\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_state_2\ : SIGNAL IS "U(1,2,A)0";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_state_2\ : SIGNAL IS "U(2,1,A)0";
     SIGNAL \UART:BUART:rx_state_3\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_state_3\ : SIGNAL IS "U(1,2,A)2";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_state_3\ : SIGNAL IS "U(2,1,A)2";
     SIGNAL \UART:BUART:rx_state_stop1_reg\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_state_stop1_reg\ : SIGNAL IS "U(1,2,B)3";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_state_stop1_reg\ : SIGNAL IS "U(2,1,B)3";
     SIGNAL \UART:BUART:rx_status_3\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_status_3\ : SIGNAL IS "U(1,2,B)2";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_status_3\ : SIGNAL IS "U(2,1,B)2";
     SIGNAL \UART:BUART:rx_status_4\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_status_4\ : SIGNAL IS "U(2,1,A)3";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_status_4\ : SIGNAL IS "U(0,1,A)0";
     SIGNAL \UART:BUART:rx_status_5\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_status_5\ : SIGNAL IS "U(2,2,B)0";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_status_5\ : SIGNAL IS "U(2,0,B)2";
     SIGNAL \UART:BUART:tx_bitclk\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:tx_bitclk\ : SIGNAL IS "U(1,0,A)2";
+    ATTRIBUTE placement_force OF \UART:BUART:tx_bitclk\ : SIGNAL IS "U(1,1,B)1";
     SIGNAL \UART:BUART:tx_bitclk_enable_pre\ : bit;
     SIGNAL \UART:BUART:tx_counter_dp\ : bit;
     SIGNAL \UART:BUART:tx_ctrl_mark_last\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:tx_ctrl_mark_last\ : SIGNAL IS "U(1,1,A)2";
+    ATTRIBUTE placement_force OF \UART:BUART:tx_ctrl_mark_last\ : SIGNAL IS "U(1,2,B)1";
     SIGNAL \UART:BUART:tx_fifo_empty\ : bit;
     SIGNAL \UART:BUART:tx_fifo_notfull\ : bit;
     SIGNAL \UART:BUART:tx_shift_out\ : bit;
     SIGNAL \UART:BUART:tx_state_0\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:tx_state_0\ : SIGNAL IS "U(1,0,B)0";
+    ATTRIBUTE placement_force OF \UART:BUART:tx_state_0\ : SIGNAL IS "U(2,0,A)0";
     SIGNAL \UART:BUART:tx_state_1\ : bit;
     ATTRIBUTE placement_force OF \UART:BUART:tx_state_1\ : SIGNAL IS "U(1,0,A)0";
     SIGNAL \UART:BUART:tx_state_2\ : bit;
@@ -536,9 +534,9 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     SIGNAL \UART:BUART:tx_status_0\ : bit;
     ATTRIBUTE placement_force OF \UART:BUART:tx_status_0\ : SIGNAL IS "U(1,0,A)3";
     SIGNAL \UART:BUART:tx_status_2\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:tx_status_2\ : SIGNAL IS "U(1,1,B)3";
+    ATTRIBUTE placement_force OF \UART:BUART:tx_status_2\ : SIGNAL IS "U(1,1,B)2";
     SIGNAL \UART:BUART:txn\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:txn\ : SIGNAL IS "U(1,3,B)0";
+    ATTRIBUTE placement_force OF \UART:BUART:txn\ : SIGNAL IS "U(1,1,B)0";
     SIGNAL \UART:Net_9\ : bit;
     ATTRIBUTE udbclken_assigned OF \UART:Net_9\ : SIGNAL IS "True";
     ATTRIBUTE global_signal OF \UART:Net_9\ : SIGNAL IS true;
@@ -568,7 +566,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     SIGNAL \USBUART:ep_int_7\ : bit;
     SIGNAL \USBUART:ep_int_8\ : bit;
     SIGNAL __ONE__ : bit;
-    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(3,2,A)2";
+    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(3,3,A)2";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
@@ -602,7 +600,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:sC16:counterdp:u1.sor__sig\ : bit;
     SIGNAL \QuadDec_M2:Cnt16:CounterUDB:sC16:counterdp:u1.cmsbo__sig\ : bit;
     ATTRIBUTE lib_model OF \QuadDec_M1:Net_1203_split\ : LABEL IS "macrocell1";
-    ATTRIBUTE Location OF \QuadDec_M1:Net_1203_split\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \QuadDec_M1:Net_1203_split\ : LABEL IS "U(2,5)";
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
     ATTRIBUTE lib_model OF M1_IN1(0) : LABEL IS "iocell1";
     ATTRIBUTE Location OF M1_IN1(0) : LABEL IS "P3[5]";
@@ -634,432 +632,431 @@ ARCHITECTURE __DEFAULT__ OF CS301_SensorTestUnit IS
     ATTRIBUTE Location OF Q5(0) : LABEL IS "P1[4]";
     ATTRIBUTE lib_model OF Q6(0) : LABEL IS "iocell15";
     ATTRIBUTE Location OF Q6(0) : LABEL IS "P1[5]";
-    ATTRIBUTE lib_model OF ADC_TEST_PIN(0) : LABEL IS "iocell16";
-    ATTRIBUTE Location OF ADC_TEST_PIN(0) : LABEL IS "P1[6]";
-    ATTRIBUTE lib_model OF \USBUART:Dm(0)\ : LABEL IS "iocell17";
+    ATTRIBUTE lib_model OF \USBUART:Dm(0)\ : LABEL IS "iocell16";
     ATTRIBUTE Location OF \USBUART:Dm(0)\ : LABEL IS "P15[7]";
     ATTRIBUTE Location OF \USBUART:Dp\ : LABEL IS "F(PICU,8)";
-    ATTRIBUTE lib_model OF \USBUART:Dp(0)\ : LABEL IS "iocell18";
+    ATTRIBUTE lib_model OF \USBUART:Dp(0)\ : LABEL IS "iocell17";
     ATTRIBUTE Location OF \USBUART:Dp(0)\ : LABEL IS "P15[6]";
-    ATTRIBUTE lib_model OF M1_D1(0) : LABEL IS "iocell19";
+    ATTRIBUTE lib_model OF M1_D1(0) : LABEL IS "iocell18";
     ATTRIBUTE Location OF M1_D1(0) : LABEL IS "P3[3]";
-    ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell20";
+    ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell19";
     ATTRIBUTE Location OF Rx_1(0) : LABEL IS "P2[2]";
-    ATTRIBUTE lib_model OF Tx_1(0) : LABEL IS "iocell21";
+    ATTRIBUTE lib_model OF Tx_1(0) : LABEL IS "iocell20";
     ATTRIBUTE Location OF Tx_1(0) : LABEL IS "P2[3]";
-    ATTRIBUTE lib_model OF LED(0) : LABEL IS "iocell22";
+    ATTRIBUTE lib_model OF LED(0) : LABEL IS "iocell21";
     ATTRIBUTE Location OF LED(0) : LABEL IS "P2[1]";
-    ATTRIBUTE lib_model OF DB0(0) : LABEL IS "iocell23";
+    ATTRIBUTE lib_model OF DB0(0) : LABEL IS "iocell22";
     ATTRIBUTE Location OF DB0(0) : LABEL IS "P3[0]";
-    ATTRIBUTE lib_model OF DB1(0) : LABEL IS "iocell24";
+    ATTRIBUTE lib_model OF DB1(0) : LABEL IS "iocell23";
     ATTRIBUTE Location OF DB1(0) : LABEL IS "P3[1]";
-    ATTRIBUTE lib_model OF DB2(0) : LABEL IS "iocell25";
+    ATTRIBUTE lib_model OF DB2(0) : LABEL IS "iocell24";
     ATTRIBUTE Location OF DB2(0) : LABEL IS "P3[6]";
-    ATTRIBUTE lib_model OF Rx_2(0) : LABEL IS "iocell26";
+    ATTRIBUTE lib_model OF Rx_2(0) : LABEL IS "iocell25";
     ATTRIBUTE Location OF Rx_2(0) : LABEL IS "P2[4]";
-    ATTRIBUTE lib_model OF LED_1(0) : LABEL IS "iocell27";
+    ATTRIBUTE lib_model OF LED_1(0) : LABEL IS "iocell26";
     ATTRIBUTE Location OF LED_1(0) : LABEL IS "P0[2]";
-    ATTRIBUTE lib_model OF LED_2(0) : LABEL IS "iocell28";
+    ATTRIBUTE lib_model OF LED_2(0) : LABEL IS "iocell27";
     ATTRIBUTE Location OF LED_2(0) : LABEL IS "P0[3]";
-    ATTRIBUTE lib_model OF LED_3(0) : LABEL IS "iocell29";
+    ATTRIBUTE lib_model OF LED_3(0) : LABEL IS "iocell28";
     ATTRIBUTE Location OF LED_3(0) : LABEL IS "P0[4]";
-    ATTRIBUTE lib_model OF LED_4(0) : LABEL IS "iocell30";
+    ATTRIBUTE lib_model OF LED_4(0) : LABEL IS "iocell29";
     ATTRIBUTE Location OF LED_4(0) : LABEL IS "P2[5]";
-    ATTRIBUTE lib_model OF LED_5(0) : LABEL IS "iocell31";
+    ATTRIBUTE lib_model OF LED_5(0) : LABEL IS "iocell30";
     ATTRIBUTE Location OF LED_5(0) : LABEL IS "P2[6]";
-    ATTRIBUTE lib_model OF LED_6(0) : LABEL IS "iocell32";
+    ATTRIBUTE lib_model OF LED_6(0) : LABEL IS "iocell31";
     ATTRIBUTE Location OF LED_6(0) : LABEL IS "P2[7]";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:reload\ : LABEL IS "macrocell2";
-    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:reload\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:reload\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:status_0\ : LABEL IS "macrocell3";
-    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:status_0\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:status_0\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:status_2\ : LABEL IS "macrocell4";
-    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:status_2\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:status_2\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:status_3\ : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:status_3\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:status_3\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:count_enable\ : LABEL IS "macrocell6";
-    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:count_enable\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:count_enable\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Net_530\ : LABEL IS "macrocell7";
-    ATTRIBUTE Location OF \QuadDec_M1:Net_530\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \QuadDec_M1:Net_530\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Net_611\ : LABEL IS "macrocell8";
-    ATTRIBUTE Location OF \QuadDec_M1:Net_611\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \QuadDec_M1:Net_611\ : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF Net_368 : LABEL IS "macrocell9";
-    ATTRIBUTE Location OF Net_368 : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF Net_368 : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF Net_362 : LABEL IS "macrocell10";
-    ATTRIBUTE Location OF Net_362 : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF Net_362 : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Cnt16:CounterUDB:reload\ : LABEL IS "macrocell11";
     ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:reload\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Cnt16:CounterUDB:status_0\ : LABEL IS "macrocell12";
-    ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:status_0\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:status_0\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Cnt16:CounterUDB:status_2\ : LABEL IS "macrocell13";
-    ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:status_2\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:status_2\ : LABEL IS "U(0,3)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Cnt16:CounterUDB:status_3\ : LABEL IS "macrocell14";
-    ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:status_3\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:status_3\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Cnt16:CounterUDB:count_enable\ : LABEL IS "macrocell15";
     ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:count_enable\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Net_530\ : LABEL IS "macrocell16";
-    ATTRIBUTE Location OF \QuadDec_M2:Net_530\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \QuadDec_M2:Net_530\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Net_611\ : LABEL IS "macrocell17";
-    ATTRIBUTE Location OF \QuadDec_M2:Net_611\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \QuadDec_M2:Net_611\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_is_active\ : LABEL IS "macrocell18";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_is_active\ : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_is_active\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:cnt_enable\ : LABEL IS "macrocell19";
-    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:cnt_enable\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:cnt_enable\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF Net_1880 : LABEL IS "macrocell20";
-    ATTRIBUTE Location OF Net_1880 : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF Net_1880 : LABEL IS "U(0,3)";
     ATTRIBUTE lib_model OF \UART:BUART:counter_load_not\ : LABEL IS "macrocell21";
     ATTRIBUTE Location OF \UART:BUART:counter_load_not\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \UART:BUART:tx_status_0\ : LABEL IS "macrocell22";
     ATTRIBUTE Location OF \UART:BUART:tx_status_0\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \UART:BUART:tx_status_2\ : LABEL IS "macrocell23";
     ATTRIBUTE Location OF \UART:BUART:tx_status_2\ : LABEL IS "U(1,1)";
-    ATTRIBUTE Location OF M1_QA(0)_SYNC : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF M1_QA(0)_SYNC : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \UART:BUART:rx_counter_load\ : LABEL IS "macrocell24";
     ATTRIBUTE Location OF \UART:BUART:rx_counter_load\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \UART:BUART:rx_postpoll\ : LABEL IS "macrocell25";
-    ATTRIBUTE Location OF \UART:BUART:rx_postpoll\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \UART:BUART:rx_postpoll\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \UART:BUART:rx_status_4\ : LABEL IS "macrocell26";
-    ATTRIBUTE Location OF \UART:BUART:rx_status_4\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \UART:BUART:rx_status_4\ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \UART:BUART:rx_status_5\ : LABEL IS "macrocell27";
-    ATTRIBUTE Location OF \UART:BUART:rx_status_5\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \UART:BUART:rx_status_5\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell28";
-    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "controlcell1";
-    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:sSTSReg:stsreg\ : LABEL IS "statusicell1";
-    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:sSTSReg:stsreg\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:sSTSReg:stsreg\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:sC16:counterdp:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:sC16:counterdp:u0\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:sC16:counterdp:u0\ : LABEL IS "U(0,3)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:sC16:counterdp:u1\ : LABEL IS "datapathcell2";
-    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:sC16:counterdp:u1\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:sC16:counterdp:u1\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \QuadDec_M1:bQuadDec:quad_A_delayed_0\ : LABEL IS "macrocell29";
-    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:quad_A_delayed_0\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:quad_A_delayed_0\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \QuadDec_M1:bQuadDec:quad_A_delayed_1\ : LABEL IS "macrocell30";
-    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:quad_A_delayed_1\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:quad_A_delayed_1\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \QuadDec_M1:bQuadDec:quad_A_delayed_2\ : LABEL IS "macrocell31";
-    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:quad_A_delayed_2\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:quad_A_delayed_2\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \QuadDec_M1:bQuadDec:quad_B_delayed_0\ : LABEL IS "macrocell32";
-    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:quad_B_delayed_0\ : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:quad_B_delayed_0\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \QuadDec_M1:bQuadDec:quad_B_delayed_1\ : LABEL IS "macrocell33";
-    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:quad_B_delayed_1\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:quad_B_delayed_1\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \QuadDec_M1:bQuadDec:quad_B_delayed_2\ : LABEL IS "macrocell34";
-    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:quad_B_delayed_2\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:quad_B_delayed_2\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \QuadDec_M1:bQuadDec:Stsreg\ : LABEL IS "statusicell2";
-    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:Stsreg\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:Stsreg\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Cnt16:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "controlcell2";
-    ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Cnt16:CounterUDB:sSTSReg:stsreg\ : LABEL IS "statusicell3";
-    ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:sSTSReg:stsreg\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:sSTSReg:stsreg\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Cnt16:CounterUDB:sC16:counterdp:u0\ : LABEL IS "datapathcell3";
     ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:sC16:counterdp:u0\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Cnt16:CounterUDB:sC16:counterdp:u1\ : LABEL IS "datapathcell4";
     ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:sC16:counterdp:u1\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:quad_A_delayed_0\ : LABEL IS "macrocell35";
-    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:quad_A_delayed_0\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:quad_A_delayed_0\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:quad_A_delayed_1\ : LABEL IS "macrocell36";
-    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:quad_A_delayed_1\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:quad_A_delayed_1\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:quad_A_delayed_2\ : LABEL IS "macrocell37";
-    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:quad_A_delayed_2\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:quad_A_delayed_2\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:quad_B_delayed_0\ : LABEL IS "macrocell38";
-    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:quad_B_delayed_0\ : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:quad_B_delayed_0\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:quad_B_delayed_1\ : LABEL IS "macrocell39";
-    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:quad_B_delayed_1\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:quad_B_delayed_1\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:quad_B_delayed_2\ : LABEL IS "macrocell40";
-    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:quad_B_delayed_2\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:quad_B_delayed_2\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:Stsreg\ : LABEL IS "statusicell4";
-    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:Stsreg\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:Stsreg\ : LABEL IS "U(3,3)";
     ATTRIBUTE Location OF \ADC_Sensor:SAR:ADC_SAR\ : LABEL IS "F(SAR,1)";
     ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:CtrlReg\ : LABEL IS "controlcell3";
-    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:CtrlReg\ : LABEL IS "U(2,3)";
-    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:ChannelCounter\ : LABEL IS "U(1,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:CtrlReg\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:ChannelCounter\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:EOCSts\ : LABEL IS "statuscell1";
-    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:EOCSts\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:EOCSts\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:TempBuf\ : LABEL IS "drqcell1";
     ATTRIBUTE Location OF \ADC_Sensor:TempBuf\ : LABEL IS "[DrqContainer=(0)][DrqId=(1)]";
     ATTRIBUTE lib_model OF \ADC_Sensor:FinalBuf\ : LABEL IS "drqcell2";
     ATTRIBUTE Location OF \ADC_Sensor:FinalBuf\ : LABEL IS "[DrqContainer=(0)][DrqId=(0)]";
-    ATTRIBUTE Location OF \ADC_Sensor:IRQ\ : LABEL IS "[IntrContainer=(0)][IntrId=(0)]";
-    ATTRIBUTE Location OF \ADC_Sensor:Sync:genblk1[0]:INST\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \ADC_Sensor:IRQ\ : LABEL IS "[IntrContainer=(0)][IntrId=(1)]";
+    ATTRIBUTE Location OF \ADC_Sensor:Sync:genblk1[0]:INST\ : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF ADC_isr : LABEL IS "[IntrContainer=(0)][IntrId=(0)]";
     ATTRIBUTE Location OF \Timer_TS:TimerHW\ : LABEL IS "F(Timer,2)";
     ATTRIBUTE Location OF \USBUART:dp_int\ : LABEL IS "[IntrContainer=(0)][IntrId=(12)]";
     ATTRIBUTE Location OF \USBUART:USB\ : LABEL IS "F(USB,0)";
-    ATTRIBUTE Location OF \USBUART:ep_3\ : LABEL IS "[IntrContainer=(0)][IntrId=(3)]";
-    ATTRIBUTE Location OF \USBUART:ep_2\ : LABEL IS "[IntrContainer=(0)][IntrId=(2)]";
-    ATTRIBUTE Location OF \USBUART:ep_1\ : LABEL IS "[IntrContainer=(0)][IntrId=(1)]";
+    ATTRIBUTE Location OF \USBUART:ep_3\ : LABEL IS "[IntrContainer=(0)][IntrId=(4)]";
+    ATTRIBUTE Location OF \USBUART:ep_2\ : LABEL IS "[IntrContainer=(0)][IntrId=(3)]";
+    ATTRIBUTE Location OF \USBUART:ep_1\ : LABEL IS "[IntrContainer=(0)][IntrId=(2)]";
     ATTRIBUTE Location OF \USBUART:ep_0\ : LABEL IS "[IntrContainer=(0)][IntrId=(24)]";
     ATTRIBUTE Location OF \USBUART:bus_reset\ : LABEL IS "[IntrContainer=(0)][IntrId=(23)]";
     ATTRIBUTE Location OF \USBUART:arb_int\ : LABEL IS "[IntrContainer=(0)][IntrId=(22)]";
     ATTRIBUTE Location OF \USBUART:sof_int\ : LABEL IS "[IntrContainer=(0)][IntrId=(21)]";
     ATTRIBUTE lib_model OF \CONTROL:Sync:ctrl_reg\ : LABEL IS "controlcell4";
-    ATTRIBUTE Location OF \CONTROL:Sync:ctrl_reg\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \CONTROL:Sync:ctrl_reg\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \UART:BUART:sTX:TxShifter:u0\ : LABEL IS "datapathcell5";
-    ATTRIBUTE Location OF \UART:BUART:sTX:TxShifter:u0\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \UART:BUART:sTX:TxShifter:u0\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \UART:BUART:sTX:sCLOCK:TxBitClkGen\ : LABEL IS "datapathcell6";
     ATTRIBUTE Location OF \UART:BUART:sTX:sCLOCK:TxBitClkGen\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \UART:BUART:sTX:TxSts\ : LABEL IS "statusicell5";
-    ATTRIBUTE Location OF \UART:BUART:sTX:TxSts\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \UART:BUART:sTX:TxSts\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \UART:BUART:sRX:RxShifter:u0\ : LABEL IS "datapathcell7";
-    ATTRIBUTE Location OF \UART:BUART:sRX:RxShifter:u0\ : LABEL IS "U(1,1)";
-    ATTRIBUTE Location OF \UART:BUART:sRX:RxBitCounter\ : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF \UART:BUART:sRX:RxShifter:u0\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \UART:BUART:sRX:RxBitCounter\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \UART:BUART:sRX:RxSts\ : LABEL IS "statusicell6";
-    ATTRIBUTE Location OF \UART:BUART:sRX:RxSts\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \UART:BUART:sRX:RxSts\ : LABEL IS "U(0,1)";
     ATTRIBUTE Location OF \PWM_1:PWMHW\ : LABEL IS "F(Timer,0)";
     ATTRIBUTE Location OF \PWM_2:PWMHW\ : LABEL IS "F(Timer,1)";
-    ATTRIBUTE Location OF isrRF_TX : LABEL IS "[IntrContainer=(0)][IntrId=(5)]";
-    ATTRIBUTE Location OF isrRF_RX : LABEL IS "[IntrContainer=(0)][IntrId=(4)]";
+    ATTRIBUTE Location OF isrRF_TX : LABEL IS "[IntrContainer=(0)][IntrId=(6)]";
+    ATTRIBUTE Location OF isrRF_RX : LABEL IS "[IntrContainer=(0)][IntrId=(5)]";
     ATTRIBUTE lib_model OF \RF_BT_SELECT:Sync:ctrl_reg\ : LABEL IS "controlcell5";
-    ATTRIBUTE Location OF \RF_BT_SELECT:Sync:ctrl_reg\ : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF \RF_BT_SELECT:Sync:ctrl_reg\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Net_1251\ : LABEL IS "macrocell41";
-    ATTRIBUTE Location OF \QuadDec_M1:Net_1251\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \QuadDec_M1:Net_1251\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell42";
-    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:overflow_reg_i\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:overflow_reg_i\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:underflow_reg_i\ : LABEL IS "macrocell43";
-    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:underflow_reg_i\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:underflow_reg_i\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Net_1275\ : LABEL IS "macrocell44";
-    ATTRIBUTE Location OF \QuadDec_M1:Net_1275\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \QuadDec_M1:Net_1275\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:prevCompare\ : LABEL IS "macrocell45";
-    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:prevCompare\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:prevCompare\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_is_active_split\ : LABEL IS "macrocell46";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_is_active_split\ : LABEL IS "U(1,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_is_active_split\ : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:count_stored_i\ : LABEL IS "macrocell47";
-    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:count_stored_i\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \QuadDec_M1:Cnt16:CounterUDB:count_stored_i\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Net_1203\ : LABEL IS "macrocell48";
-    ATTRIBUTE Location OF \QuadDec_M1:Net_1203\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \QuadDec_M1:Net_1203\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \QuadDec_M1:bQuadDec:quad_A_filt\ : LABEL IS "macrocell49";
-    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:quad_A_filt\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:quad_A_filt\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \QuadDec_M1:bQuadDec:quad_B_filt\ : LABEL IS "macrocell50";
-    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:quad_B_filt\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:quad_B_filt\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Net_1260\ : LABEL IS "macrocell51";
-    ATTRIBUTE Location OF \QuadDec_M1:Net_1260\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \QuadDec_M1:Net_1260\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \QuadDec_M1:bQuadDec:error\ : LABEL IS "macrocell52";
-    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:error\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:error\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \QuadDec_M1:bQuadDec:state_1\ : LABEL IS "macrocell53";
-    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:state_1\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:state_1\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \QuadDec_M1:bQuadDec:state_0\ : LABEL IS "macrocell54";
-    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:state_0\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \QuadDec_M1:bQuadDec:state_0\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Net_1251\ : LABEL IS "macrocell55";
-    ATTRIBUTE Location OF \QuadDec_M2:Net_1251\ : LABEL IS "U(2,1)";
-    ATTRIBUTE Location OF Rx_2(0)_SYNC : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF \QuadDec_M2:Net_1251\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF Rx_2(0)_SYNC : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Cnt16:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell56";
-    ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:overflow_reg_i\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:overflow_reg_i\ : LABEL IS "U(0,3)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Cnt16:CounterUDB:underflow_reg_i\ : LABEL IS "macrocell57";
-    ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:underflow_reg_i\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:underflow_reg_i\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Net_1275\ : LABEL IS "macrocell58";
-    ATTRIBUTE Location OF \QuadDec_M2:Net_1275\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \QuadDec_M2:Net_1275\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Cnt16:CounterUDB:prevCompare\ : LABEL IS "macrocell59";
-    ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:prevCompare\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:prevCompare\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \QuadDec_M1:Net_1251_split\ : LABEL IS "macrocell60";
-    ATTRIBUTE Location OF \QuadDec_M1:Net_1251_split\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \QuadDec_M1:Net_1251_split\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Cnt16:CounterUDB:count_stored_i\ : LABEL IS "macrocell61";
     ATTRIBUTE Location OF \QuadDec_M2:Cnt16:CounterUDB:count_stored_i\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Net_1203\ : LABEL IS "macrocell62";
-    ATTRIBUTE Location OF \QuadDec_M2:Net_1203\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \QuadDec_M2:Net_1203\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:quad_A_filt\ : LABEL IS "macrocell63";
-    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:quad_A_filt\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:quad_A_filt\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:quad_B_filt\ : LABEL IS "macrocell64";
-    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:quad_B_filt\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:quad_B_filt\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Net_1260\ : LABEL IS "macrocell65";
-    ATTRIBUTE Location OF \QuadDec_M2:Net_1260\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \QuadDec_M2:Net_1260\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:error\ : LABEL IS "macrocell66";
     ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:error\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:state_1\ : LABEL IS "macrocell67";
-    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:state_1\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:state_1\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \QuadDec_M2:bQuadDec:state_0\ : LABEL IS "macrocell68";
-    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:state_0\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \QuadDec_M2:bQuadDec:state_0\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\ : LABEL IS "macrocell69";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_5\ : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\ : LABEL IS "macrocell70";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_4\ : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\ : LABEL IS "macrocell71";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_3\ : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\ : LABEL IS "macrocell72";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\ : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_2\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\ : LABEL IS "macrocell73";
     ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_1\ : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\ : LABEL IS "macrocell74";
     ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_old_id_0\ : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_0\ : LABEL IS "macrocell75";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_0\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_0\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_1\ : LABEL IS "macrocell76";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_1\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_1\ : LABEL IS "U(0,5)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_2\ : LABEL IS "macrocell77";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_2\ : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_2\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_3\ : LABEL IS "macrocell78";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_3\ : LABEL IS "U(0,3)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_3\ : LABEL IS "U(0,5)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_4\ : LABEL IS "macrocell79";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_4\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_4\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_5\ : LABEL IS "macrocell80";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_5\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_5\ : LABEL IS "U(0,5)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_6\ : LABEL IS "macrocell81";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_6\ : LABEL IS "U(0,2)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_6\ : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_7\ : LABEL IS "macrocell82";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_7\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_7\ : LABEL IS "U(0,5)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_8\ : LABEL IS "macrocell83";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_8\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_8\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_9\ : LABEL IS "macrocell84";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_9\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_9\ : LABEL IS "U(0,5)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_10\ : LABEL IS "macrocell85";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_10\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_10\ : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_11\ : LABEL IS "macrocell86";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_11\ : LABEL IS "U(0,3)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_11\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_12\ : LABEL IS "macrocell87";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_12\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_12\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_13\ : LABEL IS "macrocell88";
     ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_13\ : LABEL IS "U(0,5)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_14\ : LABEL IS "macrocell89";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_14\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_14\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_15\ : LABEL IS "macrocell90";
     ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_15\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_16\ : LABEL IS "macrocell91";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_16\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_16\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_17\ : LABEL IS "macrocell92";
     ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_17\ : LABEL IS "U(0,3)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_18\ : LABEL IS "macrocell93";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_18\ : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_18\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_19\ : LABEL IS "macrocell94";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_19\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_19\ : LABEL IS "U(0,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_20\ : LABEL IS "macrocell95";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_20\ : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_20\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_21\ : LABEL IS "macrocell96";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_21\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_21\ : LABEL IS "U(0,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_22\ : LABEL IS "macrocell97";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_22\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_22\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_23\ : LABEL IS "macrocell98";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_23\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_23\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_24\ : LABEL IS "macrocell99";
     ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_24\ : LABEL IS "U(0,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_25\ : LABEL IS "macrocell100";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_25\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_25\ : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_26\ : LABEL IS "macrocell101";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_26\ : LABEL IS "U(0,2)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_26\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_27\ : LABEL IS "macrocell102";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_27\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_27\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_28\ : LABEL IS "macrocell103";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_28\ : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_28\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_29\ : LABEL IS "macrocell104";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_29\ : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_29\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_30\ : LABEL IS "macrocell105";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_30\ : LABEL IS "U(0,3)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_30\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_31\ : LABEL IS "macrocell106";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_31\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_31\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_32\ : LABEL IS "macrocell107";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_32\ : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_32\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_33\ : LABEL IS "macrocell108";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_33\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_33\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_34\ : LABEL IS "macrocell109";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_34\ : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_34\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_35\ : LABEL IS "macrocell110";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_35\ : LABEL IS "U(0,2)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_35\ : LABEL IS "U(0,3)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_36\ : LABEL IS "macrocell111";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_36\ : LABEL IS "U(0,3)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_36\ : LABEL IS "U(0,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_37\ : LABEL IS "macrocell112";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_37\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_37\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_38\ : LABEL IS "macrocell113";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_38\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_38\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_39\ : LABEL IS "macrocell114";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_39\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_39\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_40\ : LABEL IS "macrocell115";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_40\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_40\ : LABEL IS "U(0,5)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_41\ : LABEL IS "macrocell116";
     ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_41\ : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_42\ : LABEL IS "macrocell117";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_42\ : LABEL IS "U(0,2)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_42\ : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_43\ : LABEL IS "macrocell118";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_43\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_43\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_44\ : LABEL IS "macrocell119";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_44\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_44\ : LABEL IS "U(0,3)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_45\ : LABEL IS "macrocell120";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_45\ : LABEL IS "U(0,2)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_45\ : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_46\ : LABEL IS "macrocell121";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_46\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_46\ : LABEL IS "U(0,3)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_47\ : LABEL IS "macrocell122";
     ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_47\ : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_48\ : LABEL IS "macrocell123";
     ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_48\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_49\ : LABEL IS "macrocell124";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_49\ : LABEL IS "U(1,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_49\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_50\ : LABEL IS "macrocell125";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_50\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_50\ : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_51\ : LABEL IS "macrocell126";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_51\ : LABEL IS "U(0,3)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_51\ : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_52\ : LABEL IS "macrocell127";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_52\ : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_52\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_53\ : LABEL IS "macrocell128";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_53\ : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_53\ : LABEL IS "U(0,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_54\ : LABEL IS "macrocell129";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_54\ : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_54\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_55\ : LABEL IS "macrocell130";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_55\ : LABEL IS "U(1,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_55\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_56\ : LABEL IS "macrocell131";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_56\ : LABEL IS "U(0,3)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_56\ : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_57\ : LABEL IS "macrocell132";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_57\ : LABEL IS "U(0,3)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_57\ : LABEL IS "U(0,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_58\ : LABEL IS "macrocell133";
     ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_58\ : LABEL IS "U(0,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_59\ : LABEL IS "macrocell134";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_59\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_59\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_60\ : LABEL IS "macrocell135";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_60\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_60\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_61\ : LABEL IS "macrocell136";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_61\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_61\ : LABEL IS "U(0,5)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_62\ : LABEL IS "macrocell137";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_62\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_62\ : LABEL IS "U(0,0)";
     ATTRIBUTE lib_model OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_63\ : LABEL IS "macrocell138";
-    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_63\ : LABEL IS "U(0,2)";
+    ATTRIBUTE Location OF \ADC_Sensor:AMuxHw_2_Decoder_one_hot_63\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF Net_4367 : LABEL IS "macrocell139";
-    ATTRIBUTE Location OF Net_4367 : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF Net_4367 : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\ : LABEL IS "macrocell140";
-    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:nrq_reg\ : LABEL IS "macrocell141";
-    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:nrq_reg\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:nrq_reg\ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:soc_in\ : LABEL IS "macrocell142";
-    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:soc_in\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:soc_in\ : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:soc_out\ : LABEL IS "macrocell143";
-    ATTRIBUTE Location OF \ADC_Sensor:soc_out\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:soc_out\ : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:soc_reg\ : LABEL IS "macrocell144";
-    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:soc_reg\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:soc_reg\ : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:state_1\ : LABEL IS "macrocell145";
-    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:state_1\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \ADC_Sensor:bSAR_SEQ:state_1\ : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Net_1203_split\ : LABEL IS "macrocell146";
-    ATTRIBUTE Location OF \QuadDec_M2:Net_1203_split\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \QuadDec_M2:Net_1203_split\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \UART:BUART:txn\ : LABEL IS "macrocell147";
-    ATTRIBUTE Location OF \UART:BUART:txn\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \UART:BUART:txn\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \UART:BUART:tx_state_1\ : LABEL IS "macrocell148";
     ATTRIBUTE Location OF \UART:BUART:tx_state_1\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \UART:BUART:tx_state_0\ : LABEL IS "macrocell149";
-    ATTRIBUTE Location OF \UART:BUART:tx_state_0\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \UART:BUART:tx_state_0\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \UART:BUART:tx_state_2\ : LABEL IS "macrocell150";
     ATTRIBUTE Location OF \UART:BUART:tx_state_2\ : LABEL IS "U(1,0)";
-    ATTRIBUTE Location OF Rx_1(0)_SYNC : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF Rx_1(0)_SYNC : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \UART:BUART:tx_bitclk\ : LABEL IS "macrocell151";
-    ATTRIBUTE Location OF \UART:BUART:tx_bitclk\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \UART:BUART:tx_bitclk\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \UART:BUART:tx_ctrl_mark_last\ : LABEL IS "macrocell152";
-    ATTRIBUTE Location OF \UART:BUART:tx_ctrl_mark_last\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \UART:BUART:tx_ctrl_mark_last\ : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \UART:BUART:rx_state_0\ : LABEL IS "macrocell153";
-    ATTRIBUTE Location OF \UART:BUART:rx_state_0\ : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF \UART:BUART:rx_state_0\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \UART:BUART:rx_load_fifo\ : LABEL IS "macrocell154";
-    ATTRIBUTE Location OF \UART:BUART:rx_load_fifo\ : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF \UART:BUART:rx_load_fifo\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \UART:BUART:rx_state_3\ : LABEL IS "macrocell155";
-    ATTRIBUTE Location OF \UART:BUART:rx_state_3\ : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF \UART:BUART:rx_state_3\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \UART:BUART:rx_state_2\ : LABEL IS "macrocell156";
-    ATTRIBUTE Location OF \UART:BUART:rx_state_2\ : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF \UART:BUART:rx_state_2\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \UART:BUART:rx_bitclk_enable\ : LABEL IS "macrocell157";
-    ATTRIBUTE Location OF \UART:BUART:rx_bitclk_enable\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \UART:BUART:rx_bitclk_enable\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \UART:BUART:rx_state_stop1_reg\ : LABEL IS "macrocell158";
-    ATTRIBUTE Location OF \UART:BUART:rx_state_stop1_reg\ : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF \UART:BUART:rx_state_stop1_reg\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \UART:BUART:pollcount_1\ : LABEL IS "macrocell159";
-    ATTRIBUTE Location OF \UART:BUART:pollcount_1\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \UART:BUART:pollcount_1\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \UART:BUART:pollcount_0\ : LABEL IS "macrocell160";
-    ATTRIBUTE Location OF \UART:BUART:pollcount_0\ : LABEL IS "U(1,1)";
-    ATTRIBUTE Location OF M2_QB(0)_SYNC : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF \UART:BUART:pollcount_0\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF M2_QB(0)_SYNC : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \QuadDec_M2:Net_1251_split\ : LABEL IS "macrocell161";
-    ATTRIBUTE Location OF \QuadDec_M2:Net_1251_split\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \QuadDec_M2:Net_1251_split\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \UART:BUART:rx_status_3\ : LABEL IS "macrocell162";
-    ATTRIBUTE Location OF \UART:BUART:rx_status_3\ : LABEL IS "U(1,2)";
-    ATTRIBUTE Location OF M2_QA(0)_SYNC : LABEL IS "U(2,1)";
-    ATTRIBUTE Location OF M1_QB(0)_SYNC : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF \UART:BUART:rx_status_3\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF M2_QA(0)_SYNC : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF M1_QB(0)_SYNC : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \UART:BUART:rx_last\ : LABEL IS "macrocell163";
-    ATTRIBUTE Location OF \UART:BUART:rx_last\ : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF \UART:BUART:rx_last\ : LABEL IS "U(2,1)";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -2867,98 +2864,6 @@ BEGIN
             oe => open,
             in_clock => open,
             pin_input => \ADC_Sensor:AMuxHw_2_Decoder_one_hot_5\,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    ADC_TEST_PIN:logicalport
-        GENERIC MAP(
-            drive_mode => "110",
-            ibuf_enabled => "1",
-            id => "7acb6187-e78e-4364-bd7c-0c89611419fa",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "1",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "O",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    ADC_TEST_PIN(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "ADC_TEST_PIN",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
-        PORT MAP(
-            pa_out => ADC_TEST_PIN(0)__PA,
-            oe => open,
-            pin_input => Net_4367,
-            pad_out => ADC_TEST_PIN(0)_PAD,
-            pad_in => ADC_TEST_PIN(0)_PAD,
-            in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
             out_clock => open,
@@ -5287,6 +5192,14 @@ BEGIN
             clock => ClockBlock_BUS_CLK,
             in => \ADC_Sensor:nrq\,
             out => \ADC_Sensor:Net_3935\);
+
+    ADC_isr:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_4367,
+            clock => ClockBlock_BUS_CLK);
 
     \Timer_TS:TimerHW\:timercell
         GENERIC MAP(

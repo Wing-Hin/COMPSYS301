@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: isr_eoc.c  
+* File Name: ADC_isr.c  
 * Version 1.71
 *
 *  Description:
@@ -18,19 +18,16 @@
 
 #include <cydevice_trm.h>
 #include <CyLib.h>
-#include <isr_eoc.h>
+#include <ADC_isr.h>
 
 
-#if !defined(isr_eoc__REMOVED) /* Check for removal by optimization */
+#if !defined(ADC_isr__REMOVED) /* Check for removal by optimization */
 
 /*******************************************************************************
 *  Place your includes, defines and code here 
 ********************************************************************************/
-/* `#START isr_eoc_intc` */
-#include <project.h>   
-#include "defines.h"
-extern uint16 adcvalue[8];
-extern uint8 dataready_flag;
+/* `#START ADC_isr_intc` */
+
 /* `#END` */
 
 #ifndef CYINT_IRQ_BASE
@@ -45,7 +42,7 @@ CY_ISR_PROTO(IntDefaultHandler);
 
 
 /*******************************************************************************
-* Function Name: isr_eoc_Start
+* Function Name: ADC_isr_Start
 ********************************************************************************
 *
 * Summary:
@@ -61,24 +58,24 @@ CY_ISR_PROTO(IntDefaultHandler);
 *   None
 *
 *******************************************************************************/
-void isr_eoc_Start(void)
+void ADC_isr_Start(void)
 {
     /* For all we know the interrupt is active. */
-    isr_eoc_Disable();
+    ADC_isr_Disable();
 
-    /* Set the ISR to point to the isr_eoc Interrupt. */
-    isr_eoc_SetVector(&isr_eoc_Interrupt);
+    /* Set the ISR to point to the ADC_isr Interrupt. */
+    ADC_isr_SetVector(&ADC_isr_Interrupt);
 
     /* Set the priority. */
-    isr_eoc_SetPriority((uint8)isr_eoc_INTC_PRIOR_NUMBER);
+    ADC_isr_SetPriority((uint8)ADC_isr_INTC_PRIOR_NUMBER);
 
     /* Enable it. */
-    isr_eoc_Enable();
+    ADC_isr_Enable();
 }
 
 
 /*******************************************************************************
-* Function Name: isr_eoc_StartEx
+* Function Name: ADC_isr_StartEx
 ********************************************************************************
 *
 * Summary:
@@ -104,24 +101,24 @@ void isr_eoc_Start(void)
 *   None
 *
 *******************************************************************************/
-void isr_eoc_StartEx(cyisraddress address)
+void ADC_isr_StartEx(cyisraddress address)
 {
     /* For all we know the interrupt is active. */
-    isr_eoc_Disable();
+    ADC_isr_Disable();
 
-    /* Set the ISR to point to the isr_eoc Interrupt. */
-    isr_eoc_SetVector(address);
+    /* Set the ISR to point to the ADC_isr Interrupt. */
+    ADC_isr_SetVector(address);
 
     /* Set the priority. */
-    isr_eoc_SetPriority((uint8)isr_eoc_INTC_PRIOR_NUMBER);
+    ADC_isr_SetPriority((uint8)ADC_isr_INTC_PRIOR_NUMBER);
 
     /* Enable it. */
-    isr_eoc_Enable();
+    ADC_isr_Enable();
 }
 
 
 /*******************************************************************************
-* Function Name: isr_eoc_Stop
+* Function Name: ADC_isr_Stop
 ********************************************************************************
 *
 * Summary:
@@ -134,22 +131,22 @@ void isr_eoc_StartEx(cyisraddress address)
 *   None
 *
 *******************************************************************************/
-void isr_eoc_Stop(void)
+void ADC_isr_Stop(void)
 {
     /* Disable this interrupt. */
-    isr_eoc_Disable();
+    ADC_isr_Disable();
 
     /* Set the ISR to point to the passive one. */
-    isr_eoc_SetVector(&IntDefaultHandler);
+    ADC_isr_SetVector(&IntDefaultHandler);
 }
 
 
 /*******************************************************************************
-* Function Name: isr_eoc_Interrupt
+* Function Name: ADC_isr_Interrupt
 ********************************************************************************
 *
 * Summary:
-*   The default Interrupt Service Routine for isr_eoc.
+*   The default Interrupt Service Routine for ADC_isr.
 *
 *   Add custom code between the coments to keep the next version of this file
 *   from over writting your code.
@@ -160,36 +157,27 @@ void isr_eoc_Stop(void)
 *   None
 *
 *******************************************************************************/
-CY_ISR(isr_eoc_Interrupt)
+CY_ISR(ADC_isr_Interrupt)
 {
-    #ifdef isr_eoc_INTERRUPT_INTERRUPT_CALLBACK
-        isr_eoc_Interrupt_InterruptCallback();
-    #endif /* isr_eoc_INTERRUPT_INTERRUPT_CALLBACK */ 
+    #ifdef ADC_isr_INTERRUPT_INTERRUPT_CALLBACK
+        ADC_isr_Interrupt_InterruptCallback();
+    #endif /* ADC_isr_INTERRUPT_INTERRUPT_CALLBACK */ 
 
     /*  Place your Interrupt code here. */
-    /* `#START isr_eoc_Interrupt` */
-    adcvalue[0] = ADC_GetResult16(0);
-    adcvalue[1] = ADC_GetResult16(1);
-    adcvalue[2] = ADC_GetResult16(2);
-    adcvalue[3] = ADC_GetResult16(3);
-    adcvalue[4] = ADC_GetResult16(4);
-    adcvalue[5] = ADC_GetResult16(5);
-    adcvalue[6] = ADC_GetResult16(6);
-    adcvalue[7] = ADC_GetResult16(7);
-    dataready_flag = 1;
+    /* `#START ADC_isr_Interrupt` */
 
     /* `#END` */
 }
 
 
 /*******************************************************************************
-* Function Name: isr_eoc_SetVector
+* Function Name: ADC_isr_SetVector
 ********************************************************************************
 *
 * Summary:
-*   Change the ISR vector for the Interrupt. Note calling isr_eoc_Start
+*   Change the ISR vector for the Interrupt. Note calling ADC_isr_Start
 *   will override any effect this method would have had. To set the vector 
-*   before the component has been started use isr_eoc_StartEx instead.
+*   before the component has been started use ADC_isr_StartEx instead.
 * 
 *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
 *   used to provide consistent definition across compilers:
@@ -209,18 +197,18 @@ CY_ISR(isr_eoc_Interrupt)
 *   None
 *
 *******************************************************************************/
-void isr_eoc_SetVector(cyisraddress address)
+void ADC_isr_SetVector(cyisraddress address)
 {
     cyisraddress * ramVectorTable;
 
     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
 
-    ramVectorTable[CYINT_IRQ_BASE + (uint32)isr_eoc__INTC_NUMBER] = address;
+    ramVectorTable[CYINT_IRQ_BASE + (uint32)ADC_isr__INTC_NUMBER] = address;
 }
 
 
 /*******************************************************************************
-* Function Name: isr_eoc_GetVector
+* Function Name: ADC_isr_GetVector
 ********************************************************************************
 *
 * Summary:
@@ -233,26 +221,26 @@ void isr_eoc_SetVector(cyisraddress address)
 *   Address of the ISR in the interrupt vector table.
 *
 *******************************************************************************/
-cyisraddress isr_eoc_GetVector(void)
+cyisraddress ADC_isr_GetVector(void)
 {
     cyisraddress * ramVectorTable;
 
     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
 
-    return ramVectorTable[CYINT_IRQ_BASE + (uint32)isr_eoc__INTC_NUMBER];
+    return ramVectorTable[CYINT_IRQ_BASE + (uint32)ADC_isr__INTC_NUMBER];
 }
 
 
 /*******************************************************************************
-* Function Name: isr_eoc_SetPriority
+* Function Name: ADC_isr_SetPriority
 ********************************************************************************
 *
 * Summary:
 *   Sets the Priority of the Interrupt. 
 *
-*   Note calling isr_eoc_Start or isr_eoc_StartEx will 
+*   Note calling ADC_isr_Start or ADC_isr_StartEx will 
 *   override any effect this API would have had. This API should only be called
-*   after isr_eoc_Start or isr_eoc_StartEx has been called. 
+*   after ADC_isr_Start or ADC_isr_StartEx has been called. 
 *   To set the initial priority for the component, use the Design-Wide Resources
 *   Interrupt Editor.
 *
@@ -267,14 +255,14 @@ cyisraddress isr_eoc_GetVector(void)
 *   None
 *
 *******************************************************************************/
-void isr_eoc_SetPriority(uint8 priority)
+void ADC_isr_SetPriority(uint8 priority)
 {
-    *isr_eoc_INTC_PRIOR = priority << 5;
+    *ADC_isr_INTC_PRIOR = priority << 5;
 }
 
 
 /*******************************************************************************
-* Function Name: isr_eoc_GetPriority
+* Function Name: ADC_isr_GetPriority
 ********************************************************************************
 *
 * Summary:
@@ -289,19 +277,19 @@ void isr_eoc_SetPriority(uint8 priority)
 *    PSoC 4: Priority is from 0 to 3.
 *
 *******************************************************************************/
-uint8 isr_eoc_GetPriority(void)
+uint8 ADC_isr_GetPriority(void)
 {
     uint8 priority;
 
 
-    priority = *isr_eoc_INTC_PRIOR >> 5;
+    priority = *ADC_isr_INTC_PRIOR >> 5;
 
     return priority;
 }
 
 
 /*******************************************************************************
-* Function Name: isr_eoc_Enable
+* Function Name: ADC_isr_Enable
 ********************************************************************************
 *
 * Summary:
@@ -316,15 +304,15 @@ uint8 isr_eoc_GetPriority(void)
 *   None
 *
 *******************************************************************************/
-void isr_eoc_Enable(void)
+void ADC_isr_Enable(void)
 {
     /* Enable the general interrupt. */
-    *isr_eoc_INTC_SET_EN = isr_eoc__INTC_MASK;
+    *ADC_isr_INTC_SET_EN = ADC_isr__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: isr_eoc_GetState
+* Function Name: ADC_isr_GetState
 ********************************************************************************
 *
 * Summary:
@@ -337,15 +325,15 @@ void isr_eoc_Enable(void)
 *   1 if enabled, 0 if disabled.
 *
 *******************************************************************************/
-uint8 isr_eoc_GetState(void)
+uint8 ADC_isr_GetState(void)
 {
     /* Get the state of the general interrupt. */
-    return ((*isr_eoc_INTC_SET_EN & (uint32)isr_eoc__INTC_MASK) != 0u) ? 1u:0u;
+    return ((*ADC_isr_INTC_SET_EN & (uint32)ADC_isr__INTC_MASK) != 0u) ? 1u:0u;
 }
 
 
 /*******************************************************************************
-* Function Name: isr_eoc_Disable
+* Function Name: ADC_isr_Disable
 ********************************************************************************
 *
 * Summary:
@@ -358,15 +346,15 @@ uint8 isr_eoc_GetState(void)
 *   None
 *
 *******************************************************************************/
-void isr_eoc_Disable(void)
+void ADC_isr_Disable(void)
 {
     /* Disable the general interrupt. */
-    *isr_eoc_INTC_CLR_EN = isr_eoc__INTC_MASK;
+    *ADC_isr_INTC_CLR_EN = ADC_isr__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: isr_eoc_SetPending
+* Function Name: ADC_isr_SetPending
 ********************************************************************************
 *
 * Summary:
@@ -385,14 +373,14 @@ void isr_eoc_Disable(void)
 *   interrupts).
 *
 *******************************************************************************/
-void isr_eoc_SetPending(void)
+void ADC_isr_SetPending(void)
 {
-    *isr_eoc_INTC_SET_PD = isr_eoc__INTC_MASK;
+    *ADC_isr_INTC_SET_PD = ADC_isr__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: isr_eoc_ClearPending
+* Function Name: ADC_isr_ClearPending
 ********************************************************************************
 *
 * Summary:
@@ -410,9 +398,9 @@ void isr_eoc_SetPending(void)
 *   None
 *
 *******************************************************************************/
-void isr_eoc_ClearPending(void)
+void ADC_isr_ClearPending(void)
 {
-    *isr_eoc_INTC_CLR_PD = isr_eoc__INTC_MASK;
+    *ADC_isr_INTC_CLR_PD = ADC_isr__INTC_MASK;
 }
 
 #endif /* End check for removal by optimization */
