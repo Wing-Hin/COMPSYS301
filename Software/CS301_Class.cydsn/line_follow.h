@@ -16,8 +16,8 @@
 #include "sensor.h"
 
 /* Starting values in speed-percentage points; tune on the robot. */
-#define LINE_FOLLOW_FRONT_GAIN 4
-#define LINE_FOLLOW_REAR_GAIN 2
+#define LINE_FOLLOW_FRONT_GAIN 2
+#define LINE_FOLLOW_REAR_GAIN 1
 #define LINE_FOLLOW_SENSOR_TIMEOUT_MS 50UL
 
 /* Caller supplies one current snapshot and enforces freshness/turn ownership.

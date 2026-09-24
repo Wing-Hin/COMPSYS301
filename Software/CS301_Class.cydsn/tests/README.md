@@ -19,7 +19,7 @@ recovery and clock wrap. Real main and follower code are compiled with mocked
 hardware calls. Do not add these tests or stub headers to the firmware project.
 
 The assumed mapping is Q6/Q5 front left/right and Q1/Q2 rear left/right.
-Q3/Q4 do not steer. Tune gains 4/2 and the 50 ms sensor timeout in line_follow.h.
+Q3/Q4 do not steer. Tune gains 2/1 and the 50 ms sensor timeout in line_follow.h.
 Main keeps its existing base speed 10; with one pair missing the base is halved.
 Stops automatically recover when fresh valid readings arrive.
 
