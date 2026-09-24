@@ -92,7 +92,7 @@ SensorFrame sensors_GetFrame(void){
 }
 
 uint8 getSingleSensorState(int8 sensor_th){
-    if(sensor_th > N_SENSORS || sensor_th ==0 ) return SENSOR_UNKNOWN;
+    if(sensor_th > N_SENSORS) return SENSOR_UNKNOWN;
     return latest.state[sensor_th];
 }
 
