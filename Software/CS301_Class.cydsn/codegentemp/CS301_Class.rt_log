@@ -18,8 +18,8 @@ I1212: Iteration  1 :   151 unrouted : 0 seconds
 I1212: Iteration  2 :    57 unrouted : 0 seconds
 I1212: Iteration  3 :    31 unrouted : 0 seconds
 I1212: Iteration  4 :    14 unrouted : 0 seconds
-I1212: Iteration  5 :     4 unrouted : 1 seconds
-I1212: Iteration  6 :     2 unrouted : 0 seconds
+I1212: Iteration  5 :     4 unrouted : 0 seconds
+I1212: Iteration  6 :     2 unrouted : 1 seconds
 I1212: Iteration  7 :     0 unrouted : 0 seconds
 I1215: Routing is successful
 I1207: Completed routing
