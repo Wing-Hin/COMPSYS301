@@ -7,14 +7,16 @@
 /* All commonly changed values are grouped in this file. */
 #include "turn_config.h"
 
+int64_t leftTravelCounts;
+int64_t rightTravelCounts;
 volatile int Turn_isr_count;
 
 /* Configuration checks: invalid settings stop compilation. */
-#if TURN_APPROACH_SPEED < 1 || TURN_APPROACH_SPEED > 100
-#error "TURN_APPROACH_SPEED must be 1..100"
+#if TURN_APPROACH_SPEED < 0 || TURN_APPROACH_SPEED > 100
+#error "TURN_APPROACH_SPEED must be 0..100"
 #endif
-#if TURN_ROTATE_SPEED < 1 || TURN_ROTATE_SPEED > 100
-#error "TURN_ROTATE_SPEED must be 1..100"
+#if TURN_ROTATE_SPEED < 0 || TURN_ROTATE_SPEED > 100
+#error "TURN_ROTATE_SPEED must be 0..100"
 #endif
 #if TURN_APPROACH_COUNTS < 1 || TURN_APPROACH_COUNTS > 1000000L
 #error "TURN_APPROACH_COUNTS must be 1..1000000 counts per wheel"
@@ -23,8 +25,8 @@ volatile int Turn_isr_count;
     (TURN_RIGHT_ENCODER_FORWARD_SIGN != 1 && TURN_RIGHT_ENCODER_FORWARD_SIGN != -1)
 #error "Encoder forward signs must each be +1 or -1"
 #endif
-#if TURN_CONFIRM_READINGS < 2 || TURN_CONFIRM_READINGS > 65535U
-#error "TURN_CONFIRM_READINGS must be 2..65535"
+#if TURN_CONFIRM_READINGS < 1 || TURN_CONFIRM_READINGS > 65535U
+#error "TURN_CONFIRM_READINGS must be 1..65535"
 #endif
 #if TURN_TIMEOUT_MS < TURN_UPDATE_MS || TURN_TIMEOUT_MS > 4294967295UL
 #error "TURN_TIMEOUT_MS must fit uint32_t and be at least 5 ms"
@@ -98,6 +100,6 @@ void SetMotorSpeed(int16_t left, int16_t right);
  * already be started. Read promptly without waiting for movement. Each wheel
  * must move fewer than 32768 counts between 5 ms updates to resolve wraparound.
  */
-void ReadWheelEncoderCounts(int16_t *left, int16_t *right);
+void ReadWheelEncoderCounts(int64_t *left, int64_t *right);
 
 #endif

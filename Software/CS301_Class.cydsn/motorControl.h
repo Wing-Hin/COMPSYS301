@@ -47,7 +47,8 @@ void MotorRight_setDirection(bool direction);
 
 void Motor_maintainSpeed(void);
 
-void Motor_getCount(int16_t *left, int16_t *right);
+void Motor_get_totalCount(int16_t *left, int16_t *right);
+void Motor_reset_totalCount();
 
 void Motor_captureRPM(void);
 

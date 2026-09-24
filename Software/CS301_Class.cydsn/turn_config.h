@@ -26,7 +26,7 @@
  * counts = distance_mm * counts_per_wheel_revolution / (pi * diameter_mm).
  */
 #ifndef TURN_APPROACH_COUNTS
-#define TURN_APPROACH_COUNTS 34L
+#define TURN_APPROACH_COUNTS 31L
 #endif
 /* Set each to +1 or -1 so a forward-moving wheel accumulates positive travel.
  * Encoder count polarity is independent of the motor command polarity.
@@ -41,7 +41,7 @@
 #define TURN_TIMEOUT_MS 4000UL
 #endif
 #ifndef TURN_CONFIRM_READINGS
-#define TURN_CONFIRM_READINGS 3U
+#define TURN_CONFIRM_READINGS 1U
 #endif
 /* Scheduling contract: call the controller every 5 ms; do not tune this. */
 #define TURN_UPDATE_MS 5UL

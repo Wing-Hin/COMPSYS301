@@ -36,6 +36,9 @@ void handle_usb();
 //* ========================================
 
 extern volatile int motorSpeed_tick;
+volatile int count_beforeRestart;
+volatile bool sideSensorDisable = 0;
+int sideSensorDisablecount;
 
 SensorFrame f;
 RobotState currentState;
@@ -79,11 +82,13 @@ int main()
         
         previousState = currentState;
         currentState = RobotDecideState(f.state);
-        if(previousState != currentState && currentState == ROBOT_STATE_LEFT_BRANCH){
+        if(!sideSensorDisable && previousState != currentState && currentState == ROBOT_STATE_LEFT_BRANCH){
             TurnStart(TURN_LEFT);
+            sideSensorDisable =1;
         }
-        else if(previousState != currentState && currentState == ROBOT_STATE_LEFT_BRANCH){
+        else if(!sideSensorDisable && previousState != currentState && currentState == ROBOT_STATE_RIGHT_BRANCH){
             TurnStart(TURN_RIGHT);
+            sideSensorDisable=1;
         }
         else if (currentState == ROBOT_STATE_FOLLOW_LINE && TurnGetState() == TURN_IDLE){
             straight(20);
@@ -96,15 +101,30 @@ int main()
             Motor_isr_flag = 0;
             Motor_captureRPM();
             Motor_maintainSpeed();
-            TurnUpdate();
+        
         }
         
-        if(Turn_isr_count >=7){
+        if(Turn_isr_count >=100){
             Turn_isr_count=0;
+            TurnUpdate();
+            if(TurnGetState() == TURN_DONE){
+                count_beforeRestart++;
+                if(count_beforeRestart >=10){
+                    count_beforeRestart = 0;
+                    
+                }
+            }
+            if(sideSensorDisablecount >= 500){
+                        sideSensorDisable=0;
+                        sideSensorDisablecount = 0;
+                    }
+                    sideSensorDisablecount++;
+            /*
             char string[32];
-            //sprintf(string, "leftcount:%d \r\n right count:%d",leftTravelCounts, rightTravelCounts);
-            //usbPutString(string);
-            
+            sprintf(string, "leftcount:%d \r\n right count:%d",leftTravelCounts, rightTravelCounts);
+            usbPutString(string);
+            */
+            /*
             switch(TurnGetState()){
                 case TURN_IDLE:
                     usbPutString("idle");
@@ -125,7 +145,7 @@ int main()
                     usbPutString("fault");
                     break;
             }
-            
+            */
             /*
             switch(currentState){
             case ROBOT_STATE_SENSOR_FAULT:

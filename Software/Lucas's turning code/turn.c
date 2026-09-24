@@ -1,4 +1,5 @@
 #include "turn.h"
+#include "motorControl.h"
 
 /* Six-sensor layout, viewed from above:
  * Front:  FL   FM_L   FM_R   FR
@@ -27,8 +28,8 @@ volatile int Turn_isr_count = 0;
  */
 static int16_t previousLeftCount;
 static int16_t previousRightCount;
-static int64_t leftTravelCounts;
-static int64_t rightTravelCounts;
+ int64_t leftTravelCounts;
+ int64_t rightTravelCounts;
 
 /* Handle the existing 16-bit hardware counters wrapping in either direction.
  * Subtract after widening to avoid signed overflow or narrowing conversions.
@@ -45,19 +46,12 @@ static int32_t EncoderDelta(int16_t current, int16_t previous)
 
 static bool ApproachDistanceReached(void)
 {
-    int16_t left;
-    int16_t right;
-    ReadWheelEncoderCounts(&left, &right);
+
+    ReadWheelEncoderCounts(&leftTravelCounts, &rightTravelCounts);
     /* Add only movement since the previous update. Each sign setting converts
      * that wheel's raw encoder direction into positive forward travel.
      */
-    leftTravelCounts += EncoderDelta(left, previousLeftCount) *
-                        TURN_LEFT_ENCODER_FORWARD_SIGN;
-    rightTravelCounts += EncoderDelta(right, previousRightCount) *
-                         TURN_RIGHT_ENCODER_FORWARD_SIGN;
-    /* Save this sample so the next update does not count the same travel again. */
-    previousLeftCount = left;
-    previousRightCount = right;
+
 
     /* Require BOTH wheels to travel forward far enough. One spinning wheel
      * must not substitute for a stalled wheel. Reverse travel subtracts.
@@ -79,7 +73,7 @@ static bool Confirm(bool condition)
         return false;
     }
     ++consecutive;
-    if (consecutive >= TURN_CONFIRM_READINGS) {
+    if (consecutive >= 1) {
         consecutive = 0;
         return true;
     }
@@ -97,16 +91,16 @@ static void ApplyMotorCommand(void)
         break; /* Normal controller owns the motors. */
     case TURN_APPROACH:
         /* Equal low speed targets drive toward the calibrated pivot position. */
-        SetMotorSpeed(TURN_APPROACH_SPEED, TURN_APPROACH_SPEED);
+        SetMotorSpeed(20, 20);
         break;
     case TURN_LEAVE_LINE:
     case TURN_FIND_LINE:
         if (turnDirection == TURN_LEFT) {
             /* Left wheel backward, right wheel forward: rotate left. */
-            SetMotorSpeed(-TURN_ROTATE_SPEED, TURN_ROTATE_SPEED);
+            SetMotorSpeed(-15, 15);
         } else {
             /* Left wheel forward, right wheel backward: rotate right. */
-            SetMotorSpeed(TURN_ROTATE_SPEED, -TURN_ROTATE_SPEED);
+            SetMotorSpeed(15, -15);
         }
         break;
     case TURN_DONE:
@@ -131,6 +125,7 @@ bool TurnStart(TurnDirection direction)
     elapsedTicks = 0;
     leftTravelCounts = 0;
     rightTravelCounts = 0;
+    Motor_reset_totalCount();
     /* Save baselines without resetting hardware counters used by other code. */
     ReadWheelEncoderCounts(&previousLeftCount, &previousRightCount);
     state = TURN_APPROACH;
@@ -203,8 +198,15 @@ TurnState TurnUpdate(void)
          * A mixed pair or brief black pulse resets confirmation. Both sensors
          * must fit on the branch long enough at the selected rotation speed.
          */
-        if (Confirm(frontLeft == 1U && frontRight == 1U)) {
-            state = TURN_DONE;
+        if (turnDirection == TURN_RIGHT) {
+            if(Confirm(frontLeft == 1U)){
+                state = TURN_DONE;
+            }
+        }
+        else if (turnDirection == TURN_LEFT){
+            if(Confirm(frontRight == 1U)){
+                state = TURN_DONE;
+            }
         }
         break;
 
