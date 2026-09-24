@@ -2,6 +2,50 @@
 #include "motorControl.h"
 #include <stddef.h>
 
+/* 1 = lookup table (one steering level per sensor pattern),
+ * 0 = KP/KD formula. Flip to compare the two on the track.
+ */
+#define LF_USE_TABLE 1
+
+#define LF_LOST_MAX  125 /* frames to search when all four are white:
+                            125 x 8 ms = 1 s, then stop                   */
+
+/* ---- Lookup-table steering (LF_USE_TABLE 1) ---- */
+#define LF_STEP      1   /* speed points per level: level 3 -> +3 on outer wheel */
+
+#define LF_MEM_F   100   /* front pair lost: steer 3 toward last front side     */
+#define LF_MEM_R   101   /* rear pair lost: counter-steer 1 from last rear side */
+#define LF_LOST    102   /* all four white: search toward last side seen        */
+
+/* Index = FL*8 + FR*4 + RL*2 + RR, 1 = black (FL=Q6, FR=Q5, RL=Q1, RR=Q2).
+ * + steers right, - steers left. Edit any entry to change how the robot
+ * reacts to that exact pattern; keep mirror entries equal and opposite
+ * (13/14, 7/11, 6/9, 5/10, 4/8, 1/2).
+ */
+static const int8 LF_LEVEL[16] = {
+    /*  0  WW/WW  everything lost          */ LF_LOST,
+    /*  1  WW/WB  front lost, line right   */  3,
+    /*  2  WW/BW  front lost, line left    */ -3,
+    /*  3  WW/BB  front lost, rear centred */ LF_MEM_F,
+    /*  4  WB/WW  front drift left, rear lost */ 2,
+    /*  5  WB/WB  shifted left, parallel   */  1,
+    /*  6  WB/BW  angled strongly left     */  3,
+    /*  7  WB/BB  front drifting left      */  3,
+    /*  8  BW/WW  front drift right, rear lost */ -2,
+    /*  9  BW/WB  angled strongly right    */ -3,
+    /* 10  BW/BW  shifted right, parallel  */ -1,
+    /* 11  BW/BB  front drifting right     */ -3,
+    /* 12  BB/WW  front centred, rear lost */ LF_MEM_R,
+    /* 13  BB/WB  rear drifted left        */ -2,
+    /* 14  BB/BW  rear drifted right       */  2,
+    /* 15  BB/BB  centred and straight     */  0,
+};
+
+/* ---- KP/KD formula steering (LF_USE_TABLE 0) ---- */
+#define LF_KP        3   /* position gain: pulls robot back onto the line */
+#define LF_KD        5.5 /* heading gain: the damping, stops the swing    */
+#define LF_MAX_CORR  2   /* cap in speed-% points: base 10 -> 14/10 max   */
+
 static void StopFollowing(void)
 {
     /* Clear previous targets so a later enable cannot reuse an old request. */
@@ -17,87 +61,118 @@ static int ClampSpeed(int speed)
     return speed;
 }
 
+#if !LF_USE_TABLE
+/* One sensor pair -> +1 line is right of the pair (steer right),
+ * -1 line is left, 0 centred (both black). If the pair loses the line,
+ * keep turning toward the side it was last seen, at double strength.
+ */
+static int PairError(uint8 left, uint8 right, int *lastSide)
+{
+    int l = (left == SENSOR_BLACK);
+    int r = (right == SENSOR_BLACK);
+
+    if (l && r) return 0;
+    if (l || r) {
+        *lastSide = r - l;
+        return *lastSide;
+    }
+    return 2 * *lastSide;
+}
+#endif
+
 void straightFromFrame(uint8 speed, const SensorFrame *frame)
 {
     static const uint8 channels[4] = {Q6, Q5, Q1, Q2};
+    static int lastFront, lastRear;   /* last side each pair saw the line: +1 right, -1 left */
+    static unsigned int lostFrames;   /* frames in a row with all four white */
     unsigned int i;
-    int frontLeft, frontRight, rearLeft, rearRight;
-    int frontVisible, rearVisible;
-    int frontError, rearError, correction;
-    int baseSpeed, leftSpeed, rightSpeed;
+    int fl, fr, rl, rr, boost, left, right;
 
-    if (frame == NULL || speed == 0) {
-        StopFollowing();
-        return;
-    }
-    /* Q3/Q4 are branch sensors, not steering inputs. Reject invalid values
-     * on any of the four steering sensors before treating them as booleans.
-     */
+    if (frame == NULL || speed == 0) { StopFollowing(); return; }
     for (i = 0; i < 4; ++i) {
-        uint8 reading = frame->state[channels[i]];
-        if (reading != SENSOR_BLACK && reading != SENSOR_WHITE) {
+        uint8 s = frame->state[channels[i]];
+        if (s != SENSOR_BLACK && s != SENSOR_WHITE) { StopFollowing(); return; }
+    }
+
+    fl = frame->state[Q6] == SENSOR_BLACK;
+    fr = frame->state[Q5] == SENSOR_BLACK;
+    rl = frame->state[Q1] == SENSOR_BLACK;
+    rr = frame->state[Q2] == SENSOR_BLACK;
+
+    if (!fl && !fr && !rl && !rr) {
+        /* All four white: keep steering toward the last side seen for up to
+         * LF_LOST_MAX frames. Stop if the line was never seen or the search
+         * runs out.
+         */
+        if ((lastFront == 0 && lastRear == 0) || ++lostFrames > LF_LOST_MAX) {
             StopFollowing();
             return;
         }
+    } else {
+        lostFrames = 0;
     }
 
-    /* Physical layout: front Q6(left)/Q5(right), rear Q1(left)/Q2(right). */
-    frontLeft = frame->state[Q6] == SENSOR_BLACK;
-    frontRight = frame->state[Q5] == SENSOR_BLACK;
-    rearLeft = frame->state[Q1] == SENSOR_BLACK;
-    rearRight = frame->state[Q2] == SENSOR_BLACK;
-    frontVisible = frontLeft || frontRight;
-    rearVisible = rearLeft || rearRight;
-    if (!frontVisible && !rearVisible) {
-        StopFollowing(); /* All four white: no line to steer towards. */
-        return;
-    }
+#if LF_USE_TABLE
+    {
+        int level;
 
-    /* Error = right-black minus left-black. +1 steers right, -1 left.
-     * A missing pair contributes zero but is NOT considered centred.
+        /* Remember which side each pair last saw the line on. */
+        if (fl != fr) lastFront = fr - fl;
+        if (rl != rr) lastRear  = rr - rl;
+
+        level = LF_LEVEL[fl * 8 + fr * 4 + rl * 2 + rr];
+        if (level == LF_MEM_F) {
+            level = 3 * lastFront;
+        } else if (level == LF_MEM_R) {
+            level = -lastRear;
+        } else if (level == LF_LOST) {
+            level = 3 * (lastFront != 0 ? lastFront : lastRear);
+        }
+        boost = LF_STEP * level;
+    }
+#else
+    {
+        int front, rear, position, heading, correction;
+
+        front = PairError(frame->state[Q6], frame->state[Q5], &lastFront);
+        rear  = PairError(frame->state[Q1], frame->state[Q2], &lastRear);
+
+        position = front + rear;   /* how far off the line  */
+        heading  = front - rear;   /* which way it points   */
+        correction = LF_KP * position + LF_KD * heading;
+
+        if (correction >  LF_MAX_CORR) correction =  LF_MAX_CORR;
+        if (correction < -LF_MAX_CORR) correction = -LF_MAX_CORR;
+
+        /* boost = 2*correction keeps the same wheel-speed difference as +/-corr. */
+        boost = 2 * correction;
+    }
+#endif
+
+    /* Steer by speeding up the outer wheel only; the inner wheel stays at
+     * base speed so it never drops into the motor's stall region.
      */
-    frontError = frontVisible ? frontRight - frontLeft : 0;
-    rearError = rearVisible ? rearRight - rearLeft : 0;
-    correction = LINE_FOLLOW_FRONT_GAIN * frontError +
-                 LINE_FOLLOW_REAR_GAIN * rearError;
-
-    /* Keep the weighted steering direction, but limit the strength to avoid
-     * large left/right command jumps. At base 10, correction gives 11/9 or 9/11.
-     */
-    if (correction > 1) correction = 1;
-    if (correction < -1) correction = -1;
-
-    baseSpeed = ClampSpeed(speed);
-    if (!frontVisible || !rearVisible) {
-        baseSpeed /= 2; /* Only one pair sees the line: reduce base speed. */
+    if (boost > 0) {                  /* turn right: left wheel faster */
+        left  = ClampSpeed((int)speed + boost);
+        right = ClampSpeed((int)speed);
+    } else {                          /* turn left: right wheel faster */
+        left  = ClampSpeed((int)speed);
+        right = ClampSpeed((int)speed - boost);
     }
-    if (baseSpeed == 0) {
-        StopFollowing();
-        return;
-    }
-    leftSpeed = ClampSpeed(baseSpeed + correction);
-    rightSpeed = ClampSpeed(baseSpeed - correction);
 
-    /* Forward steering only. When integrating turning, caller must not run
-     * this function during a turn; hand control back with the motors stopped.
-     */
-    MotorLeft_setRPM(leftSpeed);
-    MotorRight_setRPM(rightSpeed);
+    MotorLeft_setRPM(left);
+    MotorRight_setRPM(right);
     MotorLeft_setDirection(Forward);
     MotorRight_setDirection(Forward);
     if (!Motor_enabled) MotorEnable();
-    if (leftSpeed == 0) MotorLeft_stop();
-    else MotorLeft_start();
-    if (rightSpeed == 0) MotorRight_stop();
-    else MotorRight_start();
+    /* speed > 0 here and steering only adds, so both wheels always run. */
+    MotorLeft_start();
+    MotorRight_start();
 }
 
 void straight(uint8 speed)
 {
-    /* Legacy wrapper for callers that have not already consumed a frame.
-     * Main uses straightFromFrame instead. Freshness timeouts belong to the
-     * caller because an absent new frame is normal between ADC windows.
-     */
+    /* Legacy wrapper for callers that have not already consumed a frame. */
     SensorFrame frame = sensors_GetFrame();
     if (speed == 0 || frame.fresh) straightFromFrame(speed, &frame);
 }

@@ -20,7 +20,7 @@
 #include <CyLib.h>
 #include <isr_TM.h>
 #include <project.h>
-#include <motorControl.h>s
+#include "motorControl.h"
 
 #if !defined(isr_TM__REMOVED) /* Check for removal by optimization */
 
