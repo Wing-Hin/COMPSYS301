@@ -61,6 +61,12 @@ void straightFromFrame(uint8 speed, const SensorFrame *frame)
     correction = LINE_FOLLOW_FRONT_GAIN * frontError +
                  LINE_FOLLOW_REAR_GAIN * rearError;
 
+    /* Keep the weighted steering direction, but limit the strength to avoid
+     * large left/right command jumps. At base 10, correction gives 11/9 or 9/11.
+     */
+    if (correction > 1) correction = 1;
+    if (correction < -1) correction = -1;
+
     baseSpeed = ClampSpeed(speed);
     if (!frontVisible || !rearVisible) {
         baseSpeed /= 2; /* Only one pair sees the line: reduce base speed. */

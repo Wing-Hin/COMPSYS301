@@ -20,6 +20,8 @@ hardware calls. Do not add these tests or stub headers to the firmware project.
 
 The assumed mapping is Q6/Q5 front left/right and Q1/Q2 rear left/right.
 Q3/Q4 do not steer. Tune gains 2/1 and the 50 ms sensor timeout in line_follow.h.
+The combined steering correction is capped at +/-1 in line_follow.c for gentler
+steering: at base speed 10, wheel commands are 11/9 or 9/11 when correcting.
 Main keeps its existing base speed 10; with one pair missing the base is halved.
 Stops automatically recover when fresh valid readings arrive.
 
