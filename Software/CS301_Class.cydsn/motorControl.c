@@ -19,10 +19,8 @@ static volatile float motorRight_RPM;
 static volatile float motorLeft_targetRPM;
 static volatile float motorRight_targetRPM;
 
-/* float so small corrections accumulate; int truncation made the loop
- * speed a wheel up easily but only slow it down on large errors. */
-static volatile float motorLeft_PWM;
-static volatile float motorRight_PWM;
+static volatile int motorLeft_PWM;
+static volatile int motorRight_PWM;
 
 static volatile float previousError_L;
 static volatile float previousError_R;
@@ -152,7 +150,7 @@ void Motor_maintainSpeed(){
         else if(motorLeft_PWM > 99){
             motorLeft_PWM = 99;
         }
-        PWM_1_WriteCompare((uint8)(motorLeft_PWM + 0.5f));
+        PWM_1_WriteCompare(motorLeft_PWM);
         //Right
         previousError_R = errorR;
         if(motorRight_RPM < 0){
@@ -173,7 +171,7 @@ void Motor_maintainSpeed(){
         else if(motorRight_PWM > 99){
             motorRight_PWM = 99;
         }
-        PWM_2_WriteCompare((uint8)(motorRight_PWM + 0.5f));
+        PWM_2_WriteCompare(motorRight_PWM);
     }
 }
 //PID control
