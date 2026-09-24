@@ -20,8 +20,8 @@
 #define Backward false
 #define Max_safeSpeed 3.0f
 #define WheelRadius 0.0325
-#define Kp 0.5
-#define Ki 0.0
+#define Kp 0.8
+#define Ki 0.1
 #define Kd 0.0
 #define Ts 0.1
 

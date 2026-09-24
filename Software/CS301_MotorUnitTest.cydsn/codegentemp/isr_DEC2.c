@@ -166,8 +166,6 @@ CY_ISR(isr_DEC2_Interrupt)
     /*  Place your Interrupt code here. */
     /* `#START isr_DEC2_Interrupt` */
     overflowR_flag = 1; 
-    overflowR_count +=1;
-    LED_2_Write(1);
     QuadDec_M2_GetEvents();
     /* `#END` */
 }

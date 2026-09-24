@@ -2,7 +2,11 @@
 --	Conversion of CS301_SensorTestUnit.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
+<<<<<<< Updated upstream
 --	Wed Sep 23 15:33:06 2026
+=======
+--	Thu Sep 24 12:57:01 2026
+>>>>>>> Stashed changes
 --
 
 USE cypress.cypress.all;
@@ -877,7 +881,10 @@ SIGNAL tmpFB_0__Q6_net_0 : bit;
 SIGNAL tmpIO_0__Q6_net_0 : bit;
 TERMINAL tmpSIOVREF__Q6_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__Q6_net_0 : bit;
+<<<<<<< Updated upstream
 SIGNAL Net_1619 : bit;
+=======
+>>>>>>> Stashed changes
 SIGNAL Net_12 : bit;
 SIGNAL Net_10 : bit;
 SIGNAL \Timer_TS:Net_260\ : bit;
@@ -3778,10 +3785,17 @@ Q6:cy_psoc3_pins_v1_10
 		out_clock_en=>tmpOE__M1_IN1_net_0,
 		out_reset=>Net_2183,
 		interrupt=>tmpINTERRUPT_0__Q6_net_0);
+<<<<<<< Updated upstream
 isr_TS:cy_isr_v1_0
 	GENERIC MAP(int_type=>"00",
 		is_nmi=>'0')
 	PORT MAP(int_signal=>Net_1619);
+=======
+ADC_isr:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_4367);
+>>>>>>> Stashed changes
 \Timer_TS:TimerHW\:cy_psoc3_timer_v1_0
 	GENERIC MAP(cy_registers=>"")
 	PORT MAP(clock=>Net_10,
@@ -5331,6 +5345,10 @@ LED_6:cy_psoc3_pins_v1_10
 		out_clock_en=>tmpOE__M1_IN1_net_0,
 		out_reset=>Net_2183,
 		interrupt=>tmpINTERRUPT_0__LED_6_net_0);
+isr_TS:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_3444);
 \QuadDec_M1:Net_1251\:cy_dff
 	PORT MAP(d=>\QuadDec_M1:Net_1251\\D\,
 		clk=>\QuadDec_M1:bQuadDec:sync_clock\,

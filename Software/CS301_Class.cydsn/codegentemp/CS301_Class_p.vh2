@@ -1,6 +1,6 @@
 -- Project:   CS301_Class
--- Generated: 09/23/2026 15:39:00
--- PSoC Creator  4.2
+-- Generated: 09/24/2026 13:40:57
+-- PSoC Creator  4.4
 
 ENTITY CS301_Class IS
     PORT(
@@ -26,7 +26,11 @@ ENTITY CS301_Class IS
         LWE(0)_PAD : OUT std_ulogic;
         LWV(0)_PAD : OUT std_ulogic;
         RWE(0)_PAD : OUT std_ulogic;
-        RWV(0)_PAD : OUT std_ulogic);
+        RWV(0)_PAD : OUT std_ulogic;
+        LED_3(0)_PAD : OUT std_ulogic;
+        LED_4(0)_PAD : OUT std_ulogic;
+        LED_5(0)_PAD : OUT std_ulogic;
+        LED_6(0)_PAD : OUT std_ulogic);
     ATTRIBUTE voltage_VDDABUF OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VUSB OF __DEFAULT__ : ENTITY IS 5e0;
@@ -59,6 +63,10 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     SIGNAL LED(0)__PA : bit;
     SIGNAL LED_1(0)__PA : bit;
     SIGNAL LED_2(0)__PA : bit;
+    SIGNAL LED_3(0)__PA : bit;
+    SIGNAL LED_4(0)__PA : bit;
+    SIGNAL LED_5(0)__PA : bit;
+    SIGNAL LED_6(0)__PA : bit;
     SIGNAL LWE(0)__PA : bit;
     SIGNAL LWV(0)__PA : bit;
     SIGNAL M1_D1(0)__PA : bit;
@@ -101,6 +109,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE global_signal OF Net_4402 : SIGNAL IS true;
     SIGNAL Net_4402_local : bit;
     SIGNAL Net_4409 : bit;
+    SIGNAL Net_4417 : bit;
     SIGNAL Net_724 : bit;
     SIGNAL Net_724_SYNCOUT : bit;
     SIGNAL Net_725 : bit;
@@ -222,6 +231,9 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     SIGNAL \ADC_Sensor:bSAR_SEQ:enable\ : bit;
     SIGNAL \ADC_Sensor:bSAR_SEQ:load_period\ : bit;
     SIGNAL \ADC_Sensor:bSAR_SEQ:nrq_reg\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:soc_in\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:soc_reg\ : bit;
+    SIGNAL \ADC_Sensor:bSAR_SEQ:state_1\ : bit;
     SIGNAL \ADC_Sensor:ch_addr_0\ : bit;
     SIGNAL \ADC_Sensor:ch_addr_1\ : bit;
     SIGNAL \ADC_Sensor:ch_addr_2\ : bit;
@@ -233,6 +245,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE global_signal OF \ADC_Sensor:clock\ : SIGNAL IS true;
     SIGNAL \ADC_Sensor:clock_local\ : bit;
     SIGNAL \ADC_Sensor:nrq\ : bit;
+    SIGNAL \ADC_Sensor:soc_out\ : bit;
     SIGNAL \CONTROL:control_2\ : bit;
     SIGNAL \CONTROL:control_3\ : bit;
     SIGNAL \CONTROL:control_4\ : bit;
@@ -336,7 +349,6 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     SIGNAL \Timer_Motor:Net_261\ : bit;
     SIGNAL \Timer_Motor:Net_57\ : bit;
     SIGNAL \Timer_TS:Net_261\ : bit;
-    SIGNAL \Timer_TS:Net_51\ : bit;
     SIGNAL \Timer_TS:Net_57\ : bit;
     SIGNAL \UART:BUART:counter_load_not\ : bit;
     SIGNAL \UART:BUART:pollcount_0\ : bit;
@@ -502,6 +514,14 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE Location OF RWE(0) : LABEL IS "P12[1]";
     ATTRIBUTE lib_model OF RWV(0) : LABEL IS "iocell31";
     ATTRIBUTE Location OF RWV(0) : LABEL IS "P12[0]";
+    ATTRIBUTE lib_model OF LED_3(0) : LABEL IS "iocell32";
+    ATTRIBUTE Location OF LED_3(0) : LABEL IS "P0[4]";
+    ATTRIBUTE lib_model OF LED_4(0) : LABEL IS "iocell33";
+    ATTRIBUTE Location OF LED_4(0) : LABEL IS "P2[5]";
+    ATTRIBUTE lib_model OF LED_5(0) : LABEL IS "iocell34";
+    ATTRIBUTE Location OF LED_5(0) : LABEL IS "P2[6]";
+    ATTRIBUTE lib_model OF LED_6(0) : LABEL IS "iocell35";
+    ATTRIBUTE Location OF LED_6(0) : LABEL IS "P2[7]";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:reload\ : LABEL IS "macrocell2";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:status_0\ : LABEL IS "macrocell3";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:status_2\ : LABEL IS "macrocell4";
@@ -665,24 +685,28 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF Net_1497 : LABEL IS "macrocell139";
     ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\ : LABEL IS "macrocell140";
     ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:nrq_reg\ : LABEL IS "macrocell141";
-    ATTRIBUTE lib_model OF \QuadDec_M2:Net_1203_split\ : LABEL IS "macrocell142";
-    ATTRIBUTE lib_model OF \UART:BUART:txn\ : LABEL IS "macrocell143";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_state_1\ : LABEL IS "macrocell144";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_state_0\ : LABEL IS "macrocell145";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_state_2\ : LABEL IS "macrocell146";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_bitclk\ : LABEL IS "macrocell147";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_ctrl_mark_last\ : LABEL IS "macrocell148";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_0\ : LABEL IS "macrocell149";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_load_fifo\ : LABEL IS "macrocell150";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_3\ : LABEL IS "macrocell151";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_2\ : LABEL IS "macrocell152";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_bitclk_enable\ : LABEL IS "macrocell153";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_stop1_reg\ : LABEL IS "macrocell154";
-    ATTRIBUTE lib_model OF \UART:BUART:pollcount_1\ : LABEL IS "macrocell155";
-    ATTRIBUTE lib_model OF \UART:BUART:pollcount_0\ : LABEL IS "macrocell156";
-    ATTRIBUTE lib_model OF \QuadDec_M2:Net_1251_split\ : LABEL IS "macrocell157";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_status_3\ : LABEL IS "macrocell158";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_last\ : LABEL IS "macrocell159";
+    ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:soc_in\ : LABEL IS "macrocell142";
+    ATTRIBUTE lib_model OF \ADC_Sensor:soc_out\ : LABEL IS "macrocell143";
+    ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:soc_reg\ : LABEL IS "macrocell144";
+    ATTRIBUTE lib_model OF \ADC_Sensor:bSAR_SEQ:state_1\ : LABEL IS "macrocell145";
+    ATTRIBUTE lib_model OF \QuadDec_M2:Net_1203_split\ : LABEL IS "macrocell146";
+    ATTRIBUTE lib_model OF \UART:BUART:txn\ : LABEL IS "macrocell147";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_state_1\ : LABEL IS "macrocell148";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_state_0\ : LABEL IS "macrocell149";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_state_2\ : LABEL IS "macrocell150";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_bitclk\ : LABEL IS "macrocell151";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_ctrl_mark_last\ : LABEL IS "macrocell152";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_state_0\ : LABEL IS "macrocell153";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_load_fifo\ : LABEL IS "macrocell154";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_state_3\ : LABEL IS "macrocell155";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_state_2\ : LABEL IS "macrocell156";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_bitclk_enable\ : LABEL IS "macrocell157";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_state_stop1_reg\ : LABEL IS "macrocell158";
+    ATTRIBUTE lib_model OF \UART:BUART:pollcount_1\ : LABEL IS "macrocell159";
+    ATTRIBUTE lib_model OF \UART:BUART:pollcount_0\ : LABEL IS "macrocell160";
+    ATTRIBUTE lib_model OF \QuadDec_M2:Net_1251_split\ : LABEL IS "macrocell161";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_status_3\ : LABEL IS "macrocell162";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_last\ : LABEL IS "macrocell163";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -3974,6 +3998,366 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
+    LED_3:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "36c0741b-7ea4-4d15-92f8-f3f228d977e6",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    LED_3(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "LED_3",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            pa_out => LED_3(0)__PA,
+            oe => open,
+            pad_in => LED_3(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    LED_4:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "8b6812be-3761-4fcd-ac7a-3ffed1f113cf",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    LED_4(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "LED_4",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            pa_out => LED_4(0)__PA,
+            oe => open,
+            pad_in => LED_4(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    LED_5:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "66497741-0256-4e46-9905-526c12948ea6",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    LED_5(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "LED_5",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            pa_out => LED_5(0)__PA,
+            oe => open,
+            pad_in => LED_5(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    LED_6:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "b103ba3b-9201-40b1-bfcc-fcca7d0a3c76",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    LED_6(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "LED_6",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            pa_out => LED_6(0)__PA,
+            oe => open,
+            pad_in => LED_6(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
     \QuadDec_M1:Cnt16:CounterUDB:reload\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * !main_2)",
@@ -4723,7 +5107,7 @@ BEGIN
             cy_registers => "")
         PORT MAP(
             clk_udb => \ADC_Sensor:clock_local\,
-            sof_udb => open,
+            sof_udb => \ADC_Sensor:soc_out\,
             vp_ctl_udb_3 => open,
             vp_ctl_udb_2 => open,
             vp_ctl_udb_1 => open,
@@ -4858,7 +5242,7 @@ BEGIN
             enable => __ONE__,
             capture => open,
             timer_reset => open,
-            tc => \Timer_TS:Net_51\,
+            tc => Net_4417,
             cmp => \Timer_TS:Net_261\,
             irq => \Timer_TS:Net_57\);
 
@@ -6832,6 +7216,67 @@ BEGIN
             clk_en => \ADC_Sensor:bSAR_SEQ:enable\,
             clock_0 => \ADC_Sensor:clock\,
             main_0 => \ADC_Sensor:bSAR_SEQ:bus_clk_nrq_reg\);
+
+    \ADC_Sensor:bSAR_SEQ:soc_in\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 3)
+        PORT MAP(
+            q => \ADC_Sensor:bSAR_SEQ:soc_in\,
+            clk_en => \ADC_Sensor:bSAR_SEQ:enable\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:bSAR_SEQ:soc_reg\,
+            main_1 => Net_4417);
+
+    \ADC_Sensor:soc_out\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1 * !main_2 * main_4 * !main_5) + (!main_0 * !main_2 * main_3 * !main_4)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 3)
+        PORT MAP(
+            q => \ADC_Sensor:soc_out\,
+            clk_en => \ADC_Sensor:bSAR_SEQ:enable\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:soc_out\,
+            main_1 => \ADC_Sensor:Net_3830\,
+            main_2 => \ADC_Sensor:bSAR_SEQ:load_period\,
+            main_3 => \ADC_Sensor:bSAR_SEQ:soc_in\,
+            main_4 => \ADC_Sensor:bSAR_SEQ:state_1\,
+            main_5 => \ADC_Sensor:bSAR_SEQ:cnt_tc\);
+
+    \ADC_Sensor:bSAR_SEQ:soc_reg\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 3)
+        PORT MAP(
+            q => \ADC_Sensor:bSAR_SEQ:soc_reg\,
+            clk_en => \ADC_Sensor:bSAR_SEQ:enable\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => Net_4417);
+
+    \ADC_Sensor:bSAR_SEQ:state_1\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1 * !main_2 * main_3) + (main_0 * !main_2 * !main_3)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 3)
+        PORT MAP(
+            q => \ADC_Sensor:bSAR_SEQ:state_1\,
+            clk_en => \ADC_Sensor:bSAR_SEQ:enable\,
+            clock_0 => \ADC_Sensor:clock\,
+            main_0 => \ADC_Sensor:soc_out\,
+            main_1 => \ADC_Sensor:Net_3830\,
+            main_2 => \ADC_Sensor:bSAR_SEQ:load_period\,
+            main_3 => \ADC_Sensor:bSAR_SEQ:state_1\);
 
     \QuadDec_M2:Net_1203_split\:macrocell
         GENERIC MAP(

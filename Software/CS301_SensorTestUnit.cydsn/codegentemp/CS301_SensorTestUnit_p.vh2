@@ -1,6 +1,11 @@
 -- Project:   CS301_SensorTestUnit
+<<<<<<< Updated upstream
 -- Generated: 09/23/2026 15:33:09
 -- PSoC Creator  4.2
+=======
+-- Generated: 09/24/2026 12:57:10
+-- PSoC Creator  4.4
+>>>>>>> Stashed changes
 
 ENTITY CS301_SensorTestUnit IS
     PORT(
@@ -4839,12 +4844,21 @@ BEGIN
             in => \ADC_Sensor:nrq\,
             out => \ADC_Sensor:Net_3935\);
 
+<<<<<<< Updated upstream
     isr_TS:interrupt
         GENERIC MAP(
             int_type => "00",
             is_nmi => 0)
         PORT MAP(
             interrupt => Net_1619,
+=======
+    ADC_isr:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_4367,
+>>>>>>> Stashed changes
             clock => ClockBlock_BUS_CLK);
 
     \Timer_TS:TimerHW\:timercell
@@ -5203,6 +5217,14 @@ BEGIN
             control_1 => \RF_BT_SELECT:control_1\,
             control_0 => Net_3437,
             busclk => ClockBlock_BUS_CLK);
+
+    isr_TS:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_3444,
+            clock => ClockBlock_BUS_CLK);
 
     \QuadDec_M1:Net_1251\:macrocell
         GENERIC MAP(

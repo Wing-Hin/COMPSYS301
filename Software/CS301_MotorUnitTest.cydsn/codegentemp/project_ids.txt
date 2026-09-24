@@ -1,6 +1,8 @@
-D:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|bd56a846-e067-4d3f-8975-b3aee7709c4d
-C:\Users\ROSS\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|37733bc0-aa89-42c1-88f3-c340d275dd15
-D:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|cba278f6-ad96-4536-816d-d67acd3439e3
-D:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|a0ecf821-5b82-48bf-af06-d96e69a39eed
-D:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|af18195a-4cc1-4676-8dd4-b3bc539020a8
-D:\GitHub\COMPSYS301\Software\CS301_MotorUnitTest.cydsn\CS301_MotorUnitTest.cyprj|bd4664cf-0469-4a92-9437-93617ca8ba46
+D:\GitHub\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\CS301_SensorTestUnit.cyprj|8972f333-907b-4fee-a05a-80872d4bb583
+D:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|0add932d-0ac5-488d-8084-1617327a3fe3
+C:\Users\ROSS\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|fc000067-334b-4276-a8fe-9ce44fafe57a
+D:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|4b535f21-f7d4-4b38-adea-59c99e366b6b
+D:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|00ac67cc-b0e3-4978-b5d1-f07147e08be6
+D:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|47475633-e4d8-4ee1-a0ed-e317c115f076
+D:\GitHub\COMPSYS301\Software\CS301_Class.cydsn\CS301_Class.cyprj|8ba48098-52f3-489a-9fbd-0e10421f488a
+D:\GitHub\COMPSYS301\Software\CS301_MotorUnitTest.cydsn\CS301_MotorUnitTest.cyprj|4b5d0912-823c-4cdf-b725-eac97bcc4724

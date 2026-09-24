@@ -27,7 +27,7 @@ void usbPutString(char *s);
 void usbPutChar(char c);
 void handle_usb();
 //* ========================================
-
+volatile int count;
 
 int main()
 {
@@ -36,8 +36,13 @@ int main()
 // ----- INITIALIZATIONS ----------
     CYGlobalIntEnable;
     sensor_init();
+<<<<<<< Updated upstream
     //LED_1_Write(0);
 
+=======
+    isr_TS_StartEx(isr_TS_Interrupt);
+    //LED_1_Write(0)
+>>>>>>> Stashed changes
 
 // ------USB SETUP ----------------    
 #ifdef USE_USB    
@@ -54,7 +59,22 @@ int main()
             LED_5_Write(f.state[Q5] == SENSOR_WHITE);
             LED_6_Write(f.state[Q6] == SENSOR_WHITE);
         }
+<<<<<<< Updated upstream
       
+=======
+        if(count >= 250){
+            count= 0;
+            char sensorString[256];
+            sprintf(sensorString, "sensor1:%d\r\n"
+            "sesnro2:%d\r\n"
+            "sensor3:%d\r\n"
+            "sensor4:%d\r\n"
+            "sensor5:%d\r\n"
+            "sensor6:%d\r\n",
+            f.state[Q1],f.state[Q2],f.state[Q3],f.state[Q4],f.state[Q5],f.state[Q6]);
+            usbPutString(sensorString);
+        }
+>>>>>>> Stashed changes
     }   
 }
 //* ========================================

@@ -1,6 +1,8 @@
-C:\Users\aben220\Downloads\COMPSYS301\Software\CS301_Class.cydsn\CS301_Class.cyprj|d450179c-6fe0-4e82-98e1-d77a9957b525
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|2638ffa2-fa0f-4826-902d-4d74f273945b
-C:\Users\aben220\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|574c9be7-70fc-41f2-8c8d-c0688efd30d7
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|09978158-2f6e-4831-abc5-b04f4f89d22c
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|5624964f-e3aa-42d8-8d1c-a0b01bfdf69a
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|ce08495f-c6ee-49ba-81b4-10b9847ec9f2
+D:\GitHub\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\CS301_SensorTestUnit.cyprj|8972f333-907b-4fee-a05a-80872d4bb583
+D:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|0add932d-0ac5-488d-8084-1617327a3fe3
+C:\Users\ROSS\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|fc000067-334b-4276-a8fe-9ce44fafe57a
+D:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|4b535f21-f7d4-4b38-adea-59c99e366b6b
+D:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|00ac67cc-b0e3-4978-b5d1-f07147e08be6
+D:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|47475633-e4d8-4ee1-a0ed-e317c115f076
+D:\GitHub\COMPSYS301\Software\CS301_Class.cydsn\CS301_Class.cyprj|8ba48098-52f3-489a-9fbd-0e10421f488a
+D:\GitHub\COMPSYS301\Software\CS301_MotorUnitTest.cydsn\CS301_MotorUnitTest.cyprj|4b5d0912-823c-4cdf-b725-eac97bcc4724

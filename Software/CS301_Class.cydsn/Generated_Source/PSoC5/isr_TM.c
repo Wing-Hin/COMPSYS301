@@ -19,7 +19,6 @@
 #include <cydevice_trm.h>
 #include <CyLib.h>
 #include <isr_TM.h>
-#include <project.h>
 #include <motorControl.h>
 
 

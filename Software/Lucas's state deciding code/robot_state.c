@@ -7,7 +7,7 @@
 #error "RobotDecideState expects the six-sensor board"
 #endif
 
-RobotState RobotDecideState(const uint8_t sensorStates[6])
+RobotState RobotDecideState(uint8_t sensorStates[6])
 {
     unsigned int i;
     unsigned int blackCount = 0;

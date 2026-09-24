@@ -22,6 +22,10 @@
 #include "sensor.h"
 #include "motorControl.h"
 
+#include "robot_state.h"
+#include "turn.h"
+#include "turn_hardware.h"
+
 //* ========================================
 #include "defines.h"
 #include "vars.h"
@@ -33,8 +37,9 @@ void handle_usb();
 
 extern volatile int motorSpeed_tick;
 
-const float Vblack_LON;
-const float Vwhite_LON;
+SensorFrame f;
+RobotState currentState;
+RobotState previousState;
 
 int main()
 {
@@ -60,16 +65,29 @@ int main()
     
     for(;;)
     {   
-        SensorFrame f =  sensors_GetFrame();
+        f =  sensors_GetFrame();
         if(f.fresh){
-            LED_1_Write(f.state[Q1] == SENSOR_WHITE);
-            LED_2_Write(f.state[Q2] == SENSOR_WHITE);
+            LED_1_Write(getSingleSensorState(Q1) == SENSOR_WHITE);
+            LED_2_Write(getSingleSensorState(Q2) == SENSOR_WHITE);
             LED_3_Write(f.state[Q3] == SENSOR_WHITE);
             LED_4_Write(f.state[Q4] == SENSOR_WHITE);
             LED_5_Write(f.state[Q5] == SENSOR_WHITE);
             LED_6_Write(f.state[Q6] == SENSOR_WHITE);
         }
-        straight(10);
+        /*
+        previousState = currentState;
+        currentState = RobotDecideState(f.state);
+        if(previousState != currentState && currentState == ROBOT_STATE_LEFT_BRANCH){
+        
+        }
+        else if(previousState != currentState && currentState == ROBOT_STATE_LEFT_BRANCH){
+            
+        }
+        else if (currentState == ROBOT_STATE_FOLLOW_LINE && TurnGetState() == TURN_IDLE){
+            straight(10);
+        }
+        */
+        straight(20);
         handle_usb();
         
             flag_KB_string = 0;

@@ -12,7 +12,8 @@
 SensorFrame controlSensorFrame;
 
 uint8_t ReadSensor(SensorId sensor)
-{
+{   
+    controlSensorFrame = sensors_GetFrame();
     static const uint8 channelForSensor[SENSOR_COUNT] = {Q3, Q6, Q5, Q4, Q1, Q2};
     /* main validates all channels and freshness before calling the controller.
      * Reading this cached frame avoids pair skew and repeated freshness reads.
