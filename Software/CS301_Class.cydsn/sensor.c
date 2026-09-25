@@ -13,8 +13,10 @@
 
 #include <project.h>
 #include "sensor.h"
+#define sensor_threshold_shift 50
 
-static const uint16 T_MID[N_SENSORS] = { 166, 156, 204, 249, 143, 147 };
+static const uint16 T_MID[N_SENSORS] = { 166 + sensor_threshold_shift, 156 + sensor_threshold_shift, 
+    204 + sensor_threshold_shift, 249 + sensor_threshold_shift, 143 + sensor_threshold_shift, 147 + sensor_threshold_shift};
 static const uint16 T_HYS[N_SENSORS] = {  27,  28,  35,  47,  21,  22 };
 #define N_SAMPLES  20
 #define ADC_FULL   4095

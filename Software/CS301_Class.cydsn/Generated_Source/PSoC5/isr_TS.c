@@ -19,6 +19,8 @@
 #include <cydevice_trm.h>
 #include <CyLib.h>
 #include <isr_TS.h>
+#include <project.h>
+#include "motorControl.h"
 #include <turn.h>
 
 #if !defined(isr_TS__REMOVED) /* Check for removal by optimization */

@@ -135,8 +135,8 @@
   <block name="LED_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="LED_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="LED_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="isr_TS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="RWV" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="LED_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
