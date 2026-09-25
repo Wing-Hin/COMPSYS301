@@ -56,7 +56,7 @@ static void UpdateLineFollowing(const SensorFrame *frame, uint32 now)
 {
     if (frame->fresh) {
         lastLineFrameMs = now;
-        straightFromFrame(20, frame); /* Keep the current base speed. */
+        straightFromFrame(99, frame); /* Keep the current base speed. */
     } else if ((uint32)(now - lastLineFrameMs) >=
                LINE_FOLLOW_SENSOR_TIMEOUT_MS) {
         straightFromFrame(0, NULL); /* Sensor stream has stopped updating. */
@@ -112,7 +112,8 @@ int main()
         else if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_RIGHT_BRANCH){
             TurnStart(TURN_RIGHT);
         }
-        else if (currentState == ROBOT_STATE_FOLLOW_LINE && TurnGetState() == TURN_IDLE){
+        else if ((currentState == ROBOT_STATE_FOLLOW_LINE && TurnGetState() == TURN_IDLE)||
+                (currentState == ROBOT_STATE_LINE_LOST && TurnGetState() == TURN_IDLE)){
             UpdateLineFollowing(&f, lineFollowMs);
         }
 

@@ -19,7 +19,6 @@
 #include <cydevice_trm.h>
 #include <CyLib.h>
 #include <isr_DEC1.h>
-#include <motorControl.h>
 
 
 #if !defined(isr_DEC1__REMOVED) /* Check for removal by optimization */
