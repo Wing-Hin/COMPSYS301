@@ -119,10 +119,10 @@ int main()
         previousState = currentState;
         currentState = RobotDecideState(f.state);
         if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_LEFT_BRANCH){
-            //TurnStart(TURN_LEFT);
+            TurnStart(TURN_LEFT);
         }
         else if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_RIGHT_BRANCH){
-            //TurnStart(TURN_RIGHT);
+            TurnStart(TURN_RIGHT);
         }
         else if ((currentState == ROBOT_STATE_FOLLOW_LINE && TurnGetState() == TURN_IDLE)||
                 (currentState == ROBOT_STATE_LINE_LOST && TurnGetState() == TURN_IDLE)){
@@ -130,12 +130,14 @@ int main()
                 UpdateLineFollowing(&f, lineFollowMs);
             }
         }
+                /*
         travel_for_m(1);
         if(distanceReached){
             MotorLeft_setRPM(0);
             MotorRight_setRPM(0);
             MotorDisable();
         }
+                */
         /* Reuse the LED snapshot: reading sensors_GetFrame again would clear
          * or consume freshness independently. Do not call this during a turn
          * when turn integration is added; that controller must own the motors.
