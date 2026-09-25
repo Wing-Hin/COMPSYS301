@@ -4,3 +4,5 @@ C:\Users\thar970\OneDrive - The University of Auckland\Documents\PSoC Creator\4.
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|4cb69e9d-633a-4fe5-b38b-47fd4821af41
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|ed257760-93e1-44b1-986a-3a0e178e1836
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|35a3f5e6-25ab-4342-96b5-91bedb849a16
+C:\TEMP\COMPSYS301\Software\CS301_SensorTestUnit.cydsn\CS301_SensorTestUnit.cyprj|6af397f4-a74a-4ae5-af2a-f1f642018de3
+C:\TEMP\COMPSYS301\Software\CS301_MotorUnitTest.cydsn\CS301_MotorUnitTest.cyprj|ec150ca7-b6dd-45bf-81a3-20b39256ec42

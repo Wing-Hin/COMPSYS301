@@ -114,7 +114,7 @@ void straightFromFrame(uint8 speed, const SensorFrame *frame)
             right = ClampSpeed((int)speed*0.5);
         }else if(context == (int8)8){
             right  = ClampSpeed((int)speed);
-            left = ClampSpeed((int)speed*0.5);
+            left = ClampSpeed((int)speed*0.3);
         }
         else{
             left  = ClampSpeed((int)speed + boost);
@@ -127,7 +127,7 @@ void straightFromFrame(uint8 speed, const SensorFrame *frame)
             left = ClampSpeed((int)speed*0.5);
         }else if(context == (int8)4){
             left  = ClampSpeed((int)speed);
-            right = ClampSpeed((int)speed*0.5);
+            right = ClampSpeed((int)speed*0.3);
         }else{
              left  = ClampSpeed((int)speed);
             right = ClampSpeed((int)speed - boost);
