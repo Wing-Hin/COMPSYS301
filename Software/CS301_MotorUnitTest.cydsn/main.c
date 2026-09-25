@@ -104,7 +104,7 @@ int main()
         if(Motor_isr_flag == 1){
             Motor_isr_flag = 0;
             Motor_captureRPM();
-            Motor_maintainSpeed();
+            //Motor_maintainSpeed();
             if(getSpeed_Uart){
                 char speedString_L[32];
                 char speedString_R[32];

@@ -38,12 +38,12 @@
 #define TURN_RIGHT_ENCODER_FORWARD_SIGN 1
 #endif
 #ifndef TURN_TIMEOUT_MS
-#define TURN_TIMEOUT_MS 4000UL
+#define TURN_TIMEOUT_MS 400000UL
 #endif
 #ifndef TURN_CONFIRM_READINGS
 #define TURN_CONFIRM_READINGS 2U
 #endif
 /* Scheduling contract: call the controller every 5 ms; do not tune this. */
-#define TURN_UPDATE_MS 5UL
+#define TURN_UPDATE_MS 2UL
 
 #endif

@@ -56,7 +56,7 @@ static void UpdateLineFollowing(const SensorFrame *frame, uint32 now)
 {
     if (frame->fresh) {
         lastLineFrameMs = now;
-        straightFromFrame(35, frame); /* Keep the current base speed. */
+        straightFromFrame(20, frame); /* Keep the current base speed. */
     } else if ((uint32)(now - lastLineFrameMs) >=
                LINE_FOLLOW_SENSOR_TIMEOUT_MS) {
         straightFromFrame(0, NULL); /* Sensor stream has stopped updating. */
@@ -71,6 +71,7 @@ int main()
 // ----- INITIALIZATIONS ----------
     sensor_init();
     MotorInit();
+    isr_TS_StartEx(isr_TS_Interrupt);
     MotorDisable(); /* Wait for a valid frame before enabling movement. */
     //MotorLeft_setRPM(30);
     //MotorRight_setRPM(30);
@@ -105,23 +106,20 @@ int main()
         
         previousState = currentState;
         currentState = RobotDecideState(f.state);
-        if(!sideSensorDisable && previousState != currentState && currentState == ROBOT_STATE_LEFT_BRANCH){
+        if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_LEFT_BRANCH){
             TurnStart(TURN_LEFT);
-            sideSensorDisable =1;
         }
-        else if(!sideSensorDisable && previousState != currentState && currentState == ROBOT_STATE_RIGHT_BRANCH){
+        else if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_RIGHT_BRANCH){
             TurnStart(TURN_RIGHT);
-            sideSensorDisable=1;
         }
         else if (currentState == ROBOT_STATE_FOLLOW_LINE && TurnGetState() == TURN_IDLE){
-            straight(20);
+            UpdateLineFollowing(&f, lineFollowMs);
         }
 
         /* Reuse the LED snapshot: reading sensors_GetFrame again would clear
          * or consume freshness independently. Do not call this during a turn
          * when turn integration is added; that controller must own the motors.
          */
-        UpdateLineFollowing(&f, lineFollowMs);
         handle_usb();
         
             flag_KB_string = 0;
@@ -132,21 +130,16 @@ int main()
         
         }
         
-        if(Turn_isr_count >=100){
+        if(Turn_isr_count >=10){
             Turn_isr_count=0;
             TurnUpdate();
             if(TurnGetState() == TURN_DONE){
                 count_beforeRestart++;
                 if(count_beforeRestart >=10){
                     count_beforeRestart = 0;
-                    
+                    TurnReset();
                 }
             }
-            if(sideSensorDisablecount >= 500){
-                        sideSensorDisable=0;
-                        sideSensorDisablecount = 0;
-                    }
-                    sideSensorDisablecount++;
             /*
             char string[32];
             sprintf(string, "leftcount:%d \r\n right count:%d",leftTravelCounts, rightTravelCounts);
