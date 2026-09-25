@@ -19,6 +19,7 @@
 #define Forward true
 #define Backward false
 #define Max_safeSpeed 3.0f
+#define PI 3.1415926
 #define WheelRadius 0.0325
 #define Kp 0.8
 #define Ki 0.1

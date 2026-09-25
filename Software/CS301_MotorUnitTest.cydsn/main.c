@@ -42,6 +42,7 @@ int main()
     MotorRight_setRPM(30);
     
     bool getSpeed_Uart;
+    bool getCount_Uart;
     
 // ------USB SETUP ----------------    
 #ifdef USE_USB    
@@ -81,6 +82,14 @@ int main()
                 getSpeed_Uart = 0;
                 usbPutString("stopgetSpeed\r\n");
             }
+            if(strcmp(line,"getCount") == 0){
+                getCount_Uart = 1;
+                usbPutString("getCount\r\n");
+            }
+            if(strcmp(line,"stopgetCount") == 0){
+                getCount_Uart = 0;
+                usbPutString("stopgetCount\r\n");
+            }
             if(strcmp(line,"Forward") == 0){
                 MotorLeft_setDirection(Forward);
                 MotorRight_setDirection(Forward);
@@ -115,6 +124,11 @@ int main()
 
                 usbPutString(speedString_L);
                 usbPutString(speedString_R);
+            }
+            if(getCount_Uart){
+                char countString[32];
+                sprintf(countString, "total count= %d", -QuadDec_M1_GetCounter()+QuadDec_M2_GetCounter());
+                usbPutString(countString);
             }
             
         }
