@@ -38,7 +38,7 @@ void handle_usb();
 extern volatile int motorSpeed_tick;
 volatile int count_beforeRestart;
 volatile bool sideSensorDisable = 0;
-int sideSensorDisablecount;
+volatile bool distanceReached=0;
 
 SensorFrame f;
 RobotState currentState;
@@ -56,10 +56,22 @@ static void UpdateLineFollowing(const SensorFrame *frame, uint32 now)
 {
     if (frame->fresh) {
         lastLineFrameMs = now;
-        straightFromFrame(99, frame); /* Keep the current base speed. */
+        straightFromFrame(50, frame); /* Keep the current base speed. */
     } else if ((uint32)(now - lastLineFrameMs) >=
                LINE_FOLLOW_SENSOR_TIMEOUT_MS) {
         straightFromFrame(0, NULL); /* Sensor stream has stopped updating. */
+    }
+}
+
+void travel_for_m(float distance){
+    int16_t left;
+    int16_t right;
+    int target_count;
+    left = -QuadDec_M1_GetCounter();
+    right = QuadDec_M2_GetCounter();
+    target_count = (distance/(0.065 *PI))*228*1.03;
+    if((((float)(left+right))/2) >= target_count){
+        distanceReached=1;
     }
 }
 
@@ -107,16 +119,23 @@ int main()
         previousState = currentState;
         currentState = RobotDecideState(f.state);
         if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_LEFT_BRANCH){
-            TurnStart(TURN_LEFT);
+            //TurnStart(TURN_LEFT);
         }
         else if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_RIGHT_BRANCH){
-            TurnStart(TURN_RIGHT);
+            //TurnStart(TURN_RIGHT);
         }
         else if ((currentState == ROBOT_STATE_FOLLOW_LINE && TurnGetState() == TURN_IDLE)||
                 (currentState == ROBOT_STATE_LINE_LOST && TurnGetState() == TURN_IDLE)){
-            UpdateLineFollowing(&f, lineFollowMs);
+            if(distanceReached == 0){
+                UpdateLineFollowing(&f, lineFollowMs);
+            }
         }
-
+        travel_for_m(1);
+        if(distanceReached){
+            MotorLeft_setRPM(0);
+            MotorRight_setRPM(0);
+            MotorDisable();
+        }
         /* Reuse the LED snapshot: reading sensors_GetFrame again would clear
          * or consume freshness independently. Do not call this during a turn
          * when turn integration is added; that controller must own the motors.
