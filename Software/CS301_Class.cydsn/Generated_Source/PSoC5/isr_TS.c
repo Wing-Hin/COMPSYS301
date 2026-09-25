@@ -21,7 +21,6 @@
 #include <isr_TS.h>
 #include <turn.h>
 
-
 #if !defined(isr_TS__REMOVED) /* Check for removal by optimization */
 
 /*******************************************************************************
