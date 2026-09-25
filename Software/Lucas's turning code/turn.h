@@ -41,6 +41,7 @@ typedef enum {
     TURN_APPROACH,
     TURN_LEAVE_LINE,
     TURN_FIND_LINE,
+    TURN_REACQUIRE,
     TURN_DONE,
     TURN_FAULT
 } TurnState;

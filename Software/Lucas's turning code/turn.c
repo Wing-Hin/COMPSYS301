@@ -28,8 +28,11 @@ volatile int Turn_isr_count = 0;
  */
 static int16_t previousLeftCount;
 static int16_t previousRightCount;
- int64_t leftTravelCounts;
- int64_t rightTravelCounts;
+int64_t leftTravelCounts;
+int64_t rightTravelCounts;
+uint8_t fixline_turnLeft;
+uint8_t fixline_turnRight;
+uint8_t fixline_moveForward;
 
 /* Handle the existing 16-bit hardware counters wrapping in either direction.
  * Subtract after widening to avoid signed overflow or narrowing conversions.
@@ -103,6 +106,20 @@ static void ApplyMotorCommand(void)
             SetMotorSpeed(15, -15);
         }
         break;
+    case TURN_REACQUIRE:
+        if(fixline_moveForward){
+            SetMotorSpeed(15,15);
+        }
+        else if(fixline_turnLeft){
+            SetMotorSpeed(0,15);
+        }
+        else if(fixline_turnRight){
+            SetMotorSpeed(15,0);
+        }
+        else{
+            SetMotorSpeed(0,0);
+        }
+        break;
     case TURN_DONE:
     case TURN_FAULT:
     default:
@@ -140,6 +157,10 @@ TurnState TurnUpdate(void)
 {
     uint8_t frontLeft;
     uint8_t frontRight;
+    uint8_t frontLeftMiddle;
+    uint8_t frontRightMiddle;
+    uint8_t BackLeftMiddle;
+    uint8_t BackRightMiddle;
 
     if (state == TURN_IDLE) {
         return state;
@@ -200,15 +221,47 @@ TurnState TurnUpdate(void)
          */
         if (turnDirection == TURN_RIGHT) {
             if(Confirm(frontLeft == 1U)){
-                state = TURN_DONE;
+                state = TURN_REACQUIRE;
             }
         }
         else if (turnDirection == TURN_LEFT){
             if(Confirm(frontRight == 1U)){
-                state = TURN_DONE;
+                state = TURN_REACQUIRE;
             }
         }
         break;
+    case TURN_REACQUIRE:
+        frontLeft = ReadSensor(SENSOR_FL);
+        frontRight = ReadSensor(SENSOR_FR);
+        frontLeftMiddle = ReadSensor(SENSOR_FM_L);
+        frontRightMiddle = ReadSensor(SENSOR_FM_R);
+        BackLeftMiddle = ReadSensor(SENSOR_BM_L);
+        BackRightMiddle = ReadSensor(SENSOR_BM_R);
+        if((Confirm(frontLeftMiddle) == 1U && Confirm(frontRightMiddle) == 0U )|| Confirm(frontLeft)){
+            fixline_turnLeft = 1U;
+            fixline_turnRight = 0U;
+            fixline_moveForward = 0U;
+        }
+        else if((Confirm(frontLeftMiddle) == 0U && Confirm(frontRightMiddle) == 1U) || Confirm(frontRight)){
+            fixline_turnLeft = 0U;
+            fixline_turnRight = 1U;
+            fixline_moveForward = 0U;
+        }
+        else if(Confirm(frontLeftMiddle) == 1U && Confirm(frontRightMiddle) == 1U){
+            fixline_turnLeft = 0U;
+            fixline_turnRight = 0U;
+            if(Confirm(BackLeftMiddle) == 1U && Confirm(BackRightMiddle) == 1U &&
+                Confirm(frontLeft) == 0U && Confirm(frontRight) == 0U){
+                state = TURN_DONE;
+                fixline_moveForward = 0U;
+            }
+            else{
+                fixline_moveForward = 1U;
+            }
+        }
+        else{
+        }
+    break;
 
     default:
         state = TURN_FAULT;

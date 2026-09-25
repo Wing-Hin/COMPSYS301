@@ -167,6 +167,7 @@ CY_ISR(isr_TS_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START isr_TS_Interrupt` */
+    Turn_isr_count++;
     ts++;
     /* `#END` */
 }
