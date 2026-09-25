@@ -2,7 +2,7 @@
 #include "motorControl.h"
 #include <stddef.h>
 
-#define LF_LOST_MAX  125 // frames to search when all four are white 125 x 8 ms = 1 s, then stop       
+#define LF_LOST_MAX  50 // frames to search when all four are white 125 x 8 ms = 1 s, then stop       
 
 /* ---- Lookup-table steering (LF_USE_TABLE 1) ---- */
 #define LF_STEP      1   /* speed points per level: level 3 -> +3 on outer wheel */

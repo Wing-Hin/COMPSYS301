@@ -248,15 +248,27 @@ TurnState TurnUpdate(void)
             fixline_moveForward = 0U;
         }
         else if(Confirm(frontLeftMiddle) == 1U && Confirm(frontRightMiddle) == 1U){
-            fixline_turnLeft = 0U;
-            fixline_turnRight = 0U;
             if(Confirm(BackLeftMiddle) == 1U && Confirm(BackRightMiddle) == 1U &&
                 Confirm(frontLeft) == 0U && Confirm(frontRight) == 0U){
                 state = TURN_DONE;
+                fixline_turnLeft = 0U;
+                fixline_turnRight = 0U;
                 fixline_moveForward = 0U;
             }
-            else{
+            else if(Confirm(BackLeftMiddle) == 0U && Confirm(BackRightMiddle) == 0U){
+                fixline_turnLeft = 0U;
+                fixline_turnRight = 0U;
                 fixline_moveForward = 1U;
+            }
+            else if(Confirm(BackLeftMiddle) == 1U && Confirm(BackRightMiddle) == 0U){
+                fixline_turnLeft = 1U;
+                fixline_turnRight = 0U;
+                fixline_moveForward = 0U;
+            }
+            else if(Confirm(BackLeftMiddle) == 0U && Confirm(BackRightMiddle) == 1U){
+                fixline_turnLeft = 0U;
+                fixline_turnRight = 1U;
+                fixline_moveForward = 0U;
             }
         }
         else{
