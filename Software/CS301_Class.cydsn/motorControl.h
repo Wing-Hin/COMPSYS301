@@ -28,6 +28,8 @@
 
 extern volatile bool Motor_isr_flag;
 extern volatile bool Motor_enabled;
+volatile bool overflowL_flag;
+volatile bool overflowR_flag;
 
 void MotorInit(void);
 

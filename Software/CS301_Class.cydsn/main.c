@@ -56,7 +56,7 @@ static void UpdateLineFollowing(const SensorFrame *frame, uint32 now)
 {
     if (frame->fresh) {
         lastLineFrameMs = now;
-        straightFromFrame(50, frame); /* Keep the current base speed. */
+        straightFromFrame(25, frame); /* Keep the current base speed. */
     } else if ((uint32)(now - lastLineFrameMs) >=
                LINE_FOLLOW_SENSOR_TIMEOUT_MS) {
         straightFromFrame(0, NULL); /* Sensor stream has stopped updating. */
@@ -152,7 +152,7 @@ int main()
         
         }
         
-        if(Turn_isr_count >=10){
+        if(Turn_isr_count >=12){
             Turn_isr_count=0;
             TurnUpdate();
             if(TurnGetState() == TURN_DONE){

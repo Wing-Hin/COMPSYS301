@@ -15,11 +15,11 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-
+#include <turn.h>
 #include <cydevice_trm.h>
 #include <CyLib.h>
 #include <isr_TS.h>
-#include "turn.h"
+
 
 #if !defined(isr_TS__REMOVED) /* Check for removal by optimization */
 
