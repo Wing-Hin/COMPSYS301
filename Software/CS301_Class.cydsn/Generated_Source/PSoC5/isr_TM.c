@@ -15,7 +15,7 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#include <motorControl.h>
+
 #include <cydevice_trm.h>
 #include <CyLib.h>
 #include <isr_TM.h>
@@ -27,7 +27,7 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START isr_TM_intc` */
-
+#include <motorControl.h>
 /* `#END` */
 
 #ifndef CYINT_IRQ_BASE

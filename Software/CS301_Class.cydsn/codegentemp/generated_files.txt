@@ -182,6 +182,10 @@
   <file name="C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\codegentemp\LED_6.h" value="HEADER;;;;;LED_6" />
   <file name="C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\codegentemp\isr_TS.c" value="SOURCE_C;CortexM3;;;;isr_TS" />
   <file name="C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\codegentemp\isr_TS.h" value="HEADER;;;;;isr_TS" />
+  <file name="C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\codegentemp\isr_DEC1.c" value="SOURCE_C;CortexM3;;;;isr_DEC1" />
+  <file name="C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\codegentemp\isr_DEC1.h" value="HEADER;;;;;isr_DEC1" />
+  <file name="C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\codegentemp\isr_DEC2.c" value="SOURCE_C;CortexM3;;;;isr_DEC2" />
+  <file name="C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\codegentemp\isr_DEC2.h" value="HEADER;;;;;isr_DEC2" />
   <file name="C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16.c" value="SOURCE_C;CortexM3;;;;QuadDec_M1_Cnt16" />
   <file name="C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16.h" value="HEADER;;;;;QuadDec_M1_Cnt16" />
   <file name="C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16_PM.c" value="SOURCE_C;CortexM3;;;;QuadDec_M1_Cnt16" />

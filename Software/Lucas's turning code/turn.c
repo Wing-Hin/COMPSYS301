@@ -28,8 +28,8 @@ volatile int Turn_isr_count = 0;
  */
 static int16_t previousLeftCount;
 static int16_t previousRightCount;
-int64_t leftTravelCounts;
-int64_t rightTravelCounts;
+int16_t leftTravelCounts;
+int16_t rightTravelCounts;
 uint8_t fixline_turnLeft;
 uint8_t fixline_turnRight;
 uint8_t fixline_moveForward;

@@ -28,6 +28,7 @@
 ********************************************************************************/
 /* `#START isr_TS_intc` */
 extern uint8 ts;
+extern volatile int Turn_isr_count;
 
 volatile int motorSpeed_tick;
 /* `#END` */

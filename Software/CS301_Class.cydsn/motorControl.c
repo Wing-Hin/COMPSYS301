@@ -47,6 +47,11 @@ void MotorInit(){
     PWM_2_Start();
     PWM_2_WritePeriod(99);
     PWM_2_WriteCompare(99);
+    //Added these two lines fix the start-up burst issue
+    // --------------------
+    motorLeft_PWM  = 99;
+    motorRight_PWM = 99;
+    // --------------------
     //start decoder, interrupt and flags
     QuadDec_M1_Start();
     QuadDec_M1_SetInterruptMask(

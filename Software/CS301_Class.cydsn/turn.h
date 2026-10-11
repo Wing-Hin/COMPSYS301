@@ -7,8 +7,8 @@
 /* All commonly changed values are grouped in this file. */
 #include "turn_config.h"
 
-int64_t leftTravelCounts;
-int64_t rightTravelCounts;
+int16_t leftTravelCounts;
+int16_t rightTravelCounts;
 volatile int Turn_isr_count;
 
 /* Configuration checks: invalid settings stop compilation. */

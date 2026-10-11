@@ -15,7 +15,7 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#include <turn.h>
+
 #include <cydevice_trm.h>
 #include <CyLib.h>
 #include <isr_TS.h>
@@ -28,6 +28,7 @@
 ********************************************************************************/
 /* `#START isr_TS_intc` */
 extern uint8 ts;
+extern volatile int Turn_isr_count;
 
 volatile int motorSpeed_tick;
 /* `#END` */

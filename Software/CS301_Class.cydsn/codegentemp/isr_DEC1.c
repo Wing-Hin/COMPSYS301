@@ -27,7 +27,7 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START isr_DEC1_intc` */
-
+#include <motorControl.h>
 /* `#END` */
 
 #ifndef CYINT_IRQ_BASE
@@ -165,7 +165,8 @@ CY_ISR(isr_DEC1_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START isr_DEC1_Interrupt` */
-
+    overflowL_flag = 1;
+    QuadDec_M1_GetEvents();
     /* `#END` */
 }
 

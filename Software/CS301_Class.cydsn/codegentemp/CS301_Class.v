@@ -1,6 +1,6 @@
 // ======================================================================
 // CS301_Class.v generated from TopDesign.cysch
-// 09/25/2026 at 13:22
+// 10/11/2026 at 13:34
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -5205,6 +5205,20 @@ module top ;
 		#(.int_type(2'b10))
 		isr_TS
 		 (.int_signal(Net_4417));
+
+
+
+	cy_isr_v1_0
+		#(.int_type(2'b10))
+		isr_DEC1
+		 (.int_signal(Net_3247));
+
+
+
+	cy_isr_v1_0
+		#(.int_type(2'b10))
+		isr_DEC2
+		 (.int_signal(Net_3249));
 
 
 
