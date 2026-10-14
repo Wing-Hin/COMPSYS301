@@ -248,7 +248,7 @@ TurnState TurnUpdate(void)
             fixline_moveForward = 0U;
         }
         else if(Confirm(frontLeftMiddle) == 1U && Confirm(frontRightMiddle) == 1U){
-            if(Confirm(BackLeftMiddle) == 1U && Confirm(BackRightMiddle) == 1U &&
+            if(Confirm(BackLeftMiddle) == 1U && Confirm(BackRightMiddle) == 1U &&   
                 Confirm(frontLeft) == 0U && Confirm(frontRight) == 0U){
                 state = TURN_DONE;
                 fixline_turnLeft = 0U;
