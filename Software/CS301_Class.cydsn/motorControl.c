@@ -221,17 +221,17 @@ void Motor_captureRPM(){
     int currentCount_L = abs(QuadDec_M1_GetCounter());
     int currentCount_R = abs(QuadDec_M2_GetCounter());
     if(overflowL_flag){
-        motorLeft_RPM = (currentCount_L-previousCount_L-32767)/(57*4*0.1);
+        motorLeft_RPM = (currentCount_L-previousCount_L-32767)/(57*4*Ts);
         count_travelledL += abs(currentCount_L-previousCount_L-32767);
     }else{
-        motorLeft_RPM = (currentCount_L-previousCount_L)/(57*4*0.1);
+        motorLeft_RPM = (currentCount_L-previousCount_L)/(57*4*Ts);
         count_travelledL += abs(currentCount_L-previousCount_L);
     }
     if(overflowR_flag){
-        motorRight_RPM = (currentCount_R-previousCount_R-32767)/(57*4*0.1);
+        motorRight_RPM = (currentCount_R-previousCount_R-32767)/(57*4*Ts);
         count_travelledR += abs(currentCount_R-previousCount_R-32767);
     }else{
-        motorRight_RPM = (currentCount_R-previousCount_R)/(57*4*0.1);
+        motorRight_RPM = (currentCount_R-previousCount_R)/(57*4*Ts);
         count_travelledR += abs(currentCount_R-previousCount_R);
     }
     previousCount_L = currentCount_L;
