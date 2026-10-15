@@ -22,6 +22,8 @@
 #include "sensor.h"
 #include "motorControl.h"
 
+#include "uturn.h"
+
 #include "robot_state.h"
 #include "turn.h"
 #include "turn_hardware.h"
@@ -75,9 +77,33 @@ void travel_for_m(float distance){
     }
 }
 
-int main()
+
+/*int main()
+{*/
+    int main(void)
 {
-    
+    sensor_init();
+    MotorInit();
+    isr_TS_StartEx(isr_TS_Interrupt);
+    MotorDisable();
+
+    CYGlobalIntEnable;
+
+    /* Start one U-turn */
+    UturnStart();
+
+    for (;;) {
+        UturnUpdate();
+
+        /* Keep wheel-speed control running */
+        if (Motor_isr_flag == 1) {
+            Motor_isr_flag = 0;
+            Motor_captureRPM();
+            Motor_maintainSpeed();
+        }
+    }
+}
+#if 0
 
 // --------------------------------    
 // ----- INITIALIZATIONS ----------
@@ -102,6 +128,9 @@ int main()
     CySysTickEnable();
 
     //usbPutString(displaystring);
+    
+    
+    
     
     for(;;)
     {   
@@ -217,6 +246,8 @@ int main()
 }   
 //* ========================================
 //* ========================================
+
+#endif
 void usbPutString(char *s)
 {
 // !! Assumes that *s is a string with allocated space >=64 chars     
