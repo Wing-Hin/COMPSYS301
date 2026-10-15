@@ -19,6 +19,9 @@
 #include <stdlib.h>
 #include <project.h>
 #include "line_follow.h"
+#include "uturn.h"
+
+#define UTURN_TEST_ON_START 1 // 1 = one U-turn at startup, then normal driving
 #include "sensor.h"
 #include "motorControl.h"
 
@@ -36,25 +39,26 @@ void handle_usb();
 //* ========================================
 
 extern volatile int motorSpeed_tick;
+extern volatile int Turn_isr_count;
 volatile int count_beforeRestart;
 volatile bool sideSensorDisable = 0;
 volatile bool distanceReached=0;
 
-SensorFrame f;
-RobotState currentState;
-RobotState previousState;
+SensorFrame f;// holds a snapshot of sensors. Is state fresh or not
+RobotState currentState;//what robot line thing robot is detecting
+RobotState previousState;//prev descion
 
 /* SysTick callback slot 0 provides a real 1 ms clock for ADC-stall detection. */
-static volatile uint32 lineFollowMs;
-static uint32 lastLineFrameMs;
-static void LineFollowClock(void)
+static volatile uint32 lineFollowMs;//timer count ms
+static uint32 lastLineFrameMs; //time of last fresh reading
+static void LineFollowClock(void)//every SysTick counter increases
 {
     ++lineFollowMs;
-}
+}// main loop can check how long it has been waiting for new data
 
 static void UpdateLineFollowing(const SensorFrame *frame, uint32 now)
 {
-    if (frame->fresh) {
+    if (frame->fresh) {//frame 
         lastLineFrameMs = now;
         straightFromFrame(25, frame); /* Keep the current base speed. */
     } else if ((uint32)(now - lastLineFrameMs) >=
@@ -75,163 +79,133 @@ void travel_for_m(float distance){
     }
 }
 
-int main()
+int main(void)
 {
-    
+    bool startTest = UTURN_TEST_ON_START != 0;
+    bool branchArmed = true;
+    unsigned int clearFrames = 0;
+    unsigned int i;
+    bool valid;
+    UturnState ustate;
 
-// --------------------------------    
-// ----- INITIALIZATIONS ----------
     sensor_init();
     MotorInit();
     isr_TS_StartEx(isr_TS_Interrupt);
-    MotorDisable(); /* Wait for a valid frame before enabling movement. */
-    //MotorLeft_setRPM(30);
-    //MotorRight_setRPM(30);
-    
+    MotorDisable();
     CYGlobalIntEnable;
-    
-// ------USB SETUP ----------------    
-#ifdef USE_USB    
-    USBUART_Start(0,USBUART_5V_OPERATION);
-#endif        
-        
+#ifdef USE_USB
+    USBUART_Start(0, USBUART_5V_OPERATION);
+#endif
     RF_BT_SELECT_Write(0);
-
-    CySysTickInit(); /* Existing CyLib uses a nominal 1 ms tick. */
+    CySysTickInit();
     CySysTickSetCallback(0U, LineFollowClock);
     CySysTickEnable();
 
-    //usbPutString(displaystring);
-    
-    for(;;)
-    {   
-        f =  sensors_GetFrame();
-        
-        if(f.fresh){
-            LED_1_Write(getSingleSensorState(Q1) == SENSOR_WHITE);
-            LED_2_Write(getSingleSensorState(Q2) == SENSOR_WHITE);
-            LED_3_Write(f.state[Q3] == SENSOR_WHITE);
-            LED_4_Write(f.state[Q4] == SENSOR_WHITE);
-            LED_5_Write(f.state[Q5] == SENSOR_WHITE);
-            LED_6_Write(f.state[Q6] == SENSOR_WHITE);
+    for (;;) {
+        f = sensors_GetFrame();
+
+        // Wait for valid sensors before the single startup test.
+        if (startTest && f.fresh) {
+            valid = true;
+            for (i = 0; i < N_SENSORS; ++i) {
+                if (f.state[i] != SENSOR_BLACK && f.state[i] != SENSOR_WHITE) {
+                    valid = false;
+                }
+            }
+            if (valid && UturnStart(lineFollowMs)) startTest = false;
         }
-        
-        previousState = currentState;
-        currentState = RobotDecideState(f.state);
-        if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_LEFT_BRANCH){
-            TurnStart(TURN_LEFT);
-        }
-        else if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_RIGHT_BRANCH){
-            TurnStart(TURN_RIGHT);
-        }
-        else if ((currentState == ROBOT_STATE_FOLLOW_LINE && TurnGetState() == TURN_IDLE)||
-                (currentState == ROBOT_STATE_LINE_LOST && TurnGetState() == TURN_IDLE)){
-            if(distanceReached == 0){
-                UpdateLineFollowing(&f, lineFollowMs);
+
+        ustate = UturnGetState();
+        if (ustate != UTURN_IDLE) {
+            // U-turn owns motors. Normal branches/turn updates are skipped.
+            UturnUpdate(&f, lineFollowMs);
+            Turn_isr_count = 0;
+            if (UturnGetState() == UTURN_DONE) {
+                UturnReset();
+                lastLineFrameMs = lineFollowMs;
+                branchArmed = false;
+                clearFrames = 0;
+                currentState = ROBOT_STATE_FOLLOW_LINE;
+            }
+            // FAULT stays stopped. Reset/reprogram to retry after inspection.
+        } else if (!startTest) {
+            if (TurnGetState() == TURN_IDLE) {
+                if (f.fresh) {
+                    previousState = currentState;
+                    currentState = RobotDecideState(f.state);
+
+                    // Re-arm only after leaving the previous branch/U-turn.
+                    if (!branchArmed) {
+                        if (currentState == ROBOT_STATE_FOLLOW_LINE &&
+                            f.state[Q3] == SENSOR_WHITE && f.state[Q4] == SENSOR_WHITE) {
+                            if (++clearFrames >= 3) branchArmed = true;
+                        } else {
+                            clearFrames = 0;
+                        }
+                    }
+                    if (branchArmed && currentState == ROBOT_STATE_LEFT_BRANCH) {
+                        if (TurnStart(TURN_LEFT)) {
+                            branchArmed = false;
+                            clearFrames = 0;
+                        }
+                    } else if (branchArmed && currentState == ROBOT_STATE_RIGHT_BRANCH) {
+                        if (TurnStart(TURN_RIGHT)) {
+                            branchArmed = false;
+                            clearFrames = 0;
+                        }
+                    }
+                }
+                if (TurnGetState() == TURN_IDLE) {
+                    if (currentState == ROBOT_STATE_SENSOR_FAULT || distanceReached) {
+                        straightFromFrame(0, NULL);
+                    } else if (!branchArmed ||
+                               currentState == ROBOT_STATE_FOLLOW_LINE ||
+                               currentState == ROBOT_STATE_LINE_LOST) {
+                        UpdateLineFollowing(&f, lineFollowMs);
+                    } else {
+                        // No route choice supplied for a two-sided junction.
+                        straightFromFrame(0, NULL);
+                    }
+                }
+            }
+
+            // Existing normal-turn scheduler; its ISR period is unchanged.
+            if (Turn_isr_count >= 12) {
+                Turn_isr_count = 0;
+                TurnUpdate();
+                if (TurnGetState() == TURN_DONE) {
+                    if (++count_beforeRestart >= 10) {
+                        count_beforeRestart = 0;
+                        TurnReset();
+                        lastLineFrameMs = lineFollowMs;
+                    }
+                } else {
+                    count_beforeRestart = 0;
+                }
             }
         }
-                /*
-        travel_for_m(1);
-        if(distanceReached){
-            MotorLeft_setRPM(0);
-            MotorRight_setRPM(0);
-            MotorDisable();
-        }
-                */
-        /* Reuse the LED snapshot: reading sensors_GetFrame again would clear
-         * or consume freshness independently. Do not call this during a turn
-         * when turn integration is added; that controller must own the motors.
-         */
-        handle_usb();
-        
-            flag_KB_string = 0;
-        if(Motor_isr_flag ==1){
+
+        // This service must run during both normal motion and the U-turn.
+        if (Motor_isr_flag == 1) {
             Motor_isr_flag = 0;
             Motor_captureRPM();
             Motor_maintainSpeed();
-        
         }
-        
-        if(Turn_isr_count >=12){
-            Turn_isr_count=0;
-            TurnUpdate();
-            if(TurnGetState() == TURN_DONE){
-                count_beforeRestart++;
-                if(count_beforeRestart >=10){
-                    count_beforeRestart = 0;
-                    TurnReset();
-                }
-            }
-            /*
-            char string[32];
-            sprintf(string, "leftcount:%d \r\n right count:%d",leftTravelCounts, rightTravelCounts);
-            usbPutString(string);
-            */
-            /*
-            switch(TurnGetState()){
-                case TURN_IDLE:
-                    usbPutString("idle");
-                    break;
-                case TURN_APPROACH:
-                    usbPutString("approach");
-                    break;
-                case TURN_LEAVE_LINE:
-                    usbPutString("leave line");
-                    break;
-                case TURN_FIND_LINE:
-                    usbPutString("find line");
-                    break;
-                case TURN_DONE:
-                    usbPutString("done");
-                    break;
-                case TURN_FAULT:
-                    usbPutString("fault");
-                    break;
-            }
-            */
-            /*
-            switch(currentState){
-            case ROBOT_STATE_SENSOR_FAULT:
-                usbPutString("fault");
-                break;
-            case ROBOT_STATE_LINE_LOST:
-                usbPutString("line lost");
-                break;
-            case ROBOT_STATE_FOLLOW_LINE:
-                usbPutString("follow");
-                break;
-            case ROBOT_STATE_LEFT_BRANCH:
-                usbPutString("left");
-                break;
-            case ROBOT_STATE_RIGHT_BRANCH:
-                usbPutString("right");
-                break;
-            case ROBOT_STATE_JUNCTION:
-                usbPutString("junction");
-                break;
-            }
-            */
-        }
-        
-    }        
-}   
-//* ========================================
-//* ========================================
+        handle_usb();
+        flag_KB_string = 0;
+    }
+}
+
 void usbPutString(char *s)
 {
-// !! Assumes that *s is a string with allocated space >=64 chars     
-//  Since USB implementation retricts data packets to 64 chars, this function truncates the
-//  length to 62 char (63rd char is a '!')
-
-#ifdef USE_USB     
-    /* Do not let a disconnected USB host block the sensor timeout. */
-    if (USBUART_CDCIsReady() == 0) return;
-    s[63]='\0';
-    s[62]='!';
-    USBUART_PutData((uint8*)s,strlen(s));
+#ifdef USE_USB
+    uint16 length = 0;
+    if (s == NULL || USBUART_CDCIsReady() == 0) return;
+    while (length < 62 && s[length] != '\0') ++length;
+    USBUART_PutData((uint8 *)s, length);
 #endif
 }
-//* ========================================
+
 void usbPutChar(char c)
 {
 #ifdef USE_USB     
