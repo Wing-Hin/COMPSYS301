@@ -70,6 +70,12 @@ bool TurnStart(TurnDirection direction);
  */
 TurnState TurnUpdate(void);
 TurnState TurnGetState(void);
+extern volatile int Turn_isr_count;
+extern int16_t leftTravelCounts;
+extern int16_t rightTravelCounts;
+
+/* Stop immediately and latch FAULT, including during a moving stage. */
+void TurnAbort(void);
 
 /* Acknowledge DONE/FAULT and release ownership. Ignored while busy.
  * Main must handle the result BEFORE calling this; there is no auto-restart.

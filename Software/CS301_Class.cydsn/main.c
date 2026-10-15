@@ -25,6 +25,7 @@
 #include "robot_state.h"
 #include "turn.h"
 #include "turn_hardware.h"
+#include "robot_navigation_config.h"
 
 //* ========================================
 #include "defines.h"
@@ -46,12 +47,15 @@ RobotState previousState;
 
 /* SysTick callback slot 0 provides a real 1 ms clock for ADC-stall detection. */
 static volatile uint32 lineFollowMs;
+#if !ROBOT_USE_ROUTE_NAVIGATION
 static uint32 lastLineFrameMs;
+#endif
 static void LineFollowClock(void)
 {
     ++lineFollowMs;
 }
 
+#if !ROBOT_USE_ROUTE_NAVIGATION
 static void UpdateLineFollowing(const SensorFrame *frame, uint32 now)
 {
     if (frame->fresh) {
@@ -62,6 +66,7 @@ static void UpdateLineFollowing(const SensorFrame *frame, uint32 now)
         straightFromFrame(0, NULL); /* Sensor stream has stopped updating. */
     }
 }
+#endif
 
 void travel_for_m(float distance){
     int16_t left;
@@ -83,7 +88,9 @@ int main()
 // ----- INITIALIZATIONS ----------
     sensor_init();
     MotorInit();
+#if !ROBOT_USE_ROUTE_NAVIGATION
     isr_TS_StartEx(isr_TS_Interrupt);
+#endif
     MotorDisable(); /* Wait for a valid frame before enabling movement. */
     //MotorLeft_setRPM(30);
     //MotorRight_setRPM(30);
@@ -101,6 +108,10 @@ int main()
     CySysTickSetCallback(0U, LineFollowClock);
     CySysTickEnable();
 
+#if ROBOT_USE_ROUTE_NAVIGATION
+    RobotNavigationInit(&robotNavigationConfig, lineFollowMs);
+#endif
+
     //usbPutString(displaystring);
     
     for(;;)
@@ -116,6 +127,10 @@ int main()
             LED_6_Write(f.state[Q6] == SENSOR_WHITE);
         }
         
+#if ROBOT_USE_ROUTE_NAVIGATION
+        RobotNavigationUpdate(&f, lineFollowMs);
+#else
+        controlSensorFrame = f;
         previousState = currentState;
         currentState = RobotDecideState(f.state);
         if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_LEFT_BRANCH){
@@ -142,6 +157,7 @@ int main()
          * or consume freshness independently. Do not call this during a turn
          * when turn integration is added; that controller must own the motors.
          */
+#endif
         handle_usb();
         
             flag_KB_string = 0;
@@ -152,6 +168,7 @@ int main()
         
         }
         
+#if !ROBOT_USE_ROUTE_NAVIGATION
         if(Turn_isr_count >=12){
             Turn_isr_count=0;
             TurnUpdate();
@@ -212,7 +229,7 @@ int main()
             }
             */
         }
-        
+#endif
     }        
 }   
 //* ========================================
