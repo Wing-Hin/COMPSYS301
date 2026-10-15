@@ -293,12 +293,3 @@ void TurnReset(void)
         state = TURN_IDLE;
     }
 }
-
-void TurnAbort(void)
-{
-    consecutive = 0;
-    elapsedTicks = 0;
-    fixline_turnLeft = fixline_turnRight = fixline_moveForward = 0;
-    state = TURN_FAULT;
-    SetMotorSpeed(0, 0);
-}

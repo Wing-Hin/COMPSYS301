@@ -7,7 +7,7 @@
  * ADC interrupts update the driver's own frame, not this copy. Every sensor
  * read in one controller update therefore sees the same six-channel sample.
  */
-extern SensorFrame controlSensorFrame;
+extern SensorFrame f;
 
 /* SetMotorSpeed updates the existing motorControl.c targets. Main must service
  * Motor_isr_flag by calling Motor_captureRPM() and Motor_maintainSpeed(), using
