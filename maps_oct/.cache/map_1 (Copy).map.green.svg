@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 2736 2160">
+<rect width="1%" height="2%" fill="white"/>
+<g stroke="black" stroke-linecap="round">
+<line x1="72" y1="72" x2="2664" y2="72" stroke-width="24"/>
+<line x1="360" y1="360" x2="648" y2="360" stroke-width="24"/>
+<line x1="1224" y1="360" x2="1512" y2="360" stroke-width="24"/>
+<line x1="2088" y1="360" x2="2376" y2="360" stroke-width="24"/>
+<line x1="72" y1="648" x2="360" y2="648" stroke-width="24"/>
+<line x1="648" y1="648" x2="2376" y2="648" stroke-width="24"/>
+<line x1="360" y1="936" x2="936" y2="936" stroke-width="24"/>
+<line x1="1512" y1="936" x2="2376" y2="936" stroke-width="24"/>
+<line x1="936" y1="1224" x2="1512" y2="1224" stroke-width="24"/>
+<line x1="1800" y1="1224" x2="2088" y2="1224" stroke-width="24"/>
+<line x1="72" y1="1512" x2="360" y2="1512" stroke-width="24"/>
+<line x1="360" y1="1800" x2="936" y2="1800" stroke-width="24"/>
+<line x1="1224" y1="1800" x2="1800" y2="1800" stroke-width="24"/>
+<line x1="72" y1="2088" x2="2664" y2="2088" stroke-width="24"/>
+<line x1="72" y1="72" x2="72" y2="2088" stroke-width="24.3623"/>
+<line x1="360" y1="72" x2="360" y2="360" stroke-width="24.3623"/>
+<line x1="360" y1="648" x2="360" y2="936" stroke-width="24.3623"/>
+<line x1="360" y1="1224" x2="360" y2="1512" stroke-width="24.3623"/>
+<line x1="648" y1="360" x2="648" y2="648" stroke-width="24.3623"/>
+<line x1="648" y1="1224" x2="648" y2="1800" stroke-width="24.3623"/>
+<line x1="936" y1="72" x2="936" y2="360" stroke-width="24.3623"/>
+<line x1="936" y1="936" x2="936" y2="1800" stroke-width="24.3623"/>
+<line x1="1224" y1="648" x2="1224" y2="936" stroke-width="24.3623"/>
+<line x1="1224" y1="1512" x2="1224" y2="1800" stroke-width="24.3623"/>
+<line x1="1512" y1="360" x2="1512" y2="648" stroke-width="24.3623"/>
+<line x1="1512" y1="936" x2="1512" y2="1512" stroke-width="24.3623"/>
+<line x1="1800" y1="72" x2="1800" y2="360" stroke-width="24.3623"/>
+<line x1="1800" y1="1224" x2="1800" y2="1800" stroke-width="24.3623"/>
+<line x1="2088" y1="1224" x2="2088" y2="2088" stroke-width="24.3623"/>
+<line x1="2376" y1="360" x2="2376" y2="648" stroke-width="24.3623"/>
+<line x1="2376" y1="936" x2="2376" y2="1080" stroke-width="24.3623"/>
+<line x1="2376" y1="1368" x2="2376" y2="1800" stroke-width="24.3623"/>
+<line x1="2664" y1="72" x2="2664" y2="2088" stroke-width="24.3623"/>
+</g>
+</svg>
