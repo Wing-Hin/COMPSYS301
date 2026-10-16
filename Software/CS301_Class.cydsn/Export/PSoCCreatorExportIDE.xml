@@ -44,6 +44,9 @@
           <File BuildType="BUILD" Toolchain="">..\Lucas's state deciding code\robot_state.c</File>
           <File BuildType="BUILD" Toolchain="">..\Lucas's turning code\turn.c</File>
           <File BuildType="BUILD" Toolchain="">..\Lucas's turning code\turn_hardware.c</File>
+          <File BuildType="BUILD" Toolchain="">bfs.c</File>
+          <File BuildType="BUILD" Toolchain="">map.c</File>
+          <File BuildType="BUILD" Toolchain="">branchSearch.c</File>
           <File BuildType="BUILD" Toolchain="">defines.h</File>
           <File BuildType="BUILD" Toolchain="">vars.h</File>
           <File BuildType="BUILD" Toolchain="">motorControl.h</File>
@@ -53,6 +56,9 @@
           <File BuildType="BUILD" Toolchain="">..\Lucas's turning code\turn_config.h</File>
           <File BuildType="BUILD" Toolchain="">..\Lucas's turning code\turn_hardware.h</File>
           <File BuildType="BUILD" Toolchain="">..\Lucas's state deciding code\robot_state.h</File>
+          <File BuildType="BUILD" Toolchain="">bfs.h</File>
+          <File BuildType="BUILD" Toolchain="">map.h</File>
+          <File BuildType="BUILD" Toolchain="">branchSearch.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\TEMP\COMPSYS301\Software\CS301_Class.cydsn\Generated_Source\PSoC5">
