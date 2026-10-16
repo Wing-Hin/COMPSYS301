@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 3840 2160" width="3840" height="2160">
+
+  <!-- Background -->
+  <rect width="3840" height="2160" fill="#0a0a0a"/>
+
+  <!-- ── Grid lines (10 cols × 6 rows = 384×360 px cells) ─────────────────── -->
+  <g stroke="#1e3a1e" stroke-width="2" opacity="0.9">
+    <!-- Vertical lines -->
+    <line x1="384"  y1="0" x2="384"  y2="2160"/>
+    <line x1="768"  y1="0" x2="768"  y2="2160"/>
+    <line x1="1152" y1="0" x2="1152" y2="2160"/>
+    <line x1="1536" y1="0" x2="1536" y2="2160"/>
+    <line x1="1920" y1="0" x2="1920" y2="2160"/>
+    <line x1="2304" y1="0" x2="2304" y2="2160"/>
+    <line x1="2688" y1="0" x2="2688" y2="2160"/>
+    <line x1="3072" y1="0" x2="3072" y2="2160"/>
+    <line x1="3456" y1="0" x2="3456" y2="2160"/>
+    <!-- Horizontal lines -->
+    <line x1="0" y1="360"  x2="3840" y2="360"/>
+    <line x1="0" y1="720"  x2="3840" y2="720"/>
+    <line x1="0" y1="1080" x2="3840" y2="1080"/>
+    <line x1="0" y1="1440" x2="3840" y2="1440"/>
+    <line x1="0" y1="1800" x2="3840" y2="1800"/>
+  </g>
+
+  <!-- ── Arena border ───────────────────────────────────────────────────────── -->
+  <rect x="40" y="40" width="3760" height="2080"
+        fill="none" stroke="#2ecc71" stroke-width="8" rx="12"/>
+
+  <!-- ── Centre cross ───────────────────────────────────────────────────────── -->
+  <g stroke="#ffffff" stroke-width="4" opacity="0.4">
+    <line x1="1920" y1="0"    x2="1920" y2="2160"/>
+    <line x1="0"    y1="1080" x2="3840" y2="1080"/>
+  </g>
+  <circle cx="1920" cy="1080" r="24" fill="#ffffff" opacity="0.8"/>
+  <circle cx="1920" cy="1080" r="80" fill="none" stroke="#ffffff" stroke-width="4" opacity="0.5"/>
+
+  <!-- ── Corner markers (coloured so orientation is obvious) ───────────────── -->
+  <!-- TL = Red -->
+  <circle cx="192" cy="180" r="60" fill="#e74c3c" opacity="0.85"/>
+  <text x="192" y="188" text-anchor="middle" dominant-baseline="middle"
+        font-family="sans-serif" font-size="48" font-weight="bold" fill="white">TL</text>
+
+  <!-- TR = Blue -->
+  <circle cx="3648" cy="180" r="60" fill="#2980b9" opacity="0.85"/>
+  <text x="3648" y="188" text-anchor="middle" dominant-baseline="middle"
+        font-family="sans-serif" font-size="48" font-weight="bold" fill="white">TR</text>
+
+  <!-- BL = Yellow -->
+  <circle cx="192" cy="1980" r="60" fill="#f39c12" opacity="0.85"/>
+  <text x="192" y="1988" text-anchor="middle" dominant-baseline="middle"
+        font-family="sans-serif" font-size="48" font-weight="bold" fill="white">BL</text>
+
+  <!-- BR = Magenta -->
+  <circle cx="3648" cy="1980" r="60" fill="#8e44ad" opacity="0.85"/>
+  <text x="3648" y="1988" text-anchor="middle" dominant-baseline="middle"
+        font-family="sans-serif" font-size="48" font-weight="bold" fill="white">BR</text>
+
+  <!-- ── Column labels (A–J) along top and bottom ──────────────────────────── -->
+  <g font-family="monospace" font-size="52" fill="#2ecc71" opacity="0.7"
+     text-anchor="middle" dominant-baseline="middle">
+    <text x="192"  y="310">A</text>
+    <text x="576"  y="310">B</text>
+    <text x="960"  y="310">C</text>
+    <text x="1344" y="310">D</text>
+    <text x="1728" y="310">E</text>
+    <text x="2112" y="310">F</text>
+    <text x="2496" y="310">G</text>
+    <text x="2880" y="310">H</text>
+    <text x="3264" y="310">I</text>
+    <text x="3648" y="310">J</text>
+    <!-- Bottom -->
+    <text x="192"  y="1850">A</text>
+    <text x="576"  y="1850">B</text>
+    <text x="960"  y="1850">C</text>
+    <text x="1344" y="1850">D</text>
+    <text x="1728" y="1850">E</text>
+    <text x="2112" y="1850">F</text>
+    <text x="2496" y="1850">G</text>
+    <text x="2880" y="1850">H</text>
+    <text x="3264" y="1850">I</text>
+    <text x="3648" y="1850">J</text>
+  </g>
+
+  <!-- ── Row labels (1–6) along left and right ─────────────────────────────── -->
+  <g font-family="monospace" font-size="52" fill="#2ecc71" opacity="0.7"
+     text-anchor="middle" dominant-baseline="middle">
+    <text x="310" y="180">1</text>
+    <text x="310" y="540">2</text>
+    <text x="310" y="900">3</text>
+    <text x="310" y="1260">4</text>
+    <text x="310" y="1620">5</text>
+    <text x="310" y="1980">6</text>
+    <!-- Right side -->
+    <text x="3530" y="180">1</text>
+    <text x="3530" y="540">2</text>
+    <text x="3530" y="900">3</text>
+    <text x="3530" y="1260">4</text>
+    <text x="3530" y="1620">5</text>
+    <text x="3530" y="1980">6</text>
+  </g>
+
+  <!-- ── Title / watermark ──────────────────────────────────────────────────── -->
+  <text x="1920" y="1080" text-anchor="middle" dominant-baseline="middle"
+        font-family="sans-serif" font-size="96" font-weight="bold"
+        fill="#ffffff" opacity="0.06">CS301 TEST MAP</text>
+
+  <!-- ── Sample robot start zone (centre-left) ─────────────────────────────── -->
+  <rect x="700" y="820" width="440" height="440" rx="20"
+        fill="none" stroke="#e74c3c" stroke-width="6" stroke-dasharray="24,12"/>
+  <text x="920" y="1040" text-anchor="middle" dominant-baseline="middle"
+        font-family="sans-serif" font-size="44" fill="#e74c3c" opacity="0.9">START</text>
+
+  <!-- ── Sample goal zone (centre-right) ───────────────────────────────────── -->
+  <rect x="2700" y="820" width="440" height="440" rx="20"
+        fill="#2ecc71" opacity="0.12"/>
+  <rect x="2700" y="820" width="440" height="440" rx="20"
+        fill="none" stroke="#2ecc71" stroke-width="6"/>
+  <text x="2920" y="1040" text-anchor="middle" dominant-baseline="middle"
+        font-family="sans-serif" font-size="44" fill="#2ecc71" opacity="0.9">GOAL</text>
+
+</svg>

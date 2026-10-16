@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 3840 2160"
+   width="3840"
+   height="2160"
+   version="1.1"
+   id="svg56"
+   sodipodi:docname="test-grid.svg"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs56" />
+  <sodipodi:namedview
+     id="namedview56"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.29163723"
+     inkscape:cx="2501.3953"
+     inkscape:cy="954.95351"
+     inkscape:window-width="1627"
+     inkscape:window-height="894"
+     inkscape:window-x="0"
+     inkscape:window-y="33"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg56" />
+  <!-- Background -->
+  <rect
+     width="3840"
+     height="2160"
+     fill="#0a0a0a"
+     id="rect1" />
+  <!-- ── Grid lines (10 cols × 6 rows = 384×360 px cells) ─────────────────── -->
+  <g
+     stroke="#1e3a1e"
+     stroke-width="2"
+     opacity="0.9"
+     id="g14">
+    <!-- Vertical lines -->
+    <line
+       x1="384"
+       y1="0"
+       x2="384"
+       y2="2160"
+       id="line1" />
+    <line
+       x1="768"
+       y1="0"
+       x2="768"
+       y2="2160"
+       id="line2" />
+    <line
+       x1="1152"
+       y1="0"
+       x2="1152"
+       y2="2160"
+       id="line3" />
+    <line
+       x1="1536"
+       y1="0"
+       x2="1536"
+       y2="2160"
+       id="line4" />
+    <line
+       x1="1920"
+       y1="0"
+       x2="1920"
+       y2="2160"
+       id="line5" />
+    <line
+       x1="2304"
+       y1="0"
+       x2="2304"
+       y2="2160"
+       id="line6" />
+    <line
+       x1="2688"
+       y1="0"
+       x2="2688"
+       y2="2160"
+       id="line7" />
+    <line
+       x1="3072"
+       y1="0"
+       x2="3072"
+       y2="2160"
+       id="line8" />
+    <line
+       x1="3456"
+       y1="0"
+       x2="3456"
+       y2="2160"
+       id="line9" />
+    <!-- Horizontal lines -->
+    <line
+       x1="0"
+       y1="360"
+       x2="3840"
+       y2="360"
+       id="line10" />
+    <line
+       x1="0"
+       y1="720"
+       x2="3840"
+       y2="720"
+       id="line11" />
+    <line
+       x1="0"
+       y1="1080"
+       x2="3840"
+       y2="1080"
+       id="line12" />
+    <line
+       x1="0"
+       y1="1440"
+       x2="3840"
+       y2="1440"
+       id="line13" />
+    <line
+       x1="0"
+       y1="1800"
+       x2="3840"
+       y2="1800"
+       id="line14" />
+  </g>
+  <!-- ── Arena border ───────────────────────────────────────────────────────── -->
+  <rect
+     x="40"
+     y="40"
+     width="3760"
+     height="2080"
+     fill="none"
+     stroke="#2ecc71"
+     stroke-width="8"
+     rx="12"
+     id="rect14" />
+  <!-- ── Centre cross ───────────────────────────────────────────────────────── -->
+  <g
+     stroke="#ffffff"
+     stroke-width="4"
+     opacity="0.4"
+     id="g16">
+    <line
+       x1="1920"
+       y1="0"
+       x2="1920"
+       y2="2160"
+       id="line15" />
+    <line
+       x1="0"
+       y1="1080"
+       x2="3840"
+       y2="1080"
+       id="line16" />
+  </g>
+  <circle
+     cx="1920"
+     cy="1080"
+     r="24"
+     fill="#ffffff"
+     opacity="0.8"
+     id="circle16" />
+  <circle
+     cx="1920"
+     cy="1080"
+     r="80"
+     fill="none"
+     stroke="#ffffff"
+     stroke-width="4"
+     opacity="0.5"
+     id="circle17" />
+  <!-- ── Corner markers (coloured so orientation is obvious) ───────────────── -->
+  <!-- TL = Red -->
+  <circle
+     cx="192"
+     cy="180"
+     r="60"
+     fill="#e74c3c"
+     opacity="0.85"
+     id="circle18" />
+  <text
+     x="192"
+     y="188"
+     text-anchor="middle"
+     dominant-baseline="middle"
+     font-family="sans-serif"
+     font-size="48"
+     font-weight="bold"
+     fill="white"
+     id="text18">TL</text>
+  <!-- TR = Blue -->
+  <circle
+     cx="3648"
+     cy="180"
+     r="60"
+     fill="#2980b9"
+     opacity="0.85"
+     id="circle19" />
+  <text
+     x="3648"
+     y="188"
+     text-anchor="middle"
+     dominant-baseline="middle"
+     font-family="sans-serif"
+     font-size="48"
+     font-weight="bold"
+     fill="white"
+     id="text19">TR</text>
+  <!-- BL = Yellow -->
+  <circle
+     cx="192"
+     cy="1980"
+     r="60"
+     fill="#f39c12"
+     opacity="0.85"
+     id="circle20" />
+  <text
+     x="192"
+     y="1988"
+     text-anchor="middle"
+     dominant-baseline="middle"
+     font-family="sans-serif"
+     font-size="48"
+     font-weight="bold"
+     fill="white"
+     id="text20">BL</text>
+  <!-- BR = Magenta -->
+  <circle
+     cx="3648"
+     cy="1980"
+     r="60"
+     fill="#8e44ad"
+     opacity="0.85"
+     id="circle21" />
+  <text
+     x="3648"
+     y="1988"
+     text-anchor="middle"
+     dominant-baseline="middle"
+     font-family="sans-serif"
+     font-size="48"
+     font-weight="bold"
+     fill="white"
+     id="text21">BR</text>
+  <!-- ── Column labels (A–J) along top and bottom ──────────────────────────── -->
+  <g
+     font-family="monospace"
+     font-size="52"
+     fill="#2ecc71"
+     opacity="0.7"
+     text-anchor="middle"
+     dominant-baseline="middle"
+     id="g41">
+    <text
+       x="192"
+       y="310"
+       id="text22">A</text>
+    <text
+       x="576"
+       y="310"
+       id="text23">B</text>
+    <text
+       x="960"
+       y="310"
+       id="text24">C</text>
+    <text
+       x="1344"
+       y="310"
+       id="text25">D</text>
+    <text
+       x="1728"
+       y="310"
+       id="text26">E</text>
+    <text
+       x="2112"
+       y="310"
+       id="text27">F</text>
+    <text
+       x="2496"
+       y="310"
+       id="text28">G</text>
+    <text
+       x="2880"
+       y="310"
+       id="text29">H</text>
+    <text
+       x="3264"
+       y="310"
+       id="text30">I</text>
+    <text
+       x="3648"
+       y="310"
+       id="text31">J</text>
+    <!-- Bottom -->
+    <text
+       x="192"
+       y="1850"
+       id="text32">A</text>
+    <text
+       x="576"
+       y="1850"
+       id="text33">B</text>
+    <text
+       x="960"
+       y="1850"
+       id="text34">C</text>
+    <text
+       x="1344"
+       y="1850"
+       id="text35">D</text>
+    <text
+       x="1728"
+       y="1850"
+       id="text36">E</text>
+    <text
+       x="2112"
+       y="1850"
+       id="text37">F</text>
+    <text
+       x="2496"
+       y="1850"
+       id="text38">G</text>
+    <text
+       x="2880"
+       y="1850"
+       id="text39">H</text>
+    <text
+       x="3264"
+       y="1850"
+       id="text40">I</text>
+    <text
+       x="3648"
+       y="1850"
+       id="text41">J</text>
+  </g>
+  <!-- ── Row labels (1–6) along left and right ─────────────────────────────── -->
+  <g
+     font-family="monospace"
+     font-size="52"
+     fill="#2ecc71"
+     opacity="0.7"
+     text-anchor="middle"
+     dominant-baseline="middle"
+     id="g53">
+    <text
+       x="310"
+       y="180"
+       id="text42">1</text>
+    <text
+       x="310"
+       y="540"
+       id="text43">2</text>
+    <text
+       x="310"
+       y="900"
+       id="text44">3</text>
+    <text
+       x="310"
+       y="1260"
+       id="text45">4</text>
+    <text
+       x="310"
+       y="1620"
+       id="text46">5</text>
+    <text
+       x="310"
+       y="1980"
+       id="text47">6</text>
+    <!-- Right side -->
+    <text
+       x="3530"
+       y="180"
+       id="text48">1</text>
+    <text
+       x="3530"
+       y="540"
+       id="text49">2</text>
+    <text
+       x="3530"
+       y="900"
+       id="text50">3</text>
+    <text
+       x="3530"
+       y="1260"
+       id="text51">4</text>
+    <text
+       x="3530"
+       y="1620"
+       id="text52">5</text>
+    <text
+       x="3530"
+       y="1980"
+       id="text53">6</text>
+  </g>
+  <!-- ── Title / watermark ──────────────────────────────────────────────────── -->
+  <text
+     x="1920"
+     y="1080"
+     text-anchor="middle"
+     dominant-baseline="middle"
+     font-family="sans-serif"
+     font-size="96"
+     font-weight="bold"
+     fill="#ffffff"
+     opacity="0.06"
+     id="text54">CS301 TEST MAP</text>
+  <!-- ── Sample robot start zone (centre-left) ─────────────────────────────── -->
+  <!-- ── Sample goal zone (centre-right) ───────────────────────────────────── -->
+</svg>

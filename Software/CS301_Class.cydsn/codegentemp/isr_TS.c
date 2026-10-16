@@ -27,6 +27,7 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START isr_TS_intc` */
+#include <turn.h>
 extern uint8 ts;
 extern volatile int Turn_isr_count;
 
