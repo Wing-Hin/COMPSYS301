@@ -17,7 +17,7 @@ static uint8_t isRoad(const uint8_t *map, int row, int col)
 {
     if (row < 0 || col < 0 || row >= (int)MAP_ROWS || col >= (int)MAP_COLS) return 0; // bound check
     /* map is flat row-major: 0 is road, nonzero is wall. */
-    return map[row * MAP_COLS + col] == 0;
+    return map[row * MAP_COLS + col] == 1;
 }
 
 /* Works out what the robot sees at cell when it arrives from prev.
@@ -77,8 +77,8 @@ JunctionList *junctionsDetections(const uint8_t *map, const BfsCell *path, uint1
     uint16_t i;
     typeofJunctions type;
     Direction_Turned dir;
-    uint8 ignored = 0;  /* straight-through junctions since the last turn */
-
+    uint8 leftIgnored = 0;  /* straight-through junctions since the last turn */
+    uint8 rightIgnored = 0;
     // validate the map and path.
     if (map == NULL || path == NULL) return NULL;
 
@@ -92,21 +92,36 @@ JunctionList *junctionsDetections(const uint8_t *map, const BfsCell *path, uint1
 
         if (getTurnDirection(path[i - 1], path[i], path[i + 1], &dir)) {
             Junctions *j = &list.items[list.count++];
-            j->numOfJunctionsIgnore = ignored;
             j->type = type;
             j->turn = dir;
             j->cord.row = path[i].row;
             j->cord.col = path[i].col;
-            ignored = 0;  /* start counting again for the next turn */
+            if (dir == LEFT){
+                j->numOfJunctionsIgnore = leftIgnored;
+            }
+            else if(dir == RIGHT){
+                j->numOfJunctionsIgnore = rightIgnored;
+            }
+            leftIgnored = 0;
+            rightIgnored = 0;  /* start counting again for the next turn */
         } else {
-            ++ignored;    /* robot goes straight through this junction */
+            if(type == CROSS_ROAD || type == T_JUNCTION){
+                leftIgnored++;
+                rightIgnored++;
+            }
+            else if(type == LEFT_T_JUNCTION || type == LEFT_BRANCH){
+                leftIgnored++;
+            }
+            else if (type == RIGHT_T_JUNCTION || type == RIGHT_BRANCH){
+                rightIgnored++;
+            }
         }
     }
 
     /* Junctions passed after the last turn have no turn to attach to, so
      * keep them here for the run to the goal. With no turns at all, this is
      * every junction on the path. */
-    list.numOfJunctionsIgnoreToGoal = ignored;
+    list.numOfJunctionsIgnoreToGoal = leftIgnored + rightIgnored;
 
     return &list;
 }

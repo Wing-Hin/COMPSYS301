@@ -97,13 +97,13 @@ int main()
     BfsWorkspace workspace;
     BfsCell path[BFS_MAX_CELLS];
     uint16_t pathLength = 0;
-    BfsCell start = {1, 1};
-    BfsCell food = {0, 0};
+    BfsCell start = {0, 0};
+    BfsCell food = {5, 10};
     BfsStatus status = BFS_NO_PATH;
     JunctionList *junctions;
     
-    const uint8_t *selectedMap = maps[MAP_1];
-    
+    const uint8_t *selectedMap = maps[MAP_TEST];
+
     int junctionList_i = 0;
     int junctionIgnore = 0;
     
@@ -163,7 +163,7 @@ int main()
         currentState = RobotDecideState(f.state);
         //If left branch detects, and ignored enough branches
         //If should turn left, trun left and set i++ and ignore to 0
-        if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_LEFT_BRANCH){
+        if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_LEFT_BRANCH && TurnGetState() == TURN_IDLE){
             if(junctionIgnore >= (*junctions).items[junctionList_i].numOfJunctionsIgnore){
                 if((*junctions).items[junctionList_i].turn == LEFT){
                     TurnStart(TURN_LEFT);
@@ -171,15 +171,17 @@ int main()
                     junctionIgnore = 0;
                 }
             }
-            //otherwise ignore this
+            //otherwise ignore this we wants to turn left
             else{
-                junctionIgnore++;
+                if((*junctions).items[junctionList_i].turn == LEFT){
+                    junctionIgnore++;
+                }
                 UpdateLineFollowing(&f, lineFollowMs);
             }
         }
         //If right branch detects, and ingored enough brances
         //If it should turn right, turn right and set i++ and ignore to 0
-        else if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_RIGHT_BRANCH){
+        else if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_RIGHT_BRANCH && TurnGetState() == TURN_IDLE){
             if(junctionIgnore >= (*junctions).items[junctionList_i].numOfJunctionsIgnore){
                 if((*junctions).items[junctionList_i].turn == RIGHT){
                     TurnStart(TURN_RIGHT);
@@ -189,14 +191,16 @@ int main()
             }
             //otherwise ignore this
             else{
-                junctionIgnore++;
+                if((*junctions).items[junctionList_i].turn == RIGHT){
+                    junctionIgnore++;
+                }
                 UpdateLineFollowing(&f, lineFollowMs);
             }
         }
         //If junction detects, and enough junctions ignored
         //decide which way to turn, and set i++ and ingore to 0
         else if ((previousState == ROBOT_STATE_LEFT_BRANCH || previousState == ROBOT_STATE_RIGHT_BRANCH)&& 
-                    currentState == ROBOT_STATE_JUNCTION){
+                    currentState == ROBOT_STATE_JUNCTION && TurnGetState() == TURN_IDLE){
             if(junctionIgnore >= (*junctions).items[junctionList_i].numOfJunctionsIgnore){
                 if((*junctions).items[junctionList_i].turn == LEFT){
                     TurnStart(TURN_LEFT);
@@ -209,9 +213,19 @@ int main()
                     junctionIgnore = 0;
                 }
             }
-            //Otherwise keep going. junction already ignored on left or right branch
-            //becuase both sensor can't detects simutaneously
+            //Otherwise keep going. 
+            //Junction ignored based on previous state
             else{
+                if (previousState == ROBOT_STATE_LEFT_BRANCH){
+                    if((*junctions).items[junctionList_i].turn == RIGHT){
+                        junctionIgnore++;
+                    }
+                }
+                else if (previousState == ROBOT_STATE_RIGHT_BRANCH){
+                    if((*junctions).items[junctionList_i].turn == LEFT){
+                        junctionIgnore++;
+                    }
+                }
                 UpdateLineFollowing(&f, lineFollowMs);
             }
         }

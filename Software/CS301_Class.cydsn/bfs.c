@@ -24,7 +24,7 @@ BfsStatus BfsFindPath(const uint8_t *grid, uint16_t rows, uint16_t cols,
 
     start_id = (uint16_t)(start.row * cols + start.col);
     goal_id = (uint16_t)(goal.row * cols + goal.col);
-    if (grid[start_id] != 0 || grid[goal_id] != 0) return BFS_INVALID_INPUT;
+    if (grid[start_id] != 1 || grid[goal_id] != 1) return BFS_INVALID_INPUT;
 
     for (i = 0; i < cells; ++i) workspace->parent[i] = BFS_UNVISITED;
     workspace->parent[start_id] = start_id;
@@ -41,7 +41,7 @@ BfsStatus BfsFindPath(const uint8_t *grid, uint16_t rows, uint16_t cols,
             uint16_t next;
             if (row < 0 || col < 0 || row >= rows || col >= cols) continue; // bound check
             next = (uint16_t)(row * cols + col);
-            if (grid[next] != 0 || workspace->parent[next] != BFS_UNVISITED) continue;
+            if (grid[next] != 1 || workspace->parent[next] != BFS_UNVISITED) continue;
             /* Mark on enqueue: each cell occupies the queue at most once. */
             workspace->parent[next] = current;
             workspace->queue[tail++] = next;
