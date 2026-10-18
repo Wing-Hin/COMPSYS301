@@ -25,6 +25,9 @@
 #include "robot_state.h"
 #include "turn.h"
 #include "turn_hardware.h"
+#include "branchSearch.h"
+#include "bfs.h"
+#include "map.h"
 
 //* ========================================
 #include "defines.h"
@@ -35,14 +38,18 @@ void usbPutChar(char c);
 void handle_usb();
 //* ========================================
 
+//
+//motorcontrol
 extern volatile int motorSpeed_tick;
 volatile int count_beforeRestart;
 volatile bool sideSensorDisable = 0;
 volatile bool distanceReached=0;
-
+//
+//sensor and state
 SensorFrame f;
 RobotState currentState;
 RobotState previousState;
+//
 
 /* SysTick callback slot 0 provides a real 1 ms clock for ADC-stall detection. */
 static volatile uint32 lineFollowMs;
@@ -87,6 +94,18 @@ int main()
     MotorDisable(); /* Wait for a valid frame before enabling movement. */
     //MotorLeft_setRPM(30);
     //MotorRight_setRPM(30);
+    BfsWorkspace workspace;
+    BfsCell path[BFS_MAX_CELLS];
+    uint16_t pathLength = 0;
+    BfsCell start = {1, 1};
+    BfsCell food = {0, 0};
+    BfsStatus status = BFS_NO_PATH;
+    JunctionList *junctions;
+    
+    const uint8_t *selectedMap = maps[MAP_1];
+    
+    int junctionList_i = 0;
+    int junctionIgnore = 0;
     
     CYGlobalIntEnable;
     
@@ -105,8 +124,31 @@ int main()
     
     for(;;)
     {   
-        f =  sensors_GetFrame();
+        //Path finding
+        if(status == BFS_NO_PATH){
+            status = BfsFindPath(selectedMap, 15, 19, start, food, 
+                            &workspace, path, BFS_MAX_CELLS, &pathLength);
+        }
+        if (status == BFS_FOUND){
+            junctions = junctionsDetections(selectedMap, path, pathLength);
+            status = BFS_INVALID_INPUT;
+            junctionList_i = 0;
+            junctionIgnore = 0;
+        }
+        //
         
+        if(junctionList_i >= (*junctions).count){
+            LED_1_Write(1);
+            LED_2_Write(1);
+            LED_3_Write(1);
+            LED_4_Write(1);
+            LED_5_Write(1);
+            LED_6_Write(1);
+            straightFromFrame(0, NULL);
+        }
+        else{
+        //Sensors LEDs
+        f =  sensors_GetFrame();
         if(f.fresh){
             LED_1_Write(getSingleSensorState(Q1) == SENSOR_WHITE);
             LED_2_Write(getSingleSensorState(Q2) == SENSOR_WHITE);
@@ -115,21 +157,72 @@ int main()
             LED_5_Write(f.state[Q5] == SENSOR_WHITE);
             LED_6_Write(f.state[Q6] == SENSOR_WHITE);
         }
-        
+        //
+        //Turn decision
         previousState = currentState;
         currentState = RobotDecideState(f.state);
+        //If left branch detects, and ignored enough branches
+        //If should turn left, trun left and set i++ and ignore to 0
         if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_LEFT_BRANCH){
-            TurnStart(TURN_LEFT);
+            if(junctionIgnore >= (*junctions).items[junctionList_i].numOfJunctionsIgnore){
+                if((*junctions).items[junctionList_i].turn == LEFT){
+                    TurnStart(TURN_LEFT);
+                    junctionList_i++;
+                    junctionIgnore = 0;
+                }
+            }
+            //otherwise ignore this
+            else{
+                junctionIgnore++;
+                UpdateLineFollowing(&f, lineFollowMs);
+            }
         }
+        //If right branch detects, and ingored enough brances
+        //If it should turn right, turn right and set i++ and ignore to 0
         else if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_RIGHT_BRANCH){
-            TurnStart(TURN_RIGHT);
+            if(junctionIgnore >= (*junctions).items[junctionList_i].numOfJunctionsIgnore){
+                if((*junctions).items[junctionList_i].turn == RIGHT){
+                    TurnStart(TURN_RIGHT);
+                    junctionList_i++;
+                    junctionIgnore = 0;
+                }
+            }
+            //otherwise ignore this
+            else{
+                junctionIgnore++;
+                UpdateLineFollowing(&f, lineFollowMs);
+            }
         }
+        //If junction detects, and enough junctions ignored
+        //decide which way to turn, and set i++ and ingore to 0
+        else if ((previousState == ROBOT_STATE_LEFT_BRANCH || previousState == ROBOT_STATE_RIGHT_BRANCH)&& 
+                    currentState == ROBOT_STATE_JUNCTION){
+            if(junctionIgnore >= (*junctions).items[junctionList_i].numOfJunctionsIgnore){
+                if((*junctions).items[junctionList_i].turn == LEFT){
+                    TurnStart(TURN_LEFT);
+                    junctionList_i++;
+                    junctionIgnore = 0;
+                }
+                else if((*junctions).items[junctionList_i].turn == RIGHT){
+                    TurnStart(TURN_RIGHT);
+                    junctionList_i++;
+                    junctionIgnore = 0;
+                }
+            }
+            //Otherwise keep going. junction already ignored on left or right branch
+            //becuase both sensor can't detects simutaneously
+            else{
+                UpdateLineFollowing(&f, lineFollowMs);
+            }
+        }
+        //
         else if ((currentState == ROBOT_STATE_FOLLOW_LINE && TurnGetState() == TURN_IDLE)||
                 (currentState == ROBOT_STATE_LINE_LOST && TurnGetState() == TURN_IDLE)){
             if(distanceReached == 0){
                 UpdateLineFollowing(&f, lineFollowMs);
             }
         }
+        //
                 /*
         travel_for_m(1);
         if(distanceReached){
@@ -162,55 +255,8 @@ int main()
                     TurnReset();
                 }
             }
-            /*
-            char string[32];
-            sprintf(string, "leftcount:%d \r\n right count:%d",leftTravelCounts, rightTravelCounts);
-            usbPutString(string);
-            */
-            /*
-            switch(TurnGetState()){
-                case TURN_IDLE:
-                    usbPutString("idle");
-                    break;
-                case TURN_APPROACH:
-                    usbPutString("approach");
-                    break;
-                case TURN_LEAVE_LINE:
-                    usbPutString("leave line");
-                    break;
-                case TURN_FIND_LINE:
-                    usbPutString("find line");
-                    break;
-                case TURN_DONE:
-                    usbPutString("done");
-                    break;
-                case TURN_FAULT:
-                    usbPutString("fault");
-                    break;
-            }
-            */
-            /*
-            switch(currentState){
-            case ROBOT_STATE_SENSOR_FAULT:
-                usbPutString("fault");
-                break;
-            case ROBOT_STATE_LINE_LOST:
-                usbPutString("line lost");
-                break;
-            case ROBOT_STATE_FOLLOW_LINE:
-                usbPutString("follow");
-                break;
-            case ROBOT_STATE_LEFT_BRANCH:
-                usbPutString("left");
-                break;
-            case ROBOT_STATE_RIGHT_BRANCH:
-                usbPutString("right");
-                break;
-            case ROBOT_STATE_JUNCTION:
-                usbPutString("junction");
-                break;
-            }
-            */
+            
+        }
         }
         
     }        
