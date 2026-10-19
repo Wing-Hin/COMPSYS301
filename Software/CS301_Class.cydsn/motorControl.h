@@ -53,6 +53,8 @@ void Motor_maintainSpeed(void);
 void Motor_get_totalCount(int16_t *left, int16_t *right);
 void Motor_reset_totalCount();
 
+int Motor_get_AveCount(void);
+
 void Motor_captureRPM(void);
 
 #endif

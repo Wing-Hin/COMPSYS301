@@ -212,6 +212,13 @@ void Motor_reset_totalCount(){
     count_travelledR =0;
 }
 
+int Motor_get_AveCount(){
+    int16_t left;
+    int16_t right;
+    left = abs((int)QuadDec_M1_GetCounter());
+    right = abs((int)QuadDec_M2_GetCounter());
+    return (left+right)/2;
+}
 //
 
 

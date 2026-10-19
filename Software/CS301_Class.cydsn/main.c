@@ -98,9 +98,13 @@ int main()
     BfsCell path[BFS_MAX_CELLS];
     uint16_t pathLength = 0;
     BfsCell start = {0, 0};
-    BfsCell food = {5, 10};
+    BfsCell food = {5, 11};
     BfsStatus status = BFS_NO_PATH;
     JunctionList *junctions;
+    float init_count = 0;
+    float current_count = 0;
+    bool turned = 1;
+    bool foodGrabed=0;
     
     const uint8_t *selectedMap = maps[MAP_TEST];
 
@@ -124,6 +128,12 @@ int main()
     
     for(;;)
     {   
+        //distance calculation
+        if(turned && TurnGetState() == TURN_IDLE){
+            init_count = Motor_get_AveCount();
+            turned = 0;
+        }
+        current_count = Motor_get_AveCount();
         //Path finding
         if(status == BFS_NO_PATH){
             status = BfsFindPath(selectedMap, 15, 19, start, food, 
@@ -136,19 +146,27 @@ int main()
             junctionIgnore = 0;
         }
         //
-        
-        if(junctionList_i >= (*junctions).count){
-            LED_1_Write(1);
-            LED_2_Write(1);
-            LED_3_Write(1);
-            LED_4_Write(1);
-            LED_5_Write(1);
-            LED_6_Write(1);
-            straightFromFrame(0, NULL);
+        f =  sensors_GetFrame();
+        if(junctionList_i >= (*junctions).count && TurnGetState() == TURN_IDLE){
+            if((current_count - init_count) >= (((float)(*junctions).numOfNodesToGoal)*0.09*288*1.2/(0.065*PI))){
+                straightFromFrame(0, NULL);
+                if(foodGrabed==0){
+                    LED_1_Write(1);
+                    LED_2_Write(1);
+                    LED_3_Write(1);
+                    LED_4_Write(1);
+                    LED_5_Write(1);
+                    LED_6_Write(1);
+                }
+                foodGrabed =1;
+            }
+            else{
+                UpdateLineFollowing(&f, lineFollowMs);
+            }
+            
         }
         else{
         //Sensors LEDs
-        f =  sensors_GetFrame();
         if(f.fresh){
             LED_1_Write(getSingleSensorState(Q1) == SENSOR_WHITE);
             LED_2_Write(getSingleSensorState(Q2) == SENSOR_WHITE);
@@ -164,9 +182,11 @@ int main()
         //If left branch detects, and ignored enough branches
         //If should turn left, trun left and set i++ and ignore to 0
         if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_LEFT_BRANCH && TurnGetState() == TURN_IDLE){
-            if(junctionIgnore >= (*junctions).items[junctionList_i].numOfJunctionsIgnore){
+            if(junctionIgnore >= (*junctions).items[junctionList_i].numOfJunctionsIgnore&&
+            ((current_count - init_count) >= ((float)(*junctions).items[junctionList_i].numOfNode)*0.09*288*1.2/(0.065*PI))){
                 if((*junctions).items[junctionList_i].turn == LEFT){
                     TurnStart(TURN_LEFT);
+                    turned = 1;
                     junctionList_i++;
                     junctionIgnore = 0;
                 }
@@ -182,9 +202,11 @@ int main()
         //If right branch detects, and ingored enough brances
         //If it should turn right, turn right and set i++ and ignore to 0
         else if(previousState == ROBOT_STATE_FOLLOW_LINE && currentState == ROBOT_STATE_RIGHT_BRANCH && TurnGetState() == TURN_IDLE){
-            if(junctionIgnore >= (*junctions).items[junctionList_i].numOfJunctionsIgnore){
+            if(junctionIgnore >= (*junctions).items[junctionList_i].numOfJunctionsIgnore&&
+            ((current_count - init_count) >= ((float)(*junctions).items[junctionList_i].numOfNode)*0.09*288*1.2/(0.065*PI))){
                 if((*junctions).items[junctionList_i].turn == RIGHT){
                     TurnStart(TURN_RIGHT);
+                    turned = 1;
                     junctionList_i++;
                     junctionIgnore = 0;
                 }
@@ -201,14 +223,17 @@ int main()
         //decide which way to turn, and set i++ and ingore to 0
         else if ((previousState == ROBOT_STATE_LEFT_BRANCH || previousState == ROBOT_STATE_RIGHT_BRANCH)&& 
                     currentState == ROBOT_STATE_JUNCTION && TurnGetState() == TURN_IDLE){
-            if(junctionIgnore >= (*junctions).items[junctionList_i].numOfJunctionsIgnore){
+            if(junctionIgnore >= (*junctions).items[junctionList_i].numOfJunctionsIgnore&&
+                ((current_count - init_count) >= ((float)(*junctions).items[junctionList_i].numOfNode)*0.09*288*1.2/(0.065*PI))){
                 if((*junctions).items[junctionList_i].turn == LEFT){
                     TurnStart(TURN_LEFT);
+                    turned = 1;
                     junctionList_i++;
                     junctionIgnore = 0;
                 }
                 else if((*junctions).items[junctionList_i].turn == RIGHT){
                     TurnStart(TURN_RIGHT);
+                    turned = 1;
                     junctionList_i++;
                     junctionIgnore = 0;
                 }
@@ -236,6 +261,7 @@ int main()
                 UpdateLineFollowing(&f, lineFollowMs);
             }
         }
+        }
         //
                 /*
         travel_for_m(1);
@@ -256,7 +282,12 @@ int main()
             Motor_isr_flag = 0;
             Motor_captureRPM();
             Motor_maintainSpeed();
-        
+            LED_1_Write(!LED_1_Read());
+            LED_2_Write(!LED_2_Read());
+            LED_3_Write(!LED_3_Read());
+            LED_4_Write(!LED_4_Read());
+            LED_5_Write(!LED_5_Read());
+            LED_6_Write(!LED_6_Read());
         }
         
         if(Turn_isr_count >=12){
@@ -271,7 +302,7 @@ int main()
             }
             
         }
-        }
+        
         
     }        
 }   

@@ -28,6 +28,7 @@ typedef enum {
 typedef enum {
     LEFT,
     RIGHT,
+    NO_TURN,
 } Direction_Turned;
 
 /* Grid position of a junction, same layout as BfsCell. */
@@ -39,6 +40,7 @@ typedef struct {
 /* One junction found on the planned path. */
 typedef struct {
    uint8 numOfJunctionsIgnore;  /* junctions to drive straight through before this turn */
+   float numOfNode;
    typeofJunctions type;
    JunctionCord cord;
    Direction_Turned turn;       /* which way to turn at this junction */
@@ -53,6 +55,7 @@ typedef struct {
     Junctions items[JUNCTIONS_MAX];
     uint16_t count;  /* number of valid entries in items */
     uint8 numOfJunctionsIgnoreToGoal;  /* junctions to drive straight through after the last turn, before the goal */
+    uint8 numOfNodesToGoal;
 } JunctionList;
 
 /* Records every junction on a BFS path where the robot turns. Pass the map and the

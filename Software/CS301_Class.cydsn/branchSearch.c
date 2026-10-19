@@ -79,6 +79,7 @@ JunctionList *junctionsDetections(const uint8_t *map, const BfsCell *path, uint1
     Direction_Turned dir;
     uint8 leftIgnored = 0;  /* straight-through junctions since the last turn */
     uint8 rightIgnored = 0;
+    uint8 nodes;
     // validate the map and path.
     if (map == NULL || path == NULL) return NULL;
 
@@ -88,12 +89,16 @@ JunctionList *junctionsDetections(const uint8_t *map, const BfsCell *path, uint1
      * judge left/right from. Stop before the goal: it has no next cell, so
      * the robot can't turn there. */
     for (i = 1; i + 1 < pathLength && list.count < JUNCTIONS_MAX; ++i) {
-        if (!getJunctionType(map, path[i - 1], path[i], &type)) continue;
+        if (!getJunctionType(map, path[i - 1], path[i], &type)){
+            nodes++;
+            continue;
+        } 
 
         if (getTurnDirection(path[i - 1], path[i], path[i + 1], &dir)) {
             Junctions *j = &list.items[list.count++];
             j->type = type;
             j->turn = dir;
+            j->numOfNode = nodes;
             j->cord.row = path[i].row;
             j->cord.col = path[i].col;
             if (dir == LEFT){
@@ -102,9 +107,11 @@ JunctionList *junctionsDetections(const uint8_t *map, const BfsCell *path, uint1
             else if(dir == RIGHT){
                 j->numOfJunctionsIgnore = rightIgnored;
             }
+            nodes = 0;
             leftIgnored = 0;
             rightIgnored = 0;  /* start counting again for the next turn */
-        } else {
+        } 
+        else {
             if(type == CROSS_ROAD || type == T_JUNCTION){
                 leftIgnored++;
                 rightIgnored++;
@@ -122,7 +129,7 @@ JunctionList *junctionsDetections(const uint8_t *map, const BfsCell *path, uint1
      * keep them here for the run to the goal. With no turns at all, this is
      * every junction on the path. */
     list.numOfJunctionsIgnoreToGoal = leftIgnored + rightIgnored;
-
+    list.numOfNodesToGoal = nodes;
     return &list;
 }
 
