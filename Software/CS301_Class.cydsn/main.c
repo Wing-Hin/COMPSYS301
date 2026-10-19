@@ -28,6 +28,7 @@
 #include "branchSearch.h"
 #include "bfs.h"
 #include "map.h"
+#include "uturn.h"
 
 //* ========================================
 #include "defines.h"
