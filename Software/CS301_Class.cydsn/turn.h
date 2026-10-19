@@ -47,7 +47,8 @@ typedef enum {
     TURN_FIND_LINE,
     TURN_REACQUIRE,
     TURN_DONE,
-    TURN_FAULT
+    TURN_FAULT,
+    TURN_UTURN
 } TurnState;
 
 /* Logical positions only: these values are NOT ADC channel numbers.

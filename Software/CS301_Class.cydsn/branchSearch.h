@@ -28,6 +28,7 @@ typedef enum {
 typedef enum {
     LEFT,
     RIGHT,
+    BACK,
     NO_TURN,
 } Direction_Turned;
 
@@ -57,6 +58,8 @@ typedef struct {
     uint8 numOfJunctionsIgnoreToGoal;  /* junctions to drive straight through after the last turn, before the goal */
     uint8 numOfNodesToGoal;
 } JunctionList;
+
+uint8_t getTurnDirection(BfsCell prev, BfsCell cell, BfsCell next, Direction_Turned *dir);
 
 /* Records every junction on a BFS path where the robot turns. Pass the map and the
  * path/path_length from BfsFindPath. Returns NULL on invalid input.

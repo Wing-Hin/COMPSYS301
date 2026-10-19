@@ -43,6 +43,7 @@ void handle_usb();
 //motorcontrol
 extern volatile int motorSpeed_tick;
 volatile int count_beforeRestart;
+volatile int count_beforeNextPath;
 volatile bool sideSensorDisable = 0;
 volatile bool distanceReached=0;
 //
@@ -99,13 +100,20 @@ int main()
     BfsCell path[BFS_MAX_CELLS];
     uint16_t pathLength = 0;
     BfsCell start = {0, 0};
-    BfsCell food = {5, 11};
+    BfsCell food[2] = {{5, 9},{0,0}};
+    int foodNUM = 1;
+    BfsCell pre_cell;
+    BfsCell now_cell;
+    BfsCell next_cell;
+    Direction_Turned direction;
     BfsStatus status = BFS_NO_PATH;
     JunctionList *junctions;
     float init_count = 0;
     float current_count = 0;
     bool turned = 1;
     bool foodGrabed=0;
+    bool uturnEnd = 1;
+    
     
     const uint8_t *selectedMap = maps[MAP_TEST];
 
@@ -129,6 +137,9 @@ int main()
     
     for(;;)
     {   
+        if(UturnUpdate()){
+            uturnEnd = 1;
+        }
         //distance calculation
         if(turned && TurnGetState() == TURN_IDLE){
             init_count = Motor_get_AveCount();
@@ -137,10 +148,31 @@ int main()
         current_count = Motor_get_AveCount();
         //Path finding
         if(status == BFS_NO_PATH){
-            status = BfsFindPath(selectedMap, 15, 19, start, food, 
+            pre_cell = path[pathLength-2];
+            now_cell = path[pathLength-1];
+            if(foodNUM == 1){
+                status = BfsFindPath(selectedMap, 15, 19, start, food[0], 
                             &workspace, path, BFS_MAX_CELLS, &pathLength);
+            }
+            else{
+                status = BfsFindPath(selectedMap, 15, 19, food[foodNUM-2], food[foodNUM-1], 
+                            &workspace, path, BFS_MAX_CELLS, &pathLength);
+            }
+            next_cell = path[1];
         }
         if (status == BFS_FOUND){
+            if(getTurnDirection(pre_cell,now_cell,next_cell,&direction)){
+                if(direction == LEFT){
+                    TurnStart(TURN_LEFT);
+                }
+                else if (direction == RIGHT){
+                    TurnStart(TURN_RIGHT);
+                }
+                else if (direction == BACK){
+                    UturnStart();
+                    uturnEnd = 0;
+                }
+            }
             junctions = junctionsDetections(selectedMap, path, pathLength);
             status = BFS_INVALID_INPUT;
             junctionList_i = 0;
@@ -166,7 +198,7 @@ int main()
             }
             
         }
-        else{
+        else if(uturnEnd){
         //Sensors LEDs
         if(f.fresh){
             LED_1_Write(getSingleSensorState(Q1) == SENSOR_WHITE);
@@ -283,12 +315,25 @@ int main()
             Motor_isr_flag = 0;
             Motor_captureRPM();
             Motor_maintainSpeed();
-            LED_1_Write(!LED_1_Read());
-            LED_2_Write(!LED_2_Read());
-            LED_3_Write(!LED_3_Read());
-            LED_4_Write(!LED_4_Read());
-            LED_5_Write(!LED_5_Read());
-            LED_6_Write(!LED_6_Read());
+            if(foodGrabed==1)
+            {
+                LED_1_Write(!LED_1_Read());
+                LED_2_Write(!LED_2_Read());
+                LED_3_Write(!LED_3_Read());
+                LED_4_Write(!LED_4_Read());
+                LED_5_Write(!LED_5_Read());
+                LED_6_Write(!LED_6_Read());
+                count_beforeNextPath++;
+            }
+            if(count_beforeNextPath >= 30){
+                foodGrabed=0;
+                junctionList_i=0;
+                if(foodNUM<2){
+                    foodNUM++;
+                }
+                status = BFS_NO_PATH;
+                count_beforeNextPath = 0;
+            }
         }
         
         if(Turn_isr_count >=12){

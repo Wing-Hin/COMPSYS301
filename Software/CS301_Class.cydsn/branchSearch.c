@@ -51,7 +51,7 @@ static uint8_t getJunctionType(const uint8_t *map, BfsCell prev, BfsCell cell, t
 /* Works out which way the robot turns at cell, going prev -> cell -> next.
  * Returns 1 and sets *dir for a left or right turn, or 0 if it goes straight.
  * BFS never doubles back, so a U-turn can't happen. */
-static uint8_t getTurnDirection(BfsCell prev, BfsCell cell, BfsCell next, Direction_Turned *dir)
+uint8_t getTurnDirection(BfsCell prev, BfsCell cell, BfsCell next, Direction_Turned *dir)
 {
     /* Heading in (prev -> cell) and heading out (cell -> next). */
     int hr = (int)cell.row - (int)prev.row;
@@ -62,7 +62,8 @@ static uint8_t getTurnDirection(BfsCell prev, BfsCell cell, BfsCell next, Direct
     /* Same left (-hc, hr) / right (hc, -hr) rotation as getJunctionType. */
     if (nr == -hc && nc == hr)      *dir = LEFT;
     else if (nr == hc && nc == -hr) *dir = RIGHT;
-    else return 0;                  /* heading unchanged: straight */
+    else if (nr == -hr && nc == -hc) *dir = BACK;
+    else return 0;                 /* heading unchanged: straight */
     return 1;
 }
 
