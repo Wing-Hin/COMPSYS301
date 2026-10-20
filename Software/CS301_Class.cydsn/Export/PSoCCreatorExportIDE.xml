@@ -46,6 +46,7 @@
           <File BuildType="BUILD" Toolchain="">..\Lucas's turning code\turn_hardware.c</File>
           <File BuildType="BUILD" Toolchain="">bfs.c</File>
           <File BuildType="BUILD" Toolchain="">map.c</File>
+          <File BuildType="BUILD" Toolchain="">uturn.c</File>
           <File BuildType="BUILD" Toolchain="">branchSearch.c</File>
           <File BuildType="BUILD" Toolchain="">defines.h</File>
           <File BuildType="BUILD" Toolchain="">vars.h</File>
@@ -58,6 +59,7 @@
           <File BuildType="BUILD" Toolchain="">..\Lucas's state deciding code\robot_state.h</File>
           <File BuildType="BUILD" Toolchain="">bfs.h</File>
           <File BuildType="BUILD" Toolchain="">map.h</File>
+          <File BuildType="BUILD" Toolchain="">uturn.h</File>
           <File BuildType="BUILD" Toolchain="">branchSearch.h</File>
         </Files>
       </Folder>
