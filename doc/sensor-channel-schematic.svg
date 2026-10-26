@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 915 345" width="915" height="345" font-family="'Times New Roman', Times, serif" font-size="14" fill="#000">
+  <rect x="0" y="0" width="915" height="345" fill="#fff"/>
+
+  <g fill="none" stroke="#000" stroke-width="1.4">
+    <!-- channel wires -->
+    <line x1="88" y1="40" x2="112" y2="40"/>
+    <line x1="100" y1="40" x2="100" y2="99"/>
+    <line x1="100" y1="141" x2="100" y2="235"/>
+    <line x1="100" y1="285" x2="100" y2="305"/>
+    <line x1="100" y1="215" x2="230" y2="215"/>
+    <polyline points="230,165 215,165 215,118 335,118 335,190"/>
+    <line x1="310" y1="190" x2="390" y2="190"/>
+    <line x1="400" y1="190" x2="575" y2="190"/>
+    <line x1="480" y1="190" x2="480" y2="215"/>
+    <line x1="480" y1="265" x2="480" y2="290"/>
+    <line x1="468" y1="290" x2="492" y2="290"/>
+
+    <!-- reference wires -->
+    <line x1="758" y1="52" x2="782" y2="52"/>
+    <line x1="770" y1="52" x2="770" y2="80"/>
+    <line x1="770" y1="125" x2="770" y2="165"/>
+    <line x1="770" y1="210" x2="770" y2="230"/>
+    <polyline points="770,145 795,145 795,170 810,170"/>
+    <polyline points="810,130 800,130 800,100 885,100 885,150"/>
+    <line x1="870" y1="150" x2="892" y2="150"/>
+    <line x1="892" y1="138" x2="892" y2="162"/>
+
+    <!-- grounds -->
+    <line x1="86" y1="305" x2="114" y2="305"/>
+    <line x1="91" y1="310" x2="109" y2="310"/>
+    <line x1="96" y1="315" x2="104" y2="315"/>
+    <line x1="756" y1="230" x2="784" y2="230"/>
+    <line x1="761" y1="235" x2="779" y2="235"/>
+    <line x1="766" y1="240" x2="774" y2="240"/>
+
+    <!-- Q1 -->
+    <circle cx="92" cy="120" r="24"/>
+    <line x1="82" y1="104" x2="82" y2="136" stroke-width="2.6"/>
+    <line x1="82" y1="112" x2="100" y2="99"/>
+    <line x1="82" y1="128" x2="100" y2="141"/>
+    <line x1="30" y1="78" x2="58" y2="100"/>
+    <line x1="24" y1="96" x2="52" y2="118"/>
+
+    <!-- resistors -->
+    <rect x="92" y="235" width="16" height="50"/>
+    <rect x="472" y="215" width="16" height="50"/>
+    <rect x="762" y="80" width="16" height="45"/>
+    <rect x="762" y="165" width="16" height="45"/>
+
+    <!-- Cf1 -->
+    <line x1="390" y1="172" x2="390" y2="208" stroke-width="2.4"/>
+    <line x1="400" y1="172" x2="400" y2="208" stroke-width="2.4"/>
+
+    <!-- op-amps -->
+    <polygon points="230,140 230,240 310,190"/>
+    <polygon points="810,115 810,185 870,150"/>
+
+    <!-- port to PSoC -->
+    <polygon points="575,180 655,180 665,190 655,200 575,200"/>
+  </g>
+
+  <g>
+    <polygon points="100,141 91.2,139.5 95.8,133.1"/>
+    <polygon points="58,100 49.2,98.2 54.2,92"/>
+    <polygon points="52,118 43.2,116.2 48.2,110"/>
+    <circle cx="100" cy="215" r="3"/>
+    <circle cx="335" cy="190" r="3"/>
+    <circle cx="480" cy="190" r="3"/>
+    <circle cx="770" cy="145" r="3"/>
+    <circle cx="885" cy="150" r="3"/>
+  </g>
+
+  <!-- designators and values -->
+  <text x="124" y="116">Q1</text>
+  <text x="124" y="132">TEMT6200</text>
+  <text x="116" y="256">Rs1</text>
+  <text x="116" y="272">22k</text>
+  <text x="395" y="164" text-anchor="middle">Cf1</text>
+  <text x="395" y="226" text-anchor="middle">10uF</text>
+  <text x="496" y="236">Rf1</text>
+  <text x="496" y="252">5.1k</text>
+  <text x="275" y="152">U1A</text>
+  <text x="236" y="258">LM324</text>
+  <text x="756" y="100" text-anchor="end">R1</text>
+  <text x="756" y="116" text-anchor="end">5.1k</text>
+  <text x="756" y="185" text-anchor="end">R2</text>
+  <text x="756" y="201" text-anchor="end">5.1k</text>
+  <text x="814" y="204">U1C</text>
+  <text x="814" y="220">LM324</text>
+
+  <!-- pin numbers and polarity -->
+  <g font-size="11">
+    <text x="221" y="211">3</text>
+    <text x="221" y="161">2</text>
+    <text x="316" y="185">1</text>
+    <text x="797" y="166">10</text>
+    <text x="802" y="126">9</text>
+    <text x="874" y="145">8</text>
+  </g>
+  <text x="235" y="220">+</text>
+  <text x="235" y="170">−</text>
+  <text x="815" y="174">+</text>
+  <text x="815" y="134">−</text>
+
+  <!-- nets -->
+  <text x="100" y="32" text-anchor="middle">+5V</text>
+  <text x="165" y="209" text-anchor="middle">Vs1</text>
+  <text x="362" y="184" text-anchor="middle">Vso1</text>
+  <text x="528" y="184" text-anchor="middle">Vsf1</text>
+  <text x="480" y="306" text-anchor="middle">2.5V</text>
+  <text x="770" y="44" text-anchor="middle">+5V</text>
+  <text x="878" y="178" text-anchor="middle">2.5V</text>
+  <text x="615" y="195" text-anchor="middle" font-size="12">P0[5]</text>
+  <g font-size="11" text-anchor="middle">
+    <text x="100" y="330">GND</text>
+    <text x="770" y="255">GND</text>
+  </g>
+</svg>
